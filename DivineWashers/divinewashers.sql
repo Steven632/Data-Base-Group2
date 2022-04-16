@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrator`
 --
 
-CREATE TABLE `administrator` (
+CREATE TABLE `Administrator` (
   `admiID` int(11) NOT NULL,
   `admiFirstName` varchar(255) DEFAULT NULL,
   `admiLastName` varchar(255) DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `administrator` (
 -- Table structure for table `costumer`
 --
 
-CREATE TABLE `costumer` (
+CREATE TABLE `Costumer` (
   `id` int(11) NOT NULL,
   `clientefirstName` varchar(255) DEFAULT NULL,
   `clienteLastName` varchar(255) DEFAULT NULL,
@@ -51,6 +51,8 @@ CREATE TABLE `costumer` (
   `phoneNum` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
 --
 -- Indexes for dumped tables
 --
@@ -58,13 +60,13 @@ CREATE TABLE `costumer` (
 --
 -- Indexes for table `administrator`
 --
-ALTER TABLE `administrator`
+ALTER TABLE `Administrator`
   ADD PRIMARY KEY (`admiID`);
 
 --
 -- Indexes for table `costumer`
 --
-ALTER TABLE `costumer`
+ALTER TABLE `Costumer`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -74,13 +76,13 @@ ALTER TABLE `costumer`
 --
 -- AUTO_INCREMENT for table `administrator`
 --
-ALTER TABLE `administrator`
+ALTER TABLE `Administrator`
   MODIFY `admiID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `costumer`
 --
-ALTER TABLE `costumer`
+ALTER TABLE `Costumer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
@@ -88,8 +90,8 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-/*entrar data a tabla administrator */
+/*entrar data a tabla Administrator */
 insert into administrator values(001, 'Gabriel','Velazquez','gabriel@yahoo.com', '1234');
-insert into administrator values(002, 'prueba','test','@yahoo.com', '1234');
-insert into administrator values(003, 'prueba1','test','@yahoo.com', 'abcd');
-insert into administrator values(004, 'prueba2l','test','@yahoo.com', '4321');
+insert into administrator values(002, 'Steven','test','steven@yahoo.com', '1234');
+insert into administrator values(003, 'Briana','test','briana@yahoo.com', '1234');
+insert into administrator values(004, 'Celymar','test','celymar@yahoo.com', '1234');
