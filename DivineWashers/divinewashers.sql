@@ -87,3 +87,9 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+/*entrar data a tabla administrator */
+insert into administrator values(001, 'Gabriel','Velazquez','gabriel@yahoo.com', '1234');
+insert into administrator values(002, 'prueba','test','@yahoo.com', '1234');
+insert into administrator values(003, 'prueba1','test','@yahoo.com', 'abcd');
+insert into administrator values(004, 'prueba2l','test','@yahoo.com', '4321');
