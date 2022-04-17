@@ -1,10 +1,3 @@
-<?php
-require "database.php";
-
-$costumer = $connection->query("SELECT * FROM Costumer");
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
