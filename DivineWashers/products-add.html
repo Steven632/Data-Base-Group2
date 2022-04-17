@@ -1,7 +1,8 @@
-<?php session_start();
-        if(!isset($_SESSION["email"])
-                  header('location: login.php');
-        
+  <!-- <?
+     php session_start();
+        if(!isset($_SESSION['email']){
+                 header('location: login.php');
+        }
         $db = mysqli_connect('localhost', 'username', 'password', 'database');
         $query = "SELECT * FROM category";
         $result = mysqli_query($db, $query);
@@ -9,7 +10,7 @@
              die(mysqli_error());
              exit();
         }
-?>
+?>  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
