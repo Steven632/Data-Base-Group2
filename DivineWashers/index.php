@@ -1,6 +1,7 @@
 <!--TRATANDO DE SOLUCIONAR DOWNLOAD EN VEZ DE OPEN
 <?php
-require "database.php";
+include 'connection.php';
+//require "database.php";
 
 //$costumer = $connection->query("SELECT * FROM Costumer");
 
