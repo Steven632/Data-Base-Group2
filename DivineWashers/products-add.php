@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:DivineWashers/products-add.php
 <?
 php session_start();
 if(!isset($_SESSION['email']){
@@ -12,6 +13,21 @@ if(!$result){
 }
 
 ?>
+=======
+<?php 
+    session_start();
+    if(!isset($_SESSION['email']){
+                header('location: login.php');
+            }
+    $db = mysqli_connect('localhost', 'username', 'password', 'database');
+    $query = "SELECT * FROM category";
+    $result = mysqli_query($db, $query);
+    if(!$result){
+            die(mysqli_error());
+            exit();
+    }
+?>  
+>>>>>>> Stashed changes:DivineWashers/products-add.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,7 +125,13 @@ if(!$result){
             <div class="col-sm-10 bg-light">
                <div class="row">
                    <div class="col-sm-2">
+<<<<<<< Updated upstream:DivineWashers/products-add.php
                     
+=======
+                       <p class="text-center pt-5">
+                        
+                                </p>
+>>>>>>> Stashed changes:DivineWashers/products-add.html
                    </div>
                    <div class="col-sm-8">
                        <h1 class="text-center pt-4 pb-5"><strong>Add Products</strong></h1>
