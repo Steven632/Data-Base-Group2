@@ -1,15 +1,37 @@
+
+<!-- // include 'connection.php';
+
+// $sql = "SELECT * FROM Administrator";
+// $res = mysqli_query($host, $database, $user, $password,$sql);
+// $r = mysqli_fetch_assoc($res);
+
+// $isql = "INSERT INTO Administrator (admiID,admiFirstName, admiLastName, admiEmail, admiPassword) values (001, 'Gabriel','Velazquez','gabriel@upr.com', '1234')";
+// $ires = mysqli_query($host, $database, $user, $password,$sql)
+// --insert into Administrator values(002, 'Steven','test','steven@upr.com', '1234');
+// --insert into Administrator values(003, 'Briana','test','briana@upr.com', '1234');
+// --insert into Administrator values(004, 'Celymar','test','celymar@upr.com', '1234');
+  -->
 <?php
-include 'connection.php';
+if (isset($_REQUEST['submit'])){
+    session_start();
+    $email=$_REQUEST['email']??'';
+    $password=$_REQUEST['pass']??'';
+    include_once "divinewashers";
+    $con=mysqli_connect($host,$user,$password,$db);
+    $query="SELECT clienteID, clienteEmail, clienteFirstName, clienteLastName FROM costumer WHERE email='".$email."' and password=' ".$password."' ";
+    $result=mysqli_query($con,$query);
+    $row=mysqli_fetch_assoc($result);
+    if($row){
+        $_SESSION['clienteID']=$row['clienteID'];
+        $_SESSION['clienteEmail']=$row['clienteEmail'];
+        $_SESSION['clienteFirstName']=$row['clienteFirstName'];
+        $_SESSION['clienteLastName']=$row['clienteLastName'];
+        header("location: index.php");
 
-$sql = "SELECT * FROM Administrator";
-$res = mysqli_query($host, $database, $user, $password,$sql);
-$r = mysqli_fetch_assoc($res);
+    }
+}
 
-$isql = "INSERT INTO Administrator (admiID,admiFirstName, admiLastName, admiEmail, admiPassword) values (001, 'Gabriel','Velazquez','gabriel@upr.com', '1234')";
-$ires = mysqli_query($host, $database, $user, $password,$sql)
---insert into Administrator values(002, 'Steven','test','steven@upr.com', '1234');
---insert into Administrator values(003, 'Briana','test','briana@upr.com', '1234');
---insert into Administrator values(004, 'Celymar','test','celymar@upr.com', '1234');
+
 ?>
 
 <!DOCTYPE html>
@@ -188,7 +210,7 @@ $ires = mysqli_query($host, $database, $user, $password,$sql)
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn">Submit</button>
+                                    <button  name="submit" class="btn">Submit</button >
                                 </div>
                             </div>
                         </div>
