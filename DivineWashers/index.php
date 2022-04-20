@@ -1,12 +1,3 @@
-<!--TRATANDO DE SOLUCIONAR DOWNLOAD EN VEZ DE OPEN
-<?php
-include 'connection.php';
-//require "database.php";
-
-//$costumer = $connection->query("SELECT * FROM Costumer");
-
-?>
-TRATANDO DE SOLUCIONAR DOWNLOAD EN VEZ DE OPEN-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
