@@ -98,7 +98,7 @@ if (isset($_REQUEST['submit'])){
                                 <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
                                     <a href="wishlist.html" class="dropdown-item">Wishlist</a>
-                                    <a href="login.html" class="dropdown-item active">Login & Register</a>
+                                    <a href="login.php" class="dropdown-item active">Login & Register</a>
                                     <a href="contact.html" class="dropdown-item">Contact Us</a>
                                 </div>
                             </div>
