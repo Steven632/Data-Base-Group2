@@ -1,9 +1,17 @@
-<!DOCTYPE html>
-<!-- WORK IN PROGRESS
-<?myphp
+<?php
 include 'connection.php';
-$admiFirstName;
--->
+
+$sql = "select * from Administrator";
+$res = mysqli_query($host, $database, $user, $password,$sql);
+$r = mysqli_fetch_assoc($res);
+
+insert into Administrator values(001, 'Gabriel','Velazquez','gabriel@upr.com', '1234');
+insert into Administrator values(002, 'Steven','test','steven@upr.com', '1234');
+insert into Administrator values(003, 'Briana','test','briana@upr.com', '1234');
+insert into Administrator values(004, 'Celymar','test','celymar@upr.com', '1234');
+?>
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
