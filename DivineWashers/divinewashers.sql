@@ -91,7 +91,3 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 /*entrar data a tabla Administrator */
-insert into administrator values(001, 'Gabriel','Velazquez','gabriel@yahoo.com', '1234');
-insert into administrator values(002, 'Steven','test','steven@yahoo.com', '1234');
-insert into administrator values(003, 'Briana','test','briana@yahoo.com', '1234');
-insert into administrator values(004, 'Celymar','test','celymar@yahoo.com', '1234');

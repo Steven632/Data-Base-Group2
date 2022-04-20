@@ -1,3 +1,15 @@
+<?php
+include 'connection.php';
+$sql = "select * from administraitor ";
+$res = mysql_query($db,$sql);
+$r = mysqli_fetch_assoc($res);
+
+insert into administrator values(001, 'Gabriel','Velazquez','gabriel@yahoo.com', '1234');
+insert into administrator values(002, 'Steven','test','steven@yahoo.com', '1234');
+insert into administrator values(003, 'Briana','test','briana@yahoo.com', '1234');
+insert into administrator values(004, 'Celymar','test','celymar@yahoo.com', '1234');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -52,7 +64,7 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.html" class="nav-item nav-link">Products</a>
                             <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
                             <a href="cart.html" class="nav-item nav-link">Cart</a>
@@ -79,7 +91,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img src="img/Divinewasherslogo1.png" alt="Logo">
                             </a>
                         </div>
@@ -111,7 +123,7 @@
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item"><a href="product-list.html">Products</a></li>
                     <li class="breadcrumb-item active">Login & Register</li>
                 </ul>
