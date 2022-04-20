@@ -39,11 +39,12 @@ CREATE TABLE `administrator` (
 -- Dumping data for table `administrator`
 --
 
-/*entrar data a tabla Administrator */
+/*entrar data a tabla Administrator 
 insert into Administrator values(001, 'Gabriel','Velazquez','gabriel@upr.com', '1234');
 insert into Administrator values(002, 'Steven','test','steven@upr.com', '1234');
 insert into Administrator values(003, 'Briana','test','briana@upr.com', '1234');
 insert into Administrator values(004, 'Celymar','test','celymar@upr.com', '1234');
+*/
 
 -- --------------------------------------------------------
 

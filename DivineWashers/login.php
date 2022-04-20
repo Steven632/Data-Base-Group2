@@ -1,14 +1,15 @@
 <?php
 include 'connection.php';
 
-$sql = "select * from Administrator";
+$sql = "SELECT * FROM Administrator";
 $res = mysqli_query($host, $database, $user, $password,$sql);
 $r = mysqli_fetch_assoc($res);
 
-insert into Administrator values(001, 'Gabriel','Velazquez','gabriel@upr.com', '1234');
-insert into Administrator values(002, 'Steven','test','steven@upr.com', '1234');
-insert into Administrator values(003, 'Briana','test','briana@upr.com', '1234');
-insert into Administrator values(004, 'Celymar','test','celymar@upr.com', '1234');
+$isql = "INSERT INTO Administrator (admiID,admiFirstName, admiLastName, admiEmail, admiPassword) values (001, 'Gabriel','Velazquez','gabriel@upr.com', '1234')";
+$ires = mysqli_query($host, $database, $user, $password,$sql)
+--insert into Administrator values(002, 'Steven','test','steven@upr.com', '1234');
+--insert into Administrator values(003, 'Briana','test','briana@upr.com', '1234');
+--insert into Administrator values(004, 'Celymar','test','celymar@upr.com', '1234');
 ?>
 
 <!DOCTYPE html>
