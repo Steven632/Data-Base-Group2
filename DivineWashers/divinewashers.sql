@@ -51,6 +51,15 @@ CREATE TABLE `Costumer` (
   `phoneNum` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `order` (
+  `orderID` int(11) NOT NULL,
+  `orderNum` varchar(255) NOT NULL,
+  `orderDate` date NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `shipDate` date NOT NULL,
+  `price` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 
 --
@@ -68,6 +77,12 @@ ALTER TABLE `Administrator`
 --
 ALTER TABLE `Costumer`
   ADD PRIMARY KEY (`id`);
+  
+  ALTER TABLE `order`
+  ADD PRIMARY KEY (`orderID`);
+
+  ALTER TABLE `order`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for dumped tables
