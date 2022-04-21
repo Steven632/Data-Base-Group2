@@ -51,7 +51,7 @@ CREATE TABLE `Costumer` (
   `phoneNum` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `order` (
+CREATE TABLE `Order` (
   `orderID` int(11) NOT NULL,
   `orderNum` varchar(255) NOT NULL,
   `orderDate` date NOT NULL,
@@ -92,7 +92,7 @@ ALTER TABLE `Administrator`
 ALTER TABLE `Costumer`
   ADD PRIMARY KEY (`id`);
   
-  ALTER TABLE `order`
+  ALTER TABLE `Order`
   ADD PRIMARY KEY (`orderID`);
 
   ALTER TABLE `order`
@@ -132,8 +132,7 @@ insert into Administrator values(002, 'Steven','test','steven@yahoo.com', '1234'
 insert into Administrator values(003, 'Briana','test','briana@yahoo.com', '1234');
 insert into Administrator values(004, 'Celymar','test','celymar@yahoo.com', '1234');
 
-/*entrar data a tabla Order */
-insert into order values(100, null,null,null, null, null, null, null);
+
 
 --- insert de productos
 INSERT INTO product (`productID`, `prodName`, `prodDesc`, `prodCategory`, `prodType`, `prodImage`, `prodPrice`, `prodQuantity`) 
