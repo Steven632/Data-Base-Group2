@@ -60,6 +60,20 @@ CREATE TABLE `order` (
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `productID` int(11) NOT NULL,
+  `prodName` varchar(255) NOT NULL,
+  `prodDesc` varchar(255) NOT NULL,
+  `prodCategory` varchar(255) NOT NULL,
+  `prodType` varchar(255) NOT NULL,
+  `prodImage` int(11) NOT NULL,
+  `prodPrice` double NOT NULL,
+  `prodQuantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 
 --
@@ -99,6 +113,13 @@ ALTER TABLE `Administrator`
 --
 ALTER TABLE `Costumer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`productID`);
+  
+  ALTER TABLE `product`
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
