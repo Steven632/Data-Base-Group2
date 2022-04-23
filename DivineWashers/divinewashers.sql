@@ -135,7 +135,7 @@ insert into Administrator values(004, 'Celymar','test','celymar@yahoo.com', '123
 
 
 --- insert de productos
-INSERT INTO product (`productID`, `prodName`, `prodDesc`, `prodCategory`, `prodType`, `prodImage`, `prodPrice`, `prodQuantity`) 
+INSERT INTO product (productID, prodName, prodDesc, prodCategory, prodType, prodImage, prodPrice, prodQuantity) 
 VALUES (1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 'portable', 'Costway', 0, 199.99, 10);
 
 INSERT INTO product (`productID`, `prodName`, `prodDesc`, `prodCategory`, `prodType`, `prodImage`, `prodPrice`, `prodQuantity`) 
