@@ -42,11 +42,11 @@ CREATE TABLE `Administrator` (
 --
 
 CREATE TABLE `Costumer` (
-  `id` int(11) NOT NULL,
+  `costumerID` int(11) NOT NULL,
   `clientefirstName` varchar(255) DEFAULT NULL,
   `clienteLastName` varchar(255) DEFAULT NULL,
-  `clienteEmail` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `costumerEmail` varchar(255) DEFAULT NULL,
+  `costumerPassword` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `phoneNum` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
