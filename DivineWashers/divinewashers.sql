@@ -112,7 +112,7 @@ ALTER TABLE `Administrator`
 -- AUTO_INCREMENT for table `costumer`
 --
 ALTER TABLE `Costumer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `costumerID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 ALTER TABLE `product`
