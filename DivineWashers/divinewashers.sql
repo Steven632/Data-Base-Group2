@@ -90,7 +90,7 @@ ALTER TABLE `Administrator`
 -- Indexes for table `costumer`
 --
 ALTER TABLE `Costumer`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`costumerID`);
   
   ALTER TABLE `Order`
   ADD PRIMARY KEY (`orderID`);
