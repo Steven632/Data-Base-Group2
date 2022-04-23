@@ -52,7 +52,7 @@ INSERT INTO `administrator` (`admiID`, `admiFirstName`, `admiLastName`, `admiEma
 --
 
 CREATE TABLE `costumer` (
-  `clienteID` int(11) NOT NULL,
+  `costumerID` int(11) NOT NULL,
   `clienteFirstName` varchar(255) DEFAULT NULL,
   `clienteLastName` varchar(255) DEFAULT NULL,
   `clienteEmail` varchar(255) DEFAULT NULL,
