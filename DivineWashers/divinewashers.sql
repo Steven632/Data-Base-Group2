@@ -43,8 +43,8 @@ CREATE TABLE `Administrator` (
 
 CREATE TABLE `Costumer` (
   `costumerID` int(11) NOT NULL,
-  `clientefirstName` varchar(255) DEFAULT NULL,
-  `clienteLastName` varchar(255) DEFAULT NULL,
+  `costumerfirstName` varchar(255) DEFAULT NULL,
+  `costumerLastName` varchar(255) DEFAULT NULL,
   `costumerEmail` varchar(255) DEFAULT NULL,
   `costumerPassword` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -131,8 +131,6 @@ insert into Administrator values(001, 'Gabriel','Velazquez','gabriel@yahoo.com',
 insert into Administrator values(002, 'Steven','test','steven@yahoo.com', '1234');
 insert into Administrator values(003, 'Briana','test','briana@yahoo.com', '1234');
 insert into Administrator values(004, 'Celymar','test','celymar@yahoo.com', '1234');
-
-
 
 --- insert de productos
 INSERT INTO product (productID, prodName, prodDesc, prodCategory, prodType, prodImage, prodPrice, prodQuantity) 
