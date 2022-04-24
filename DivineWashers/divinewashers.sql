@@ -53,7 +53,7 @@ CREATE TABLE `Costumer` (
 
 CREATE TABLE `Order` (
   `orderID` int(11) NOT NULL,
-  --`orderNum` varchar(255) NOT NULL,
+ 
   `orderDate` date NOT NULL,
   `action` varchar(255) NOT NULL,
   `shipDate` date NOT NULL,
