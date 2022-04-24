@@ -68,7 +68,7 @@ CREATE TABLE `Order` (
 
 -- Table structure for table `product`
 --
---verificar: prodImage blob --
+-- verificar: prodImage blob --
 
 CREATE TABLE `Product` (
   `productID` int(11) NOT NULL,
@@ -143,7 +143,8 @@ insert into Administrator values(002, 'Steven','test','steven@yahoo.com', '1234'
 insert into Administrator values(003, 'Briana','test','briana@yahoo.com', '1234');
 insert into Administrator values(004, 'Celymar','test','celymar@yahoo.com', '1234');
 
---- insert de productos (productID, prodName, prodDesc, prodCategory, prodType, prodImage, prodPrice, prodQuantity) ---
+-- insert de productos (productID, prodName, prodDesc, prodCategory, prodType, prodImage, prodPrice, prodQuantity) --
+
 INSERT INTO Product 
 VALUES (1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 'portable', 'Costway', 15, 'img/Divinewasherslogo1.png' , 199.99, 2);
 
@@ -160,4 +161,4 @@ INSERT INTO Product
 VALUES (5, 'Whirlpool Smart Top Load Washer', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 'topload', 'Whirlpool', 15,'img/Divinewasherslogo1.png' , 1249.99, 1);
 
 INSERT INTO Product 
-VALUES (6, 'Haier Smart Frontload Washer', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 'frontload', 'Haier', 15, 999.99, 1);
+VALUES (6, 'Haier Smart Frontload Washer', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 'frontload', 'Haier', 15, 'img/Divinewasherslogo1.png' , 999.99, 1);
