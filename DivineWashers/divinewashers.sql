@@ -47,7 +47,11 @@ CREATE TABLE `Costumer` (
   `costumerLastName` varchar(20) DEFAULT NULL,
   `costumerEmail` varchar(50) DEFAULT NULL,
   `costumerPassword` varchar(50) DEFAULT NULL, 
-  `address` varchar(255) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `street` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `zipCode` varchar(255) DEFAULT NULL,
   `phoneNum` varchar(10) DEFAULT NULL,
   `status` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -138,10 +142,10 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 /*entrar data a tabla Administrator */
-insert into Administrator values(001, 'Gabriel','Velazquez','gabriel@yahoo.com', '1234');
-insert into Administrator values(002, 'Steven','Rodriguez','steven@yahoo.com', '1234');
-insert into Administrator values(003, 'Briana','Santiago','briana@yahoo.com', '1234');
-insert into Administrator values(004, 'Celymar','Torres','celymar@yahoo.com', '1234');
+insert into Administrator values(001, 'Gabriel','Velazquez','gabriel@upr.com', '1234');
+insert into Administrator values(002, 'Steven','Rodriguez','steven@upr.com', '1234');
+insert into Administrator values(003, 'Briana','Santiago','briana@upr.com', '1234');
+insert into Administrator values(004, 'Celymar','Torres','celymar@upr.com', '1234');
 
 -- insert de productos (productID, prodName, prodDesc, prodCategory, prodType, prodImage, prodPrice, prodQuantity) --
 
