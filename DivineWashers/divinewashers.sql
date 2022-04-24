@@ -50,9 +50,9 @@ CREATE TABLE `Costumer` (
   `address` varchar(50) DEFAULT NULL,
   `street` varchar(50) DEFAULT NULL,
   `city` varchar(50) DEFAULT NULL,
-  `state` varchar(255) DEFAULT NULL,
-  `zipCode` varchar(255) DEFAULT NULL,
-  `phoneNum` varchar(10) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `zipCode` varchar(6) DEFAULT NULL,
+  `phoneNum` varchar(11) DEFAULT NULL,
   `status` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
