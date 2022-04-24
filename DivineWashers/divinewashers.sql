@@ -48,13 +48,14 @@ CREATE TABLE `Costumer` (
   `costumerEmail` varchar(50) DEFAULT NULL,
   `costumerPassword` varchar(50) DEFAULT NULL, 
   `address` varchar(255) DEFAULT NULL,
-  `phoneNum` varchar(10) DEFAULT NULL
+  `phoneNum` varchar(10) DEFAULT NULL,
   `status` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Table structure for table `Order`
 --
---verificar: payment method
+-- verificar: payment method -- 
+
 CREATE TABLE `Order` (
   `orderID` int(11) NOT NULL,
   `costumerID` int(11) NOT NULL,
@@ -67,7 +68,8 @@ CREATE TABLE `Order` (
 
 -- Table structure for table `product`
 --
----verificar: prodImage blob
+--verificar: prodImage blob --
+
 CREATE TABLE `Product` (
   `productID` int(11) NOT NULL,
   `prodName` varchar(50) NOT NULL,
@@ -141,7 +143,7 @@ insert into Administrator values(002, 'Steven','test','steven@yahoo.com', '1234'
 insert into Administrator values(003, 'Briana','test','briana@yahoo.com', '1234');
 insert into Administrator values(004, 'Celymar','test','celymar@yahoo.com', '1234');
 
---- insert de productos (productID, prodName, prodDesc, prodCategory, prodType, prodImage, prodPrice, prodQuantity) 
+--- insert de productos (productID, prodName, prodDesc, prodCategory, prodType, prodImage, prodPrice, prodQuantity) ---
 INSERT INTO Product 
 VALUES (1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 'portable', 'Costway', 15, 'img/Divinewasherslogo1.png' , 199.99, 2);
 
