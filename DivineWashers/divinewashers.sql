@@ -81,7 +81,7 @@ CREATE TABLE `Product` (
 
   `prodImage` blob NOT NULL,
 
-  `prodPrice` double (4,2) NOT NULL,
+  `prodPrice` double  NOT NULL,
   `prodQuantity` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
