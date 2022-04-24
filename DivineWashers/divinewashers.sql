@@ -139,9 +139,9 @@ COMMIT;
 
 /*entrar data a tabla Administrator */
 insert into Administrator values(001, 'Gabriel','Velazquez','gabriel@yahoo.com', '1234');
-insert into Administrator values(002, 'Steven','test','steven@yahoo.com', '1234');
-insert into Administrator values(003, 'Briana','test','briana@yahoo.com', '1234');
-insert into Administrator values(004, 'Celymar','test','celymar@yahoo.com', '1234');
+insert into Administrator values(002, 'Steven','Rodriguez','steven@yahoo.com', '1234');
+insert into Administrator values(003, 'Briana','Santiago','briana@yahoo.com', '1234');
+insert into Administrator values(004, 'Celymar','Torres','celymar@yahoo.com', '1234');
 
 -- insert de productos (productID, prodName, prodDesc, prodCategory, prodType, prodImage, prodPrice, prodQuantity) --
 
