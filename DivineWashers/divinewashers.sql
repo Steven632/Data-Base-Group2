@@ -68,8 +68,8 @@ CREATE TABLE `Order` (
   `orderStatus` varchar(20) DEFAULT NULL,
   `paymentMethod` varchar(50) DEFAULT NULL,
   `creditCard` varchar(20) DEFAULT NULL,
-  `totalPrice` double NOT NULL,
-  `prodQuantity` varchar(100) NOT NULL
+  `prodQuantity` varchar(100) NOT NULL,
+  `totalPrice` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Table structure for table `product`
