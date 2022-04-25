@@ -44,7 +44,7 @@ CREATE TABLE `Administrator` (
 CREATE TABLE `Costumer` (
   `costumerID` int(11) NOT NULL,
   `costumerfirstName` varchar(20) DEFAULT NULL,
-  `costumerLastName` varchar(20) DEFAULT NULL,
+  `costumerlastName` varchar(20) DEFAULT NULL,
   `costumerEmail` varchar(50) DEFAULT NULL,
   `costumerPassword` varchar(50) DEFAULT NULL, 
   `address` varchar(50) DEFAULT NULL,
@@ -66,7 +66,8 @@ CREATE TABLE `Order` (
   `orderDate` date NOT NULL,
   `shipDate` date NOT NULL,
   `orderStatus` varchar(20) DEFAULT NULL,
-  `paymentMethod` varchar(255) DEFAULT NULL,
+  `paymentMethod` varchar(50) DEFAULT NULL,
+  `creditCard` varchar(20) DEFAULT NULL,
   `totalPrice` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -78,11 +79,13 @@ CREATE TABLE `Product` (
   `productID` int(11) NOT NULL,
   `prodName` varchar(50) NOT NULL,
   `prodDescription` varchar(255) NOT NULL,
-  `prodCategory` varchar(50) NOT NULL,
-  
+  `portable` boolean NOT NULL,
+  `frontLoad` varchar(10) NOT NULL,
+  `topLoad` varchar(10) NOT NULL,
+  `smartWifi` boolean NOT NULL,
+  `dryerCombo` boolean NOT NULL,
   `prodBrand` varchar(50) NOT NULL,
   `prodInventory` varchar (100) NOT NULL,
-
   `prodImage` blob NOT NULL,
 
   `prodPrice` double  NOT NULL,
