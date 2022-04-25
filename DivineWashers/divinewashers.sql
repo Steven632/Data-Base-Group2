@@ -69,6 +69,7 @@ CREATE TABLE `Order` (
   `paymentMethod` varchar(50) DEFAULT NULL,
   `creditCard` varchar(20) DEFAULT NULL,
   `totalPrice` double NOT NULL
+  `prodQuantity` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Table structure for table `product`
@@ -87,9 +88,7 @@ CREATE TABLE `Product` (
   `prodBrand` varchar(50) NOT NULL,
   `prodInventory` varchar (100) NOT NULL,
   `prodImage` blob NOT NULL,
-
   `prodPrice` double  NOT NULL,
-  `prodQuantity` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -153,19 +152,19 @@ insert into Administrator values(004, 'Celymar','Torres','celymar@upr.com', '123
 -- insert de productos (productID, prodName, prodDesc, prodCategory, prodType, prodImage, prodPrice, prodQuantity) --
 
 INSERT INTO Product 
-VALUES (1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', '1','0','1','0','0', 'Costway', 15, 'img/Divinewasherslogo1.png' , 199.99, 2);
+VALUES (1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', '1','0','1','0','0', 'Costway', 15, 'img/Divinewasherslogo1.png' , 199.99);
 
 INSERT INTO Product 
-VALUES (2, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes to the spinning tub for saving your precious time.', '1','0','1','0','0', 'Costway', 15,'img/Divinewasherslogo1.png' , 209.99, 1);
+VALUES (2, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes to the spinning tub for saving your precious time.', '1','0','1','0','0', 'Costway', 15,'img/Divinewasherslogo1.png' , 209.99);
 
 INSERT INTO Product 
-VALUES (3, 'LG Wifi Combo Washer Dryer', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash® technology. Based on the cycle you select, LG 6Motion™ te', '0','1','0','1','0', 'LG', 15,'img/Divinewasherslogo1.png' , 999.99, 1);
+VALUES (3, 'LG Wifi Combo Washer Dryer', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash® technology. Based on the cycle you select, LG 6Motion™ te', '0','1','0','1','0', 'LG', 15,'img/Divinewasherslogo1.png' , 999.99);
 
 INSERT INTO Product  
-VALUES (4, 'Samsung Platinum Front Load ', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.','0','1','0','0','0', 'Samsung', 15,'img/Divinewasherslogo1.png' , 1099.99, 1);
+VALUES (4, 'Samsung Platinum Front Load ', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.','0','1','0','0','0', 'Samsung', 15,'img/Divinewasherslogo1.png' , 1099.99);
 
 INSERT INTO Product 
-VALUES (5, 'Whirlpool Smart Top Load Washer', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', '0','0','1','0','0', 'Whirlpool', 15,'img/Divinewasherslogo1.png' , 1249.99, 1);
+VALUES (5, 'Whirlpool Smart Top Load Washer', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', '0','0','1','0','0', 'Whirlpool', 15,'img/Divinewasherslogo1.png' , 1249.99);
 
 INSERT INTO Product 
-VALUES (6, 'Haier Smart Frontload Washer', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', '0','1','0','1','0', 'Haier', 15, 'img/Divinewasherslogo1.png' , 999.99, 1);
+VALUES (6, 'Haier Smart Frontload Washer', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', '0','1','0','1','0', 'Haier', 15, 'img/Divinewasherslogo1.png' , 999.99);
