@@ -68,7 +68,7 @@ CREATE TABLE `Order` (
   `orderStatus` varchar(20) DEFAULT NULL,
   `paymentMethod` varchar(50) DEFAULT NULL,
   `creditCard` varchar(20) DEFAULT NULL,
-  `totalPrice` double NOT NULL
+  `totalPrice` double NOT NULL,
   `prodQuantity` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -88,7 +88,7 @@ CREATE TABLE `Product` (
   `prodBrand` varchar(50) NOT NULL,
   `prodInventory` varchar (100) NOT NULL,
   `prodImage` blob NOT NULL,
-  `prodPrice` double  NOT NULL,
+  `prodPrice` double  NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
