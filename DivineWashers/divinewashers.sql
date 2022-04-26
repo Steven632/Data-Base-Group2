@@ -63,6 +63,7 @@ CREATE TABLE `Costumer` (
 CREATE TABLE `Order` (
   `orderID` int(11) NOT NULL,
   `costumerID` int(11) NOT NULL,
+  `productID` int(11) NOT NULL,
   `orderDate` date NOT NULL,
   `shipDate` date NOT NULL,
   `orderStatus` varchar(20) DEFAULT NULL,
