@@ -103,23 +103,43 @@ CREATE TABLE `Product` (
 --
 ALTER TABLE `Administrator`
   ADD PRIMARY KEY (`admiID`);
+  --
+  --
+  --
+
+  ALTER TABLE `Product`
+    ADD PRIMARY KEY (`productID`);
+  
+  ALTER TABLE `Product`
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
 
 --
 -- Indexes for table `costumer`
 --
 ALTER TABLE `Costumer`
   ADD PRIMARY KEY (`costumerID`);
+--
+--
+--
   
   ALTER TABLE `Order`
-  ADD PRIMARY KEY (`orderID`);
-
-  ALTER TABLE `Order`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
-
+    ADD PRIMARY KEY (`orderID`),
+    ADD KEY `costumerID` (`costumerID`),
+    ADD KEY `productID` (`productID`);
+--
+--
+--
+/*
+    ALTER TABLE `Order`
+  ADD CONSTRAINT `Order` FOREIGN KEY (`costumerID`) REFERENCES `Costumer` (`costumerID`),
+  ADD CONSTRAINT `Order` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`);
+*/
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
+  ALTER TABLE `Order`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `administrator`
 --
@@ -133,16 +153,7 @@ ALTER TABLE `Costumer`
   MODIFY `costumerID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
-ALTER TABLE `Product`
-  ADD PRIMARY KEY (`productID`);
-  
-  ALTER TABLE `Product`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 /*entrar data a tabla Administrator */
 insert into Administrator values(001, 'Gabriel','Velazquez','gabriel@upr.com', '1234');
@@ -169,3 +180,8 @@ VALUES (5, 'Whirlpool Smart Top Load Washer', 'Skip adding detergent to every lo
 
 INSERT INTO Product 
 VALUES (6, 'Haier Smart Frontload Washer', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', '0','1','0','1','0', 'Haier', 15, 'img/Divinewasherslogo1.png' , 999.99);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
