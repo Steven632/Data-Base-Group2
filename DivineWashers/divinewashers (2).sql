@@ -213,11 +213,15 @@ ALTER TABLE `Orderdetails`
   ADD CONSTRAINT `Orderdetails_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`) ON DELETE NO ACTION;
 COMMIT;
 
-/*ALTER TABLE `Adds`
+ALTER TABLE `Adds`
   ADD CONSTRAINT `Adds_ibfk_1` FOREIGN KEY (`admiID`) REFERENCES `Administrator` (`admiID`) ON DELETE NO ACTION,
   ADD CONSTRAINT `Adds_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`) ON DELETE NO ACTION;
 COMMIT;
-*/
+
+ALTER TABLE `Order`
+  ADD CONSTRAINT `Order_ibfk_1` FOREIGN KEY (`costumerID`) REFERENCES `Costumer` (`costumerID`);
+
+
 
 --
 -- Constraints for table `order`
