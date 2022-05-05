@@ -62,9 +62,9 @@ CREATE TABLE `Costumer` (
   `city` varchar(50) DEFAULT NULL,
   `state` varchar(50) DEFAULT NULL,
   `zipCode` varchar(6) DEFAULT NULL,
-  `phoneNum` varchar(11) DEFAULT NULL,
-  `Paypal` varchar(20) DEFAULT NULL,
-  `status` varchar(15) DEFAULT NULL
+  `phoneNum` int(11) NOT NULL,
+  `Paypallogin` varchar(20) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `Costumer` (
 --
 
 INSERT INTO `Costumer` (`costumerID`, `costumerfirstName`, `costumerlastName`, `costumerEmail`, `costumerPassword`, `address`, `street`, `city`, `state`, `zipCode`, `phoneNum`, `status`) VALUES
-(1, 'Juan', 'Rios', 'jrios@upr.com', '1234', 'Urb. Lomas', 'carr. 467', 'Arecibo', 'Puerto Rico', '00628', '7874584669', 'Available');
+(1, 'Juan', 'Rios', 'jrios@upr.com', '1234', 'Urb. Lomas', 'carr. 467', 'Arecibo', 'Puerto Rico', '00628', '7874584669', '1');
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,6 @@ INSERT INTO `Costumer` (`costumerID`, `costumerfirstName`, `costumerlastName`, `
 
 CREATE TABLE `Order` (
   `orderID` int(11) NOT NULL,
-   `costumerID` int(11) NOT NULL,
   `orderDate` date NOT NULL,
   `shipDate` date NOT NULL,
   `orderStatus` varchar(20) NOT NULL,
@@ -100,12 +99,12 @@ CREATE TABLE `Product` (
   `prodName` varchar(50) NOT NULL,
   `prodDesc` varchar(500) NOT NULL,
   `portable` tinyint(1) NOT NULL,
-  `frontLoad` varchar(10) NOT NULL,
-  `topLoad` varchar(10) NOT NULL,
+  `frontLoad` tinyint(1) NOT NULL,
+  `topLoad` tinyint(1) NOT NULL,
   `smartWifi` tinyint(1) NOT NULL,
   `dryerCombo` tinyint(1) NOT NULL,
   `prodBrand` varchar(50) NOT NULL,
-  `prodInventory` varchar(100) NOT NULL,
+  `prodInventory` int(100) NOT NULL,
   `prodImage` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -133,7 +132,7 @@ CREATE TABLE `Orderdetails` (
   `orderID` int(11) NOT NULL,
   `productID` int(11) NOT NULL,
   `prodPrice` double  NOT NULL,
-  `prodQuantity` varchar(100) NOT NULL
+  `prodQuantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
  ALTER TABLE `Orderdetails`
@@ -148,7 +147,7 @@ CREATE TABLE `Adds` (
    `admiID` int(11) NOT NULL,
    `productID` int(11) NOT NULL,
   `changeDate` date NOT NULL,
-  `observation` varchar(200) NOT NULL
+  `comment` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE `Adds`
