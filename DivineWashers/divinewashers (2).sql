@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Administrator` (
-  `admiID` int(11) NOT NULL,
-  `admiFirstName` varchar(20) DEFAULT NULL,
-  `admiLastName` varchar(50) DEFAULT NULL,
-  `admiEmail` varchar(50) DEFAULT NULL,
-  `admiPassword` varchar(50) DEFAULT NULL
+  `admiID` int(10) NOT NULL,
+  `admiFirstName` varchar(11) DEFAULT NULL,
+  `admiLastName` varchar(11) DEFAULT NULL,
+  `admiEmail` varchar(25) DEFAULT NULL,
+  `admiPassword` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -53,14 +53,14 @@ INSERT INTO `Administrator` (`admiID`, `admiFirstName`, `admiLastName`, `admiEma
 
 CREATE TABLE `Costumer` (
   `costumerID` int(11) NOT NULL,
-  `costumerfirstName` varchar(20) DEFAULT NULL,
-  `costumerlastName` varchar(20) DEFAULT NULL,
-  `costumerEmail` varchar(50) DEFAULT NULL,
-  `costumerPassword` varchar(50) DEFAULT NULL,
-  `address` varchar(50) DEFAULT NULL,
-  `street` varchar(50) DEFAULT NULL,
-  `city` varchar(50) DEFAULT NULL,
-  `state` varchar(50) DEFAULT NULL,
+  `costumerfirstName` varchar(11) DEFAULT NULL,
+  `costumerlastName` varchar(11) DEFAULT NULL,
+  `costumerEmail` varchar(25) DEFAULT NULL,
+  `costumerPassword` varchar(10) DEFAULT NULL,
+  `address` varchar(10) DEFAULT NULL,
+  `street` varchar(10) DEFAULT NULL,
+  `city` varchar(10) DEFAULT NULL,
+  `state` varchar(15) DEFAULT NULL,
   `zipCode` varchar(6) DEFAULT NULL,
   `phoneNum` int(11) NOT NULL,
   `Paypallogin` varchar(20) DEFAULT NULL,
@@ -84,8 +84,7 @@ CREATE TABLE `Order` (
   `orderID` int(11) NOT NULL,
   `orderDate` date NOT NULL,
   `shipDate` date NOT NULL,
-  `orderStatus` varchar(20) NOT NULL,
-  `totalPrice` double NOT NULL
+  `orderStatus` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -96,16 +95,16 @@ CREATE TABLE `Order` (
 
 CREATE TABLE `Product` (
   `productID` int(11) NOT NULL,
-  `prodName` varchar(50) NOT NULL,
-  `prodDesc` varchar(500) NOT NULL,
+  `prodName` varchar(25) NOT NULL,
+  `prodDesc` varchar(200) NOT NULL,
   `portable` tinyint(1) NOT NULL,
   `frontLoad` tinyint(1) NOT NULL,
   `topLoad` tinyint(1) NOT NULL,
   `smartWifi` tinyint(1) NOT NULL,
   `dryerCombo` tinyint(1) NOT NULL,
-  `prodBrand` varchar(50) NOT NULL,
+  `prodBrand` varchar(15) NOT NULL,
   `prodInventory` int(100) NOT NULL,
-  `prodImage` varchar(100) DEFAULT NULL
+  `prodImage` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -131,7 +130,7 @@ VALUES (6, 'Haier Smart Frontload Washer', 'Clean 5 of the most common stains wi
 CREATE TABLE `Orderdetails` (
   `orderID` int(11) NOT NULL,
   `productID` int(11) NOT NULL,
-  `prodPrice` double  NOT NULL,
+  `prodPrice` float  NOT NULL,
   `prodQuantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -147,7 +146,7 @@ CREATE TABLE `Adds` (
    `admiID` int(11) NOT NULL,
    `productID` int(11) NOT NULL,
   `changeDate` date NOT NULL,
-  `comment` varchar(200) NOT NULL
+  `comment` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE `Adds`
@@ -168,8 +167,7 @@ ALTER TABLE `Costumer`
 -- Indexes for table `order`
 --
 ALTER TABLE `Order`
-  ADD PRIMARY KEY (`orderID`),
-  ADD KEY `costumerID` (`costumerID`);
+  ADD PRIMARY KEY (`orderID`);
 
 --
 -- Indexes for table `product`
@@ -216,9 +214,6 @@ ALTER TABLE `Adds`
   ADD CONSTRAINT `Adds_ibfk_1` FOREIGN KEY (`admiID`) REFERENCES `Administrator` (`admiID`) ON DELETE NO ACTION,
   ADD CONSTRAINT `Adds_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`) ON DELETE NO ACTION;
 COMMIT;
-
-ALTER TABLE `Order`
-  ADD CONSTRAINT `Order_ibfk_1` FOREIGN KEY (`costumerID`) REFERENCES `Costumer` (`costumerID`);
 
 
 
