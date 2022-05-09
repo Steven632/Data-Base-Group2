@@ -1,3 +1,13 @@
+<?php
+include 'connection.php';
+
+$sql = "SELECT prodName, prodImage FROM Product"
+$result = mysqli_query($db,$sql);
+$row = mysqli_fecth_assoc($result);
+echo $row['prodName', 'prodImage'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
