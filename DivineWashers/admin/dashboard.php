@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
  <?php
-  // session_start();
-  // if(isset($_SESSION['admiID'])==false){
-  //   header("location: admi-login.php");
-  // }
+   session_start();
+   if(isset($_SESSION['admiID'])==false){
+     header("location: admin-login.php");
+  }
 
   $modulo = $_REQUEST['modulo']??'';
   ?>
@@ -86,11 +86,8 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
         <div class="info">
-          <a href="#" class="d-block">Steven Rodríguez</a>
+          <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
         </div>
       </div>
 
@@ -103,7 +100,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Divine Washers - Admin
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -115,19 +112,19 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index.html" class="nav-link ">
+                <a href="dashboard.php?modulo=users" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index.html" class="nav-link ">
+                <a href="add-products.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Products</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index.html" class="nav-link ">
+                <a href="orders.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Orders</p>
                 </a>
@@ -139,7 +136,9 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
+    <?php
+      include_once "users.php";
+    ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

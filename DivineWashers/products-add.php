@@ -1,10 +1,9 @@
-<<<<<<< Updated upstream:DivineWashers/products-add.php
-<?
-php session_start();
-if(!isset($_SESSION['email']){
-            header('location: login.php');
+<?php 
+    session_start();
+    if(!isset($_SESSION['email']){
+    header('location: login.php');
 }
-$db = mysqli_connect('localhost', 'root', '', 'divinewashers');
+$db = mysqli_connect('localhost', 'root', '', 'divinewashersfinal');
 $query = "SELECT * FROM product";
 $result = mysqli_query($db, $query);
 if(!$result){
@@ -13,21 +12,6 @@ if(!$result){
 }
 
 ?>
-=======
-<?php 
-    session_start();
-    if(!isset($_SESSION['email']){
-                header('location: login.php');
-            }
-    $db = mysqli_connect('localhost', 'username', 'password', 'database');
-    $query = "SELECT * FROM category";
-    $result = mysqli_query($db, $query);
-    if(!$result){
-            die(mysqli_error());
-            exit();
-    }
-?>  
->>>>>>> Stashed changes:DivineWashers/products-add.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
