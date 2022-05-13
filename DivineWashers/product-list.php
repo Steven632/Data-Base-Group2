@@ -2,11 +2,17 @@
 include 'connection.php';
 
 $sql = "SELECT prodName, prodImage FROM Product";
-$result = mysqli_sql($db, $sql);
-$row = mysqli_fecth_assoc($result);
-//echo $row['prodName'];
-//echo $row['prodImage'];
+$result = mysqli_query($db, $sql);
+$row = mysqli_fetch_assoc($result);
 
+while($row = mysqli_fetch_array($result))
+{
+    $prodName = $row[0];
+    $prodImage =$row[0];
+}
+echo $row['prodName'];
+//echo "<td> {$prodImage} </td>";
+echo $row['prodImage'];
 ?>
 
 <!DOCTYPE html>
@@ -188,7 +194,7 @@ $row = mysqli_fecth_assoc($result);
                                     </div>
                                 </div>
                             </div>
-                            
+                            <!--abre ventana de producto-->
                             <div class="col-md-4">
                                 <div class="product-item">
                                     <div class="product-title">
@@ -217,6 +223,9 @@ $row = mysqli_fecth_assoc($result);
                                     </div>
                                 </div>
                             </div>
+                            <!-- cierra ventana de producto-->
+
+                        <!--
                             <div class="col-md-4">
                                 <div class="product-item">
                                     <div class="product-title">
@@ -357,6 +366,7 @@ $row = mysqli_fecth_assoc($result);
                                     </div>
                                 </div>
                             </div>
+                        -->
                            
                         </div>
                         
