@@ -1,6 +1,6 @@
 <?php                   
     $sid = $_POST['subcategory-id'];
-    $db = mysqli_connect('server-name', 'user-name', 'password', 'database-name');
+    $db = mysqli_connect('server-name', 'user-name', 'password', 'divinewashersfinal');
     $query = "DELETE FROM subcategory where sid = '$sid'";
     $result = mysqli_query($db, $query);
     if ($result == FALSE) 

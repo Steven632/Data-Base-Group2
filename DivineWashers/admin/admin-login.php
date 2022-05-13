@@ -34,26 +34,25 @@
     $password=$_REQUEST['password']??'';
     include_once "connection.php";
     $con=mysqli_connect($host,$user,$password,$db);
-    $query="SELECT adminID,admiEmail,admiFirstName FROM Administrator WHERE admiEmail= '".$email."' and password = '".$password."' ";
+    $query="SELECT admiEmail,admiFirstName FROM Administrator WHERE admiEmail= '".$email."' and password = '".$password."' ";
     $res=mysqli_query($con,$query);
     $row=mysqli_fetch_assoc($res);
     if($row){
-      $_SESSION['id']=$row['id'];
+  
       $_SESSION['email']=$row['email'];
       $_SESSION['name']=$row['name'];
       header("location: dashboard.php");
     }
-  }
     else{
-    ?> 
-      <div class ="alert alert-danger" role="alert">
-        Login Error
-      </div>
-    <?php
-    }
 ?>
-
-      <form method="post">
+  <div class="alert alert-danger" role="alert">
+    Error de login
+  </div>
+<?php
+    }
+  }
+?>
+       <form method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email" name="email">
           <div class="input-group-append">
