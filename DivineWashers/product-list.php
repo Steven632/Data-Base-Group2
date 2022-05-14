@@ -70,7 +70,7 @@ echo $row['prodImage'];
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
                             <a href="index.php" class="nav-item nav-link">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link active">Products</a>
+                            <a href="product-list.php" class="nav-item nav-link active">Products</a>
                             <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
                             <a href="cart.html" class="nav-item nav-link">Cart</a>
                             <a href="checkout.html" class="nav-item nav-link">Checkout</a>
@@ -194,11 +194,14 @@ echo $row['prodImage'];
                                     </div>
                                 </div>
                             </div>
+
                             <!--abre ventana de producto-->
                             <div class="col-md-4">
                                 <div class="product-item">
                                     <div class="product-title">
-                                        <a href="#">Costway Portable Mini</a>
+                                        <!--<a href="#">Costway Portable Mini</a>-->
+                                        <a href="#">nombre del producto(template)</a> <!--php here?-->
+                                        
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
