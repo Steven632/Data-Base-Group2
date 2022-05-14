@@ -1,18 +1,20 @@
 <?php
 include 'connection.php';
 
-$sql = "SELECT prodName, prodImage FROM Product";
+$sql = "SELECT * FROM Product";
 $result = mysqli_query($db, $sql);
+$resultcheck = mysqli_num_rows($result);
 $row = mysqli_fetch_assoc($result);
 
-while($row = mysqli_fetch_array($result))
-{
-    $prodName = $row[0];
-    $prodImage =$row[0];
-}
-echo $row['prodName'];
-//echo "<td> {$prodImage} </td>";
-echo $row['prodImage'];
+//while($row = mysqli_fetch_array($result))
+//{
+//    $prodName = $row[0];
+//    $prodImage =$row[0];
+//}
+
+//echo $row['productID'];
+//echo $row['prodName'];
+//echo $row['prodImage'];
 ?>
 
 <!DOCTYPE html>
@@ -195,12 +197,20 @@ echo $row['prodImage'];
                                 </div>
                             </div>
 
+                            <?php
+                            if ($resultcheck>0)
+                            {
+                                    while($row = mysqli_fetch_assoc($result))
+                                {
+                            ?>
+
                             <!--abre ventana de producto-->
                             <div class="col-md-4">
                                 <div class="product-item">
                                     <div class="product-title">
-                                        <!--<a href="#">Costway Portable Mini</a>-->
-                                        <a href="#">nombre del producto(template)</a> <!--php here?-->
+                                        <!--<a href="#">Costway Portable Mini</a>-->                              
+
+                                        <a href="product-detail.php?id=" <?php echo $row['productID']; ?> >  <?php echo $row['prodName']; ?> </a>
                                         
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
@@ -212,7 +222,9 @@ echo $row['prodImage'];
                                     </div>
                                     <div class="product-image">
                                         <a href="product-detail.html">
-                                            <img src="img/costwayamazon450.png" alt="Product Image">
+                                          <!--  <img src="img/costwayamazon450.png" alt="Product Image"> -->
+                                            <img src="product-detail.php?id=" <?php echo $row['productID']; ?> >  <?php echo $row['prodImage']; ?> </a>
+
                                         </a>
                                         <div class="product-action">
                                             <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -227,6 +239,10 @@ echo $row['prodImage'];
                                 </div>
                             </div>
                             <!-- cierra ventana de producto-->
+                            <?php
+                            }
+                        }
+                        ?>
 
                         <!--
                             <div class="col-md-4">
