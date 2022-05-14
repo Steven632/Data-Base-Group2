@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 
-$sql = "SELECT * FROM Product";
+$sql = "SELECT productID, prodName, prodImage FROM Product";
 $result = mysqli_query($db, $sql);
 $resultcheck = mysqli_num_rows($result);
 $row = mysqli_fetch_assoc($result);
@@ -210,7 +210,7 @@ $row = mysqli_fetch_assoc($result);
                                     <div class="product-title">
                                         <!--<a href="#">Costway Portable Mini</a>-->                              
 
-                                        <a href="product-detail.php?id=" <?php echo $row['productID']; ?> >  <?php echo $row['prodName']; ?> </a>
+                                        <a href="product-detail.php?id=" <?php echo $row['productID']; ?> > <?php echo $row['prodName']; ?> </a>
                                         
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
@@ -223,7 +223,7 @@ $row = mysqli_fetch_assoc($result);
                                     <div class="product-image">
                                         <a href="product-detail.html">
                                           <!--  <img src="img/costwayamazon450.png" alt="Product Image"> -->
-                                            <img src="product-detail.php?id=" <?php echo $row['productID']; ?> >  <?php echo $row['prodImage']; ?> </a>
+                                            <img src= "<?php echo $row['prodImage']; ?>" >
 
                                         </a>
                                         <div class="product-action">
@@ -234,7 +234,10 @@ $row = mysqli_fetch_assoc($result);
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span>199.99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <!--<h3><span>$</span> <?php echo $row['prodPrice']; ?> </h3> -->
+                                        
+                                        <a class="btn" href="cart.html"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <!--<a href="cart.html" class="nav-item nav-link">Cart</a>-->
                                     </div>
                                 </div>
                             </div>
