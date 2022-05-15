@@ -4,7 +4,7 @@ include 'connection.php';
 $id= "";
 if(isset($_GET["id"]))
 {
-    $id = $_GET["id"];
+    $productid = $_GET["id"];
 }
 
 $sql = "SELECT productID, prodName, prodImage, prodDesc FROM `product`";
