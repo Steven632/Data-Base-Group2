@@ -62,7 +62,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
-                                    <a href="wishlist.html" class="dropdown-item">Wishlist</a>
+                                   <!-- <a href="wishlist.html" class="dropdown-item">Wishlist</a> -->
                                     <a href="login.html" class="dropdown-item">Login & Register</a>
                                     <a href="contact.html" class="dropdown-item">Contact Us</a>
                                 </div>
@@ -101,10 +101,10 @@
                     </div>
                     <div class="col-md-3">
                         <div class="user">
-                            <a href="wishlist.html" class="btn wishlist">
+                             <!--<a href="wishlist.html" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(0)</span>
-                            </a>
+                                <span>(0)</span> 
+                            </a> -->
                             <a href="cart.html" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
@@ -147,21 +147,21 @@
                                 <img src="img/samsung_front_1.png" alt="Slider Image" />
                                 <div class="header-slider-caption">
                                     <p>Samsung - 4.5 cu. ft. Front Load Washer with Vibration Reduction Technology+ - Platinum</p>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    <a class="btn" href="product-detail.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                             <div class="header-slider-item">
                                 <img src="img/whrilpool_top1.png" alt="Slider Image" />
                                 <div class="header-slider-caption">
                                     <p>Whirlpool - 4.7 Cu. Ft. Top Load Washer with Pretreat Station - Chrome shadow</p>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    <a class="btn" href="product-detail.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                             <div class="header-slider-item">
                                 <img src="img/ge_portable1.png" alt="Slider Image" />
                                 <div class="header-slider-caption">
                                     <p>GE - 2.8 Cu. Ft. Top Load Washer Portable - White/black</p>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    <a class="btn" href="product-detail.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                         </div>

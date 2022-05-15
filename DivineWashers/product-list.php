@@ -88,7 +88,7 @@ $row = mysqli_fetch_assoc($result);
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
-                                    <a href="wishlist.html" class="dropdown-item">Wishlist</a>
+                                   <!-- <a href="wishlist.html" class="dropdown-item">Wishlist</a> -->
                                     <a href="login.php" class="dropdown-item">Login & Register</a>
                                     <a href="contact.html" class="dropdown-item">Contact Us</a>
                                 </div>
@@ -128,10 +128,10 @@ $row = mysqli_fetch_assoc($result);
                     </div>
                     <div class="col-md-3">
                         <div class="user">
-                            <a href="wishlist.html" class="btn wishlist">
+                            <!--<a href="wishlist.html" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(0)</span>
-                            </a>
+                                <span>(0)</span> 
+                            </a> -->
                             <a href="cart.html" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
@@ -236,7 +236,7 @@ $row = mysqli_fetch_assoc($result);
 
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                            <a href="cart.html"><i class="fa fa-cart-plus"></i></a>
                                             <!--<a href="#"><i class="fa fa-heart"></i></a>-->
                                             <a href="product-detail.php"><i class="fa fa-search"></i></a>
                                         </div>
@@ -245,7 +245,7 @@ $row = mysqli_fetch_assoc($result);
                                         <h3><span>$</span>199.99</h3>
                                         <!--<h3><span>$</span> <?php echo $row['prodPrice']; ?> </h3> -->
                                         
-                                        <a class="btn" href="cart.html"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <a class="btn" href="checkout.html"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                         <!--<a href="cart.html" class="nav-item nav-link">Cart</a>-->
                                     </div>
                                 </div>
