@@ -55,7 +55,7 @@
                         <div class="navbar-nav mr-auto">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Products</a>
-                            <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
+                            <a href="product-detail.php" class="nav-item nav-link">Product Detail</a>
                             <a href="cart.html" class="nav-item nav-link">Cart</a>
                             <a href="checkout.html" class="nav-item nav-link">Checkout</a>
                             <a href="my-account.html" class="nav-item nav-link">My Account</a>

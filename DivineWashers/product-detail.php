@@ -1,3 +1,20 @@
+<?php
+include 'connection.php';
+
+$id= "";
+if(isset($_GET["id"]))
+{
+    $id = $_GET["id"];
+}
+
+$sql = "SELECT productID, prodName, prodImage, prodDesc FROM `product`";
+//$result=$connection->query($sql);
+
+$result = mysqli_query($db, $sql);
+$resultcheck = mysqli_num_rows($result);
+$row = mysqli_fetch_assoc($result);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -54,7 +71,7 @@
                         <div class="navbar-nav mr-auto">
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Products</a>
-                            <a href="product-detail.html" class="nav-item nav-link active">Product Detail</a>
+                            <a href="product-detail.php" class="nav-item nav-link active">Product Detail</a>
                             <a href="cart.html" class="nav-item nav-link">Cart</a>
                             <a href="checkout.html" class="nav-item nav-link">Checkout</a>
                             <a href="my-account.html" class="nav-item nav-link">My Account</a>
@@ -126,6 +143,13 @@
             </div>
         </div>
         <!-- Breadcrumb End -->
+
+        <?php
+                            if ($resultcheck>0)
+                            {
+                                    while($row = mysqli_fetch_assoc($result)) //PRUEBA PARA VERIFICAR, SE QUITARA DESPUES
+                                {
+                            ?>
         
         <!-- Product Detail Start -->
         <div class="product-detail">
@@ -152,9 +176,12 @@
                                         <div class="slider-nav-img"><img src="img/lgside.jpg" alt="Product Image"></div>
                                     </div>
                                 </div>
+
+                             
+
                                 <div class="col-md-7">
                                     <div class="product-content">
-                                        <div class="title"><h2>Product Name</h2></div>
+                                        <div class="title"><h2><?php echo $row['prodName']; ?></h2></div> <!--<a href="product-detail.php?id=" < ?php echo $row['productID']; ?> > < ?php echo $row['prodName']; ? > </a> -->
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -210,9 +237,10 @@
                                     <div id="description" class="container tab-pane active">
                                         <h4>Product description</h4>
                                         <p>
-                                            Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LG's enhanced TurboWash® technology. Based on the cycle you select, LG 6Motion™ technology uses up to 6 different wash motions, each designed to get clothes cleaner and help them last longer. Breathe a little easier with the Allergiene™ cycle that uses the gentle power of steam to remove common household allergens from bedding, baby clothes and more. And with LG ThinQ® technology, you can get alerts on your smartphone the minute clothes are clean and control key washer and dryer features from anywhere, at any time. 
+                                        <?php echo $row['prodDesc']; ?>
                                         </p>
                                     </div>
+                                   
                                     <div id="specification" class="container tab-pane fade">
                                         <h4>Product specification</h4>
                                         <ul>
@@ -415,6 +443,10 @@
                             </div>
                         </div>
                     </div>
+<?php
+                }
+                        }// EL DE LA PRUEBA
+                        ?>
                     
                     <!-- Side Bar Start -->
                     <div class="col-lg-4 sidebar">

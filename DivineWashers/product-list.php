@@ -1,7 +1,15 @@
 <?php
 include 'connection.php';
 
-$sql = "SELECT productID, prodName, prodImage FROM Product";
+$prodName = "";
+if(isset($_GET["prodName"]))
+{
+    $prodName=$_GET["prodName"];
+}
+
+$sql = "SELECT productID, prodName, prodImage FROM Product ";
+//$sql = "SELECT productID, prodName, prodImage FROM Product WHERE (SELECT productID FROM product WHERE prodName = $'prodName')"; 
+
 $result = mysqli_query($db, $sql);
 $resultcheck = mysqli_num_rows($result);
 $row = mysqli_fetch_assoc($result);
@@ -73,7 +81,7 @@ $row = mysqli_fetch_assoc($result);
                         <div class="navbar-nav mr-auto">
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.php" class="nav-item nav-link active">Products</a>
-                            <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
+                            <a href="product-detail.php" class="nav-item nav-link">Product Detail</a>
                             <a href="cart.html" class="nav-item nav-link">Cart</a>
                             <a href="checkout.html" class="nav-item nav-link">Checkout</a>
                             <a href="my-account.html" class="nav-item nav-link">My Account</a>
@@ -210,7 +218,8 @@ $row = mysqli_fetch_assoc($result);
                                     <div class="product-title">
                                         <!--<a href="#">Costway Portable Mini</a>-->                              
 
-                                        <a href="product-detail.php?id=" <?php echo $row['productID']; ?> > <?php echo $row['prodName']; ?> </a>
+                                        <a href="product-detail.php?id=" <?php echo $row["productID"]; 
+                                        ?>" > <?php echo $row['prodName']; ?> </a>
                                         
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
@@ -228,8 +237,8 @@ $row = mysqli_fetch_assoc($result);
                                         </a>
                                         <div class="product-action">
                                             <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
+                                            <!--<a href="#"><i class="fa fa-heart"></i></a>-->
+                                            <a href="product-detail.php"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-price">
@@ -439,7 +448,7 @@ $row = mysqli_fetch_assoc($result);
                         <div class="sidebar-widget brands">
                             <h2 class="title">Our Brands</h2>
                             <ul>
-                                <li><a href="#">LG </a><span>(1)</span></li>
+                                <li><a href="product-list.php">LG </a><span>(1)</span></li> 
                                 <li><a href="#">Costway </a><span>(2)</span></li>
                                 <li><a href="#">Whrilpool </a><span>(1)</span></li>
                                 <li><a href="#">Samsung</a><span>(1)</span></li>
