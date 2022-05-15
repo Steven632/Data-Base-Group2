@@ -1,25 +1,12 @@
 <?php
 include 'connection.php';
 
-$prodName = "";
-if(isset($_GET["prodName"]))
-{
-    $prodName=$_GET["prodName"];
-}
-
-$sql = "SELECT productID, prodName, prodImage FROM Product ";
 //$sql = "SELECT productID, prodName, prodImage FROM Product WHERE (SELECT productID FROM product WHERE prodName = $'prodName')"; 
-
-$result = mysqli_query($db, $sql);
-$resultcheck = mysqli_num_rows($result);
-$row = mysqli_fetch_assoc($result);
-
 //while($row = mysqli_fetch_array($result))
 //{
 //    $prodName = $row[0];
 //    $prodImage =$row[0];
 //}
-
 //echo $row['productID'];
 //echo $row['prodName'];
 //echo $row['prodImage'];
@@ -206,10 +193,29 @@ $row = mysqli_fetch_assoc($result);
                             </div>
 
                             <?php
-                            if ($resultcheck>0)
+                            //$prodName = "";
+                           // if(isset($_GET['productID']))
+                            //{
+                           //     $productID = $_GET['productID'];
+                           //     //$sql .=""
+                            //}
+                            $sql = "SELECT * FROM Product";
+                            if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
-                                    while($row = mysqli_fetch_assoc($result))
-                                {
+                                $id= $_GET['productID'];
+                                $sql .= "WHERE brandid = productID";
+                            }
+                            $result = mysqli_query($db, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+
+                            
+                            //$resultcheck = mysqli_num_rows($result);
+                            //$row = mysqli_fetch_assoc($result);
+                            
+                           // if ($resultcheck>0)
+                           // {
+                            //        while($row = mysqli_fetch_assoc($result))
+                           //     {
                             ?>
 
                             <!--abre ventana de producto-->
@@ -218,8 +224,8 @@ $row = mysqli_fetch_assoc($result);
                                     <div class="product-title">
                                         <!--<a href="#">Costway Portable Mini</a>-->                              
 
-                                        <a href="product-detail.php?id=" <?php echo $row["productID"]; 
-                                        ?>" > <?php echo $row['prodName']; ?> </a>
+                                        <a 
+                                         > <?php echo $row['prodName']; ?> </a>
                                         
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
@@ -230,7 +236,7 @@ $row = mysqli_fetch_assoc($result);
                                         </div>
                                     </div>
                                     <div class="product-image">
-                                        <a href="product-detail.html">
+                                        <a href="product-detail.php?id="<?php echo $row['productID']; ?>"> 
                                           <!--  <img src="img/costwayamazon450.png" alt="Product Image"> -->
                                             <img src= "<?php echo $row['prodImage']; ?>" >
 
@@ -238,7 +244,7 @@ $row = mysqli_fetch_assoc($result);
                                         <div class="product-action">
                                             <a href="cart.html"><i class="fa fa-cart-plus"></i></a>
                                             <!--<a href="#"><i class="fa fa-heart"></i></a>-->
-                                            <a href="product-detail.php"><i class="fa fa-search"></i></a>
+                                            <a href="product-detail.php?id="<?php echo $row['productID']; ?>" ><i class="fa fa-search"></i></a> 
                                         </div>
                                     </div>
                                     <div class="product-price">
@@ -253,7 +259,7 @@ $row = mysqli_fetch_assoc($result);
                             <!-- cierra ventana de producto-->
                             <?php
                             }
-                        }
+                        //}
                         ?>
 
                         
@@ -307,14 +313,24 @@ $row = mysqli_fetch_assoc($result);
                         <div class="sidebar-widget brands">
                             <h2 class="title">Our Brands</h2>
                             <ul>
-                              
-                                <li><a href="product-list.php">LG </a><span>(1)</span></li> 
-                              
+
+        
+                            <?php
+                                $brandsql = "SELECT * FROM Product";
+                                $brandres = mysqli_query($db, $brandsql);
+                               // while($brandr = mysqli_fetch_assoc($brandres))
+                               // {
+                                    ?>         
+                                <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -->
+                                <li><a href="#">LG </a><span>(2)</span></li>
                                 <li><a href="#">Costway </a><span>(2)</span></li>
                                 <li><a href="#">Whrilpool </a><span>(1)</span></li>
                                 <li><a href="#">Samsung</a><span>(1)</span></li>
                                 <li><a href="#">Haier </a><span>(1)</span></li>
-                                <li><a href="#">Midea</a><span>(0)</span></li>
+                                <li><a href="#">Midea</a><span>(0)</span></li> 
+                                <?php
+                              //  }
+                                ?>
                             </ul>
                         </div>
                         

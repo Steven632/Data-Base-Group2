@@ -1,20 +1,19 @@
 <?php
 include 'connection.php';
 
-$id= "";
-if(isset($_GET["id"]))
+//$id = "";
+if(isset($_GET['productID']) & !empty($_GET['productID'])) 
 {
-    $productid = $_GET["id"];
+    $id=$_GET['productID'];
+    $prodsql = "SELECT * FROM Product WHERE productID = '$id'";
+    $presult = mysqli_query($db, $prodsql);
+    $prow = mysqli_fetch_assoc($presult);
 }
 
-$sql = "SELECT productID, prodName, prodImage, prodDesc FROM `product`";
 //$result=$connection->query($sql);
-
-$result = mysqli_query($db, $sql);
-$resultcheck = mysqli_num_rows($result);
-$row = mysqli_fetch_assoc($result);
-
+/////$resultcheck = mysqli_num_rows($result);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -137,19 +136,14 @@ $row = mysqli_fetch_assoc($result);
             <div class="container-fluid">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item"><a href="product-list.html">Products</a></li>
+                    <li class="breadcrumb-item"><a href="product-list.php">Products</a></li>
                     <li class="breadcrumb-item active">Product Detail</li>
                 </ul>
             </div>
         </div>
         <!-- Breadcrumb End -->
 
-        <?php
-                            if ($resultcheck>0)
-                            {
-                                    while($row = mysqli_fetch_assoc($result)) //PRUEBA PARA VERIFICAR, SE QUITARA DESPUES
-                                {
-                            ?>
+     
         
         <!-- Product Detail Start -->
         <div class="product-detail">
@@ -160,28 +154,22 @@ $row = mysqli_fetch_assoc($result);
                             <div class="row align-items-center">
                                 <div class="col-md-5">
                                     <div class="product-slider-single normal-slider">
-                                        <img src="img/lgFront.jpg" alt="Product Image">
+                                        <img src= "<?php echo $prow['prodImage']; ?>" alt="Product Image">
                                         <img src="img/lgfronttop.jpg" alt="Product Image">
-                                        <img src="img/lgopen.jpg" alt="Product Image">
-                                        <img src="img/lginside.jpg" alt="Product Image">
-                                        <img src="img/lgloads.jpg" alt="Product Image">
-                                        <img src="img/lgside.jpg" alt="Product Image">
+                                        
                                     </div>
                                     <div class="product-slider-single-nav normal-slider">
-                                        <div class="slider-nav-img"><img src="img/lgFront.jpg" alt="Product Image"></div>
+                                        <div class="slider-nav-img"><img src="<?php echo $prow['prodImage']; ?>" alt="Product Image"></div>
                                         <div class="slider-nav-img"><img src="img/lgfronttop.jpg" alt="Product Image"></div>
-                                        <div class="slider-nav-img"><img src="img/lgopen.jpg" alt="Product Image"></div>
-                                        <div class="slider-nav-img"><img src="img/lginside.jpg" alt="Product Image"></div>
-                                        <div class="slider-nav-img"><img src="img/lgloads.jpg" alt="Product Image"></div>
-                                        <div class="slider-nav-img"><img src="img/lgside.jpg" alt="Product Image"></div>
+                                        
                                     </div>
                                 </div>
 
                              
 
                                 <div class="col-md-7">
-                                    <div class="product-content">
-                                        <div class="title"><h2><?php echo $row['prodName']; ?></h2></div> <!--<a href="product-detail.php?id=" < ?php echo $row['productID']; ?> > < ?php echo $row['prodName']; ? > </a> -->
+                                    <div class="product-content"> 
+                                    <div class="title"><h2> <?php echo $prow['prodName']; ?> </h2></div> <!--<a href="product-detail.php?id=" < ?php echo $row['productID']; ?> > < ?php echo $row['prodName']; ? > </a> -->
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -237,7 +225,7 @@ $row = mysqli_fetch_assoc($result);
                                     <div id="description" class="container tab-pane active">
                                         <h4>Product description</h4>
                                         <p>
-                                        <?php echo $row['prodDesc']; ?>
+                                        <?php echo $prow['prodDesc']; ?>
                                         </p>
                                     </div>
                                    
@@ -443,10 +431,7 @@ $row = mysqli_fetch_assoc($result);
                             </div>
                         </div>
                     </div>
-<?php
-                }
-                        }// EL DE LA PRUEBA
-                        ?>
+
                     
                     <!-- Side Bar Start -->
                     <div class="col-lg-4 sidebar">
