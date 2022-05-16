@@ -198,7 +198,7 @@
                                             
                                         </div>
                                     </div>
-                                    <div class="payment-method">
+                                   <!--   <div class="payment-method">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="payment-2" name="payment">
                                             <label class="custom-control-label" for="payment-2">Check Payment</label>
@@ -220,6 +220,7 @@
                                         
                                     </div>
                                 </div>
+                            -->
                                 
                             </div>
                             <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">

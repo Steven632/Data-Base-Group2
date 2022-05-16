@@ -56,15 +56,15 @@
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Products</a>
                             <a href="product-detail.php" class="nav-item nav-link">Product Detail</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
-                            <a href="checkout.html" class="nav-item nav-link">Checkout</a>
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
+                            <a href="checkout.php" class="nav-item nav-link">Checkout</a>
+                            <a href="my-account.php" class="nav-item nav-link">My Account</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
                                    <!-- <a href="wishlist.html" class="dropdown-item">Wishlist</a> -->
-                                    <a href="login.html" class="dropdown-item">Login & Register</a>
-                                    <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                    <a href="login.php" class="dropdown-item">Login & Register</a>
+                                    <a href="contact.php" class="dropdown-item">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span> 
                             </a> -->
-                            <a href="cart.html" class="btn cart">
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>
@@ -127,10 +127,10 @@
                                     <a class="nav-link" href="index.php"><i class="fa fa-home"></i>Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-detail.html"><i class="fa fa-shopping-bag"></i>Portable</a>
+                                    <a class="nav-link" href="product-detail.php"><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.html"><i class="fa fa-plus-square"></i>Front Load</a>
+                                    <a class="nav-link" href="product-list.php"><i class="fa fa-plus-square"></i>Front Load</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#"><i class="fa fa-microchip"></i>Top Load</a>
@@ -247,7 +247,7 @@
                     <div class="col-md-3">
                         <div class="category-item ch-400">
                             <img src="img/CostwayPortableCompactTwin.png" />
-                            <a class="category-name" href="product-detail.html"> 
+                            <a class="category-name" href="product-detail.php"> 
                                 <p>Costway Portable Compact Twin</p>
                             </a>
                         </div>
@@ -255,13 +255,13 @@
                     <div class="col-md-3">
                         <div class="category-item ch-250">
                             <img src="img/costwayAmazon.png" />
-                            <a class="category-name" href="product-detail.html">
+                            <a class="category-name" href="product-detail.php">
                                 <p> Costway Portable Compact Mini </p>
                             </a>
                         </div>
                         <div class="category-item ch-150">
                             <img src="img/Costway.png" />
-                            <a class="category-name" href="product-detail.html">
+                            <a class="category-name" href="product-detail.php">
                                 
                             </a>
                         </div>
@@ -269,13 +269,13 @@
                     <div class="col-md-3">
                         <div class="category-item ch-150">
                             <img src="img/LgLogo.png" />
-                            <a class="category-name" href="product-detail.html">
+                            <a class="category-name" href="product-detail.php">
                                 
                             </a>
                         </div>
                         <div class="category-item ch-250">
                             <img src="img/lgWifiCombo.png"  />
-                            <a class="category-name" href="product-detail.html">
+                            <a class="category-name" href="product-detail.php">
                                 <p>LG Smart Wifi Washer Combo - White</p>
                             </a>
                         </div>
@@ -283,7 +283,7 @@
                     <div class="col-md-3">
                         <div class="category-item ch-400">
                             <img src="img/lgWifiComboGraphite.png" />
-                            <a class="category-name" href="product-detail.html">
+                            <a class="category-name" href="product-detail.php">
                                 <p>LG Smart Wifi Washer Combo - Graphite</p>
                             </a>
                         </div>
@@ -308,6 +308,7 @@
         </div>
         <!-- Call to Action End -->       
         
+        
         <!-- Featured Product Start -->
         <div class="featured-product product">
             <div class="container-fluid">
@@ -328,7 +329,7 @@
                                 </div>
                             </div>
                             <div class="product-image">
-                                <a href="product-detail.html">
+                                <a href="product-detail.php">
                                     <img src="img/lgWifiCombo.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
@@ -356,7 +357,7 @@
                                 </div>
                             </div>
                             <div class="product-image">
-                                <a href="product-detail.html">
+                                <a href="product-detail.php">
                                     <img src="img/samsungfront.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
@@ -384,7 +385,7 @@
                                 </div>
                             </div>
                             <div class="product-image">
-                                <a href="product-detail.html">
+                                <a href="product-detail.php">
                                     <img src="img/whirlpooltop.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
@@ -412,7 +413,7 @@
                                 </div>
                             </div>
                             <div class="product-image">
-                                <a href="product-detail.html">
+                                <a href="product-detail.php">
                                     <img src="img/costwayamazon450.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
@@ -440,7 +441,7 @@
                                 </div>
                             </div>
                             <div class="product-image">
-                                <a href="product-detail.html">
+                                <a href="product-detail.php">
                                     <img src="img/costwaytwin400.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">

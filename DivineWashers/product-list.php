@@ -203,7 +203,7 @@ include 'connection.php';
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
                                 $id= $_GET['productID'];
-                                $sql .= "WHERE brandid = productID";
+                                $sql .= "WHERE brandid = productID"; //prueba sort
                             }
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){
@@ -223,9 +223,8 @@ include 'connection.php';
                                 <div class="product-item">
                                     <div class="product-title">
                                         <!--<a href="#">Costway Portable Mini</a>-->                              
-
-                                        <a 
-                                         > <?php echo $row['prodName']; ?> </a>
+                                        <a href="product-detail.php?id="<?php echo $row["productID"]; ?>><?php echo $row["prodName"]; ?></a>
+                                        <!-- <a > < ?php echo $row['prodName']; ?> </a> -->
                                         
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
