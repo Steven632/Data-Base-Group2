@@ -71,15 +71,15 @@ if(isset($_GET['productID']) & !empty($_GET['productID']))
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Products</a>
                             <a href="product-detail.php" class="nav-item nav-link active">Product Detail</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
-                            <a href="checkout.html" class="nav-item nav-link">Checkout</a>
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
+                            <a href="checkout.php" class="nav-item nav-link">Checkout</a>
+                            <a href="my-account.php" class="nav-item nav-link">My Account</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
                                    <!-- <a href="wishlist.html" class="dropdown-item">Wishlist</a> -->
                                     <a href="login.php" class="dropdown-item">Login & Register</a>
-                                    <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                    <a href="contact.php" class="dropdown-item">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +120,7 @@ if(isset($_GET['productID']) & !empty($_GET['productID']))
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span> 
                             </a> -->
-                            <a href="cart.html" class="btn cart">
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>

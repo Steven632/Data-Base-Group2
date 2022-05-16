@@ -127,16 +127,16 @@
                                     <a class="nav-link" href="index.php"><i class="fa fa-home"></i>Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-detail.php"><i class="fa fa-shopping-bag"></i>Portable</a>
+                                    <a class="nav-link" href="product-list.php"><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="product-list.php"><i class="fa fa-plus-square"></i>Front Load</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-microchip"></i>Top Load</a>
+                                    <a class="nav-link" href="product-list.php"><i class="fa fa-microchip"></i>Top Load</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-thermometer-quarter"></i>Dryer Combo</a>
+                                    <a class="nav-link" href="product-list.php"><i class="fa fa-thermometer-quarter"></i>Dryer Combo</a>
                                 </li>
                                 </ul>
                         </nav>
@@ -147,7 +147,7 @@
                                 <img src="img/samsung_front_1.png" alt="Slider Image" />
                                 <div class="header-slider-caption">
                                     <p>Samsung - 4.5 cu. ft. Front Load Washer with Vibration Reduction Technology+ - Platinum</p>
-                                    <a class="btn" href="product-detail.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    <a class="btn" href="product-list.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                             <div class="header-slider-item">
@@ -515,7 +515,7 @@
                         <div class="footer-widget">
                             <h2>Company Info</h2>
                             <ul>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="contact.php">About Us</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
                                 <li><a href="#">Terms & Condition</a></li>
                             </ul>

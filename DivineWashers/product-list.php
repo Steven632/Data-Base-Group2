@@ -69,15 +69,15 @@ include 'connection.php';
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.php" class="nav-item nav-link active">Products</a>
                             <a href="product-detail.php" class="nav-item nav-link">Product Detail</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
-                            <a href="checkout.html" class="nav-item nav-link">Checkout</a>
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
+                            <a href="checkout.php" class="nav-item nav-link">Checkout</a>
+                            <a href="my-account.php" class="nav-item nav-link">My Account</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
                                    <!-- <a href="wishlist.html" class="dropdown-item">Wishlist</a> -->
                                     <a href="login.php" class="dropdown-item">Login & Register</a>
-                                    <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                    <a href="contact.php" class="dropdown-item">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@ include 'connection.php';
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span> 
                             </a> -->
-                            <a href="cart.html" class="btn cart">
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>
@@ -241,7 +241,8 @@ include 'connection.php';
 
                                         </a>
                                         <div class="product-action">
-                                            <a href="cart.html"><i class="fa fa-cart-plus"></i></a>
+                                            <a href="cart.php"><i class="fa fa-cart-plus"></i></a>
+                                            
                                             <!--<a href="#"><i class="fa fa-heart"></i></a>-->
                                             <a href="product-detail.php?id="<?php echo $row['productID']; ?>" ><i class="fa fa-search"></i></a> 
                                         </div>
@@ -250,7 +251,7 @@ include 'connection.php';
                                         <h3><span>$</span>199.99</h3>
                                         <!--<h3><span>$</span> <?php echo $row['prodPrice']; ?> </h3> -->
                                         
-                                        <a class="btn" href="checkout.html"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <a class="btn" href="checkout.php"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                         <!--<a href="cart.html" class="nav-item nav-link">Cart</a>-->
                                     </div>
                                 </div>

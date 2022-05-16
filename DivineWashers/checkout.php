@@ -55,15 +55,15 @@
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Products</a>
                             <a href="product-detail.php" class="nav-item nav-link">Product Detail</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
-                            <a href="checkout.html" class="nav-item nav-link active">Checkout</a>
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
+                            <a href="checkout.php" class="nav-item nav-link active">Checkout</a>
+                            <a href="my-account.php" class="nav-item nav-link">My Account</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
                                     <!-- <a href="wishlist.html" class="dropdown-item">Wishlist</a> -->
                                     <a href="login.php" class="dropdown-item">Login & Register</a>
-                                    <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                    <a href="contact.php" class="dropdown-item">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span> 
                             </a> -->
-                            <a href="cart.html" class="btn cart">
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>
@@ -119,8 +119,8 @@
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="product-list.html">Products</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="product-list.php">Products</a></li>
                     <li class="breadcrumb-item active">Checkout</li>
                 </ul>
             </div>
@@ -260,7 +260,8 @@
                                             <label class="custom-control-label" for="payment-1">Paypal</label>
                                         </div>
                                     </div>
-                                    <div class="payment-method">
+
+                                    <!--<div class="payment-method">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="payment-2" name="payment">
                                             <label class="custom-control-label" for="payment-2">Check Payment</label>
@@ -279,6 +280,7 @@
                                         </div>
                                     </div>
                                 </div>
+-->
                                 <div class="checkout-btn">
                                     <button>Place Order</button>
                                 </div>
