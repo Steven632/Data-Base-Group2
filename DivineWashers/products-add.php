@@ -1,8 +1,8 @@
 <?php 
-    session_start();
-    if(!isset($_SESSION['email']){
-    header('location: login.php');
-}
+//     session_start();
+//     if(!isset($_SESSION['email']){
+//     header('location: login.php');
+// }
 $db = mysqli_connect('localhost', 'root', '', 'divinewashersfinal');
 $query = "SELECT * FROM product";
 $result = mysqli_query($db, $query);
@@ -109,13 +109,10 @@ if(!$result){
             <div class="col-sm-10 bg-light">
                <div class="row">
                    <div class="col-sm-2">
-<<<<<<< Updated upstream:DivineWashers/products-add.php
                     
-=======
                        <p class="text-center pt-5">
                         
                                 </p>
->>>>>>> Stashed changes:DivineWashers/products-add.html
                    </div>
                    <div class="col-sm-8">
                        <h1 class="text-center pt-4 pb-5"><strong>Add Products</strong></h1>
@@ -131,11 +128,11 @@ if(!$result){
                    <form action="products-add.php" id="the-form" class="form-control w-50 mx-auto" enctype="multipart/form-data" method="post">
                       
                         <label class="pt-4 pb-2 text-center">Enter product name</label>
-                        <input type="text" class="form-control" value="<?php echo $_POST['pname']?>" id="name" name="pname" placeholder="Enter Product name">
+                        <input type="text" class="form-control" value="<?php echo $_POST['prodName']?>" id="name" name="name" placeholder="Enter Product name">
                         <label class="pt-4 pb-2 text-center">Enter Brand name</label>
-                        <input type="text" class="form-control" value="<?php echo $_POST['brand']?>" id="brand" name="brand" placeholder="Enter brand name">
+                        <input type="text" class="form-control" value="<?php echo $_POST['prodBrand']?>" id="brand" name="brand" placeholder="Enter brand name">
                         <label class="pt-4 pb-2 text-center">Enter product price</label>
-                        <input type="text" class="form-control" value="<?php echo $_POST['price']?>" id="prprice" name="price" placeholder="Enter Product price">
+                        <input type="text" class="form-control" value="<?php echo $_POST['prodPrice']?>" id="prprice" name="price" placeholder="Enter Product price">
                         <label class="pt-4 pb-2 text-center">Enter quantity</label>
                         <input type="text" class="form-control" value="<?php echo $_POST['qty']?>" id="qty" name="qty" placeholder="Enter quantity">
                         
