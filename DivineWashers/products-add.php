@@ -98,7 +98,7 @@ if(!$result){
                 </p> -->
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
-                    <a href="users.html" class="text-decoration-none"><span class="text-light">View user</span></a>
+                    <a href="users.php" class="text-decoration-none"><span class="text-light">View user</span></a>
                 </p>                
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
@@ -134,7 +134,7 @@ if(!$result){
                         <label class="pt-4 pb-2 text-center">Enter product price</label>
                         <input type="text" class="form-control" value="<?php echo $_POST['prodPrice']?>" id="prprice" name="price" placeholder="Enter Product price">
                         <label class="pt-4 pb-2 text-center">Enter quantity</label>
-                        <input type="text" class="form-control" value="<?php echo $_POST['qty']?>" id="qty" name="qty" placeholder="Enter quantity">
+                        <input type="text" class="form-control" value="<?php echo $_POST['prodInventory']?>" id="qty" name="qty" placeholder="Enter quantity">
                         
                          <label class="pt-4 pb-2 text-center" for="categories">Choose a category</label>
                             <select class="form-control" id="categories" name="categories" onchange="this.form.submit()">
@@ -154,7 +154,7 @@ if(!$result){
                                     echo ("-");
                                                          ?></option>
                              <?php while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){ ?>
-                                     <option value="<?php echo ($row['id']); ?>"><?php echo $row['name'];?></option>
+                                     <option value="<?php echo ($row['productID']); ?>"><?php echo $row['prodName'];?></option>
                              <?php } ?>
                            
                              </select>

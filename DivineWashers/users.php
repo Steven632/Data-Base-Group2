@@ -1,7 +1,7 @@
-<?php   session_start();
-        if(!isset($_SESSION['email']){
-                  header('location: login.php');
-        }
+<?php   //session_start();
+        //if(!isset($_SESSION['email']){}
+          //          header('location: login.php');
+        //}
         $limit = 5;
         $page = (isset($_GET['page']) && is_numeric($_GET['page']) ) ? $_GET['page'] : 1;
         $paginationStart = ($page - 1) * $limit;
@@ -10,7 +10,7 @@
 ?>
 <?php        
                 include('connection.php'); // write your db-connect.php to connect to database.
-                $query1 = "SELECT COUNT(*) AS email FROM cotumer";
+                $query1 = "SELECT COUNT(*) AS email FROM costumer";
                 $result1 = mysqli_query($db, $query1);
                 $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
                 $total = $row1['email'];
@@ -137,20 +137,20 @@
                                 <?php $i=$paginationStart+1; while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){ ?>
                                 <tr>
                                   <td><?php echo $i++; ?></td>
-                                  <td><?php echo($row['fname']); ?></td>
-                                  <td><?php echo($row['lname']); ?></td>
-                                  <td><?php echo($row['email']); ?></td>
-                                  <td><?php echo($row['mobile']); ?></td>
+                                  <td><?php echo($row['costumerfirstName']); ?></td>
+                                  <td><?php echo($row['costumerlastName']); ?></td>
+                                  <td><?php echo($row['costumerEmail']); ?></td>
+                                  <td><?php echo($row['phoneNum']); ?></td>
                                   <td><?php echo($row['address']); ?></td>
                                   <td>
                                      <form action="reject.php" method="post">
-                                          <input type="hidden" name ="email" value="<?php echo($row['email']); ?>">
+                                          <input type="hidden" name ="email" value="<?php echo($row['costumerEmail']); ?>">
                                       <?php echo ("<button type='submit' name='reject' class='form-control' >Reject</button>"); ?>
                                      </form>
                                   </td>
                                   <td>
                                       <form action="" method="post">
-                                          <input type="hidden" name ="email" value="<?php echo($row['email']); ?>">
+                                          <input type="hidden" name ="email" value="<?php echo($row['costumerEmail']); ?>">
                                       <?php echo ("<button type='submit' name='allow' class='form-control'>Allow</button>");?>
                                       </form>
                                   </td>
@@ -162,10 +162,10 @@
                               </tbody>
                             </table> 
                         </div> 
-                        <?php 
-                                include('allow.php');
+                        <!-- <?php 
+                               // include('allow.php');
                                 
-                        ?>
+                        ?> -->
                         
                         <div class="container pt-5">
                             <div class="row">
