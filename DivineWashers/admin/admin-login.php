@@ -34,7 +34,7 @@
     $password=$_REQUEST['password']??'';
     include_once "connection.php";
     $con=mysqli_connect($host,$user,$password,$db);
-    $query="SELECT admiEmail,admiFirstName FROM Administrator WHERE admiEmail= '".$email."' and password = '".$password."' ";
+    $query="SELECT admiEmail,admiFirstName FROM Administrator WHERE admiEmail= '".$email."' and admiPassword = '".$password."' ";
     $res=mysqli_query($con,$query);
     $row=mysqli_fetch_assoc($res);
     if($row){

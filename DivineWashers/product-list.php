@@ -200,10 +200,12 @@ include 'connection.php';
                            //     //$sql .=""
                             //}
                             $sql = "SELECT * FROM Product";
+                            $sqlprice = "SELECT * FROM  orderdetails";
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
                                 $id= $_GET['productID'];
-                                $sql .= "WHERE brandid = productID"; //prueba sort
+                                $sqlprice= $_GET['productID'];
+                                //$sql .= "WHERE brandid = productID"; //prueba sort
                             }
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){
@@ -248,8 +250,9 @@ include 'connection.php';
                                         </div>
                                     </div>
                                     <div class="product-price">
-                                        <h3><span>$</span>199.99</h3>
-                                        <!--<h3><span>$</span> <?php echo $row['prodPrice']; ?> </h3> -->
+                                        <h3><span>$</span> 199.99  </h3>
+                                        <!-- -->
+                                        <!--<h3><span>$</span> < ?php echo $row['prodPrice']; ?> </h3> -->
                                         
                                         <a class="btn" href="checkout.php"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                         <!--<a href="cart.html" class="nav-item nav-link">Cart</a>-->

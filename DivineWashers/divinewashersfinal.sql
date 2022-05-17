@@ -133,7 +133,26 @@ CREATE TABLE `Orderdetails` (
   `prodPrice` float  NOT NULL,
   `prodQuantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--
+--
+--
+INSERT INTO Orderdetails (`productID`, `prodPrice`)
+VALUES (1,2.99);
+INSERT INTO Orderdetails (`productID`, `prodPrice`)
+VALUES (2,2.99);
+INSERT INTO Orderdetails (`productID`, `prodPrice`)
+VALUES (3,2.99);
+INSERT INTO Orderdetails (`productID`, `prodPrice`)
+VALUES (4,2.99);
+INSERT INTO Orderdetails (`productID`, `prodPrice`)
+VALUES (5,2.99);
+INSERT INTO Orderdetails (`productID`, `prodPrice`)
+VALUES (6,2.99);
 
+
+--
+--
+--
  ALTER TABLE `Orderdetails`
     ADD KEY `orderID` (`orderID`),
     ADD KEY `productID` (`productID`);
@@ -205,16 +224,8 @@ ALTER TABLE `Product`
 --
 -- Constraints for dumped tables
 --
-ALTER TABLE `Orderdetails`
-  ADD CONSTRAINT `Orderdetails_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`) ON DELETE NO ACTION,
-  ADD CONSTRAINT `Orderdetails_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`) ON DELETE NO ACTION;
-COMMIT;
 
-ALTER TABLE `Adds`
-  ADD CONSTRAINT `Adds_ibfk_1` FOREIGN KEY (`admiID`) REFERENCES `Administrator` (`admiID`) ON DELETE NO ACTION,
-  ADD CONSTRAINT `Adds_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`) ON DELETE NO ACTION;
-COMMIT;
-
+--mod deleted
 
 
 --
