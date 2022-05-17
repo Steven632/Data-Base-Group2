@@ -294,12 +294,24 @@ include 'connection.php';
                             <h2 class="title">Category</h2>
                             <nav class="navbar bg-light">
                                 <ul class="navbar-nav">
+
+                                <?php
+                                $catsql = "SELECT * FROM Product WHERE portable =1 ";
+                                $catres = mysqli_query($db, $catsql);
+                                //while($catr = mysqli_fetch_assoc($catres))
+                                 // "product-detail.php?id="<?php echo $row['productID']; ? >
+                                {
+                                    ?>  
                                   
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-detail.html"><i class="fa fa-shopping-bag"></i>Portable</a>
+                                    <a class="nav-link" href="product-list.php"><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
+                                <?php
+                                }
+                                ?>
+
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.html"><i class="fa fa-plus-square"></i>Front Load</a>
+                                    <a class="nav-link" href="product-list.php"><i class="fa fa-plus-square"></i>Front Load</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#"><i class="fa fa-microchip"></i>Top Load</a>
@@ -318,12 +330,7 @@ include 'connection.php';
                             <ul>
 
         
-                            <?php
-                                $brandsql = "SELECT * FROM Product";
-                                $brandres = mysqli_query($db, $brandsql);
-                               // while($brandr = mysqli_fetch_assoc($brandres))
-                               // {
-                                    ?>         
+                                
                                 <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -->
                                 <li><a href="#">LG </a><span>(2)</span></li>
                                 <li><a href="#">Costway </a><span>(2)</span></li>
@@ -336,10 +343,12 @@ include 'connection.php';
                                 ?>
                             </ul>
                         </div>
+
+                        
                         
                         <div class="sidebar-widget tag">
                             <h2 class="title">Tags Cloud</h2>
-                            <a href="#">Portable</a>
+                            <a href="product-list.php">Portable</a>
                             <a href="#">Front Load</a>
                             <a href="#">Top Load</a>
                             <a href="#">Stack</a>
