@@ -76,14 +76,14 @@ if(!$result){
                 <p class="pt-2 pb-2 text-center">
                     <a href="admin-profile.php" class="text-decoration-none"><span class="text-light">Profile</span></a>
                 </p>
-                <hr class="bg-light ">
+                <!-- <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
                     <a href="categories.php" class="text-decoration-none"><span class="text-light">Categories</span></a>
                 </p>
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
                     <a href="subcategories.php" class="text-decoration-none"><span class="text-light">Browse Categories</span></a>
-                </p>
+                </p> -->
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
                     <a href="products-add.php" class="text-decoration-none"><span class="text-light">Add Products</span></a>
@@ -92,13 +92,13 @@ if(!$result){
                 <p class="pt-2 pb-2 text-center">
                     <a href="products-display.php" class="text-decoration-none"><span class="text-light">View Products</span></a>
                 </p>
-                <hr class="bg-light ">
+                <!-- <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
                     <a href="new-user-requests.php" class="text-decoration-none"><span class="text-light">New user requests</span></a>
-                </p>
+                </p> -->
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
-                    <a href="view-users.php" class="text-decoration-none"><span class="text-light">View user</span></a>
+                    <a href="users.html" class="text-decoration-none"><span class="text-light">View user</span></a>
                 </p>                
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">

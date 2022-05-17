@@ -9,14 +9,14 @@
         $prev = $page -1;
 ?>
 <?php        
-                include('db-connect.php'); // write your db-connect.php to connect to database.
-                $query1 = "SELECT COUNT(*) AS email FROM testdemo";
+                include('connection.php'); // write your db-connect.php to connect to database.
+                $query1 = "SELECT COUNT(*) AS email FROM cotumer";
                 $result1 = mysqli_query($db, $query1);
                 $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
                 $total = $row1['email'];
                 $totalpages = ceil($total / $limit) ;
 
-                $query = "SELECT * FROM testdemo LIMIT $paginationStart,$limit";
+                $query = "SELECT * FROM costumer LIMIT $paginationStart,$limit";
                 $result = mysqli_query($db, $query);
                 if ($result == FALSE) {
                     die(mysqli_error());
@@ -64,14 +64,14 @@
                  <p class="pt-2 pb-2 text-center">
                     <a href="admin-profile.php" class="text-decoration-none"><span class="text-light">Profile</span></a>
                 </p>
-                <hr class="bg-light ">
+                <!-- <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
                     <a href="categories.php" class="text-decoration-none"><span class="text-light">Categories</span></a>
-                </p>
-                <hr class="bg-light ">
+                </p> -->
+                <!-- <hr class="bg-light ">
                  <p class="pt-2 pb-2 text-center">
                     <a href="subcategories.php" class="text-decoration-none"><span class="text-light">Browse Categories</span></a>
-                </p>
+                </p> -->
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
                     <a href="products-add.php" class="text-decoration-none"><span class="text-light">Add Products</span></a>
@@ -80,10 +80,10 @@
                 <p class="pt-2 pb-2 text-center">
                     <a href="products-display.php" class="text-decoration-none"><span class="text-light">View Products</span></a>
                 </p>
-                <hr class="bg-light ">
+                <!-- <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
                     <a href="new-user-requests.php" class="text-decoration-none"><span class="text-light">New user requests</span></a>
-                </p>
+                </p> -->
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
                     <a href="view-users.php" class="text-decoration-none"><span class="text-light">View user</span></a>
@@ -95,13 +95,13 @@
             </div>
             <div class="col-sm-10 bg-light">
                <div class="row">
-                   <div class="col-sm-2">
+                   <!-- <div class="col-sm-2">
                        <p class="text-center pt-5">
                                     <img class="rounded" src="<?php echo ("/test123/profile-pic/") . ($_SESSION['email']) . "display-picture.jpg"; ?>" width="150px" height="140px">
                                 </p>
-                   </div>
+                   </div> -->
                    <div class="col-sm-8">
-                       <h1 class="text-center pt-4 pb-5"><strong>New user requests</strong></h1>
+                       <h1 class="text-center pt-4 pb-5"><strong>Users</strong></h1>
                        <hr class="w-25 mx-auto">
                    </div>
                    <div class="col-sm-2">
