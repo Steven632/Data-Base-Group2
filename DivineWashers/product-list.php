@@ -199,12 +199,12 @@ include 'connection.php';
                            //     $productID = $_GET['productID'];
                            //     //$sql .=""
                             //}
-                            $sql = "SELECT * FROM Product";
-                            $sqlprice = "SELECT * FROM  orderdetails";
+                            $sql = "SELECT * FROM Product, Orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            //$sqlprice = "SELECT * FROM  orderdetails";
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
                                 $id= $_GET['productID'];
-                                $sqlprice= $_GET['productID'];
+                                //$sqlprice= $_GET['productID'];
                                 //$sql .= "WHERE brandid = productID"; //prueba sort
                             }
                             $result = mysqli_query($db, $sql);
@@ -237,7 +237,7 @@ include 'connection.php';
                                         </div>
                                     </div>
                                     <div class="product-image">
-                                        <a href="product-detail.php?id="<?php echo $row['productID']; ?>"> 
+                                        <!--<a href="product-detail.php?id="< ?php echo $row['productID']; ?>">  -->
                                           <!--  <img src="img/costwayamazon450.png" alt="Product Image"> -->
                                             <img src= "<?php echo $row['prodImage']; ?>" >
 
@@ -246,11 +246,11 @@ include 'connection.php';
                                             <a href="cart.php"><i class="fa fa-cart-plus"></i></a>
                                             
                                             <!--<a href="#"><i class="fa fa-heart"></i></a>-->
-                                            <a href="product-detail.php?id="<?php echo $row['productID']; ?>" ><i class="fa fa-search"></i></a> 
+                                            <a href="product-detail.php?id="<?php echo $row['productID']; ?> ><i class="fa fa-search"></i></a> 
                                         </div>
                                     </div>
                                     <div class="product-price">
-                                        <h3><span>$</span> 199.99  </h3>
+                                        <h3><span>$</span><?php echo $row['prodPrice']; ?> </h3>
                                         <!-- -->
                                         <!--<h3><span>$</span> < ?php echo $row['prodPrice']; ?> </h3> -->
                                         

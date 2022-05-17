@@ -4,8 +4,8 @@ include 'connection.php';
 //$id = "";
 if(isset($_GET['productID']) & !empty($_GET['productID'])) 
 {
-    $id=$_GET['productID'];
-    $prodsql = "SELECT * FROM Product WHERE productID = '$productID'";
+    $id= $_GET['productID'];
+    $prodsql = "SELECT * FROM Product WHERE productID = '$id'";
     $presult = mysqli_query($db, $prodsql);
     $prow = mysqli_fetch_assoc($presult);
 }
@@ -143,7 +143,7 @@ if(isset($_GET['productID']) & !empty($_GET['productID']))
         </div>
         <!-- Breadcrumb End -->
 
-     
+        
         
         <!-- Product Detail Start -->
         <div class="product-detail">
@@ -166,7 +166,7 @@ if(isset($_GET['productID']) & !empty($_GET['productID']))
                                 </div>
 
                              
-
+                                 
                                 <div class="col-md-7">
                                     <div class="product-content"> 
                                     <div class="title"><h2> <?php echo $prow['prodName']; ?> </h2></div> <!--<a href="product-detail.php?id=" < ?php echo $row['productID']; ?> > < ?php echo $row['prodName']; ? > </a> -->
@@ -179,7 +179,7 @@ if(isset($_GET['productID']) & !empty($_GET['productID']))
                                         </div>
                                         <div class="price">
                                             <h4>Price:</h4>
-                                            <p>$999.99 <span>$1,299.99</span></p>
+                                            <p>$199.99 <span>$1,299.99</span></p>
                                         </div>
                                         <div class="quantity">
                                             <h4>Quantity:</h4>

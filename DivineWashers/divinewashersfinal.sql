@@ -137,17 +137,17 @@ CREATE TABLE `Orderdetails` (
 --
 --
 INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (1,2.99);
+VALUES (1,199.99);
 INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (2,2.99);
+VALUES (2,209.99);
 INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (3,2.99);
+VALUES (3,999.99);
 INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (4,2.99);
+VALUES (4,699.99);
 INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (5,2.99);
+VALUES (5,829.99);
 INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (6,2.99);
+VALUES (6,999.99);
 
 
 --
