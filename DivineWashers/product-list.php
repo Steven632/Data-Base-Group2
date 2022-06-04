@@ -296,21 +296,33 @@ include 'connection.php';
                                 <ul class="navbar-nav">
 
                                 <?php
-                                $catsql = "SELECT * FROM Product WHERE portable =1 ";
+                                $catsql = "SELECT * FROM Product  WHERE portable = 1";
+                            if(isset($_GET['portable']) & !empty($_GET['portable']))
+                            {
+                                    $portablei = $_GET['portable'];
+                                    //$catsql .="WHERE portable = 1 ";
+                            }                                                              
                                 $catres = mysqli_query($db, $catsql);
-                                //while($catr = mysqli_fetch_assoc($catres))
-                                 // "product-detail.php?id="<?php echo $row['productID']; ? >
-                                {
-                                    ?>  
+                                while($catr = mysqli_fetch_assoc($catres))
+                                  ?>          
                                   
-                                <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php"><i class="fa fa-shopping-bag"></i>Portable</a>
+                           <!-- $sql = "SELECT * FROM Product, Orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            //$sqlprice = "SELECT * FROM  orderdetails";
+                            if(isset($_GET['productID']) & !empty($_GET['productID']))
+                            {
+                                $id= $_GET['productID'];
+                                //$sqlprice= $_GET['productID'];
+                                //$sql .= "WHERE brandid = productID"; //prueba sort
+                            }
+                            $result = mysqli_query($db, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                            -->
+                                  
+                               <li class="nav-item">
+                                    <a class="nav-link" href="product-list.php?portablei= " <?php echo $catr['portable']; ?>  ><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
-                                <?php
-                                }
-                                ?>
-
-                                <li class="nav-item">
+                                
+                               <!-- <li class="nav-item">
                                     <a class="nav-link" href="product-list.php"><i class="fa fa-plus-square"></i>Front Load</a>
                                 </li>
                                 <li class="nav-item">
@@ -319,6 +331,7 @@ include 'connection.php';
                                 <li class="nav-item">
                                     <a class="nav-link" href="#"><i class="fa fa-thermometer-quarter"></i>Dryer Combo</a>
                                 </li>
+                            -->
                                 </ul>
                             </nav>
                         </div>
