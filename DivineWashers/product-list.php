@@ -157,7 +157,8 @@ include 'connection.php';
                                                 <button><i class="fa fa-search"></i></button>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+
+                                       <!-- <div class="col-md-4">
                                             <div class="product-short">
                                                 <div class="dropdown">
                                                     <div class="dropdown-toggle" data-toggle="dropdown">Product short by</div>
@@ -168,7 +169,8 @@ include 'connection.php';
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
+
                                         <div class="col-md-4">
                                             <div class="product-price-range">
                                                 <div class="dropdown">
@@ -277,8 +279,10 @@ include 'connection.php';
                                         <a class="page-link" href="#" tabindex="-1">Previous</a>
                                     </li>
                                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+                                    <!--<li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
                                     <li class="page-item">
                                         <a class="page-link" href="#">Next</a>
                                     </li>
@@ -319,7 +323,7 @@ include 'connection.php';
                             -->
                                   
                                <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php?portablei= " <?php echo $catr['portable']; ?>  ><i class="fa fa-shopping-bag"></i>Portable</a>
+                                    <a class="nav-link" href="product-list.php?portablei=" <?php echo $catr['portable']; ?>  ><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
                                 
                                <!-- <li class="nav-item">
@@ -350,7 +354,6 @@ include 'connection.php';
                                 <li><a href="#">Whrilpool </a><span>(1)</span></li>
                                 <li><a href="#">Samsung</a><span>(1)</span></li>
                                 <li><a href="#">Haier </a><span>(1)</span></li>
-                                <li><a href="#">Midea</a><span>(0)</span></li> 
                                 <?php
                               //  }
                                 ?>

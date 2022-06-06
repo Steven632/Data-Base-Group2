@@ -5,7 +5,7 @@ include 'connection.php';
 if(isset($_GET['productID']) & !empty($_GET['productID'])) 
 {
     $id = $_GET['productID'];
-    $prodsql = "SELECT * FROM Product WHERE productID = '$id'";
+    $prodsql = "SELECT * FROM Product WHERE productID = $id";
     $presult = mysqli_query($db, $prodsql);
     $prow = mysqli_fetch_assoc($presult);
 }
