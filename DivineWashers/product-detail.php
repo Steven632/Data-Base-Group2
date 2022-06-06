@@ -1,11 +1,10 @@
 <?php
 include 'connection.php';
-
 //$id = "";
 if(isset($_GET['productID']) & !empty($_GET['productID'])) 
 {
     $id = $_GET['productID'];
-    $prodsql = "SELECT * FROM Product WHERE productID = $id";
+    $prodsql = "SELECT * FROM Product WHERE productID = $id ";
     $presult = mysqli_query($db, $prodsql);
     $prow = mysqli_fetch_assoc($presult);
 }
@@ -164,8 +163,7 @@ if(isset($_GET['productID']) & !empty($_GET['productID']))
                                         
                                     </div>
                                 </div>
-
-                             
+                           
                                  
                                 <div class="col-md-7">
                                     <div class="product-content"> 
