@@ -195,31 +195,14 @@ include 'connection.php';
                             </div>
 
                             <?php
-                            //$prodName = "";
-                           // if(isset($_GET['productID']))
-                            //{
-                           //     $productID = $_GET['productID'];
-                           //     //$sql .=""
-                            //}
+   
                             $sql = "SELECT * FROM Product, Orderdetails WHERE Product.productID = Orderdetails.productID ";
-                            //$sqlprice = "SELECT * FROM  orderdetails";
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
-                                $id= $_GET['productID'];
-                                //$sqlprice= $_GET['productID'];
-                                //$sql .= "WHERE brandid = productID"; //prueba sort
+                                //$id= $_GET['productID'];
                             }
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){
-
-                            
-                            //$resultcheck = mysqli_num_rows($result);
-                            //$row = mysqli_fetch_assoc($result);
-                            
-                           // if ($resultcheck>0)
-                           // {
-                            //        while($row = mysqli_fetch_assoc($result))
-                           //     {
                             ?>
 
                             <!--abre ventana de producto-->

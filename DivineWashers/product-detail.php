@@ -1,17 +1,18 @@
 <?php
 include 'connection.php';
-//$id = "";
+
 if(isset($_GET['productID']) & !empty($_GET['productID'])) 
 {
     $id = $_GET['productID'];
-    $prodsql = "SELECT * FROM Product WHERE productID = $id ";
-    $presult = mysqli_query($db, $prodsql);
+    $psql = "SELECT * FROM Product WHERE id = $id ";
+    $presult = mysqli_query($db, $psql);
     $prow = mysqli_fetch_assoc($presult);
 }
-
 //$result=$connection->query($sql);
 /////$resultcheck = mysqli_num_rows($result);
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -154,12 +155,12 @@ if(isset($_GET['productID']) & !empty($_GET['productID']))
                                 <div class="col-md-5">
                                     <div class="product-slider-single normal-slider">
                                         <img src= "<?php echo $prow['prodImage']; ?>" alt="Product Image">
-                                        <img src="img/lgfronttop.jpg" alt="Product Image">
+                                        <!--<img src="img/lgfronttop.jpg" alt="Product Image"> -->
                                         
                                     </div>
                                     <div class="product-slider-single-nav normal-slider">
                                         <div class="slider-nav-img"><img src="<?php echo $prow['prodImage']; ?>" alt="Product Image"></div>
-                                        <div class="slider-nav-img"><img src="img/lgfronttop.jpg" alt="Product Image"></div>
+                                       <!-- <div class="slider-nav-img"><img src="img/lgfronttop.jpg" alt="Product Image"></div> -->
                                         
                                     </div>
                                 </div>
@@ -197,8 +198,9 @@ if(isset($_GET['productID']) & !empty($_GET['productID']))
                                             </div> 
                                         </div>
                                         <div class="action">
-                                            <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                                            <a class="btn" href="checkout.html"><i class="fa fa-shopping-bag"></i>Buy Now</a>
+                                            <a class="btn" href="cart.php"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+
+                                            <a class="btn" href="checkout.php"><i class="fa fa-shopping-bag"></i>Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -464,20 +466,11 @@ if(isset($_GET['productID']) & !empty($_GET['productID']))
                                 <li><a href="#">Whrilpool </a><span>(67)</span></li>
                                 <li><a href="#">Samsung</a><span>(74)</span></li>
                                 <li><a href="#">Haier </a><span>(89)</span></li>
-                                <li><a href="#">Midea</a><span>(28)</span></li>
+                                <!--<li><a href="#">Midea</a><span>(28)</span></li>-->
                             </ul>
                         </div>
                         
-                        <div class="sidebar-widget tag">
-                            <h2 class="title">Tags Cloud</h2>
-                            <a href="#">Portable</a>
-                            <a href="#">Front Load</a>
-                            <a href="#">Top Load</a>
-                            <a href="#">Stack</a>
-                            <a href="#">Dryer Combo</a>
-                            <a href="#">Wifi</a>
-                            
-                        </div>
+                      
                     </div>
                     <!-- Side Bar End -->
                 </div>
