@@ -194,15 +194,15 @@ include 'connection.php';
                                 </div>
                             </div>
 
-                            <?php
-   
-                            $sql = "SELECT * FROM Product, Orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            <?php  
+                            $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
-                                //$id= $_GET['productID'];
+                            $id= $_GET['productID'];
+                            //$sql .= "WHERE =  $id";
                             }
                             $result = mysqli_query($db, $sql);
-                            while($row = mysqli_fetch_assoc($result)){
+                            while($row = mysqli_fetch_assoc($result)){ 
                             ?>
 
                             <!--abre ventana de producto-->
@@ -210,7 +210,7 @@ include 'connection.php';
                                 <div class="product-item">
                                     <div class="product-title">
                                         <!--<a href="#">Costway Portable Mini</a>-->                              
-                                        <a href="product-detail.php?id="<?php echo $row["productID"]; ?>><?php echo $row["prodName"]; ?></a>
+                                        <a href="product-detail.php?id=<?php echo $row["productID"]; ?>"><?php echo $row["prodName"]; ?></a>
                                         <!-- <a > < ?php echo $row['prodName']; ?> </a> -->
                                         
                                         <div class="ratting">
@@ -222,19 +222,16 @@ include 'connection.php';
                                         </div>
                                     </div>
                                     <div class="product-image">
-                                        <!--<a href="product-detail.php?id="< ?php echo $row['productID']; ?>">  -->
-                                          <!--  <img src="img/costwayamazon450.png" alt="Product Image"> -->
-                                            <img src= "<?php echo $row['prodImage']; ?>" >
+                                     <!--  <img src="img/costwayamazon450.png" alt="Product Image"> -->
+                                    <img src= "<?php echo $row['prodImage']; ?>" >
 
                                         </a>
                                         <div class="product-action">
-                                            <a href="cart.php"><i class="fa fa-cart-plus"></i></a>
-                                            
+                                            <a href="cart.php"><i class="fa fa-cart-plus"></i></a>                                           
                                             <!--<a href="#"><i class="fa fa-heart"></i></a>-->
-                                            <a href="product-detail.php?id=<?php echo $row["productID"]; ?>"> <i class="fa fa-search"></i></a> 
+                                            <a href="product-detail.php?id=<?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a> 
                                         </div>
                                     </div>
-
                                     <div class="product-price">
                                         <h3><span>$</span><?php echo $row['prodPrice']; ?> </h3>
                                         <!-- -->
@@ -248,15 +245,15 @@ include 'connection.php';
                             <!-- cierra ventana de producto-->
                             <?php
                             }
-                        //}
-                        ?>
+                          //}
+                          ?>
 
                         
                            
-                        </div>
+                          </div>
                         
-                        <!-- Pagination Start -->
-                        <div class="col-md-12">
+                         <!-- Pagination Start -->
+                         <div class="col-md-12">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item disabled">
@@ -274,10 +271,10 @@ include 'connection.php';
                             </nav>
                         </div>
                         <!-- Pagination Start -->
-                    </div>           
+                     </div>           
                     
-                    <!-- Side Bar Start -->
-                    <div class="col-lg-4 sidebar">
+                     <!-- Side Bar Start -->
+                     <div class="col-lg-4 sidebar">
                         <div class="sidebar-widget category">
                             <h2 class="title">Category</h2>
                             <nav class="navbar bg-light">
@@ -307,7 +304,7 @@ include 'connection.php';
                             -->
                                   
                                <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php?portablei=" <?php echo $catr['portable']; ?>  ><i class="fa fa-shopping-bag"></i>Portable</a>
+                                    <a class="nav-link" href="product-list.php?portablei <?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
                                 
                                <!-- <li class="nav-item">

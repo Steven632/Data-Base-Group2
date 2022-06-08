@@ -1,15 +1,16 @@
 <?php
 include 'connection.php';
 
-if(isset($_GET['productID']) & !empty($_GET['productID'])) 
+if (isset($_GET['productID']) & !empty($_GET['productID'])) 
 {
     $id = $_GET['productID'];
-    $psql = "SELECT * FROM Product WHERE id = $id ";
+    $psql = "SELECT * FROM Product WHERE productID = $id "; 
     $presult = mysqli_query($db, $psql);
     $prow = mysqli_fetch_assoc($presult);
 }
 //$result=$connection->query($sql);
 /////$resultcheck = mysqli_num_rows($result);
+
 ?>
 
 
