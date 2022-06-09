@@ -114,7 +114,7 @@ CREATE TABLE `Product` (
 INSERT INTO Product (`productID`, `prodName`, `prodDesc`, `portable`, `frontLoad`, `topLoad`, `smartWifi`, `dryerCombo`, `prodBrand`, `prodInventory`, `prodImage`)
 VALUES (1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', '1','0','1','0','0', 'Costway', 15, 'img/costwayAmazon.png' );
 INSERT INTO Product 
-VALUES (2, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes to the spinning tub for saving your precious time.', '1','0','1','0','0', 'Costway', 15,'img/Costway portable compact twin.png' );
+VALUES (2, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes to the spinning tub for saving your precious time.', '1','0','1','0','0', 'Costway', 15,'img/costwaytwin400.png' );
 INSERT INTO Product 
 VALUES (3, 'LG Wifi Combo Washer Dryer', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash® technology. Based on the cycle you select, LG 6Motion™ te', '0','1','0','1','1', 'LG', 15,'img/LG Smart Wifi Washer Dryer Combo.png' );
 INSERT INTO Product  
@@ -122,7 +122,7 @@ VALUES (4, 'Samsung Platinum Front Load ', 'The Samsung 4.5 cu. ft. capacity fro
 INSERT INTO Product 
 VALUES (5, 'Whirlpool Smart Top Load Washer', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', '0','0','1','0','0', 'Whirlpool', 15,'img/whirlpooltop.png' );
 INSERT INTO Product 
-VALUES (6, 'Haier Smart Frontload Washer', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', '0','1','0','1','0', 'Haier', 15, 'img/Haier FrontLoad Smart Washer.png' );
+VALUES (6, 'Haier Smart Frontload Washer', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', '0','1','0','1','0', 'Haier', 15, 'img/haierFrontLoad.png' );
 
 --
 --

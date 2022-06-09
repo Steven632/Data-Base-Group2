@@ -1,3 +1,6 @@
+<?php
+include 'connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -53,6 +56,7 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
+
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Products</a>
                             <a href="product-detail.php" class="nav-item nav-link">Product Detail</a>
@@ -126,10 +130,19 @@
                                   <li class="nav-item">
                                     <a class="nav-link" href="index.php"><i class="fa fa-home"></i>Home</a>
                                 </li>
+
+                                <?php
+                                    $catsql ="SELECT * FROM product WHERE portable = 1";
+                                    $catres = mysqli_query($db, $catsql);
+                                    ($catr = mysqli_fetch_assoc($catres))
+                                ?>
+
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php"><i class="fa fa-shopping-bag"></i>Portable</a>
+                                    <a class="nav-link" href="product-list.php?id=<?php echo $catr ['productID'];?>"><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
-                                <li class="nav-item">
+                               
+
+                              <!--  <li class="nav-item">
                                     <a class="nav-link" href="product-list.php"><i class="fa fa-plus-square"></i>Front Load</a>
                                 </li>
                                 <li class="nav-item">
@@ -138,6 +151,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="product-list.php"><i class="fa fa-thermometer-quarter"></i>Dryer Combo</a>
                                 </li>
+                                -->
+
                                 </ul>
                         </nav>
                     </div>
@@ -309,17 +324,31 @@
         <!-- Call to Action End -->       
         
         
-        <!-- Featured Product Start -->
+        <!-- Featured Product Start, rotation -->
         <div class="featured-product product">
             <div class="container-fluid">
                 <div class="section-header">
                     <h1>Featured Product</h1>
                 </div>
                 <div class="row align-items-center product-slider product-slider-4">
+
+                            <?php  
+                            $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            if(isset($_GET['productID']) & !empty($_GET['productID']))
+                            {
+                            $id= $_GET['productID'];
+                            //$sql .= "WHERE =  $id";
+                            }
+                            $result = mysqli_query($db, $sql);
+                            //$r = mysqli_fetch_assoc($result)
+                            while($r = mysqli_fetch_assoc($result)){ 
+                            
+                            ?>
+<!--Productos de la base de datos-->
                     <div class="col-lg-3">
                         <div class="product-item">
                             <div class="product-title">
-                                <a href="#">LG Wifi Combo Washer Dryer</a>
+                            <a href="product-detail.php?id=<?php echo $r["productID"]; ?>"><?php echo $r["prodName"]; ?></a>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -330,132 +359,28 @@
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.php">
-                                    <img src="img/lgWifiCombo.png" alt="Product Image">
+                                    <!--<img src="img/lgWifiCombo.png" alt="Product Image"> -->
+                                    <img src= "<?php echo $r['prodImage']; ?>"  alt="Product Image"> 
                                 </a>
                                 <div class="product-action">
-                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
+                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>                                 
+                                    <!--<a href="#"><i class="fa fa-heart"></i></a>-->
+                                    <a href="product-detail.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-search"></i></a>
+                                    
                                 </div>
                             </div>
                             <div class="product-price">
-                                <h3><span>$</span>999.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                <!-- <h3><span>$</span>999.99</h3> -->
+                                <h3><span>$</span><?php echo $r['prodPrice']; ?> </h3>
+                                <a class="btn" href="checkout.php"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Samsung Front Load</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.php">
-                                    <img src="img/samsungfront.png" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>699.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Whirlpool Top Load</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.php">
-                                    <img src="img/whirlpooltop.png" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>829.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Costway Portable Compact Mini</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.php">
-                                    <img src="img/costwayamazon450.png" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>199.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Costway Portable Twin</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.php">
-                                    <img src="img/costwaytwin400.png" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>209.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                            }
+                            ?>
+<!--termina ventana de producto -->
+                        -->
                 </div>
             </div>
         </div>
