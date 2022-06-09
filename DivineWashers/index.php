@@ -333,7 +333,7 @@
                                     <img src="img/lgWifiCombo.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
@@ -361,7 +361,7 @@
                                     <img src="img/samsungfront.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
@@ -389,7 +389,7 @@
                                     <img src="img/whirlpooltop.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
@@ -417,7 +417,7 @@
                                     <img src="img/costwayamazon450.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
@@ -445,7 +445,7 @@
                                     <img src="img/costwaytwin400.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
