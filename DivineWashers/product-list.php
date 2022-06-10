@@ -195,11 +195,13 @@ include 'connection.php';
                             </div>
 
                             <?php  
-                            $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            $sql = "SELECT  *  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            //$sql = "SELECT productID, prodName, prodImage, prodPrice  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
-                            $id= $_GET['productID'];
-                            //$sql .= "WHERE =  $id";
+                            $id = $_GET['productID'];
+                            //$brand = $_GET['prodBrand'];
+                            $sql .= " WHERE productID = $id";
                             }
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){ 
@@ -210,7 +212,7 @@ include 'connection.php';
                                 <div class="product-item">
                                     <div class="product-title">
                                         <!--<a href="#">Costway Portable Mini</a>-->                              
-                                        <a href="product-detail.php?id=<?php echo $row["productID"]; ?>"><?php echo $row["prodName"]; ?></a>
+                                        <a ><?php echo $row["prodName"]; ?></a>
                                         <!-- <a > < ?php echo $row['prodName']; ?> </a> -->
                                         
                                         <div class="ratting">
@@ -327,23 +329,23 @@ include 'connection.php';
                             <h2 class="title">Our Brands</h2>
                             <ul>
 
-        
+                            <?php
+                                    $catsqls ="SELECT distinct prodBrand FROM product ";
+                                    $catress = mysqli_query($db, $catsqls);
+                                    while($catrs = mysqli_fetch_assoc($catress)){
+                                ?>
                                 
                                 <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -->
-                                <li><a href="#">LG </a><span>(2)</span></li>
-                                <li><a href="#">Costway </a><span>(2)</span></li>
-                                <li><a href="#">Whrilpool </a><span>(1)</span></li>
-                                <li><a href="#">Samsung</a><span>(1)</span></li>
-                                <li><a href="#">Haier </a><span>(1)</span></li>
+                                <li><a href="product-list.php?id=<?php echo $catrs ['prodBrand'];?>"><?php echo $catrs ['prodBrand'];?> </a><span>(2)</span></li>
                                 <?php
-                              //  }
+                                }
                                 ?>
                             </ul>
                         </div>
 
                         
                         
-                        <div class="sidebar-widget tag">
+                       <!-- <div class="sidebar-widget tag">
                             <h2 class="title">Tags Cloud</h2>
                             <a href="product-list.php">Portable</a>
                             <a href="#">Front Load</a>
@@ -353,6 +355,7 @@ include 'connection.php';
                             <a href="#">Wifi</a>
                             
                         </div>
+                            -->
                     </div>
                     <!-- Side Bar End -->
                 </div>

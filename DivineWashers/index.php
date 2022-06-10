@@ -131,15 +131,25 @@ include 'connection.php';
                                     <a class="nav-link" href="index.php"><i class="fa fa-home"></i>Home</a>
                                 </li>
 
-                                <?php
+                               <!-- < ?php
                                     $catsql ="SELECT * FROM product WHERE portable = 1";
                                     $catres = mysqli_query($db, $catsql);
                                     ($catr = mysqli_fetch_assoc($catres))
                                 ?>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php?id=<?php echo $catr ['productID'];?>"><i class="fa fa-shopping-bag"></i>Portable</a>
+                                    <a class="nav-link" href="product-list.php?id=< ?php echo $catr ['productID'];?>"><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
+-->
+<?php
+//?php ***********TEST**********
+$catsql ="SELECT * FROM product";
+$catres = mysqli_query($db, $catsql);
+($catr = mysqli_fetch_assoc($catres))                                
+                                ?>
+                                
+                                <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -->
+                                <li><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">Portable </a><span>(2)</span></li>
                                
 
                               <!--  <li class="nav-item">
