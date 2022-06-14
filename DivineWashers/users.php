@@ -86,7 +86,7 @@
                 </p> -->
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
-                    <a href="view-users.php" class="text-decoration-none"><span class="text-light">View user</span></a>
+                    <a href="users.php" class="text-decoration-none"><span class="text-light">View user</span></a>
                 </p>                
                 <hr class="bg-light ">
                 <p class="pt-2 pb-2 text-center">
@@ -145,16 +145,16 @@
                                   <td>
                                      <form action="reject.php" method="post">
                                           <input type="hidden" name ="email" value="<?php echo($row['costumerEmail']); ?>">
-                                      <?php echo ("<button type='submit' name='reject' class='form-control' >Reject</button>"); ?>
+                                      <!-- <?php echo ("<button type='submit' name='reject' class='form-control' >Reject</button>"); ?>
                                      </form>
                                   </td>
-                                  <td>
+                                   <td>
                                       <form action="" method="post">
                                           <input type="hidden" name ="email" value="<?php echo($row['costumerEmail']); ?>">
                                       <?php echo ("<button type='submit' name='allow' class='form-control'>Allow</button>");?>
                                       </form>
-                                  </td>
-                                  
+                                  </td> --> 
+                                </td>
                                 </tr>
                                 <?php 
                                  } ?>
