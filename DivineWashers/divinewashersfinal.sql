@@ -40,10 +40,10 @@ CREATE TABLE `Administrator` (
 --
 
 INSERT INTO `Administrator` (`admiID`, `admiFirstName`, `admiLastName`, `admiEmail`, `admiPassword`) VALUES
-(1, 'Gabriel', 'Velazquez', 'gabriel@upr.com', '1234'),
-(2, 'Steven', 'test', 'steven@upr.com', '1234'),
-(3, 'Briana', 'test', 'briana@upr.com', '1234'),
-(4, 'Celymar', 'test', 'celymar@upr.com', '1234');
+(1, 'Gabriel', 'Velazquez', 'gabriel@upr.edu', '1234'),
+(2, 'Steven', 'test', 'steven@upr.edu', '1234'),
+(3, 'Briana', 'test', 'briana@upr.edu', '1234'),
+(4, 'Celymar', 'test', 'celymar@upr.edu', '1234');
 
 -- --------------------------------------------------------
 

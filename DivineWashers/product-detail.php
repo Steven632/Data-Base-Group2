@@ -1,6 +1,7 @@
 <?php
 include 'connection.php';
 
+
 if (isset($_GET['productID']) & !empty($_GET['productID'])) 
 {
     $id = $_GET['productID'];

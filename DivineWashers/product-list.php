@@ -1,6 +1,7 @@
 <?php
 include 'connection.php';
 
+
 //$sql = "SELECT productID, prodName, prodImage FROM Product WHERE (SELECT productID FROM product WHERE prodName = $'prodName')"; 
 //while($row = mysqli_fetch_array($result))
 //{
