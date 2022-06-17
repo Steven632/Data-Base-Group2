@@ -1,20 +1,20 @@
 <?php
 include 'connection.php';
 
-
-if (isset($_GET['productID']) & !empty($_GET['productID'])) 
-{
-    $id = $_GET['productID'];
-    $psql = "SELECT * FROM Product WHERE productID = $id "; 
+//if (isset($_GET['productID']) & !empty($_GET['productID'])) 
+if(isset($_GET) & !empty($_GET)){
+    $id = $_GET['id'];
+    //echo $id;
+    //$psql = "SELECT * FROM Product WHERE productID = '$id'"; 
+                //$psql = "SELECT * FROM Product, orderdetails WHERE productID = '$id' OUTER JOIN Product.productID = orderdetails.productID"; \
+                $psql =" SELECT * FROM Product, orderdetails WHERE product.productID = '$id' and orderdetails.productID='$id' ";
+    //echo $psql;
     $presult = mysqli_query($db, $psql);
     $prow = mysqli_fetch_assoc($presult);
 }
 //$result=$connection->query($sql);
 /////$resultcheck = mysqli_num_rows($result);
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -180,7 +180,8 @@ if (isset($_GET['productID']) & !empty($_GET['productID']))
                                         </div>
                                         <div class="price">
                                             <h4>Price:</h4>
-                                            <p>$199.99 <span>$1,299.99</span></p>
+                                            <!--<p>$199.99 <span>$1,299.99</span></p> -->
+                                            <p>$<?php echo $prow['prodPrice']; ?></p>
                                         </div>
                                         <div class="quantity">
                                             <h4>Quantity:</h4>
@@ -290,10 +291,24 @@ if (isset($_GET['productID']) & !empty($_GET['productID']))
                             </div>
 
                             <div class="row align-items-center product-slider product-slider-3">
-                                <div class="col-lg-3">
-                                     <div class="product-item">
+                                
+                            <?php  
+                            $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            if(isset($_GET['productID']) & !empty($_GET['productID']))
+                            {
+                            $id= $_GET['productID'];
+                            //$sql .= "WHERE =  $id";
+                            }
+                            $result = mysqli_query($db, $sql);
+                            //$r = mysqli_fetch_assoc($result)
+                            while($r = mysqli_fetch_assoc($result)){ 
+                            
+                            ?>
+                                
+                               <div class="col-md-4">
+                        <div class="product-item">
                             <div class="product-title">
-                                <a href="#">LG Wifi Combo Washer Dryer</a>
+                            <a href="product-detail.php?id=<?php echo $r["productID"]; ?>"><?php echo $r["prodName"]; ?></a>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -303,131 +318,27 @@ if (isset($_GET['productID']) & !empty($_GET['productID']))
                                 </div>
                             </div>
                             <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/lgWifiCombo.png" alt="Product Image">
+                                <a href="product-detail.php">
+                                    <!--<img src="img/lgWifiCombo.png" alt="Product Image"> -->
+                                    <img src= "<?php echo $r['prodImage']; ?>"  alt="Product Image"> 
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
+                                    <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>                                 
+                                    <!--<a href="#"><i class="fa fa-heart"></i></a>-->
+                                    <a href="product-detail.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-search"></i></a>
+                                    
                                 </div>
                             </div>
                             <div class="product-price">
-                                <h3><span>$</span>999.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                <!-- <h3><span>$</span>999.99</h3> -->
+                                <h3><span>$</span><?php echo $r['prodPrice']; ?> </h3>
+                                <a class="btn" href="checkout.php"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
-                                </div>
-                                <div class="col-lg-3">
-                                   <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Samsung Front Load</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/samsungfront.png" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>699.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
-                        </div>
-                                </div>
-                                <div class="col-lg-3">
-                                  <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Whirlpool Top Load</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/whirlpooltop.png" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>829.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
-                        </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Costway Portable Compact Mini</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/costwayamazon450.png" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>199.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
-                        </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Costway Portable Twin</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/costwaytwin400.png" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>209.99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
+                    </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                                 </div>
                             </div>
