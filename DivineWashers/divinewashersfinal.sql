@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2022 at 04:33 AM
+-- Generation Time: Jun 17, 2022 at 06:41 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -18,8 +18,21 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `divinewashers`
+-- Database: `divinewashersfinal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `adds`
+--
+
+CREATE TABLE `adds` (
+  `admiID` int(11) NOT NULL,
+  `productID` int(11) NOT NULL,
+  `changeDate` date NOT NULL,
+  `comment` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -27,7 +40,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrator`
 --
 
-CREATE TABLE `Administrator` (
+CREATE TABLE `administrator` (
   `admiID` int(10) NOT NULL,
   `admiFirstName` varchar(11) DEFAULT NULL,
   `admiLastName` varchar(11) DEFAULT NULL,
@@ -39,11 +52,11 @@ CREATE TABLE `Administrator` (
 -- Dumping data for table `administrator`
 --
 
-INSERT INTO `Administrator` (`admiID`, `admiFirstName`, `admiLastName`, `admiEmail`, `admiPassword`) VALUES
-(1, 'Gabriel', 'Velazquez', 'gabriel@upr.edu', '1234'),
-(2, 'Steven', 'test', 'steven@upr.edu', '1234'),
-(3, 'Briana', 'test', 'briana@upr.edu', '1234'),
-(4, 'Celymar', 'test', 'celymar@upr.edu', '1234');
+INSERT INTO `administrator` (`admiID`, `admiFirstName`, `admiLastName`, `admiEmail`, `admiPassword`) VALUES
+(1, 'Gabriel', 'Velazquez', 'gabriel@upr.com', '1234'),
+(2, 'Steven', 'test', 'steven@upr.com', '1234'),
+(3, 'Briana', 'test', 'briana@upr.com', '1234'),
+(4, 'Celymar', 'test', 'celymar@upr.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -51,7 +64,7 @@ INSERT INTO `Administrator` (`admiID`, `admiFirstName`, `admiLastName`, `admiEma
 -- Table structure for table `costumer`
 --
 
-CREATE TABLE `Costumer` (
+CREATE TABLE `costumer` (
   `costumerID` int(11) NOT NULL,
   `costumerfirstName` varchar(11) DEFAULT NULL,
   `costumerlastName` varchar(11) DEFAULT NULL,
@@ -71,8 +84,8 @@ CREATE TABLE `Costumer` (
 -- Dumping data for table `costumer`
 --
 
-INSERT INTO `Costumer` (`costumerID`, `costumerfirstName`, `costumerlastName`, `costumerEmail`, `costumerPassword`, `address`, `street`, `city`, `state`, `zipCode`, `phoneNum`, `status`) VALUES
-(1, 'Juan', 'Rios', 'jrios@upr.com', '1234', 'Urb. Lomas', 'carr. 467', 'Arecibo', 'Puerto Rico', '00628', '7874584669', '1');
+INSERT INTO `costumer` (`costumerID`, `costumerfirstName`, `costumerlastName`, `costumerEmail`, `costumerPassword`, `address`, `street`, `city`, `state`, `zipCode`, `phoneNum`, `Paypallogin`, `status`) VALUES
+(1, 'Juan', 'Rios', 'jrios@upr.com', '1234', 'Urb. Lomas', 'carr. 467', 'Arecibo', 'Puerto Rico', '00628', 2147483647, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -80,7 +93,7 @@ INSERT INTO `Costumer` (`costumerID`, `costumerfirstName`, `costumerlastName`, `
 -- Table structure for table `order`
 --
 
-CREATE TABLE `Order` (
+CREATE TABLE `order` (
   `orderID` int(11) NOT NULL,
   `orderDate` date NOT NULL,
   `shipDate` date NOT NULL,
@@ -90,10 +103,35 @@ CREATE TABLE `Order` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orderdetails`
+--
+
+CREATE TABLE `orderdetails` (
+  `orderID` int(11) NOT NULL,
+  `productID` int(11) NOT NULL,
+  `prodPrice` float NOT NULL,
+  `prodQuantity` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orderdetails`
+--
+
+INSERT INTO `orderdetails` (`orderID`, `productID`, `prodPrice`, `prodQuantity`) VALUES
+(0, 1, 199.99, 0),
+(0, 2, 209.99, 0),
+(0, 3, 999.99, 0),
+(0, 4, 699.99, 0),
+(0, 5, 829.99, 0),
+(0, 6, 999.99, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
-CREATE TABLE `Product` (
+CREATE TABLE `product` (
   `productID` int(11) NOT NULL,
   `prodName` varchar(25) NOT NULL,
   `prodDesc` varchar(200) NOT NULL,
@@ -111,93 +149,55 @@ CREATE TABLE `Product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO Product (`productID`, `prodName`, `prodDesc`, `portable`, `frontLoad`, `topLoad`, `smartWifi`, `dryerCombo`, `prodBrand`, `prodInventory`, `prodImage`)
-VALUES (1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', '1','0','1','0','0', 'Costway', 15, 'img/costwayAmazon.png' );
-INSERT INTO Product 
-VALUES (2, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes to the spinning tub for saving your precious time.', '1','0','1','0','0', 'Costway', 15,'img/costwaytwin400.png' );
-INSERT INTO Product 
-VALUES (3, 'LG Wifi Combo Washer Dryer', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash® technology. Based on the cycle you select, LG 6Motion™ te', '0','1','0','1','1', 'LG', 15,'img/LG Smart Wifi Washer Dryer Combo.png' );
-INSERT INTO Product  
-VALUES (4, 'Samsung Platinum Front Load ', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.','0','1','0','0','0', 'Samsung', 15,'img/samsungfront.png' );
-INSERT INTO Product 
-VALUES (5, 'Whirlpool Smart Top Load Washer', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', '0','0','1','0','0', 'Whirlpool', 15,'img/whirlpooltop.png' );
-INSERT INTO Product 
-VALUES (6, 'Haier Smart Frontload Washer', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', '0','1','0','1','0', 'Haier', 15, 'img/haierFrontLoad.png' );
-
---
---
---
-CREATE TABLE `Orderdetails` (
-  `orderID` int(11) NOT NULL,
-  `productID` int(11) NOT NULL,
-  `prodPrice` float  NOT NULL,
-  `prodQuantity` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
---
---
---
-INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (1,199.99);
-INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (2,209.99);
-INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (3,999.99);
-INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (4,699.99);
-INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (5,829.99);
-INSERT INTO Orderdetails (`productID`, `prodPrice`)
-VALUES (6,999.99);
-
-
---
---
---
- ALTER TABLE `Orderdetails`
-    ADD KEY `orderID` (`orderID`),
-    ADD KEY `productID` (`productID`);
-
---
---
---
-
-CREATE TABLE `Adds` (
-   `admiID` int(11) NOT NULL,
-   `productID` int(11) NOT NULL,
-  `changeDate` date NOT NULL,
-  `comment` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-ALTER TABLE `Adds`
-    ADD KEY `admiID` (`admiID`),
-    ADD KEY `productID` (`productID`);
+INSERT INTO `product` (`productID`, `prodName`, `prodDesc`, `portable`, `frontLoad`, `topLoad`, `smartWifi`, `dryerCombo`, `prodBrand`, `prodInventory`, `prodImage`) VALUES
+(1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 1, 0, 1, 0, 0, 'Costway', 15, 'img/costwayAmazon.png'),
+(2, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes', 1, 0, 1, 0, 0, 'Costway', 15, 'img/Costway portable compact twin.png'),
+(3, 'LG Wifi Combo Washer Drye', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash® tec', 0, 1, 0, 1, 1, 'LG', 15, 'img/LG Smart Wifi Washer Dryer Combo.png'),
+(4, 'Samsung Platinum Front Lo', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.', 0, 1, 0, 0, 0, 'Samsung', 15, 'img/samsungfront.png'),
+(5, 'Whirlpool Smart Top Load ', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 0, 0, 1, 0, 0, 'Whirlpool', 15, 'img/whirlpooltop.png'),
+(6, 'Haier Smart Frontload Was', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 0, 1, 0, 1, 0, 'Haier', 15, 'img/Haier FrontLoad Smart Washer.png');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `adds`
+--
+ALTER TABLE `adds`
+  ADD KEY `admiID` (`admiID`),
+  ADD KEY `productID` (`productID`);
+
+--
+-- Indexes for table `administrator`
+--
+ALTER TABLE `administrator`
+  ADD PRIMARY KEY (`admiID`);
+
+--
 -- Indexes for table `costumer`
 --
-ALTER TABLE `Costumer`
+ALTER TABLE `costumer`
   ADD PRIMARY KEY (`costumerID`);
 
 --
 -- Indexes for table `order`
 --
-ALTER TABLE `Order`
+ALTER TABLE `order`
   ADD PRIMARY KEY (`orderID`);
+
+--
+-- Indexes for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD KEY `orderID` (`orderID`),
+  ADD KEY `productID` (`productID`);
 
 --
 -- Indexes for table `product`
 --
-ALTER TABLE `Product`
+ALTER TABLE `product`
   ADD PRIMARY KEY (`productID`);
---
---
---
-ALTER TABLE `Administrator`
-  ADD PRIMARY KEY (`admiID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -206,31 +206,44 @@ ALTER TABLE `Administrator`
 --
 -- AUTO_INCREMENT for table `costumer`
 --
-ALTER TABLE `Costumer`
+ALTER TABLE `costumer`
   MODIFY `costumerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
-ALTER TABLE `Order`
+ALTER TABLE `order`
   MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
-ALTER TABLE `Product`
+ALTER TABLE `product`
   MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
 --
 
---mod deleted
-
+--
+-- Constraints for table `adds`
+--
+ALTER TABLE `adds`
+  ADD CONSTRAINT `adds_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
+  ADD CONSTRAINT `adds_ibfk_3` FOREIGN KEY (`admiID`) REFERENCES `administrator` (`admiID`);
 
 --
 -- Constraints for table `order`
 --
+ALTER TABLE `order`
+  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orderdetails` (`orderID`);
+
+--
+-- Constraints for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD CONSTRAINT `orderdetails_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
