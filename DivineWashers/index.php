@@ -141,6 +141,8 @@ include 'connection.php';
                                     <a class="nav-link" href="product-list.php?id=< ?php echo $catr ['productID'];?>"><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
 -->
+
+
 <?php
 //?php ***********TEST**********
 $catsql ="SELECT * FROM product";
@@ -149,7 +151,11 @@ $catres = mysqli_query($db, $catsql);
                                 ?>
                                 
                                 <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -->
-                                <li><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">Portable </a><span>(2)</span></li>
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">Portable </li>
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">frontload </li>
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">topload </li>
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">smart </li>
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">dryer combo </li>
                                
 
                               <!--  <li class="nav-item">

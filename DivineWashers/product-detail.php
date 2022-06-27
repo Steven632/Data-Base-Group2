@@ -72,7 +72,7 @@ if(isset($_GET) & !empty($_GET)){
                         <div class="navbar-nav mr-auto">
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Products</a>
-                            <a href="product-detail.php" class="nav-item nav-link active">Product Detail</a>
+                            <a  class="nav-item nav-link active">Product Detail</a>
                             <a href="cart.php" class="nav-item nav-link">Cart</a>
                             <a href="checkout.php" class="nav-item nav-link">Checkout</a>
                             <a href="my-account.php" class="nav-item nav-link">My Account</a>
@@ -160,11 +160,11 @@ if(isset($_GET) & !empty($_GET)){
                                         <!--<img src="img/lgfronttop.jpg" alt="Product Image"> -->
                                         
                                     </div>
-                                    <div class="product-slider-single-nav normal-slider">
-                                        <div class="slider-nav-img"><img src="<?php echo $prow['prodImage']; ?>" alt="Product Image"></div>
-                                       <!-- <div class="slider-nav-img"><img src="img/lgfronttop.jpg" alt="Product Image"></div> -->
-                                        
-                                    </div>
+
+                                  <!--  <div class="product-slider-single-nav normal-slider">
+                                        <div class="slider-nav-img"><img src="<?php //echo $prow['prodImage']; ?>" alt="Product Image"></div>                                                              
+                                    </div> -->
+
                                 </div>
                            
                                  

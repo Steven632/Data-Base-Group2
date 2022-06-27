@@ -69,7 +69,7 @@ include 'connection.php';
                         <div class="navbar-nav mr-auto">
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.php" class="nav-item nav-link active">Products</a>
-                            <a href="product-detail.php" class="nav-item nav-link">Product Detail</a>
+                            <!--<a href="product-detail.php" class="nav-item nav-link">Product Detail</a> -->
                             <a href="cart.php" class="nav-item nav-link">Cart</a>
                             <a href="checkout.php" class="nav-item nav-link">Checkout</a>
                             <a href="my-account.php" class="nav-item nav-link">My Account</a>
@@ -201,8 +201,11 @@ include 'connection.php';
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
                             $id = $_GET['productID'];
+                            $brand = $_GET['prodBrand'];
+                            echo $brand;
+                            echo $sql;
                             //$brand = $_GET['prodBrand'];
-                            $sql .= " WHERE productID = $id";
+                            $sql .= " WHERE prodBrand = $brand";
                             }
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){ 
@@ -283,43 +286,27 @@ include 'connection.php';
                             <nav class="navbar bg-light">
                                 <ul class="navbar-nav">
 
+                                <!-- CATEGORY -->
                                 <?php
-                                $catsql = "SELECT * FROM Product  WHERE portable = 1";
-                            if(isset($_GET['portable']) & !empty($_GET['portable']))
-                            {
-                                    $portablei = $_GET['portable'];
-                                    //$catsql .="WHERE portable = 1 ";
-                            }                                                              
+                                $catsql = "SELECT * FROM Product WHERE portable = 1";
+                          //  if(isset($_GET['portable']) & !empty($_GET['portable']))
+                           // {
+                                    ////s$brand = $_GET['prodBrand'];
+                                   // //$catsql .="WHERE portable = 1 ";
+                           // }                                                              
                                 $catres = mysqli_query($db, $catsql);
                                 while($catr = mysqli_fetch_assoc($catres))
-                                  ?>          
-                                  
-                           <!-- $sql = "SELECT * FROM Product, Orderdetails WHERE Product.productID = Orderdetails.productID ";
-                            //$sqlprice = "SELECT * FROM  orderdetails";
-                            if(isset($_GET['productID']) & !empty($_GET['productID']))
-                            {
-                                $id= $_GET['productID'];
-                                //$sqlprice= $_GET['productID'];
-                                //$sql .= "WHERE brandid = productID"; //prueba sort
-                            }
-                            $result = mysqli_query($db, $sql);
-                            while($row = mysqli_fetch_assoc($result)){
-                            -->
+                                  ?>                                 
                                   
                                <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php?portablei <?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>Portable</a>
+                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>Portable</a>
+                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>frontload</a>
+                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>topload </a>
+                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>smartWifi</a>
+                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>dryerCombo</a>
+
                                 </li>
-                                
-                               <!-- <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php"><i class="fa fa-plus-square"></i>Front Load</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-microchip"></i>Top Load</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-thermometer-quarter"></i>Dryer Combo</a>
-                                </li>
-                            -->
+
                                 </ul>
                             </nav>
                         </div>
@@ -330,14 +317,18 @@ include 'connection.php';
                             <h2 class="title">Our Brands</h2>
                             <ul>
 
+
+                            <!-- BUSCAR POR BRAND -->
                             <?php
-                                    $catsqls ="SELECT distinct prodBrand FROM product ";
-                                    $catress = mysqli_query($db, $catsqls);
-                                    while($catrs = mysqli_fetch_assoc($catress)){
-                                ?>
-                                
+                                    //$brandsqls ="SELECT distinct prodBrand FROM product";
+                                    $brandsqls ="SELECT * FROM product";
+                                    $brandres = mysqli_query($db, $brandsqls);
+                                    while($brandrs = mysqli_fetch_assoc($brandres)){
+                                ?>               
                                 <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -->
-                                <li><a href="product-list.php?id=<?php echo $catrs ['prodBrand'];?>"><?php echo $catrs ['prodBrand'];?> </a><span>(2)</span></li>
+                               <!-- if(isset($_GET) & !empty($_GET)){
+                                $id = $_GET['id'];-->
+                                <li><a href="product-list.php?prodBrand=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?></a><span>(2)</span></li>
                                 <?php
                                 }
                                 ?>
