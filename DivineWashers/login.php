@@ -16,16 +16,17 @@ if (isset($_REQUEST['submit'])){
     session_start();
     $email=$_REQUEST['email']??'';
     $password=$_REQUEST['pass']??'';
-    include_once "divinewashers";
+    include_once "connection.php";
     $con=mysqli_connect($host,$user,$password,$db);
-    $query="SELECT clienteID, clienteEmail, clienteFirstName, clienteLastName FROM costumer WHERE email='".$email."' and password=' ".$password."' ";
+    $query="SELECT costumerID, costumerEmail, costumerfirstName, costumerlastName FROM costumer WHERE email='".$email."' and password=' ".$password."' ";
     $result=mysqli_query($con,$query);
     $row=mysqli_fetch_assoc($result);
     if($row){
-        $_SESSION['clienteID']=$row['clienteID'];
-        $_SESSION['clienteEmail']=$row['clienteEmail'];
-        $_SESSION['clienteFirstName']=$row['clienteFirstName'];
-        $_SESSION['clienteLastName']=$row['clienteLastName'];
+        $_SESSION['costumerID']=$row['costumerID'];
+        $_SESSION['costumerEmail']=$row['costumerEmail'];
+        $_SESSION['costumerfirstName']=$row['costumerfirstName'];
+        $_SESSION['costumerlastName']=$row['costumerlastName'];
+        $_SESSION['costumerPassword']=$row['costumerPassword'];
         header("location: index.php");
 
     }
@@ -164,15 +165,15 @@ if (isset($_REQUEST['submit'])){
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>First Name</label>
-                                    <input class="form-control" type="text" placeholder="First Name">
+                                    <input class="form-control" name="costumerfirstName" type="text" placeholder="First Name">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Last Name</label>
-                                    <input class="form-control" type="text" placeholder="Last Name">
+                                    <input class="form-control" name="costumerlastName" type="text" placeholder="Last Name">
                                 </div>
                                 <div class="col-md-6">
                                     <label>E-mail</label>
-                                    <input class="form-control" type="text" placeholder="E-mail">
+                                    <input class="form-control" name="costumerEmail" type="text" placeholder="E-mail">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Mobile No</label>
@@ -180,14 +181,14 @@ if (isset($_REQUEST['submit'])){
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>
-                                    <input class="form-control" type="text" placeholder="Password">
+                                    <input class="form-control" name="costumerPassword" input type="password" placeholder="Password">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Retype Password</label>
-                                    <input class="form-control" type="text" placeholder="Password">
+                                    <input class="form-control" name="costumerPassword" input type="password" placeholder="Password">
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn">Submit</button>
+                                    <button class="btn" name="submit">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -197,11 +198,11 @@ if (isset($_REQUEST['submit'])){
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>E-mail / Username</label>
-                                    <input class="form-control" type="text" placeholder="E-mail / Username">
+                                    <input class="form-control" name="costumerEmail" type="text" placeholder="E-mail / Username">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>
-                                    <input class="form-control" type="text" placeholder="Password">
+                                    <input class="form-control" name="costumerPassword" input type="password"  placeholder="Password">
                                 </div>
                                 <div class="col-md-12">
                                     <div class="custom-control custom-checkbox">
