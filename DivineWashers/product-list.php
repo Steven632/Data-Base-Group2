@@ -201,11 +201,11 @@ include 'connection.php';
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
                             $id = $_GET['productID'];
-                            $brand = $_GET['prodBrand'];
-                            echo $brand;
-                            echo $sql;
+                           // $bid = $_GET['prodBrand'];
+                            //echo $brand;
+                            //echo $sql;
                             //$brand = $_GET['prodBrand'];
-                            $sql .= " WHERE prodBrand = $brand";
+                           // $sql .= " WHERE prodBrand=$bid";
                             }
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){ 
@@ -319,18 +319,19 @@ include 'connection.php';
 
 
                             <!-- BUSCAR POR BRAND -->
+
                             <?php
-                                    //$brandsqls ="SELECT distinct prodBrand FROM product";
-                                    $brandsqls ="SELECT * FROM product";
-                                    $brandres = mysqli_query($db, $brandsqls);
-                                    while($brandrs = mysqli_fetch_assoc($brandres)){
+    
+                            $brandsqls ="SELECT * FROM product";
+                            $brandres = mysqli_query($db, $brandsqls);
+                                    while($brandrs = mysqli_fetch_assoc($brandres)){                         
+                               
                                 ?>               
-                                <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -->
-                               <!-- if(isset($_GET) & !empty($_GET)){
-                                $id = $_GET['id'];-->
-                                <li><a href="product-list.php?prodBrand=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?></a><span>(2)</span></li>
+                                
+                                <li><a href="product-list.php?Brand=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?></li>
                                 <?php
                                 }
+                            
                                 ?>
                             </ul>
                         </div>
