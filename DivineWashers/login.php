@@ -12,25 +12,43 @@
 // --insert into Administrator values(004, 'Celymar','test','celymar@upr.com', '1234');
   -->
 <?php
-if (isset($_REQUEST['submit'])){
-    session_start();
-    $email=$_REQUEST['email']??'';
-    $password=$_REQUEST['pass']??'';
-    include_once "connection.php";
-    $con=mysqli_connect($host,$user,$password,$db);
-    $query="SELECT costumerID, costumerEmail, costumerfirstName, costumerlastName FROM costumer WHERE email='".$email."' and password=' ".$password."' ";
-    $result=mysqli_query($con,$query);
-    $row=mysqli_fetch_assoc($result);
-    if($row){
-        $_SESSION['costumerID']=$row['costumerID'];
-        $_SESSION['costumerEmail']=$row['costumerEmail'];
-        $_SESSION['costumerfirstName']=$row['costumerfirstName'];
-        $_SESSION['costumerlastName']=$row['costumerlastName'];
-        $_SESSION['costumerPassword']=$row['costumerPassword'];
-        header("location: index.php");
+// session_start();
+require_once 'connection.php';
+// if(isset($_POST) & !empty($_POST)){
+//     $email = mysqli_real_escape_string($connection, $_POST ['email']);
+//     $password = ($_POST['password']);
+//     $sql = "SELLECT * FROM costumer WHERE costumerEmail='$email' AND costumerPassword='$password'";
+//     $result = mysqli_query($connection, $sql) or die (mysqli_error($connection));
+//     $count = mysqli_num_rows($result);
+//     if($count == 1){
+//         $_SESSION['email']= $email;
+//         header("location: index.php");
+//     }else{
+//         $fmsg = "Invalid Login Credentials";
+//     }
+// }
 
-    }
-}
+
+
+// if (isset($_REQUEST['submit'])){
+//     session_start();
+//     $email=$_REQUEST['email']??'';
+//     $password=$_REQUEST['pass']??'';
+//     include_once "connection.php";
+//     $con=mysqli_connect($host,$user,$password,$db);
+//     $query="SELECT costumerID, costumerEmail, costumerfirstName, costumerlastName FROM costumer WHERE email='".$email."' and password=' ".$password."' ";
+//     $result=mysqli_query($con,$query);
+//     $row=mysqli_fetch_assoc($result);
+//     if($row){
+//         $_SESSION['costumerID']=$row['costumerID'];
+//         $_SESSION['costumerEmail']=$row['costumerEmail'];
+//         $_SESSION['costumerfirstName']=$row['costumerfirstName'];
+//         $_SESSION['costumerlastName']=$row['costumerlastName'];
+//         $_SESSION['costumerPassword']=$row['costumerPassword'];
+//         header("location: index.php");
+
+//     }
+// }
 
 
 ?>
@@ -98,7 +116,7 @@ if (isset($_REQUEST['submit'])){
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
-                                    <!-- <a href="wishlist.html" class="dropdown-item">Wishlist</a> -->
+                                   
                                     <a href="login.php" class="dropdown-item active">Login & Register</a>
                                     <a href="contact.php" class="dropdown-item">Contact Us</a>
                                 </div>
@@ -161,7 +179,7 @@ if (isset($_REQUEST['submit'])){
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">    
-                        <div class="register-form">
+                        <form class="register-form" method="post" action="registerprocess.php">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>First Name</label>
@@ -191,10 +209,10 @@ if (isset($_REQUEST['submit'])){
                                     <button class="btn" name="submit">Submit</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="col-lg-6">
-                        <div class="login-form">
+                        <form class="login-form" method="post" action="loginprocess.php">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>E-mail / Username</label>
@@ -214,7 +232,7 @@ if (isset($_REQUEST['submit'])){
                                     <button  name="submit" class="btn">Submit</button >
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
