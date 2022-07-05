@@ -196,21 +196,15 @@ include 'connection.php';
                             </div>
 
                             <?php  
-                            $sql = "SELECT  *  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
-                            //$sql = "SELECT productID, prodName, prodImage, prodPrice  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
-                            if(isset($_GET['productID']) & !empty($_GET['productID']))
+                            $sql = "SELECT  *  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID";
+                            if(isset($_GET['prodBrand']) & !empty($_GET['prodBrand']))
                             {
-                            $id = $_GET['productID'];
-                            $brand = $_GET['prodBrand'];
-                            echo $brand;
-                            echo $sql;
-                            //$brand = $_GET['prodBrand'];
-                            $sql .= " WHERE prodBrand = $brand";
-                            }
+                            $prodBrand = $_GET['prodBrand'];
+                            $sql .= " WHERE prodBrand = $prodBrand";
+                            }                          
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){ 
                             ?>
-
                             <!--abre ventana de producto-->
                             <div class="col-md-4">
                                 <div class="product-item">
@@ -319,18 +313,22 @@ include 'connection.php';
 
 
                             <!-- BUSCAR POR BRAND -->
+
                             <?php
-                                    //$brandsqls ="SELECT distinct prodBrand FROM product";
-                                    $brandsqls ="SELECT * FROM product";
-                                    $brandres = mysqli_query($db, $brandsqls);
-                                    while($brandrs = mysqli_fetch_assoc($brandres)){
-                                ?>               
-                                <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -->
-                               <!-- if(isset($_GET) & !empty($_GET)){
-                                $id = $_GET['id'];-->
-                                <li><a href="product-list.php?prodBrand=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?></a><span>(2)</span></li>
+                                                      
+                           // if(isset($_GET['prodBrand']) & !empty($_GET['prodBrand']))
+                            //{
+                            //    $prodBrand = $_GET['prodBrand'];
+                            //    echo $prodBrand;
+                             //   //$brandsqls .= " WHERE prodBrand=$prodBrand";
+                           // }
+                            $brandsqls ="SELECT * FROM product ";
+                            $brandres = mysqli_query($db, $brandsqls);
+                            while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
+                                ?>                                        
+                                <li><a href="product-list.php?Brand=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?></li>
                                 <?php
-                                }
+                                }                       
                                 ?>
                             </ul>
                         </div>
