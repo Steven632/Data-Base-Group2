@@ -99,8 +99,52 @@ include 'connection.php';
                     </div>
                     <div class="col-md-6">
                         <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
+
+<form action="" method="GET" name="">
+                            <tr>
+                                <input type="text" placeholder="Search" name="keyword">
+                                <input type="submit" value="Search" name="">
+                            </tr>
+                            <!-- <button><i class="fa fa-search"></i></button> -->
+                            <!--<a href="product-details.php?id=< ?php echo $fetch['productID']; ?>"> <i class="fa fa-search"></i></a>-->
+                            <!--<a href="product-detail.php?id=< ?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a> -->
+
+                           <?php
+                           if(isset($_GET['k']) && $_GET['k'] != ''){ 
+                            $k =trim($_GET['k']);
+                            $query_string = "SELECT * from product WHERE ";
+                            $display_words =" ";
+
+                            $keywords = explode(' ', $k);
+                            foreach($keywords as $prodName){
+                                $query_string .= " keywords = 'prodName' ";
+                                $display_words .= $prodName." ";
+                            }
+                            $query_string = substr($query_string,0,strlen($query_string)-3);
+
+                            $query = mysqli_query($db, $query_string);
+                            $result_count = mysqli_num_rows($query);
+
+                            if ($result_count > 0){
+                                echo '<div class="right"><b><u>' .$result_count. '</u></b> results found </div>';
+                                ?>
+                                <a href="product-detail.php?id=<?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a>
+                                <?php
+                         
+                                while($row = mysqli_fetch_assoc(query)){
+                                    ?>
+                                    <a href="product-detail.php?id=<?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a>
+                                    <?php
+                                }
+                            }
+                            else
+                            echo 'No results found';
+                           }
+                           else echo '';    
+                           ?>
+</form>
+                           
+
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -171,16 +215,36 @@ $catres = mysqli_query($db, $catsql);
 
                                 </ul>
                         </nav>
-                    </div>
-                    <div class="col-md-6">
+                     </div>
+
+                     <div class="col-md-6">
                         <div class="header-slider normal-slider">
+                            <!-- slider-->
+                            <?php  
+                            $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            if(isset($_GET['productID']) & !empty($_GET['productID']))
+                            {
+                            $id= $_GET['productID'];
+                            //$sql .= "WHERE =  $id";
+                            }
+                            $result = mysqli_query($db, $sql);
+                            //$r = mysqli_fetch_assoc($result)
+                            while($r = mysqli_fetch_assoc($result)){                             
+                            ?>
                             <div class="header-slider-item">
-                                <img src="img/samsung_front_1.png" alt="Slider Image" />
+                                <!-------------------------ARREGLAR FOTOS------------------------>
+                                <img src="img/DivineLogo.png" alt="Slider Image" />
+                                <!--img src= "< ?php echo $r['prodImage']; ?>" SIZE ESTAN MAL --> 
                                 <div class="header-slider-caption">
-                                    <p>Samsung - 4.5 cu. ft. Front Load Washer with Vibration Reduction Technology+ - Platinum</p>
-                                    <a class="btn" href="product-list.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    <p><?php echo $r["prodName"]; ?></p>                                 
+                                    <a class="btn" href="product-detail.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    
                                 </div>
                             </div>
+                            <?php
+                            }
+                            ?>
+                            <!--
                             <div class="header-slider-item">
                                 <img src="img/whrilpool_top1.png" alt="Slider Image" />
                                 <div class="header-slider-caption">
@@ -188,6 +252,7 @@ $catres = mysqli_query($db, $catsql);
                                     <a class="btn" href="product-detail.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
+
                             <div class="header-slider-item">
                                 <img src="img/ge_portable1.png" alt="Slider Image" />
                                 <div class="header-slider-caption">
@@ -195,9 +260,10 @@ $catres = mysqli_query($db, $catsql);
                                     <a class="btn" href="product-detail.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
+-->
                         </div>
-                    </div>
-                    <div class="col-md-3">
+                      </div>
+                     <div class="col-md-3">
                         <div class="header-img">
                             <div class="img-item">
                                 <img src="img/DivineLogo.png" />
