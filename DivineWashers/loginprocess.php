@@ -12,8 +12,8 @@ if(isset($_POST) & !empty($_POST)){
 	if($count == 1){
 		if(password_verify($password, $r['costumerPassword'])){
 			//echo "User exits, create session";
-			$_SESSION['customer'] = $email;
-			$_SESSION['customerID'] = $r['id'];
+			$_SESSION['costumer'] = $email;
+			$_SESSION['costumerID'] = $r['id'];
 			header("location: checkout.php");
 		}else{
 			//$fmsg = "Invalid Login Credentials";

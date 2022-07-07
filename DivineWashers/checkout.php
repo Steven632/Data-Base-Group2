@@ -1,3 +1,9 @@
+<?php
+    require_once 'connection.php';
+    // if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){
+    //     header('location: login.php');
+    //  }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,6 +28,10 @@
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
     </head>
+<?php
+    echo $_SESSION['costumer'];
+    echo $_SESSION['costumerID'];
+?>
 
     <body>
         <!-- Top bar Start -->
