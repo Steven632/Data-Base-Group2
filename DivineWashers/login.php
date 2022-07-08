@@ -220,7 +220,7 @@ require_once 'connection.php';
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>
-                                    <input class="form-control" name="costumerPassword" input type="password"  placeholder="Password">
+                                    <input class="form-control" name="costumerPassword" type="password"  placeholder="Password">
                                 </div>
                                 <div class="col-md-12">
                                     <div class="custom-control custom-checkbox">
