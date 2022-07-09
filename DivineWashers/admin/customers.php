@@ -23,7 +23,7 @@
 				</thead>
 				<tbody>
 				<?php 	
-					$sql = "SELECT * FROM costumers u JOIN usersmeta u1 WHERE u.id=u1.uid";
+					$sql = "SELECT * FROM costumer u JOIN usersmeta u1 WHERE u.id=u1.uid";
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?>
