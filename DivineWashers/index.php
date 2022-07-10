@@ -100,16 +100,43 @@ include 'connection.php';
                     <div class="col-md-6">
                         <div class="search">
 
-<form action="" method="GET" name="">
-                            <tr>
+<form action="product-list.php" method="get" > <!-- name="" -->
+                           
                                 <input type="text" placeholder="Search" name="keyword">
-                                <input type="submit" value="Search" name="">
-                            </tr>
+                                <button type="submit" value="keyword" name=""> <i class="fa fa-search"></i></button>
+</form>
+
+<?php
+                        if(isset($_POST['keyword']) & !empty($_POST['keyword'])){
+                          $search = $_POST['keyword'];
+
+                          $query = query("SELECT * FROM product WHERE prodname = '$search'"); //cambiar a LIKE % luego
+                          confirm($query);
+                          if(mysqli_num_rows($query) >=1){
+                            //if(mysqli_query($query) = $search){
+                            redirect('product-list.php?id=' . $search);
+                            //echo "test";
+                          } else {
+                            redirect('product-list.php?not_found');
+                          }
+                        }
+?>
+<!--
+< ?php
+        $query = query("SELECT * FROM product WHERE prodname = '$search'");
+        while($row = mysqli_fetch_assoc($query)){
+            $prodName = $row[prodName];
+
+        }
+?>
+-->
+                            
+
                             <!-- <button><i class="fa fa-search"></i></button> -->
                             <!--<a href="product-details.php?id=< ?php echo $fetch['productID']; ?>"> <i class="fa fa-search"></i></a>-->
                             <!--<a href="product-detail.php?id=< ?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a> -->
 
-                           <?php
+                        <!--   < ?php
                            if(isset($_GET['k']) && $_GET['k'] != ''){ 
                             $k =trim($_GET['k']);
                             $query_string = "SELECT * from product WHERE ";
@@ -124,17 +151,14 @@ include 'connection.php';
 
                             $query = mysqli_query($db, $query_string);
                             $result_count = mysqli_num_rows($query);
+                           
 
                             if ($result_count > 0){
-                                echo '<div class="right"><b><u>' .$result_count. '</u></b> results found </div>';
-                                ?>
-                                <a href="product-detail.php?id=<?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a>
-                                <?php
-                         
+                                echo '<div class="right"><b><u>' .$result_count. '</u></b> results found </div>';                    
                                 while($row = mysqli_fetch_assoc(query)){
                                     ?>
-                                    <a href="product-detail.php?id=<?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a>
-                                    <?php
+                                    <a href="product-detail.php?id=< ?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a>
+                                    < ?php
                                 }
                             }
                             else
@@ -142,9 +166,9 @@ include 'connection.php';
                            }
                            else echo '';    
                            ?>
-</form>
-                           
+                        -->
 
+                           
                         </div>
                     </div>
                     <div class="col-md-3">

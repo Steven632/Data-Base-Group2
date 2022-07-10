@@ -322,11 +322,11 @@ include 'connection.php';
                             //    echo $prodBrand;
                              //   //$brandsqls .= " WHERE prodBrand=$prodBrand";
                            // }
-                            $brandsqls ="SELECT * FROM product ";
+                            $brandsqls ="SELECT * FROM product "; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
                             $brandres = mysqli_query($db, $brandsqls);
                             while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
                                 ?>                                        
-                                <li><a href="product-list.php?Brand=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?></li>
+                                <li><a href="product-list.php?id=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?></li>
                                 <?php
                                 }                       
                                 ?>
