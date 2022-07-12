@@ -46,10 +46,10 @@
 					</li>
 				</ul>
 				<div class="header-xtra">
-					<div class="s-cart">
-						<div class="sc-ico"><i class="fa fa-shopping-cart"></i><em>2</em></div>
+					<!-- <div class="s-cart"> -->
+						<!-- <div class="sc-ico"><i class="fa fa-shopping-cart"></i><em>2</em></div> -->
 
-						<div class="cart-info">
+						<!-- <div class="cart-info">
 							<small>You have <em class="highlight">2 item(s)</em> in your shopping bag</small>
 							<br>
 							<br>
@@ -80,8 +80,8 @@
 								<a href="#">View Bag</a>
 								<a href="#">Checkout</a>
 							</div>
-						</div>
-					</div>
+						</div> -->
+					<!-- </div> -->
 					<div class="s-search">
 						<div class="ss-ico"><i class="fa fa-search"></i></div>
 						<div class="search-block">

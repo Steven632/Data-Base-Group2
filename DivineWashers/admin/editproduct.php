@@ -63,19 +63,19 @@
 		<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
 			<?php 	
-				$sql = "SELECT * FROM product WHERE id=$id";
-				$res = mysqli_query($connection, $sql); 
+				$sql = "SELECT * FROM product WHERE productID=$id";
+				$res = mysqli_query($db, $sql); 
 				$r = mysqli_fetch_assoc($res); 
 			?>
 			<form method="post" enctype="multipart/form-data">
 			  <div class="form-group">
-			  <input type="hidden" name="filepath" value="<?php echo $r['thumb']; ?>">
+			  <input type="hidden" name="filepath" value="<?php echo $r['prodImage']; ?>">
 			    <label for="Productname">Product Name</label>
-			    <input type="text" class="form-control" name="productname" id="Productname" placeholder="Product Name" value="<?php echo $r['name']; ?>">
+			    <input type="text" class="form-control" name="productname" id="Productname" placeholder="Product Name" value="<?php echo $r['prodName']; ?>">
 			  </div>
 			  <div class="form-group">
 			    <label for="productdescription">Product Description</label>
-			    <textarea class="form-control" name="productdescription" rows="3"><?php echo $r['description']; ?></textarea>
+			    <textarea class="form-control" name="productdescription" rows="3"><?php echo $r['prodDesc']; ?></textarea>
 			  </div>
 
 			  <div class="form-group">
@@ -83,7 +83,7 @@
 			    <select class="form-control" id="productcategory" name="productcategory">
 			    <?php 	
 					$catsql = "SELECT * FROM category";
-					$catres = mysqli_query($connection, $catsql); 
+					$catres = mysqli_query($db, $catsql); 
 					while ($catr = mysqli_fetch_assoc($catres)) {
 				?>
 					<option value="<?php echo $catr['id']; ?>" <?php if( $catr['id'] == $r['catid']){ echo "selected"; } ?>><?php echo $catr['name']; ?></option>
@@ -98,9 +98,9 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="productimage">Product Image</label>
-			    <?php if(isset($r['thumb']) & !empty($r['thumb'])){ ?>
+			    <?php if(isset($r['prodImage']) & !empty($r['prodImage'])){ ?>
 			    <br>
-			    	<img src="<?php echo $r['thumb'] ?>" widht="100px" height="100px">
+			    	<img src="<?php echo $r['prodImage'] ?>" widht="100px" height="100px">
 			    	<a href="delprodimg.php?id=<?php echo $r['id']; ?>">Delete Image</a>
 			    <?php }else{ ?>
 			    <input type="file" name="productimage" id="productimage">

@@ -18,21 +18,22 @@
 						<th>Customer Name</th>
 						<th>Customer Mobile</th>
 						<th>Customer Email</th>
-						<th>Customer From</th>
+						<!-- <th>Customer From</th> -->
 					</tr>
 				</thead>
 				<tbody>
 				<?php 	
-					$sql = "SELECT * FROM costumer u JOIN usersmeta u1 WHERE u.id=u1.uid";
+					$sql = "SELECT * FROM costumer";
+					// --  u JOIN usersmeta u1 WHERE u.id=u1.uid";
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?>
 					<tr>
-						<th scope="row"><?php echo $r['id']; ?></th>
-						<td><?php echo $r['firstname'] . " " . $r['lastname']; ?></td>
-						<td><?php echo $r['mobile']; ?></td>
-						<td><?php echo $r['email']; ?></td>
-						<td><?php echo $r['timestamp']; ?></td>
+						<th scope="row"><?php echo $r['costumerID']; ?></th>
+						<td><?php echo $r['costumerfirstName'] . " " . $r['costumerlastName']; ?></td>
+						<td><?php echo $r['phoneNum']; ?></td>
+						<td><?php echo $r['costumerEmail']; ?></td>
+						<!-- <td><?php echo $r['timestamp']; ?></td> -->
 						
 				<?php } ?>
 				</tbody>

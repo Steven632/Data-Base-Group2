@@ -5,8 +5,8 @@
 		header('location: login.php');
 	}
 ?>
-<?php include 'header.php'; ?>
-<?php include 'nav.php'; ?>
+<?php include 'inc/header.php'; ?>
+<?php include 'inc/nav.php'; ?>
 	
 <section id="content">
 	<div class="content-blog">
@@ -42,4 +42,4 @@
 	</div>
 
 </section>
-<?php include 'footer.php' ?>
+<?php include 'inc/footer.php' ?>

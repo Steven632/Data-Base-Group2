@@ -26,7 +26,7 @@
 					$location = "uploads/";
 					if(move_uploaded_file($tmp_name, $location.$name)){
 						//$smsg = "Uploaded Successfully";
-						$sql = "INSERT INTO product (prodName, prdDesc, productID, price, thumb) VALUES ('$prodname', '$description', '$category', '$price', '$location$name')";
+						$sql = "INSERT INTO product (prodName, prdDesc, productID, price, prodImage) VALUES ('$prodname', '$description', '$category', '$price', '$location$name')";
 						$res = mysqli_query($db, $sql);
 						if($res){
 							//echo "Product Created";
@@ -55,8 +55,8 @@
 		}
 	}
 ?>
-<?php include 'header.php'; ?>
-<?php include 'nav.php'; ?>
+<?php include 'inc/header.php'; ?>
+<?php include 'inc/nav.php'; ?>
 	
 <section id="content">
 	<div class="content-blog">
@@ -82,7 +82,7 @@
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?>
-					<option value="<?php echo $r['id']; ?>"><?php echo $r['name']; ?></option>
+					<option value="<?php echo $r['id']; ?>"><?php echo $r['prodName']; ?></option>
 				<?php } ?>
 				</select>
 			  </div>
@@ -93,8 +93,8 @@
 			    <input type="text" class="form-control" name="productprice" id="productprice" placeholder="Product Price">
 			  </div>
 			  <div class="form-group">
-			    <label for="productimage">Product Image</label>
-			    <input type="file" name="productimage" id="productimage">
+			    <label for="prodImage">Product Image</label>
+			    <input type="file" name="prodImage" id="prodImage">
 			    <p class="help-block">Only jpg/png are allowed.</p>
 			  </div>
 			  
@@ -105,4 +105,4 @@
 	</div>
 
 </section>
-<?php include 'footer.php' ?>
+<?php include 'inc/footer.php' ?>
