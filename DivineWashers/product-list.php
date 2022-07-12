@@ -196,12 +196,13 @@ include 'connection.php';
                             </div>
 
                             <?php  
-                            $sql = "SELECT  *  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID";
-                            if(isset($_GET['prodBrand']) & !empty($_GET['prodBrand']))
+                            //$sql = "SELECT  *  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID"; //product list muestra precio pero no brands escogidos
+                            $sql = "SELECT  *  FROM Product ";           //muestra brands escogifod pero no precios               
+                            if(isset($_GET['id']) & !empty($_GET['id']))
                             {
-                            $prodBrand = $_GET['prodBrand'];
-                            $sql .= " WHERE prodBrand = $prodBrand";
-                            }                          
+                            $id = $_GET['id'];
+                            $sql .= " WHERE prodBrand='$id'"; 
+                            }  
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){ 
                             ?>
@@ -245,7 +246,6 @@ include 'connection.php';
                             <!-- cierra ventana de producto-->
                             <?php
                             }
-                          //}
                           ?>
 
                         
@@ -281,24 +281,30 @@ include 'connection.php';
                                 <ul class="navbar-nav">
 
                                 <!-- CATEGORY -->
+
+
                                 <?php
-                                $catsql = "SELECT * FROM Product WHERE portable = 1";
+                                $catsql = "SELECT * FROM Product"; 
                           //  if(isset($_GET['portable']) & !empty($_GET['portable']))
                            // {
                                     ////s$brand = $_GET['prodBrand'];
                                    // //$catsql .="WHERE portable = 1 ";
                            // }                                                              
                                 $catres = mysqli_query($db, $catsql);
-                                while($catr = mysqli_fetch_assoc($catres))
+                                while($catr = mysqli_fetch_assoc($catres)){
                                   ?>                                 
                                   
                                <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>Portable</a>
-                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>frontload</a>
-                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>topload </a>
-                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>smartWifi</a>
-                                    <a class="nav-link" href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>dryerCombo</a>
-
+                                    <a href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>category</a>
+                                    <?php
+                                    }
+                                    ?>
+                                    <!--
+                                    <a class="nav-link" href="product-list.php?cat=< ?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>frontload</a>
+                                    <a class="nav-link" href="product-list.php?cat=< ?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>topload </a>
+                                    <a class="nav-link" href="product-list.php?cat=< ?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>smartWifi</a>
+                                    <a class="nav-link" href="product-list.php?cat=< ?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>dryerCombo</a>
+                           -->
                                 </li>
 
                                 </ul>
@@ -314,7 +320,7 @@ include 'connection.php';
 
                             <!-- BUSCAR POR BRAND -->
 
-                            <?php
+                           <?php
                                                       
                            // if(isset($_GET['prodBrand']) & !empty($_GET['prodBrand']))
                             //{
@@ -322,7 +328,9 @@ include 'connection.php';
                             //    echo $prodBrand;
                              //   //$brandsqls .= " WHERE prodBrand=$prodBrand";
                            // }
-                            $brandsqls ="SELECT * FROM product "; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
+
+                           
+                            $brandsqls ="SELECT distinct prodBrand FROM product"; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
                             $brandres = mysqli_query($db, $brandsqls);
                             while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
                                 ?>                                        
@@ -330,8 +338,16 @@ include 'connection.php';
                                 <?php
                                 }                       
                                 ?>
+                         
                             </ul>
                         </div>
+                            
+
+                           
+                       
+
+                          
+                            
 
                         
                         

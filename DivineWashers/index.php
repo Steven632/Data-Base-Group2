@@ -107,19 +107,19 @@ include 'connection.php';
 </form>
 
 <?php
+                    if(isset($_GET['keyword']) & !empty($_POST['keyword'])){ //test
+
                         if(isset($_POST['keyword']) & !empty($_POST['keyword'])){
                           $search = $_POST['keyword'];
 
                           $query = query("SELECT * FROM product WHERE prodname = '$search'"); //cambiar a LIKE % luego
                           confirm($query);
-                          if(mysqli_num_rows($query) >=1){
-                            //if(mysqli_query($query) = $search){
-                            redirect('product-list.php?id=' . $search);
-                            //echo "test";
-                          } else {
-                            redirect('product-list.php?not_found');
-                          }
+                          
+                        redirect('product-list.php?id=' . $search);                         
                         }
+
+                    }
+
 ?>
 <!--
 < ?php
@@ -209,22 +209,24 @@ include 'connection.php';
                                     <a class="nav-link" href="product-list.php?id=< ?php echo $catr ['productID'];?>"><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
 -->
-
-
-<?php
-//?php ***********TEST**********
-$catsql ="SELECT * FROM product";
-$catres = mysqli_query($db, $catsql);
-($catr = mysqli_fetch_assoc($catres))                                
+                             <?php
+                             $brandsqls ="SELECT * FROM product"; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
+                            $brandres = mysqli_query($db, $brandsqls);
+                            while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
+                                ?>                                        
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?> </li>
+                                
+                                <?php
+                                }                       
                                 ?>
                                 
-                                <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -->
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">Portable </li>
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">frontload </li>
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">topload </li>
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">smart </li>
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $catr ['prodBrand'];?>">dryer combo </li>
-                               
+                                <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -- >
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">Portable </li>
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">frontload </li>
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">topload </li>
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">smart </li>
+                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">dryer combo </li>
+                            -->
 
                               <!--  <li class="nav-item">
                                     <a class="nav-link" href="product-list.php"><i class="fa fa-plus-square"></i>Front Load</a>
@@ -255,14 +257,14 @@ $catres = mysqli_query($db, $catsql);
                             //$r = mysqli_fetch_assoc($result)
                             while($r = mysqli_fetch_assoc($result)){                             
                             ?>
+
                             <div class="header-slider-item">
                                 <!-------------------------ARREGLAR FOTOS------------------------>
-                                <img src="img/DivineLogo.png" alt="Slider Image" />
+                                <img src="img/samsung_front_1.png" alt="Slider Image" />
                                 <!--img src= "< ?php echo $r['prodImage']; ?>" SIZE ESTAN MAL --> 
                                 <div class="header-slider-caption">
                                     <p><?php echo $r["prodName"]; ?></p>                                 
-                                    <a class="btn" href="product-detail.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                                    
+                                    <a class="btn" href="product-detail.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-shopping-cart"></i>Shop Now</a>      
                                 </div>
                             </div>
                             <?php
