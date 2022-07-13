@@ -209,16 +209,19 @@ include 'connection.php';
                                     <a class="nav-link" href="product-list.php?id=< ?php echo $catr ['productID'];?>"><i class="fa fa-shopping-bag"></i>Portable</a>
                                 </li>
 -->
-                             <?php
-                             $brandsqls ="SELECT * FROM product"; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
-                            $brandres = mysqli_query($db, $brandsqls);
-                            while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
-                                ?>                                        
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?> </li>
-                                
-                                <?php
-                                }                       
-                                ?>
+                
+
+                           
+                                                      <?php
+                                                       $brandsqls ="SELECT distinct prodBrand FROM product"; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
+                                                       $brandres = mysqli_query($db, $brandsqls);
+                                                       while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
+                                                           ?>                                        
+
+                                                           <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?id=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?> </li>
+                                                           <?php
+                                                           }                       
+                                                           ?>
                                 
                                 <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -- >
                                 <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">Portable </li>

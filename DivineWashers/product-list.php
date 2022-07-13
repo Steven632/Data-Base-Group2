@@ -197,10 +197,11 @@ include 'connection.php';
 
                             <?php  
                             //$sql = "SELECT  *  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID"; //product list muestra precio pero no brands escogidos
-                            $sql = "SELECT  *  FROM Product ";           //muestra brands escogifod pero no precios               
+                            $sql = "SELECT  * FROM Product";           //muestra brands escogifod pero no precios     
+
                             if(isset($_GET['id']) & !empty($_GET['id']))
                             {
-                            $id = $_GET['id'];
+                            $id = $_GET['id'];                        
                             $sql .= " WHERE prodBrand='$id'"; 
                             }  
                             $result = mysqli_query($db, $sql);
@@ -295,7 +296,7 @@ include 'connection.php';
                                   ?>                                 
                                   
                                <li class="nav-item">
-                                    <a href="product-list.php?cat=<?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>category</a>
+                                    <a href="product-list.php?cat=<?php echo $catr['portable']; ?>" ><i class="fa fa-shopping-bag"></i>category</a>
                                     <?php
                                     }
                                     ?>
@@ -330,7 +331,7 @@ include 'connection.php';
                            // }
 
                            
-                            $brandsqls ="SELECT distinct prodBrand FROM product"; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
+                            $brandsqls ="SELECT distinct prodBrand FROM product "; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
                             $brandres = mysqli_query($db, $brandsqls);
                             while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
                                 ?>                                        
