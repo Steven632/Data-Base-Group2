@@ -197,7 +197,7 @@ include 'connection.php';
 
                             <?php  
                             //$sql = "SELECT  *  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID"; //product list muestra precio pero no brands escogidos
-                            $sql = "SELECT  * FROM Product";           //muestra brands escogifod pero no precios     
+                            $sql = "SELECT  * FROM Product JOIN orderdetails ON Product.productID = orderdetails.productID";           //muestra brands escogifod pero no precios     
 
                             if(isset($_GET['id']) & !empty($_GET['id']))
                             {
