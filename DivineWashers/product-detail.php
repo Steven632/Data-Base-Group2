@@ -352,34 +352,37 @@ if(isset($_GET) & !empty($_GET)){
                             <h2 class="title">Category</h2>
                             <nav class="navbar bg-light">
                                 <ul class="navbar-nav">
+
+                              <?php  $sqlc = "SELECT * FROM Product";           //muestra brands escogifod pero no precios         
+                                $resultc = mysqli_query($db, $sqlc);
+                               $catr = mysqli_fetch_assoc($resultc)
+                               ?>
                                   
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-detail.html"><i class="fa fa-shopping-bag"></i>Portable</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="product-list.html"><i class="fa fa-plus-square"></i>Front Load</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-microchip"></i>Top Load</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-thermometer-quarter"></i>Dryer Combo</a>
+                                <li><a href="product-list.php?cat=<?php echo $catr['portable']; ?>" ><i class="fa fa-microchip"></i>Portable</a></li>
+                                    <a href="product-list.php?catq=<?php echo $catr['frontLoad']; ?>" ><i class="fa fa-microchip"></i>Frontload</a>
+                                    <a href="product-list.php?catw=<?php echo $catr['topLoad']; ?>" ><i class="fa fa-microchip"></i>Topload</a>
+                                    <a href="product-list.php?cate=<?php echo $catr['smartWifi']; ?>" ><i class="fa fa-microchip"></i>Smartwifi</a>
+                                    <a href="product-list.php?catr=<?php echo $catr['dryerCombo']; ?>" ><i class="fa fa-microchip"></i>Dryercombo</a>
                                 </li>
                                 </ul>
                             </nav>
                         </div>
                         
-                       
-                        
+                          
                         <div class="sidebar-widget brands">
                             <h2 class="title">Our Brands</h2>
                             <ul>
-                                <li><a href="#">LG </a><span>(45)</span></li>
-                                <li><a href="#">Costway </a><span>(34)</span></li>
-                                <li><a href="#">Whrilpool </a><span>(67)</span></li>
-                                <li><a href="#">Samsung</a><span>(74)</span></li>
-                                <li><a href="#">Haier </a><span>(89)</span></li>
-                                <!--<li><a href="#">Midea</a><span>(28)</span></li>-->
+                            <?php
+                            $brandsqls ="SELECT distinct prodBrand FROM product "; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
+                            $brandres = mysqli_query($db, $brandsqls);
+                            while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
+                                ?>                                        
+                                <li><a href="product-list.php?id=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?></li>
+                                <?php
+                                }                       
+                                ?>
+                                
                             </ul>
                         </div>
                         

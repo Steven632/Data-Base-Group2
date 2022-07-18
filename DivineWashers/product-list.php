@@ -204,6 +204,37 @@ include 'connection.php';
                             $id = $_GET['id'];                        
                             $sql .= " WHERE prodBrand='$id'"; 
                             }  
+
+                            if(isset($_GET['cat']) & !empty($_GET['cat']))
+                            {
+                            $cat = $_GET['cat'];                        
+                            $sql .= " WHERE portable='1'";               
+                            } 
+
+                            if(isset($_GET['catq']))
+                            {
+                            $catq = $_GET['catq'];                        
+                            $sql .= " WHERE frontLoad='1'";                            
+                            } 
+
+                            else if(isset($_GET['catw']))
+                            {
+                            $catw = $_GET['catw'];                        
+                            $sql .= " WHERE topLoad='1'";                            
+                            } 
+
+                            else if(isset($_GET['cate']))
+                            {
+                            $cate = $_GET['cate'];                        
+                            $sql .= " WHERE smartWifi='1'";                            
+                            } 
+
+                            else if(isset($_GET['catr']))
+                            {
+                            $catr = $_GET['catr'];                        
+                            $sql .= " WHERE dryerCombo='1'";                            
+                            } 
+
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){ 
                             ?>
@@ -282,55 +313,29 @@ include 'connection.php';
                                 <ul class="navbar-nav">
 
                                 <!-- CATEGORY -->
+<?php
 
-
-                                <?php
-                                $catsql = "SELECT * FROM Product"; 
-                          //  if(isset($_GET['portable']) & !empty($_GET['portable']))
-                           // {
-                                    ////s$brand = $_GET['prodBrand'];
-                                   // //$catsql .="WHERE portable = 1 ";
-                           // }                                                              
-                                $catres = mysqli_query($db, $catsql);
-                                while($catr = mysqli_fetch_assoc($catres)){
-                                  ?>                                 
-                                  
+                                $sqlc = "SELECT * FROM Product";           //muestra brands escogifod pero no precios         
+                                $resultc = mysqli_query($db, $sqlc);
+                               $catr = mysqli_fetch_assoc($resultc)
+?>                                     
                                <li class="nav-item">
-                                    <a href="product-list.php?cat=<?php echo $catr['portable']; ?>" ><i class="fa fa-shopping-bag"></i>category</a>
-                                    <?php
-                                    }
-                                    ?>
-                                    <!--
-                                    <a class="nav-link" href="product-list.php?cat=< ?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>frontload</a>
-                                    <a class="nav-link" href="product-list.php?cat=< ?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>topload </a>
-                                    <a class="nav-link" href="product-list.php?cat=< ?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>smartWifi</a>
-                                    <a class="nav-link" href="product-list.php?cat=< ?php echo $catr['portable']; ?>"  ><i class="fa fa-shopping-bag"></i>dryerCombo</a>
-                           -->
+                                    <li><a href="product-list.php?cat=<?php echo $catr['portable']; ?>" ><i class="fa fa-microchip"></i>Portable</a></li>
+                                    <a href="product-list.php?catq=<?php echo $catr['frontLoad']; ?>" ><i class="fa fa-microchip"></i>Frontload</a>
+                                    <a href="product-list.php?catw=<?php echo $catr['topLoad']; ?>" ><i class="fa fa-microchip"></i>Topload</a>
+                                    <a href="product-list.php?cate=<?php echo $catr['smartWifi']; ?>" ><i class="fa fa-microchip"></i>Smartwifi</a>
+                                    <a href="product-list.php?catr=<?php echo $catr['dryerCombo']; ?>" ><i class="fa fa-microchip"></i>Dryercombo</a>
                                 </li>
-
                                 </ul>
                             </nav>
                         </div>
-                        
-                       
+                                   
                         
                         <div class="sidebar-widget brands">
                             <h2 class="title">Our Brands</h2>
                             <ul>
-
-
                             <!-- BUSCAR POR BRAND -->
-
                            <?php
-                                                      
-                           // if(isset($_GET['prodBrand']) & !empty($_GET['prodBrand']))
-                            //{
-                            //    $prodBrand = $_GET['prodBrand'];
-                            //    echo $prodBrand;
-                             //   //$brandsqls .= " WHERE prodBrand=$prodBrand";
-                           // }
-
-                           
                             $brandsqls ="SELECT distinct prodBrand FROM product "; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
                             $brandres = mysqli_query($db, $brandsqls);
                             while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
@@ -342,27 +347,7 @@ include 'connection.php';
                          
                             </ul>
                         </div>
-                            
 
-                           
-                       
-
-                          
-                            
-
-                        
-                        
-                       <!-- <div class="sidebar-widget tag">
-                            <h2 class="title">Tags Cloud</h2>
-                            <a href="product-list.php">Portable</a>
-                            <a href="#">Front Load</a>
-                            <a href="#">Top Load</a>
-                            <a href="#">Stack</a>
-                            <a href="#">Dryer Combo</a>
-                            <a href="#">Wifi</a>
-                            
-                        </div>
-                            -->
                     </div>
                     <!-- Side Bar End -->
                 </div>
