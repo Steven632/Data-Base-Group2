@@ -1,8 +1,8 @@
 <?php
 	ob_start();
 	session_start();
-	require_once '../config/connect.php';
-	if(!isset($_SESSION['email']) & empty($_SESSION['email'])){
+	require_once 'connection.php';
+	if(!isset($_SESSION['admiEmail']) & empty($_SESSION['admiEmail'])){
 		header('location: login.php');
 	}
 ?>

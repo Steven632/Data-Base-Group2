@@ -29,7 +29,7 @@ if(isset($_POST) & !empty($_POST)){
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Shop Admin Login - PHP Ecommerce</title>
+	<title>Divine Washers - Admin Login</title>
 
 	<!-- Mobile Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +87,7 @@ if(isset($_POST) & !empty($_POST)){
 			<div class="container">
 				<div class="row">
 					<div class="page_header text-center">
-						<h2>Login</h2>
+						<h2>Divine Washers</h2>
 						<p>Admin Login</p>
 					</div>
 					<div class="col-md-12">

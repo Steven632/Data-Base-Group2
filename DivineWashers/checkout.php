@@ -1,9 +1,126 @@
-<!-- <?php
-    // require_once 'connection.php';
-    // if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){
-    //     header('location: login.php');
-    //  }
-?> -->
+<?php
+	ob_start();
+	session_start();
+	require_once 'connection.php';
+	if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){
+		header('location: login.php');
+	}
+$uid = $_SESSION['costumerID'];
+// $cart = $_SESSION['cart'];
+
+if(isset($_POST) & !empty($_POST)){
+	if($_POST['agree'] == true){
+		$country = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
+		$fname = filter_var($_POST['costumerfirstName'], FILTER_SANITIZE_STRING);
+		$lname = filter_var($_POST['costumerlastName'], FILTER_SANITIZE_STRING);
+		// $company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
+		$address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
+		// $address2 = filter_var($_POST['address2'], FILTER_SANITIZE_STRING);
+		// $city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
+		$state = filter_var($_POST['state'], FILTER_SANITIZE_STRING);
+		$phone = filter_var($_POST['phoneNum'], FILTER_SANITIZE_NUMBER_INT);
+		$payment = filter_var($_POST['paypallogin'], FILTER_SANITIZE_STRING);
+		$zip = filter_var($_POST['zipCode'], FILTER_SANITIZE_NUMBER_INT);
+
+		$sql = "SELECT * FROM costumer WHERE uid=$uid";
+		$res = mysqli_query($db, $sql);
+		$r = mysqli_fetch_assoc($res);
+		$count = mysqli_num_rows($res);
+		if($count == 1){
+			//update data in usersmeta table
+			$usql = "UPDATE costumer SET costumerfirstName='$fname', costumerlastName='$lname', address='$address', city='$city', state='$state',  zipCode='$zip', phoneNum='$phone' WHERE uid=$uid";
+			$ures = mysqli_query($db, $usql) or die(mysqli_error($db));
+			if($ures){
+
+				$total = 0;
+				foreach ($cart as $key => $value) {
+					//echo $key . " : " . $value['quantity'] ."<br>";
+					$ordsql = "SELECT * FROM product WHERE id=$key";
+					$ordres = mysqli_query($db, $ordsql);
+					$ordr = mysqli_fetch_assoc($ordres);
+
+					$total = $total + ($ordr['price']*$value['quantity']);
+				}
+
+				echo $iosql = "INSERT INTO order (uid, totalprice, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
+				$iores = mysqli_query($db, $iosql) or die(mysqli_error($db));
+				if($iores){
+					//echo "Order inserted, insert order items <br>";
+					$orderid = mysqli_insert_id($db);
+					foreach ($cart as $key => $value) {
+						//echo $key . " : " . $value['quantity'] ."<br>";
+						$ordsql = "SELECT * FROM product WHERE id=$key";
+						$ordres = mysqli_query($db, $ordsql);
+						$ordr = mysqli_fetch_assoc($ordres);
+
+						$pid = $ordr['id'];
+						$productprice = $ordr['price'];
+						$quantity = $value['quantity'];
+
+
+						$orditmsql = "INSERT INTO orderdetails (productID, orderID, prodPrice, prodQuantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
+						$orditmres = mysqli_query($db, $orditmsql) or die(mysqli_error($db));
+						//if($orditmres){
+							//echo "Order Item inserted redirect to my account page <br>";
+						//}
+					}
+				}
+				unset($_SESSION['cart']);
+				header("location: my-account.php");
+			}
+		}else{
+			//insert data in usersmeta table
+			$isql = "INSERT INTO costumer (country, firstname, lastname, address1, address2, city, state, zip, company, mobile, uid) VALUES ('$fname', '$lname', '$address', '$city', '$state', '$zip','$phone', '$uid')";
+			$ires = mysqli_query($db, $isql) or die(mysqli_error($db));
+			if($ires){
+
+				$total = 0;
+				foreach ($cart as $key => $value) {
+					//echo $key . " : " . $value['quantity'] ."<br>";
+					$ordsql = "SELECT * FROM product WHERE id=$key";
+					$ordres = mysqli_query($db, $ordsql);
+					$ordr = mysqli_fetch_assoc($ordres);
+
+					$total = $total + ($ordr['price']*$value['quantity']);
+				}
+
+				echo $iosql = "INSERT INTO order (uid, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
+				$iores = mysqli_query($db, $iosql) or die(mysqli_error($db));
+				if($iores){
+					//echo "Order inserted, insert order items <br>";
+					$orderid = mysqli_insert_id($db);
+					foreach ($cart as $key => $value) {
+						//echo $key . " : " . $value['quantity'] ."<br>";
+						$ordsql = "SELECT * FROM product WHERE id=$key";
+						$ordres = mysqli_query($db, $ordsql);
+						$ordr = mysqli_fetch_assoc($ordres);
+
+						$pid = $ordr['id'];
+						$productprice = $ordr['price'];
+						$quantity = $value['quantity'];
+
+
+						$orditmsql = "INSERT INTO orderdetails (productID, orderID, prodPrice, prodQuantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
+						$orditmres = mysqli_query($db, $orditmsql) or die(mysqli_error($db));
+						//if($orditmres){
+							//echo "Order Item inserted redirect to my account page <br>";
+						//}
+					}
+				}
+				unset($_SESSION['cart']);
+				header("location: my-account.php");
+			}
+
+		}
+	}
+
+}
+
+$sql = "SELECT * FROM costumer WHERE costumerID=$uid";
+$res = mysqli_query($db, $sql);
+$r = mysqli_fetch_assoc($res);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,7 +148,7 @@
 <!-- <?php
     // echo $_SESSION['costumer'];
     // echo $_SESSION['costumerID'];
-?> -->
+?>  -->
 
     <body>
         <!-- Top bar Start -->
@@ -148,23 +265,23 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>First Name</label>
-                                        <input class="form-control" type="text" placeholder="First Name">
+                                        <input class="form-control" name="fname" type="text" placeholder="First Name">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Last Name"</label>
-                                        <input class="form-control" type="text" placeholder="Last Name">
+                                        <input class="form-control" name="lname"type="text" placeholder="Last Name">
                                     </div>
                                     <div class="col-md-6">
                                         <label>E-mail</label>
-                                        <input class="form-control" type="text" placeholder="E-mail">
+                                        <input class="form-control" name="email" type="text" placeholder="E-mail">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Mobile No</label>
-                                        <input class="form-control" type="text" placeholder="Mobile No">
+                                        <input class="form-control" name="phone" type="text" placeholder="Mobile No">
                                     </div>
                                     <div class="col-md-12">
                                         <label>Address</label>
-                                        <input class="form-control" type="text" placeholder="Address">
+                                        <input class="form-control" name="adress" type="text" placeholder="Address">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Country</label>
@@ -177,15 +294,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>City</label>
-                                        <input class="form-control" type="text" placeholder="City">
+                                        <input class="form-control" name="city" type="text" placeholder="City">
                                     </div>
                                     <div class="col-md-6">
                                         <label>State</label>
-                                        <input class="form-control" type="text" placeholder="State">
+                                        <input class="form-control" name="state" type="text" placeholder="State">
                                     </div>
                                     <div class="col-md-6">
                                         <label>ZIP Code</label>
-                                        <input class="form-control" type="text" placeholder="ZIP Code">
+                                        <input class="form-control" name="zip" type="text" placeholder="ZIP Code">
                                     </div>
                                     <div class="col-md-12">
                                         <div class="custom-control custom-checkbox">

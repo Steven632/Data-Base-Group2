@@ -23,10 +23,11 @@
 
 			if(isset($name) && !empty($name)){
 				if(($extension == "jpg" || $extension == "jpeg") && $type == "image/jpeg" && $size<=$max_size){
-					$location = "uploads/";
+					$location = "img/";
 					if(move_uploaded_file($tmp_name, $location.$name)){
 						//$smsg = "Uploaded Successfully";
-						$sql = "INSERT INTO product (prodName, prdDesc, productID, price, prodImage) VALUES ('$prodname', '$description', '$category', '$price', '$location$name')";
+						$sql = "INSERT INTO product (prodName, prdDesc, productID, prodImage) VALUES ('$prodname', '$description', '$category', '$location$name')";
+						$sql = "INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
 						$res = mysqli_query($db, $sql);
 						if($res){
 							//echo "Product Created";
@@ -45,7 +46,7 @@
 			}
 		}else{
 
-			$sql = "INSERT INTO product (prodName, prdDesc, productID, price) VALUES ('$prodname', '$description', '$category', '$price')";
+			$sql = "INSERT INTO product (prodName, prdDesc, productID) VALUES ('$prodname', '$description', '$category') AND INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
 			$res = mysqli_query($db, $sql);
 			if($res){
 				header('location: products.php');
@@ -78,7 +79,7 @@
 			    <select class="form-control" id="productcategory" name="productcategory">
 				  <option value="">---SELECT CATEGORY---</option>
 				  <?php 	
-					$sql = "SELECT * FROM category";
+					$sql = "SELECT dryerCombo, frontLoad, portable, smartWifi, topLoad FROM product";
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?>
