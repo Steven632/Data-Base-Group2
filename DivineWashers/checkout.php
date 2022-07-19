@@ -1,11 +1,13 @@
 <?php
 	ob_start();
-	session_start();
+	//session_start(); ya session esta comenzada, no hace falta otro session start
 	require_once 'connection.php';
-	if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){
+	//if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){ //ORIGINAL 
+        if(!isset($_SESSION['costumerID']) & empty($_SESSION['costumerID'])){ //TEST-------------
 		header('location: login.php');
 	}
-$uid = $_SESSION['costumerID'];
+//$uid = $_SESSION['costumer']; //ORIGINAL
+$uid = $_SESSION['costumerID']; //TEST -----------------------------------------------------------
 // $cart = $_SESSION['cart'];
 
 if(isset($_POST) & !empty($_POST)){

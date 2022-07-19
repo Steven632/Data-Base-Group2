@@ -229,7 +229,7 @@ require_once 'connection.php';
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button  name="submit" class="btn">Submit</button >
+                                    <button  name="submit" class="btn">Submit</button > <!--submit de usuario -->
                                 </div>
                             </div>
                         </form>
