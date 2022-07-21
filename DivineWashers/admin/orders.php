@@ -21,7 +21,7 @@
 						<th>Payment Mode</th>
 						<th>Order Placed On</th>
 						<th>Operations</th>
-					</tr>
+					</tr> 
 				</thead>
 				<tbody>
 				<?php 	
@@ -32,10 +32,10 @@
 					<tr>
 						<th scope="row"><?php echo $r['orderID']; ?></th>
 						<td><?php echo $r['costumerfirstName']. " " . $r['costumerlastName']; ?></td>
-						<td><?php echo $r['totalprice']; ?></td>
+						<!-- <td><?php echo $r['totalprice']; ?></td> -->
 						<td><?php echo $r['orderStatus']; ?></td>
-						<td><?php echo $r['paymentmode']; ?></td>
-						<td><?php echo $r['timestamp']; ?></td>
+						<!-- <td><?php echo $r['paymentmode']; ?></td> -->
+						<!-- <td><?php echo $r['timestamp']; ?></td> -->
 						<td><a href="order-process.php?id=<?php echo $r['orderID']; ?>">Process Order</a></td>
 					</tr>
 				<?php } ?>

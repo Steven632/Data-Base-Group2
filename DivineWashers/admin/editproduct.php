@@ -12,10 +12,10 @@
 	}
 
 	if(isset($_POST) & !empty($_POST)){
-		$prodname = mysqli_real_escape_string($db, $_POST['prodName']);
-		$description = mysqli_real_escape_string($db, $_POST['prodDesc']);
-		// $category = mysqli_real_escape_string($db, $_POST['productcategory']);
-		// $price = mysqli_real_escape_string($db, $_POST['productprice']);
+		$prodname = mysqli_real_escape_string($db, $_POST['productname']);
+		$description = mysqli_real_escape_string($db, $_POST['productdescription']);
+		$category = mysqli_real_escape_string($db, $_POST['productcategory']);
+		$price = mysqli_real_escape_string($db, $_POST['productprice']);
 
 		if(isset($_FILES) & !empty($_FILES)){
 			$name = $_FILES['prodImage']['name'];
@@ -46,6 +46,7 @@
 		}	
 
 		$sql = "UPDATE product SET name='$prodname', description='$description', catid='$category', price='$price', thumb='$filepath' WHERE id = $id";
+		$sql = "UPDATE orderdetails SET price='$price', WHERE id = $id";
 		$res = mysqli_query($db, $sql);
 		if($res){
 			$smsg = "Product Updated";
@@ -82,7 +83,7 @@
 			    <label for="productcategory">Product Category</label>
 			    <select class="form-control" id="productcategory" name="productcategory">
 			    <?php 	
-					$catsql = "SELECT * FROM category";
+					$catsql = "SELECT * FROM product";
 					$catres = mysqli_query($db, $catsql); 
 					while ($catr = mysqli_fetch_assoc($catres)) {
 				?>
@@ -97,7 +98,7 @@
 			    <input type="text" class="form-control" name="productprice" id="productprice" placeholder="Product Price" value="<?php echo $r['price']; ?>">
 			  </div>
 			  <div class="form-group">
-			    <label for="productimage">Product Image</label>
+			    <label for="prodImage">Product Image</label>
 			    <?php if(isset($r['prodImage']) & !empty($r['prodImage'])){ ?>
 			    <br>
 			    	<img src="<?php echo $r['prodImage'] ?>" widht="100px" height="100px">

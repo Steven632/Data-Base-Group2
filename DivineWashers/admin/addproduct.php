@@ -6,10 +6,11 @@
 	}
 
 	if(isset($_POST) & !empty($_POST)){
-		$prodname = mysqli_real_escape_string($db, $_POST['prodName']);
-		$description = mysqli_real_escape_string($db, $_POST['prodDesc']);
-		// $category = mysqli_real_escape_string($db, $_POST['productcategory']);
-		// $price = mysqli_real_escape_string($db, $_POST['productprice']);
+		$prodbrand = mysqli_real_escape_string($db, $_POST['productbrand']);
+		$prodname = mysqli_real_escape_string($db, $_POST['productname']);
+		$description = mysqli_real_escape_string($db, $_POST['productdescription']);
+		$category = mysqli_real_escape_string($db, $_POST['productcategory']);
+		$price = mysqli_real_escape_string($db, $_POST['productprice']);
 
 
 		if(isset($_FILES) & !empty($_FILES)){
@@ -23,10 +24,10 @@
 
 			if(isset($name) && !empty($name)){
 				if(($extension == "jpg" || $extension == "jpeg") && $type == "image/jpeg" && $size<=$max_size){
-					$location = "img/";
+					$location = "img/"; 
 					if(move_uploaded_file($tmp_name, $location.$name)){
 						//$smsg = "Uploaded Successfully";
-						$sql = "INSERT INTO product (prodName, prdDesc, productID, prodImage) VALUES ('$prodname', '$description', '$category', '$location$name')";
+						$sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID, prodImage) VALUES ('$prodbrand', $prodname', '$description', '$category', '$location$name')";
 						$sql = "INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
 						$res = mysqli_query($db, $sql);
 						if($res){
@@ -46,7 +47,7 @@
 			}
 		}else{
 
-			$sql = "INSERT INTO product (prodName, prdDesc, productID) VALUES ('$prodname', '$description', '$category') AND INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
+			$sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID) VALUES ('$prodbrand', $prodname', '$description', '$category') AND INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
 			$res = mysqli_query($db, $sql);
 			if($res){
 				header('location: products.php');
@@ -65,11 +66,18 @@
 		<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
 			<form method="post" enctype="multipart/form-data">
+			
+			 <div class="form-group">
+			    <label for="Productbrand">Brand</label>
+			    <input type="text" class="form-control" name="productbrand" id="Productbrand" placeholder="Product Brand">
+			  </div>
+
 			  <div class="form-group">
 			    <label for="Productname">Product Name</label>
 			    <input type="text" class="form-control" name="productname" id="Productname" placeholder="Product Name">
 			  </div>
-			  <div class="form-group">
+			 
+				<div class="form-group">
 			    <label for="productdescription">Product Description</label>
 			    <textarea class="form-control" name="productdescription" rows="3"></textarea>
 			  </div>
@@ -83,7 +91,7 @@
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?>
-					<option value="<?php echo $r['id']; ?>"><?php echo $r['prodName']; ?></option>
+					<option value="<?php echo $r['id']; ?>"><?php echo $r['dryerCombo'];  ?>Dryer Combo</option>
 				<?php } ?>
 				</select>
 			  </div>

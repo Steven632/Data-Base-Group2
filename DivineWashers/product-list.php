@@ -260,7 +260,7 @@ include 'connection.php';
 
                                         </a>
                                         <div class="product-action">
-                                            <a href="cart.php"><i class="fa fa-cart-plus"></i></a>                                           
+                                            <a href="addtocart.php?id=<?php echo $row ['productID']; ?>"> <i class="fa fa-cart-plus"></i></a>                                           
                                             <!--<a href="#"><i class="fa fa-heart"></i></a>-->
                                             <a href="product-detail.php?id=<?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a> 
                                         </div>

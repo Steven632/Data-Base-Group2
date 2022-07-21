@@ -1,5 +1,6 @@
 <?php
-include 'connection.php'
+include 'connection.php';
+$cart = $_SESSION['cart'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +58,7 @@ include 'connection.php'
                         <div class="navbar-nav mr-auto">
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Products</a>
-                            <a href="product-detail.php" class="nav-item nav-link">Product Detail</a>
+                            
                             <a href="cart.php" class="nav-item nav-link active">Cart</a>
                             <a href="checkout.php" class="nav-item nav-link">Checkout</a>
                             <a href="my-account.php" class="nav-item nav-link">My Account</a>
@@ -148,7 +149,43 @@ include 'connection.php'
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
-                                        <tr>
+                                    <?php
+					//print_r($cart);
+				    $total = 0;
+					foreach ($cart as $key => $value) {
+						//echo $key . " : " . $value['quantity'] ."<br>";
+						$cartsql = "SELECT * FROM product WHERE id=$key";
+						$cartres = mysqli_query($db, $cartsql);
+						$cartr = mysqli_fetch_assoc($cartres);
+                        
+ 
+					
+				 ?>
+
+                    <tr>
+						<td>
+							<a class="remove" href="delcart.php?id=<?php echo $key; ?>"><i class="fa fa-times"></i></a>
+						</td>
+						<td>
+							<a href="#"><img src="admin/<?php echo $cartr['thumb']; ?>" alt="" height="90" width="90"></a>					
+						</td>
+						<td>
+							<a href="product-detail.php?id=<?php echo $cartr['id']; ?>"><?php echo substr($cartr['name'], 0 , 30); ?></a>					
+						</td>
+						<td>
+							<span class="amount">INR<?php echo $cartr['price']; ?>.00/-</span>					
+						</td>
+						<td>
+							<div class="quantity"><?php echo $value['quantity']; ?></div>
+						</td>
+						<td>
+							<span class="amount">INR<?php echo ($cartr['price']*$value['quantity']); ?>.00/-</span>					
+						</td>
+					</tr>
+				<?php 
+				    $total = $total + ($cartr['price']*$value['quantity']);
+			    } ?>
+                                        <!-- <tr>
                                             <td>
                                                 <div class="img">
                                                     <a href="#"><img src="img/costwayamazon450.png" alt="Image"></a>
@@ -184,7 +221,7 @@ include 'connection.php'
                                             <td>$999.99</td>
                                             <td><button><i class="fa fa-trash"></i></button></td>
                                         </tr>
-                                       
+                                        -->
                                     </tbody>
                                 </table>
                             </div>
@@ -203,9 +240,9 @@ include 'connection.php'
                                     <div class="cart-summary">
                                         <div class="cart-content">
                                             <h1>Cart Summary</h1>
-                                            <p>Sub Total<span>$1,199.98</span></p>
-                                            <p>Shipping Cost<span>$100</span></p>
-                                            <h2>Grand Total<span>$1,299.98</span></h2>
+                                            <p>Sub Total<span> <?php echo $total; ?> .00</span></p>
+                                            <p>Shipping Cost<span>Free Shipping </span></p>
+                                            <h2>Grand Total<span> <?php echo $total; ?>.00</span></h2>
                                         </div>
                                         <div class="cart-btn">
                                             <button>Update Cart</button>
