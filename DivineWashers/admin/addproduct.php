@@ -11,6 +11,7 @@
 		$description = mysqli_real_escape_string($db, $_POST['productdescription']);
 		$category = mysqli_real_escape_string($db, $_POST['productcategory']);
 		$price = mysqli_real_escape_string($db, $_POST['productprice']);
+		// $quantity = mysqli_real_escape_string($db, $_POST['productquantity']);
 
 
 		if(isset($_FILES) & !empty($_FILES)){
@@ -24,11 +25,11 @@
 
 			if(isset($name) && !empty($name)){
 				if(($extension == "jpg" || $extension == "jpeg") && $type == "image/jpeg" && $size<=$max_size){
-					$location = "img/"; 
+					$location = "../img/"; 
 					if(move_uploaded_file($tmp_name, $location.$name)){
 						//$smsg = "Uploaded Successfully";
 						$sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID, prodImage) VALUES ('$prodbrand', $prodname', '$description', '$category', '$location$name')";
-						$sql = "INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
+						$sql = "INSERT INTO orderdetails (prodPrice) VALUES ('$price')";
 						$res = mysqli_query($db, $sql);
 						if($res){
 							//echo "Product Created";
