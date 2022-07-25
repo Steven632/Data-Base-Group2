@@ -13,7 +13,8 @@
   -->
 <?php
 // session_start();
-require_once 'connection.php';
+include 'connection.php';
+//require_once 'connection.php';
 // if(isset($_POST) & !empty($_POST)){
 //     $email = mysqli_real_escape_string($connection, $_POST ['email']);
 //     $password = ($_POST['password']);
@@ -49,7 +50,6 @@ require_once 'connection.php';
 
 //     }
 // }
-
 
 ?>
 
@@ -179,6 +179,7 @@ require_once 'connection.php';
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">    
+
                         <form class="register-form" method="post" action="registerprocess.php">
                             <div class="row">
                                 <div class="col-md-6">
@@ -206,10 +207,11 @@ require_once 'connection.php';
                                     <input class="form-control" name="costumerPassword" input type="password" placeholder="Password">
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn" name="submit">Submit</button>
+                                    <button class="btn" name="submit">Submit</button> <!-- submit de register -->
                                 </div>
                             </div>
                         </form>
+                        
                     </div>
                     <div class="col-lg-6">
                         <form class="login-form" method="post" action="loginprocess.php">
@@ -229,7 +231,7 @@ require_once 'connection.php';
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button  name="submit" class="btn">Submit</button > <!--submit de usuario -->
+                                    <button  name="submit" class="btn">Submit</button > <!--submit de login -->
                                 </div>
                             </div>
                         </form>

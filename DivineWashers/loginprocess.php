@@ -1,11 +1,13 @@
 <?php
-//session_start();
+session_start();
 require_once 'connection.php'; 
 if(isset($_POST) & !empty($_POST)){
-	$email = filter_var($_POST['costumerEmail'], FILTER_SANITIZE_EMAIL);
-	$password = $_POST['costumerPassword'];
-	$sql = "SELECT * FROM costumer WHERE costumerEmail='$email'";
-	// $sql = "SELECT * FROM costumer WHERE costumerEmail='$email' AND costumerPassword='$password'";
+	$email = filter_var($_POST['costumerEmail'], FILTER_SANITIZE_EMAIL); //ORIGINAL
+	//$email = mysqli_real_escape_string($db, $_POST['costumerEmail']); //TEST
+	$password = $_POST['costumerPassword']; //ORIGINAL
+	//$password = md5($_POST['costumerPassword']); //TEST
+	 $sql = "SELECT * FROM costumer WHERE costumerEmail='$email'"; //ORIGINAL
+    //$sql = "SELECT * FROM costumer WHERE costumerEmail='$email' AND costumerPassword='$password'"; //TEST
 	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
 	$count = mysqli_num_rows($result);
 	$r = mysqli_fetch_assoc($result);
@@ -16,12 +18,15 @@ if(isset($_POST) & !empty($_POST)){
 			$_SESSION['costumer'] = $email;
 			$_SESSION['costumerID'] = $r['id'];
 			header("location: checkout.php");
+			
+			
+			
 		}else{
 			//$fmsg = "Invalid Login Credentials";
-			header("location: login.php?message=1");
+			header("location: login.php?message=1"); //existe en costumer
 		}
 	}else{
-		header("location: login.php?message=2");
+		header('location: login.php?message=2'); //no existe en costumer
 	}
 }
 ?>

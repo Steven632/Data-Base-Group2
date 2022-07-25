@@ -1,6 +1,40 @@
 <?php
 include 'connection.php';
 ?>
+
+<!--
+< ?php
+if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
+    $search =$_POST['prodname'];
+	$query = query ("SELECT COUNT * as 'counter' FROM product WHERE prodname = '$search'");
+    confirm($query);
+	//$result = mysqli_query($db, $sql) or die(mysqli_error($db));
+	//$count = mysqli_num_rows($result);
+	if(mysqli_num_rows($query) >=1 ){
+		redirect('product-detail.php?id=' . $search);
+	}else{
+		redirect('index.php?id=' . $search);
+	}
+}
+?>
+-->
+<?php
+if(isset($_POST['prodName']) & !empty($_POST['prodName'])){
+	$search = $_POST['prodName'];
+	$sql = "SELECT * FROM product WHERE prodname = '$search'";
+    //echo $search;
+	$result = mysqli_query($db, $sql);
+	$count = mysqli_num_rows($result);
+	if($count == 1){
+		//echo "User exits, create session";
+
+		redirect("product-list.php?search=" . $search);
+	}else{
+		redirect("index.php?not_found");
+	}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -100,13 +134,15 @@ include 'connection.php';
                     <div class="col-md-6">
                         <div class="search">
 
-<form action="product-list.php" method="get" > <!-- name="" -->
+<form action="product-list.php"  method="post" method="get"  > <!-- name="" -->
                            
-                                <input type="text" placeholder="Search" name="keyword">
-                                <button type="submit" value="keyword" name=""> <i class="fa fa-search"></i></button>
+                                <input type="text" placeholder="Search" name="prodName">
+                                <button type="submit"> <i class="fa fa-search"></i></button> <!--name=""-->
 </form>
 
-<?php
+
+
+<!--< ?php
                     if(isset($_GET['keyword']) & !empty($_POST['keyword'])){ //test
 
                         if(isset($_POST['keyword']) & !empty($_POST['keyword'])){
@@ -120,7 +156,8 @@ include 'connection.php';
 
                     }
 
-?>
+?> -->
+
 <!--
 < ?php
         $query = query("SELECT * FROM product WHERE prodname = '$search'");
