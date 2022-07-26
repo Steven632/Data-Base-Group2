@@ -4,7 +4,7 @@ if(isset($_POST) & !empty($_POST)){
 
 	//$email = mysqli_real_escape_string($connection, $_POST['email']);
 	$email = filter_var($_POST['costumerEmail'], FILTER_SANITIZE_EMAIL);
-	$password = $_POST['costumerPassword'];
+	$password = password_hash($_POST['costumerPassword'], PASSWORD_DEFAULT);
 	$costumerfirstName = $_POST['costumerfirstName'];
 	$costumerlastName = $_POST['costumerlastName'];
 	$phoneNum = $_POST['phoneNum'];

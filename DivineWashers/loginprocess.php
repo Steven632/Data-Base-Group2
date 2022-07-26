@@ -1,10 +1,11 @@
 <?php
-session_start();
+//session_start();
 require_once 'connection.php'; 
 if(isset($_POST) & !empty($_POST)){
 	$email = filter_var($_POST['costumerEmail'], FILTER_SANITIZE_EMAIL); //ORIGINAL
 	//$email = mysqli_real_escape_string($db, $_POST['costumerEmail']); //TEST
 	$password = $_POST['costumerPassword']; //ORIGINAL
+	// $password = hash($password);
 	//$password = md5($_POST['costumerPassword']); //TEST
 	 $sql = "SELECT * FROM costumer WHERE costumerEmail='$email'"; //ORIGINAL
     //$sql = "SELECT * FROM costumer WHERE costumerEmail='$email' AND costumerPassword='$password'"; //TEST
@@ -15,8 +16,8 @@ if(isset($_POST) & !empty($_POST)){
 	if($count == 1){
 		if(password_verify($password, $r['costumerPassword'])){ //here
 			//echo "User exits, create session";
-			$_SESSION['costumer'] = $email;
-			$_SESSION['costumerID'] = $r['id'];
+			$_SESSION['customer'] = $email;
+			$_SESSION['customerid'] = $r['id'];
 			header("location: checkout.php");
 			
 			
