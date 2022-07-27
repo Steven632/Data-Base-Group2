@@ -201,7 +201,7 @@ include 'connection.php';
                                 <div class="col-md-6">
                                     <label>Password</label>
                                     <input class="form-control" name="costumerPassword" input type="password" placeholder="Password">
-                                </div>
+                                </div> 
                                 <div class="col-md-6">
                                     <label>Retype Password</label>
                                     <input class="form-control" name="costumerPassword" input type="password" placeholder="Password">
@@ -232,6 +232,7 @@ include 'connection.php';
                                 </div>
                                 <div class="col-md-12">
                                     <button  name="submit" class="btn">Submit</button > <!--submit de login -->
+                                   
                                 </div>
                             </div>
                         </form>
