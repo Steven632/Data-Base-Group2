@@ -2,26 +2,26 @@
 	ob_start();
 	//session_start(); ya session esta comenzada, no hace falta otro session start
 	require_once 'connection.php';
-	//if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){ //ORIGINAL 
-        if(!isset($_SESSION['costumerID']) & empty($_SESSION['costumerID'])){ //TEST-------------
+	if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){ //ORIGINAL 
+        // if(!isset($_SESSION['costumerID']) & empty($_SESSION['costumerID'])){ //TEST-------------
 		header('location: login.php');
 	}
-//$uid = $_SESSION['costumer']; //ORIGINAL
+$uid = $_SESSION['costumer']; //ORIGINAL
 $uid = $_SESSION['costumerID']; //TEST -----------------------------------------------------------
-// $cart = $_SESSION['cart'];
+$cart = $_SESSION['cart'];
 
 if(isset($_POST) & !empty($_POST)){
 	if($_POST['agree'] == true){
 		$country = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
-		$fname = filter_var($_POST['costumerfirstName'], FILTER_SANITIZE_STRING);
-		$lname = filter_var($_POST['costumerlastName'], FILTER_SANITIZE_STRING);
+		// $fname = filter_var($_POST['costumerfirstName'], FILTER_SANITIZE_STRING);
+		// $lname = filter_var($_POST['costumerlastName'], FILTER_SANITIZE_STRING);
 		// $company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
 		$address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
 		// $address2 = filter_var($_POST['address2'], FILTER_SANITIZE_STRING);
 		// $city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
 		$state = filter_var($_POST['state'], FILTER_SANITIZE_STRING);
-		$phone = filter_var($_POST['phoneNum'], FILTER_SANITIZE_NUMBER_INT);
-		$payment = filter_var($_POST['paypallogin'], FILTER_SANITIZE_STRING);
+		// $phone = filter_var($_POST['phoneNum'], FILTER_SANITIZE_NUMBER_INT);
+		$payment = filter_var($_POST['Paypallogin'], FILTER_SANITIZE_STRING);
 		$zip = filter_var($_POST['zipCode'], FILTER_SANITIZE_NUMBER_INT);
 
 		$sql = "SELECT * FROM costumer WHERE uid=$uid";
@@ -30,7 +30,7 @@ if(isset($_POST) & !empty($_POST)){
 		$count = mysqli_num_rows($res);
 		if($count == 1){
 			//update data in usersmeta table
-			$usql = "UPDATE costumer SET costumerfirstName='$fname', costumerlastName='$lname', address='$address', city='$city', state='$state',  zipCode='$zip', phoneNum='$phone' WHERE uid=$uid";
+			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state',  zipCode='$zip' WHERE uid=$uid";
 			$ures = mysqli_query($db, $usql) or die(mysqli_error($db));
 			if($ures){
 
@@ -44,7 +44,7 @@ if(isset($_POST) & !empty($_POST)){
 					$total = $total + ($ordr['price']*$value['quantity']);
 				}
 
-				echo $iosql = "INSERT INTO order (uid, totalprice, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
+				echo $iosql = "INSERT INTO order or orderdetails(uid, totalprice, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
 				$iores = mysqli_query($db, $iosql) or die(mysqli_error($db));
 				if($iores){
 					//echo "Order inserted, insert order items <br>";
@@ -72,7 +72,7 @@ if(isset($_POST) & !empty($_POST)){
 			}
 		}else{
 			//insert data in usersmeta table
-			$isql = "INSERT INTO costumer (country, firstname, lastname, address1, address2, city, state, zip, company, mobile, uid) VALUES ('$fname', '$lname', '$address', '$city', '$state', '$zip','$phone', '$uid')";
+			$isql = "INSERT INTO costumer (country, address, city, state, zip, uid) VALUES ('$address', '$city', '$state', '$zip','$phone', '$uid')";
 			$ires = mysqli_query($db, $isql) or die(mysqli_error($db));
 			if($ires){
 
@@ -257,6 +257,7 @@ $r = mysqli_fetch_assoc($res);
         <!-- Breadcrumb End -->
         
         <!-- Checkout Start -->
+        <form method = "post">
         <div class="checkout">
             <div class="container-fluid"> 
                 <div class="row">
@@ -265,7 +266,7 @@ $r = mysqli_fetch_assoc($res);
                             <div class="billing-address">
                                 <h2>Billing Address</h2>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <label>First Name</label>
                                         <input class="form-control" name="fname" type="text" placeholder="First Name">
                                     </div>
@@ -280,14 +281,14 @@ $r = mysqli_fetch_assoc($res);
                                     <div class="col-md-6">
                                         <label>Mobile No</label>
                                         <input class="form-control" name="phone" type="text" placeholder="Mobile No">
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-12">
                                         <label>Address</label>
-                                        <input class="form-control" name="adress" type="text" placeholder="Address">
+                                        <input class="form-control" name="address" type="text" placeholder="Address">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Country</label>
-                                        <select class="custom-select">
+                                        <select class="custom-select" name="country">
                                             <option selected>United States</option>
                                             <option>Afghanistan</option>
                                             <option>Albania</option>
@@ -308,7 +309,7 @@ $r = mysqli_fetch_assoc($res);
                                     </div>
                                     <div class="col-md-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="newaccount">
+                                            <input type="checkbox" name="agree" class="custom-control-input" id="newaccount">
                                             <label class="custom-control-label" for="newaccount">Create an account</label>
                                         </div>
                                     </div>
@@ -373,11 +374,11 @@ $r = mysqli_fetch_assoc($res);
                         <div class="checkout-inner">
                             <div class="checkout-summary">
                                 <h1>Cart Total</h1>
-                                <p>Costway Portable Mini<span>$199.99</span></p>
-                                <p>LG Wifi Combo<span>$999.99</span></p>
-                                <p class="sub-total">Sub Total<span>$1,199.98</span></p>
+                                <!-- <p>Costway Portable Mini<span>$199.99</span></p> -->
+                                <!-- <p>LG Wifi Combo<span>$999.99</span></p> -->
+                                <p class="sub-total">Sub Total<span><!--$1,199.98--></span></p>
                                 <p class="ship-cost">Shipping Cost<span>$100</span></p>
-                                <h2>Grand Total<span>$1,299.98</span></h2>
+                                <h2>Grand Total<span><!--$1,299.98--></span></h2>
                             </div>
 
                             <div class="checkout-payment">
@@ -419,6 +420,7 @@ $r = mysqli_fetch_assoc($res);
                 </div>
             </div>
         </div>
+</form>
         <!-- Checkout End -->
         
         <!-- Footer Start -->
