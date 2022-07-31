@@ -183,16 +183,17 @@ if(isset($_GET['$search'])){
                                                 <div class="dropdown">
                                                     <div class="dropdown-toggle" data-toggle="dropdown">Product price range</div>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" class="dropdown-item">$0 to $50</a>
-                                                        <a href="#" class="dropdown-item">$51 to $100</a>
-                                                        <a href="#" class="dropdown-item">$101 to $150</a>
-                                                        <a href="#" class="dropdown-item">$151 to $200</a>
-                                                        <a href="#" class="dropdown-item">$201 to $250</a>
-                                                        <a href="#" class="dropdown-item">$251 to $300</a>
-                                                        <a href="#" class="dropdown-item">$301 to $350</a>
-                                                        <a href="#" class="dropdown-item">$351 to $400</a>
-                                                        <a href="#" class="dropdown-item">$401 to $450</a>
-                                                        <a href="#" class="dropdown-item">$451 to $500</a>
+                                                    
+                                                        <a href="product-list.php?sp" class="dropdown-item">$100 to $300</a>
+                                                        <a href="product-list.php?sp1" class="dropdown-item">$301 to $400</a>
+                                                        <a href="product-list.php?sp2" class="dropdown-item">$401 to $500</a>
+                                                        <a href="product-list.php?sp3" class="dropdown-item">$501 to $600</a>
+                                                        <a href="product-list.php?sp4" class="dropdown-item">$601 to $700</a>
+                                                        <a href="product-list.php?sp5" class="dropdown-item">$701 to $800</a>
+                                                        <a href="product-list.php?sp6" class="dropdown-item">$801 to $900</a>
+                                                        <a href="product-list.php?sp7" class="dropdown-item">$901 to $999+</a>
+                                                        
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -210,7 +211,7 @@ if(isset($_GET['$search'])){
                             $id = $_GET['id'];                        
                             $sql .= " WHERE prodBrand='$id'"; 
                             }  
-
+                            //SORT DE CATEGORIA-----------------------------------
                             if(isset($_GET['cat']) & !empty($_GET['cat']))
                             {
                             $cat = $_GET['cat'];                        
@@ -240,6 +241,55 @@ if(isset($_GET['$search'])){
                             $catr = $_GET['catr'];                        
                             $sql .= " WHERE dryerCombo='1'";                            
                             } 
+                            //SORT DE PRECIOS-----------------------------------
+                            else if(isset($_GET['sp']))
+                            {
+                            $sp = $_GET['sp'];                        
+                            $sql .= " WHERE prodPrice > '100' and prodPrice < '300'";                            
+                            } 
+
+                            else if(isset($_GET['sp1']))
+                            {
+                            $sp1 = $_GET['sp1'];                        
+                            $sql .= " WHERE prodPrice > '301' and prodPrice < '400'";                            
+                            } 
+
+                            else if(isset($_GET['sp2']))
+                            {
+                            $sp2 = $_GET['sp2'];                        
+                            $sql .= " WHERE prodPrice > '401' and prodPrice < '500'";                            
+                            } 
+
+                            else if(isset($_GET['sp3']))
+                            {
+                            $sp3 = $_GET['sp3'];                        
+                            $sql .= " WHERE prodPrice > '501' and prodPrice < '600'";                            
+                            } 
+
+                            else if(isset($_GET['sp4']))
+                            {
+                            $sp4 = $_GET['sp4'];                        
+                            $sql .= " WHERE prodPrice > '601' and prodPrice < '700'";                            
+                            } 
+
+                            else if(isset($_GET['sp5']))
+                            {
+                            $sp5 = $_GET['sp5'];                        
+                            $sql .= " WHERE prodPrice > '701' and prodPrice < '800'";                            
+                            } 
+
+                            else if(isset($_GET['sp6']))
+                            {
+                            $sp6 = $_GET['sp6'];                        
+                            $sql .= " WHERE prodPrice > '801' and prodPrice < '900'";                            
+                            } 
+
+                            else if(isset($_GET['sp7']))
+                            {
+                            $sp7 = $_GET['sp7'];                        
+                            $sql .= " WHERE prodPrice > '901' and prodPrice < '99999'";                            
+                            } 
+
 
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){ 
