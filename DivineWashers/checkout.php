@@ -124,7 +124,7 @@ if(isset($_POST) & !empty($_POST)){
 						//}
 					}
 				}
-				unset($_SESSION['cart']);
+				//unset($_SESSION['cart']);
 				header("location: my-account.php");
 			}
 
