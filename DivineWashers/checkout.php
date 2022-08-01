@@ -6,8 +6,8 @@
         // if(!isset($_SESSION['costumerID']) & empty($_SESSION['costumerID'])){ //TEST-------------
 		header('location: login.php');
 	}
-$uid = $_SESSION['costumer']; //ORIGINAL
-$uid = $_SESSION['costumerID']; //TEST -----------------------------------------------------------
+ costumerID = $_SESSION['costumer']; //ORIGINAL
+ costumerID = $_SESSION['costumerID']; //TEST -----------------------------------------------------------
 $cart = $_SESSION['cart'];
 
 if(isset($_POST) & !empty($_POST)){
@@ -24,13 +24,13 @@ if(isset($_POST) & !empty($_POST)){
 		$payment = filter_var($_POST['Paypallogin'], FILTER_SANITIZE_STRING);
 		$zip = filter_var($_POST['zipCode'], FILTER_SANITIZE_NUMBER_INT);
 
-		$sql = "SELECT * FROM costumer WHERE uid=$uid";
+		$sql = "SELECT * FROM costumer WHERE costumerID = $costumerID";
 		$res = mysqli_query($db, $sql);
 		$r = mysqli_fetch_assoc($res);
 		$count = mysqli_num_rows($res);
 		if($count == 1){
 			//update data in usersmeta table
-			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state',  zipCode='$zip' WHERE uid=$uid";
+			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state',  zipCode='$zip' WHERE costumerID= $costumerID";$
 			$ures = mysqli_query($db, $usql) or die(mysqli_error($db));
 			if($ures){
 
@@ -44,7 +44,7 @@ if(isset($_POST) & !empty($_POST)){
 					$total = $total + ($ordr['price']*$value['quantity']);
 				}
 
-				echo $iosql = "INSERT INTO order (uid, totalprice, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
+				echo $iosql = "INSERT INTO order  costumerID, $totalprice, orderStatus, paymentmode) VALUES (' costumerID',$ '$total', 'Order Placed', '$payment')";
 				$iores = mysqli_query($db, $iosql) or die(mysqli_error($db));
 				if($iores){
 					echo "Order inserted, insert order items <br>";
@@ -72,7 +72,7 @@ if(isset($_POST) & !empty($_POST)){
 			}
 		}else{
 			//insert data in usersmeta table
-			$isql = "INSERT INTO costumer (country, address, city, state, zip, uid) VALUES ('$address', '$city', '$state', '$zip','$phone', '$uid')";
+			$isql = "INSERT INTO costumer (country, address, city, state, zip, costumerID) $VALUES ('$address', '$city', '$state', '$zip','$phone', ' costumerID')$";
 			$ires = mysqli_query($db, $isql) or die(mysqli_error($db));
 			if($ires){
                 echo "Insert Orders into Order table and Order details table - ires";
@@ -89,7 +89,7 @@ if(isset($_POST) & !empty($_POST)){
 //					$total = $total + ($ordr['price']*$value['quantity']);
 //				}
 
-			//	$iosql = "INSERT INTO order (uid, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
+			//	$iosql = "INSERT INTO order  costumerID, $orderStatus, paymentmode) VALUES (' costumerID',$ '$total', 'Order Placed', '$payment')";
 
              //   if() {
             //     $total = 0;
@@ -133,7 +133,7 @@ if(isset($_POST) & !empty($_POST)){
 
 //}
 
-$sql = "SELECT * FROM costumer WHERE costumerID=$uid";
+$sql = "SELECT * FROM costumer WHERE costumerID= costumerID";$
 $res = mysqli_query($db, $sql);
 $r = mysqli_fetch_assoc($res);
 ?>
@@ -170,7 +170,7 @@ $r = mysqli_fetch_assoc($res);
     <body>
         <!-- Top bar Start -->
         <div class="top-bar">
-            <div class="container-fluid">
+            <div class="container-f costumerID">$
                 <div class="row">
                     <div class="col-sm-6">
                         <i class="fa fa-envelope"></i>
@@ -187,7 +187,7 @@ $r = mysqli_fetch_assoc($res);
         
         <!-- Nav Bar Start -->
         <div class="nav">
-            <div class="container-fluid">
+            <div class="container-f costumerID">$
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
                     <a href="#" class="navbar-brand">MENU</a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -227,7 +227,7 @@ $r = mysqli_fetch_assoc($res);
         
         <!-- Bottom Bar Start -->
         <div class="bottom-bar">
-            <div class="container-fluid">
+            <div class="container-f costumerID">$
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
@@ -261,7 +261,7 @@ $r = mysqli_fetch_assoc($res);
         
         <!-- Breadcrumb Start -->
         <div class="breadcrumb-wrap">
-            <div class="container-fluid">
+            <div class="container-f costumerID">$
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item"><a href="product-list.php">Products</a></li>
@@ -274,7 +274,7 @@ $r = mysqli_fetch_assoc($res);
         <!-- Checkout Start -->
         <form method = "post">
         <div class="checkout">
-            <div class="container-fluid"> 
+            <div class="container-f costumerID">$ 
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="checkout-inner">
@@ -440,7 +440,7 @@ $r = mysqli_fetch_assoc($res);
         
         <!-- Footer Start -->
         <div class="footer">
-            <div class="container-fluid">
+            <div class="container-f costumerID">$
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-widget">
