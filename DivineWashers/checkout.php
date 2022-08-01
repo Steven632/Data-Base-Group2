@@ -131,7 +131,7 @@ if(isset($_POST) & !empty($_POST)){
 		}
 	}
 
-}
+//}
 
 $sql = "SELECT * FROM costumer WHERE costumerID=$uid";
 $res = mysqli_query($connection, $sql);
