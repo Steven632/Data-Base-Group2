@@ -44,9 +44,9 @@ if(isset($_POST) & !empty($_POST)){
 					$total = $total + ($ordr['price']*$value['quantity']);
 				}
 
-				$iosql = "INSERT INTO order (uid, totalprice, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
-				//$iores = mysqli_query($connection, $iosql) or die(mysqli_error($connection));
-				if(mysqli_query($connection,$iosql)){
+				echo $iosql = "INSERT INTO order (uid, totalprice, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
+				$iores = mysqli_query($connection, $iosql) or die(mysqli_error($connection));
+				if($iores){
 					echo "Order inserted, insert order items <br>";
 					$orderid = mysqli_insert_id($connection);
 					foreach ($cart as $key => $value) {
@@ -61,13 +61,13 @@ if(isset($_POST) & !empty($_POST)){
 
 
 						$orditmsql = "INSERT INTO orderdetails (productID, orderID, prodPrice, prodQuantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
-						mysqli_query($connection, $orditmsql);
-						//if($orditmres){
-						//	echo "Order Item inserted redirect to my account page <br>";
-						//}
+						$orditmres = mysqli_query($connection, $orditmsql) or die (mysqli_error($connection));
+						if($orditmres){
+							echo "Order Item inserted redirect to my account page <br>";
+						}
 					}
 				}
-				unset($_SESSION['cart']);
+				//unset($_SESSION['cart']);
 				header("location: my-account.php");
 			}
 		}else{
@@ -75,30 +75,33 @@ if(isset($_POST) & !empty($_POST)){
 			$isql = "INSERT INTO costumer (country, address, city, state, zip, uid) VALUES ('$address', '$city', '$state', '$zip','$phone', '$uid')";
 			$ires = mysqli_query($connection, $isql) or die(mysqli_error($connection));
 			if($ires){
+                echo "Insert Orders into Order table and Order details table - ires";
 
-				$total = 0;
-				foreach ($cart as $key => $value) {
+            }
+
+				//$total = 0;
+				//foreach ($cart as $key => $value) {
 					//echo $key . " : " . $value['quantity'] ."<br>";
-					$ordsql = "SELECT * FROM product WHERE id=$key";
-					$ordres = mysqli_query($connection, $ordsql);
-					$ordr = mysqli_fetch_assoc($ordres);
+			//		$ordsql = "SELECT * FROM product WHERE id=$key";
+			//		$ordres = mysqli_query($connection, $ordsql);
+			//		$ordr = mysqli_fetch_assoc($ordres);
+//
+//					$total = $total + ($ordr['price']*$value['quantity']);
+//				}
 
-					$total = $total + ($ordr['price']*$value['quantity']);
-				}
+			//	$iosql = "INSERT INTO order (uid, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
 
-				$iosql = "INSERT INTO order (uid, orderStatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
-
-                if() {
-                    $total = 0;
-				foreach ($cart as $key => $value) {
+             //   if() {
+            //     $total = 0;
+			//	foreach ($cart as $key => $value) {
 					//echo $key . " : " . $value['quantity'] ."<br>";
-					$ordsql = "SELECT * FROM product WHERE id=$key";
-					$ordres = mysqli_query($connection, $ordsql);
-					$ordr = mysqli_fetch_assoc($ordres);
+			//		$ordsql = "SELECT * FROM product WHERE id=$key";
+			//		$ordres = mysqli_query($connection, $ordsql);
+			//		$ordr = mysqli_fetch_assoc($ordres);
 
 					//$orditmsql = "INSERT INTO orderdetails (orderID, productID, prodPrice, prodQuantity) VALUES
                    // ("
-                }
+               // }
 				$iores = mysqli_query($connection, $iosql) or die(mysqli_error($connection));
 				if($iores){
 					//echo "Order inserted, insert order items <br>";
