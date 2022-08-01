@@ -6,9 +6,9 @@
         // if(!isset($_SESSION['costumerID']) & empty($_SESSION['costumerID'])){ //TEST-------------
 		header('location: login.php');
 	}
- costumerID = $_SESSION['costumer']; //ORIGINAL
- costumerID = $_SESSION['costumerID']; //TEST -----------------------------------------------------------
-$cart = $_SESSION['cart'];
+ $costumerID = $_SESSION['costumer']; //ORIGINAL
+ $costumerID = $_SESSION['costumerID']; //TEST -----------------------------------------------------------
+ $cart = $_SESSION['cart'];
 
 if(isset($_POST) & !empty($_POST)){
 	if($_POST['agree'] == true){
@@ -133,7 +133,7 @@ if(isset($_POST) & !empty($_POST)){
 
 //}
 
-$sql = "SELECT * FROM costumer WHERE costumerID= costumerID";$
+$sql = "SELECT * FROM costumer WHERE costumerID= $costumerID";
 $res = mysqli_query($db, $sql);
 $r = mysqli_fetch_assoc($res);
 ?>
