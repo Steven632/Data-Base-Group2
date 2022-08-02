@@ -1,7 +1,13 @@
 <?php
 include 'connection.php';
-?>
 
+if(isset($_GET['id']) & !empty($_POST['id'])){
+$search_r = $_GET['id'];
+$countquery = query("SELECT COUNT(prodName) AS 'counter' FROM product WHERE prodname LIKE '%search_r%'");
+confirm($countquery);
+$count_r = fetch_array($countquery);
+}
+?>
 <!--
 < ?php
 if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
@@ -18,22 +24,6 @@ if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
 }
 ?>
 -->
-<?php
-if(isset($_POST['prodName']) & !empty($_POST['prodName'])){
-	$search = $_POST['prodName'];
-	$sql = "SELECT * FROM product WHERE prodname = '$search'";
-    //echo $search;
-	$result = mysqli_query($db, $sql);
-	$count = mysqli_num_rows($result);
-	if($count == 1){
-		//echo "User exits, create session";
-
-		redirect("product-list.php?search=" . $search);
-	}else{
-		redirect("index.php?not_found");
-	}
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -134,11 +124,19 @@ if(isset($_POST['prodName']) & !empty($_POST['prodName'])){
                     <div class="col-md-6">
                         <div class="search">
 
-<form action="product-list.php"  method="post" method="get"  > <!-- name="" -->
+<form class="search-form" method="post" action="searchbar.php"  > <!-- name="" -->
                            
-                                <input type="text" placeholder="Search" name="prodName">
-                                <button type="submit"> <i class="fa fa-search"></i></button> <!--name=""-->
+                         <input type="text" placeholder="Search" name="prodName">
+                          <!--//<button type="submit"> <i class="fa fa-search"></i></button> <! --name=""-- >
+                          //<button type="submit" button> -->
+                          <button  type="submit">Submit</button>
 </form>
+
+
+
+
+
+
 
 
 

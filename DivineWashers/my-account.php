@@ -1,3 +1,7 @@
+<?php
+
+$uid = $_SESSION['costumer'];
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -228,9 +232,10 @@
                                 <h4>Address</h4>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h5>Payment Address</h5>
+                                        <h5>Payment Address</h5>                                       
                                         <p>123 Payment Street, Los Angeles, CA</p>
-                                        <p>Mobile: 012-345-6789</p>
+                                        <!--<p>Mobile: 012-345-6789</p> -->
+                                        <p><?php echo $uid['phoneNum']; ?></p>
                                         <button class="btn">Edit Address</button>
                                     </div>
                                     <div class="col-md-6">
