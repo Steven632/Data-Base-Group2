@@ -148,7 +148,8 @@ echo '</pre>';
                                             <th>Product</th>
                                             <th>Name</th>
                                             <th>Price</th>
-                                            <th></th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
@@ -235,10 +236,7 @@ echo '</pre>';
                         <div class="cart-page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="coupon">
-                                        <input type="text" placeholder="Coupon Code">
-                                        <button>Apply Code</button>
-                                    </div>
+                                
                                 </div>
                                 <div class="col-md-12">
                                     <div class="cart-summary">
