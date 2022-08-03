@@ -20,17 +20,17 @@ if(isset($_POST) & !empty($_POST)){
 		// $address2 = filter_var($_POST['address2'], FILTER_SANITIZE_STRING);
 	    $city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
 		$state = filter_var($_POST['state'], FILTER_SANITIZE_STRING);
-		$phone = filter_var($_POST['phoneNum'], FILTER_SANITIZE_NUMBER_INT);
-		$payment = filter_var($_POST['Paypallogin'], FILTER_SANITIZE_STRING);
+		//$phone = filter_var($_POST['phoneNum'], FILTER_SANITIZE_NUMBER_INT);
+	//	$payment = filter_var($_POST['Paypallogin'], FILTER_SANITIZE_STRING);
 		$zip = filter_var($_POST['zipCode'], FILTER_SANITIZE_NUMBER_INT);
 
 		$sql = "SELECT * FROM costumer WHERE costumerID = $costumerID";
-		$res = mysqli_query($db, $sql);
+        $res = mysqli_query($db, $sql);
 		$r = mysqli_fetch_assoc($res);
 		$count = mysqli_num_rows($res);
 		if($count == 1){
 			//update data in usersmeta table
-			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state',  zipCode='$zip' WHERE costumerID= $costumerID";$
+			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state', zip='$zip' WHERE costumerID= $costumerID";
 			$ures = mysqli_query($db, $usql) or die(mysqli_error($db));
 			if($ures){
 
