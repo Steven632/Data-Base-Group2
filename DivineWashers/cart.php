@@ -1,10 +1,6 @@
 <?php
 include 'connection.php';
 $cart = $_SESSION['cart'];
-//if(isset($_GET['cart']) & !empty($_GET['cart'])) define
-//{                             
-//    $cart = $_SESSION['cart'];
-//}  
 ?>
 <!DOCTYPE html>
 <html lang="en">

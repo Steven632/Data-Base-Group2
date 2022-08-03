@@ -129,14 +129,15 @@ if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
                          <input type="text" placeholder="Search" name="prodName">
                           <!--//<button type="submit"> <i class="fa fa-search"></i></button> <! --name=""-- >
                           //<button type="submit" button> -->
-                          <button  type="submit"><i class="fa fa-search"></i></button>
+                          <button  type="submit">Submit</button>
 </form>
 
 <?php
 if(isset($_GET) & !empty($_GET)){
-$sqlsearch = $sqlsearch("SELECT * as 'producto' FROM products WHERE prodName LIKE '%$search%'");
+$$sqlsearch = $sqlsearch("SELECT CONCAT(' ', prodName, prodImage) as 'producto' FROM products WHERE prodName LIKE '%$search%'");
 confirm($sqlsearch);
 }
+
 ?>
 
 

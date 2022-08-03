@@ -1,9 +1,6 @@
 <?php
-    include 'connection.php';
-    $uid = $_SESSION['costumer'];                      
-//    $cart = $_SESSION['cart'];
 
-//$uid = $_SESSION['costumer'];
+$uid = $_SESSION['costumer'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
