@@ -1,16 +1,9 @@
 <?php
 include 'connection.php';
 $cart = $_SESSION['cart'];
-<<<<<<< Updated upstream
-//if(isset($_GET['cart']) & !empty($_GET['cart'])) define
-//{                             
-//    $cart = $_SESSION['cart'];
-//}  
-=======
 echo '<pre>';
 print_r($_SESSION);
 echo '</pre>';
->>>>>>> Stashed changes
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -178,7 +171,7 @@ echo '</pre>';
 							<a class="remove" href="delcart.php?id=<?php echo $key; ?>"><i class="fa fa-times"></i></a>
 						</td>
 						<td>
-							<a href="#"><img src="img/<?php echo $cartr['prodImage']; ?>" alt="" height="90" width="90"></a>					
+							<a href="#"><img src="<?php echo $cartr['prodImage']; ?>" alt="" height="90" width="90"></a>					
 						</td>
 						<td>
 							<a href="product-detail.php?id=<?php echo $cartr['productID']; ?>"><?php echo substr($cartr['prodName'], 0 , 30); ?></a>					
