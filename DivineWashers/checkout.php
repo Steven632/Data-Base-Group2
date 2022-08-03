@@ -9,7 +9,9 @@
  $costumerID = $_SESSION['costumer']; //ORIGINAL
  $costumerID = $_SESSION['costumerID']; //TEST -----------------------------------------------------------
  $cart = $_SESSION['cart'];
-
+ echo '<pre>';
+ print_r($_SESSION);
+ echo '</pre>';
 if(isset($_POST) & !empty($_POST)){
 	if($_POST['agree'] == true){
 		$country = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
@@ -37,11 +39,11 @@ if(isset($_POST) & !empty($_POST)){
 				$total = 0;
 				foreach ($cart as $key => $value) {
 					//echo $key . " : " . $value['quantity'] ."<br>";
-					$ordsql = "SELECT * FROM product WHERE id=$key";
+					$ordsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
 					$ordres = mysqli_query($db, $ordsql);
 					$ordr = mysqli_fetch_assoc($ordres);
 
-					$total = $total + ($ordr['price']*$value['quantity']);
+					$total = $total + ($ordr['prodPrice']*$value['prodQuantity']);
 				}
 
 				echo $iosql = "INSERT INTO order  costumerID, $totalprice, orderStatus, paymentmode) VALUES (' costumerID',$ '$total', 'Order Placed', '$payment')";
@@ -51,13 +53,13 @@ if(isset($_POST) & !empty($_POST)){
 					$orderid = mysqli_insert_id($db);
 					foreach ($cart as $key => $value) {
 						//echo $key . " : " . $value['quantity'] ."<br>";
-						$ordsql = "SELECT * FROM product WHERE id=$key";
+						$ordsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
 						$ordres = mysqli_query($db, $ordsql);
 						$ordr = mysqli_fetch_assoc($ordres);
 
 						$pid = $ordr['id'];
-						$productprice = $ordr['price'];
-						$quantity = $value['quantity'];
+						$productprice = $ordr['prodPrice'];
+						$quantity = $value['prodQuantity'];
 
 
 						$orditmsql = "INSERT INTO orderdetails (productID, orderID, prodPrice, prodQuantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
@@ -108,7 +110,7 @@ if(isset($_POST) & !empty($_POST)){
 					$orderid = mysqli_insert_id($db);
 					foreach ($cart as $key => $value) {
 						//echo $key . " : " . $value['quantity'] ."<br>";
-						$ordsql = "SELECT * FROM product WHERE id=$key";
+						$ordsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
 						$ordres = mysqli_query($db, $ordsql);
 						$ordr = mysqli_fetch_assoc($ordres);
 
@@ -162,15 +164,11 @@ $r = mysqli_fetch_assoc($res);
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
     </head>
-<!-- <?php
-    // echo $_SESSION['costumer'];
-    // echo $_SESSION['costumerID'];
-?>  -->
 
     <body>
         <!-- Top bar Start -->
         <div class="top-bar">
-            <div class="container-f costumerID">$
+            <div class="container-f costumerID">
                 <div class="row">
                     <div class="col-sm-6">
                         <i class="fa fa-envelope"></i>
@@ -187,7 +185,7 @@ $r = mysqli_fetch_assoc($res);
         
         <!-- Nav Bar Start -->
         <div class="nav">
-            <div class="container-f costumerID">$
+            <div class="container-f costumerID">
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
                     <a href="#" class="navbar-brand">MENU</a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -227,7 +225,7 @@ $r = mysqli_fetch_assoc($res);
         
         <!-- Bottom Bar Start -->
         <div class="bottom-bar">
-            <div class="container-f costumerID">$
+            <div class="container-f costumerID">
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
@@ -261,7 +259,7 @@ $r = mysqli_fetch_assoc($res);
         
         <!-- Breadcrumb Start -->
         <div class="breadcrumb-wrap">
-            <div class="container-f costumerID">$
+            <div class="container-f costumerID">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item"><a href="product-list.php">Products</a></li>
@@ -274,7 +272,7 @@ $r = mysqli_fetch_assoc($res);
         <!-- Checkout Start -->
         <form method = "post">
         <div class="checkout">
-            <div class="container-f costumerID">$ 
+            <div class="container-f costumerID">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="checkout-inner">
@@ -385,17 +383,23 @@ $r = mysqli_fetch_assoc($res);
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-lg-4">
                         <div class="checkout-inner">
                             <div class="checkout-summary">
-                                <h1>Cart Total</h1>
-                                <!-- <p>Costway Portable Mini<span>$199.99</span></p> -->
-                                <!-- <p>LG Wifi Combo<span>$999.99</span></p> -->
-                                <p class="sub-total">Sub Total<span><!--$1,199.98--></span></p>
+                                <!-- <h1>Cart Total</h1>
+                                 <p>Costway Portable Mini<span>$199.99</span></p> 
+                                 <p>LG Wifi Combo<span>$999.99</span></p> 
+                                 <p class="sub-total">Sub Total<span>$1,199.98</span></p>
                                 <p class="ship-cost">Shipping Cost<span>$100</span></p>
-                                <h2>Grand Total<span><!--$1,299.98--></span></h2>
-                            </div>
-
+                                <h2>Grand Total<span>$1,299.98</span></h2>
+                             </div> -->
+                             
+                                            <h1>Cart Summary</h1>
+                                            <p>Sub Total<span> <?php echo $total; ?></span></p>
+                                            <p>Shipping Cost<span>Free Shipping </span></p>
+                                            <h2>Grand Total<span> <?php echo $total; ?></span></h2>
+                                        </div>
                             <div class="checkout-payment">
                                 <div class="payment-methods">
                                     <h1>Payment Methods</h1>
