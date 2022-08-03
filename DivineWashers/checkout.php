@@ -11,16 +11,16 @@
  $cart = $_SESSION['cart'];
 
 if(isset($_POST) & !empty($_POST)){
-	if($_POST['agree'] == true){
+	if($_POST['Paypal'] == true){
 		$country = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
 		// $fname = filter_var($_POST['costumerfirstName'], FILTER_SANITIZE_STRING);
 		// $lname = filter_var($_POST['costumerlastName'], FILTER_SANITIZE_STRING);
 		// $company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
 		$address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
 		// $address2 = filter_var($_POST['address2'], FILTER_SANITIZE_STRING);
-		// $city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
+	    $city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
 		$state = filter_var($_POST['state'], FILTER_SANITIZE_STRING);
-		// $phone = filter_var($_POST['phoneNum'], FILTER_SANITIZE_NUMBER_INT);
+		$phone = filter_var($_POST['phoneNum'], FILTER_SANITIZE_NUMBER_INT);
 		$payment = filter_var($_POST['Paypallogin'], FILTER_SANITIZE_STRING);
 		$zip = filter_var($_POST['zipCode'], FILTER_SANITIZE_NUMBER_INT);
 
@@ -72,7 +72,7 @@ if(isset($_POST) & !empty($_POST)){
 			}
 		}else{
 			//insert data in usersmeta table
-			$isql = "INSERT INTO costumer (country, address, city, state, zip, costumerID) $VALUES ('$address', '$city', '$state', '$zip','$phone', ' costumerID')$";
+			$isql = "INSERT INTO costumer (country, address, city, state, zipCode, costumerID) $VALUES ('$address', '$city', '$state', '$zip','$phone', ' costumerID')$";
 			$ires = mysqli_query($db, $isql) or die(mysqli_error($db));
 			if($ires){
                 echo "Insert Orders into Order table and Order details table - ires";
