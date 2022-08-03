@@ -74,11 +74,7 @@ if(isset($_POST) & !empty($_POST)){
 			}
 		}else{
 			//insert data in usersmeta table
-<<<<<<< Updated upstream
 			$isql = "INSERT INTO costumer (country, address, city, state, zipCode, costumerID) $VALUES ('$address', '$city', '$state', '$zip','$phone', ' costumerID')$";
-=======
-			$isql = "INSERT INTO costumer (country, address, city, state, zip, costumerID) $VALUES ('$address', '$city', '$state', '$zip','$phone', ' costumerID'";
->>>>>>> Stashed changes
 			$ires = mysqli_query($db, $isql) or die(mysqli_error($db));
 			if($ires){
                 echo "Insert Orders into Order table and Order details table - ires";
