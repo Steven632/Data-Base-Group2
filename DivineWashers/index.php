@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
-
-if(isset($_GET['id']) & !empty($_POST['id'])){
+//Cuantos resultados encontro (NUMERO)
+if(isset($_GET['id']) & !empty($_GET['id'])){
 $search_r = $_GET['id'];
 $countquery = query("SELECT COUNT(prodName) AS 'counter' FROM product WHERE prodname LIKE '%search_r%'");
 confirm($countquery);
@@ -124,7 +124,7 @@ if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
                     <div class="col-md-6">
                         <div class="search">
 
-<form class="search-form" method="post" action="searchbar.php"  > <!-- name="" -->
+<form class="search-form" method="post" action="indexsearchbar.php" > <!-- name="" -->
                            
                          <input type="text" placeholder="Search" name="prodName">
                           <!--//<button type="submit"> <i class="fa fa-search"></i></button> <! --name=""-- >
@@ -132,8 +132,13 @@ if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
                           <button  type="submit">Submit</button>
 </form>
 
+<?php
+if(isset($_GET) & !empty($_GET)){
+$$sqlsearch = $sqlsearch("SELECT CONCAT(' ', prodName, prodImage) as 'producto' FROM products WHERE prodName LIKE '%$search%'");
+confirm($sqlsearch);
+}
 
-
+?>
 
 
 
