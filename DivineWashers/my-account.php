@@ -1,9 +1,14 @@
 <?php
+<<<<<<< Updated upstream
     include 'connection.php';
     $uid = $_SESSION['costumer'];                      
 //    $cart = $_SESSION['cart'];
 
 //$uid = $_SESSION['costumer'];
+=======
+include 'connection.php';
+$uid = $_SESSION['costumer'];
+>>>>>>> Stashed changes
 ?>
 <!DOCTYPE html>
 <html lang="en">

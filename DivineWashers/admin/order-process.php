@@ -11,14 +11,14 @@
 <?php
 if(isset($_POST) & !empty($_POST)){
 		$status = filter_var($_POST['status'], FILTER_SANITIZE_STRING);
-		$message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+		// $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
 		$id = filter_var($_POST['orderid'], FILTER_SANITIZE_NUMBER_INT);
 
-			echo $ordprcsql = "INSERT INTO ordertracking (orderid, status, message) VALUES ('$id', '$status', '$message')";
+			echo $ordprcsql = "INSERT INTO orders (orderID, orderStatus,) VALUES ('$id', '$status')";
 			$ordprcres = mysqli_query($connection, $ordprcsql) or die(mysqli_error($connection));
 			if($ordprcres){
-				$ordupd = "UPDATE orders SET orderstatus='$status' WHERE id=$id";
-				if(mysqli_query($connection, $ordupd)){
+				$ordupd = "UPDATE orders SET orderStatus='$status' WHERE id=$id";
+				if(mysqli_query($db, $ordupd)){
 					header('location: orders.php');
 				}
 			}

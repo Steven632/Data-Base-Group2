@@ -126,7 +126,7 @@ if(isset($_GET['$search'])){
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span> 
                             </a> -->
-                            <a href="cart.php" class="btn cart">
+                            <a href="addtocart.php?id<?php echo $r['productID']; ?>" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>
@@ -316,8 +316,8 @@ if(isset($_GET['$search'])){
 
                                         </a>
                                         <div class="product-action">
-                                            <a href="cart.php"><i class="fa fa-cart-plus"></i></a>  
-                                            <!--<a href="addtocart.php?id=< ?php echo $row ['productID']; ?>"> <i class="fa fa-cart-plus"></i></a> -->                                           
+                                            <!-- <a href="cart.php"><i class="fa fa-cart-plus"></i></a>   -->
+                                            <a href="addtocart.php?id=<?php echo $row ['productID'];?>"> <i class="fa fa-cart-plus"></i></a>                                           
                                             <!--<a href="#"><i class="fa fa-heart"></i></a>-->
                                             <a href="product-detail.php?id=<?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a> 
                                         </div>

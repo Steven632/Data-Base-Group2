@@ -1,10 +1,16 @@
 <?php
 include 'connection.php';
 $cart = $_SESSION['cart'];
+<<<<<<< Updated upstream
 //if(isset($_GET['cart']) & !empty($_GET['cart'])) define
 //{                             
 //    $cart = $_SESSION['cart'];
 //}  
+=======
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+>>>>>>> Stashed changes
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,11 +151,11 @@ $cart = $_SESSION['cart'];
                                 <table class="table table-bordered">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th>Total</th>
                                             <th>Remove</th>
+                                            <th>Product</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
@@ -158,7 +164,8 @@ $cart = $_SESSION['cart'];
 				    $total = 0;
 					foreach ($cart as $key => $value) {
 						//echo $key . " : " . $value['quantity'] ."<br>";
-						$cartsql = "SELECT * FROM product WHERE id=$key";
+                        $cartsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
+						// $cartsql = "SELECT * FROM product WHERE productID=$key";
 						$cartres = mysqli_query($db, $cartsql);
 						$cartr = mysqli_fetch_assoc($cartres);
                         
@@ -171,23 +178,23 @@ $cart = $_SESSION['cart'];
 							<a class="remove" href="delcart.php?id=<?php echo $key; ?>"><i class="fa fa-times"></i></a>
 						</td>
 						<td>
-							<a href="#"><img src="admin/<?php echo $cartr['thumb']; ?>" alt="" height="90" width="90"></a>					
+							<a href="#"><img src="img/<?php echo $cartr['prodImage']; ?>" alt="" height="90" width="90"></a>					
 						</td>
 						<td>
-							<a href="product-detail.php?id=<?php echo $cartr['id']; ?>"><?php echo substr($cartr['name'], 0 , 30); ?></a>					
+							<a href="product-detail.php?id=<?php echo $cartr['productID']; ?>"><?php echo substr($cartr['prodName'], 0 , 30); ?></a>					
 						</td>
 						<td>
-							<span class="amount">INR<?php echo $cartr['price']; ?>.00/-</span>					
+							<span class="amount"><?php echo $cartr['prodPrice']; ?></span>					
 						</td>
-						<td>
+						<td> 
 							<div class="quantity"><?php echo $value['quantity']; ?></div>
 						</td>
 						<td>
-							<span class="amount">INR<?php echo ($cartr['price']*$value['quantity']); ?>.00/-</span>					
+							<span class="amount"><?php echo ($cartr['prodPrice']*$value['quantity']); ?></span>					
 						</td>
 					</tr>
 				<?php 
-				    $total = $total + ($cartr['price']*$value['quantity']);
+				    $total = $total + ($cartr['prodPrice']*$value['quantity']);
 			    } ?>
                                         <!-- <tr>
                                             <td>
@@ -244,9 +251,9 @@ $cart = $_SESSION['cart'];
                                     <div class="cart-summary">
                                         <div class="cart-content">
                                             <h1>Cart Summary</h1>
-                                            <p>Sub Total<span> <?php echo $total; ?> .00</span></p>
+                                            <p>Sub Total<span> <?php echo $total; ?></span></p>
                                             <p>Shipping Cost<span>Free Shipping </span></p>
-                                            <h2>Grand Total<span> <?php echo $total; ?>.00</span></h2>
+                                            <h2>Grand Total<span> <?php echo $total; ?></span></h2>
                                         </div>
                                         <div class="cart-btn">
                                             <button>Update Cart</button>
