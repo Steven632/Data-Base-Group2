@@ -11,7 +11,7 @@
  $cart = $_SESSION['cart'];
 
 if(isset($_POST) & !empty($_POST)){
-	if($_POST['Paypal'] == true){
+	if($_POST['agree'] == true){
 		$country = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
 		// $fname = filter_var($_POST['costumerfirstName'], FILTER_SANITIZE_STRING);
 		// $lname = filter_var($_POST['costumerlastName'], FILTER_SANITIZE_STRING);
