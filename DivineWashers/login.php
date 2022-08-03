@@ -211,8 +211,9 @@ include 'connection.php';
                                 </div>
                             </div>
                         </form>
-                        
+
                     </div>
+
                     <div class="col-lg-6">
                         <form class="login-form" method="post" action="loginprocess.php">
                             <div class="row">
@@ -231,11 +232,11 @@ include 'connection.php';
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button  name="submit" class="btn">Submit</button > <!--submit de login -->
-                                   
+                                    <button  name="submit" class="btn">Submit</button > <!--submit de login -->                                  
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
