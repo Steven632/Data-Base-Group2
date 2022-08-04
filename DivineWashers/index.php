@@ -1,11 +1,11 @@
 <?php
 include 'connection.php';
 //Cuantos resultados encontro (NUMERO)
-if(isset($_GET['id']) & !empty($_GET['id'])){
+if(isset($_GET['id'])){
 $search_r = $_GET['id'];
-$countquery = query("SELECT COUNT(prodName) AS 'counter' FROM product WHERE prodname LIKE '%search_r%'");
+$countquery = query("SELECT COUNT(prodName) AS 'counter' FROM product WHERE prodname LIKE '%$search_r%'");
 confirm($countquery);
-$count_r = fetch_array($countquery);
+$Count_r = fetch_array($countquery);
 }
 ?>
 <!--
@@ -24,6 +24,31 @@ if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
 }
 ?>
 -->
+<?php
+
+//echo $Count_r['counter'];
+//if($count_r['counter'] > '0'){
+//    echo hm;
+
+function getSearchData($search){
+    $query = query("SELECT *  FROM product WHERE prodName LIKE '%$search%'");
+    confirm($query);
+    return($query);
+}
+
+function ShowSearchData($search_r){
+    $query = query("SELECT *  FROM product WHERE prodName LIKE '%$search_r%'");
+    confirm($query);
+    return($query);
+}
+if(isset($_GET['$search_r'])){
+$info = ShowSearchData($search_r);
+while($row = fetch_array($info)){
+    $prodName = $row['prodName'];
+}
+}
+//}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -124,15 +149,33 @@ if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
                     <div class="col-md-6">
                         <div class="search">
 
+                        
 <form class="search-form" method="post" action="indexsearchbar.php" > <!-- name="" -->
                            
                          <input type="text" placeholder="Search" name="prodName">
-                          <!--//<button type="submit"> <i class="fa fa-search"></i></button> <! --name=""-- >
-                          //<button type="submit" button> -->
-                          <button  type="submit"><i class="fa fa-search"></i></button>
+                          <!--//<button type="submit"> <i class="fa fa-search"></i></button> <! --name=""-->
+                        <button  type="submit"><i class="fa fa-search"></i></button>
 </form>
 
-<?php
+
+
+
+<!--
+< ?php
+if(isset($_POST) & !empty($_POST)){
+	$search = $_GET['prodName'];
+	$sqlsearch = "SELECT *  FROM product WHERE prodName LIKE '%$search%'";
+    echo $search;
+    while($row = mysqli_fetch_assoc($sqlsearch)){ 
+        echo $search;
+    }
+}
+
+}
+? >
+-->
+
+<!--< ?php
 if(isset($_GET['prodName']) & !empty($_GET['prodName'])){
 $sqlsearch = $sqlsearch("SELECT * FROM products WHERE prodName LIKE '%$search_r%'");
 confirm($sqlsearch);
@@ -141,7 +184,7 @@ while($row = fetch_array($sqlsearch)){
 }
 
 }
-?>
+? > -->
 
 
 
@@ -223,6 +266,7 @@ while($row = fetch_array($sqlsearch)){
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
+                                <!--<span>(0)</span> -->
                             </a>
                         </div>
                     </div>

@@ -1,10 +1,10 @@
 <?php
 require_once 'connection.php'; 
-//include 'connection.php';
+include 'connection.php';
 if(isset($_POST) & !empty($_POST)){
 	$search = $_POST['prodName'];
 	$sqlsearch = "SELECT *  FROM product WHERE prodName LIKE '%$search%'";
-    echo $search;
+    //echo $search;
 	//confirm($sqlsearch);
 	//$result = mysqli_result($db, $sql);
 	//$count = mysqli_num_rows($result);

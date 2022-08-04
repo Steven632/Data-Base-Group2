@@ -116,8 +116,7 @@ if(isset($_GET['$search'])){
                     </div>
                     <div class="col-md-6">
                         <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
+
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -126,7 +125,8 @@ if(isset($_GET['$search'])){
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span> 
                             </a> -->
-                            <a href="addtocart.php?id<?php echo $r['productID']; ?>" class="btn cart">
+                           <!-- <a href="addtocart.php?id< ?php echo $r['productID']; ?>" class="btn cart">-->
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>
