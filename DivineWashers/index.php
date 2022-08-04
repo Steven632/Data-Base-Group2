@@ -134,8 +134,11 @@ if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
 
 <?php
 if(isset($_GET['prodName']) & !empty($_GET['prodName'])){
-$sqlsearch = $sqlsearch("SELECT * FROM products WHERE prodName LIKE '%$search%'");
+$sqlsearch = $sqlsearch("SELECT * FROM products WHERE prodName LIKE '%$search_r%'");
 confirm($sqlsearch);
+while($row = fetch_array($sqlsearch)){
+    $prodName = $row[prodName];
+}
 
 }
 ?>
@@ -250,8 +253,7 @@ confirm($sqlsearch);
                                 </li>
 -->
                 
-
-                           
+                         
                                                       <?php
                                                        $brandsqls ="SELECT distinct prodBrand FROM product"; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
                                                        $brandres = mysqli_query($db, $brandsqls);
@@ -413,7 +415,7 @@ confirm($sqlsearch);
                     <div class="col-md-3">
                         <div class="category-item ch-400">
                             <img src="img/CostwayPortableCompactTwin.png" />
-                            <a class="category-name" href="product-detail.php"> 
+                            
                                 <p>Costway Portable Compact Twin</p>
                             </a>
                         </div>
@@ -421,13 +423,13 @@ confirm($sqlsearch);
                     <div class="col-md-3">
                         <div class="category-item ch-250">
                             <img src="img/costwayAmazon.png" />
-                            <a class="category-name" href="product-detail.php">
+                            
                                 <p> Costway Portable Compact Mini </p>
                             </a>
                         </div>
                         <div class="category-item ch-150">
                             <img src="img/Costway.png" />
-                            <a class="category-name" href="product-detail.php">
+                            
                                 
                             </a>
                         </div>
@@ -435,13 +437,13 @@ confirm($sqlsearch);
                     <div class="col-md-3">
                         <div class="category-item ch-150">
                             <img src="img/LgLogo.png" />
-                            <a class="category-name" href="product-detail.php">
+                           
                                 
                             </a>
                         </div>
                         <div class="category-item ch-250">
                             <img src="img/lgWifiCombo.png"  />
-                            <a class="category-name" href="product-detail.php">
+                          
                                 <p>LG Smart Wifi Washer Combo - White</p>
                             </a>
                         </div>
@@ -449,7 +451,7 @@ confirm($sqlsearch);
                     <div class="col-md-3">
                         <div class="category-item ch-400">
                             <img src="img/lgWifiComboGraphite.png" />
-                            <a class="category-name" href="product-detail.php">
+                            
                                 <p>LG Smart Wifi Washer Combo - Graphite</p>
                             </a>
                         </div>

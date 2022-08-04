@@ -3,7 +3,7 @@ require_once 'connection.php';
 //include 'connection.php';
 if(isset($_POST) & !empty($_POST)){
 	$search = $_POST['prodName'];
-	$sqlsearch = "SELECT COUNT(prodName) AS 'counter' FROM product WHERE prodName LIKE '%$search%'";
+	$sqlsearch = "SELECT *  FROM product WHERE prodName LIKE '%$search%'";
     echo $search;
 	//confirm($sqlsearch);
 	//$result = mysqli_result($db, $sql);

@@ -8,6 +8,14 @@ echo '</pre>';
 //    $cart = $_SESSION['cart'];
 
 //$uid = $_SESSION['costumer'];
+
+if(isset($_GET['id']) & !empty($_GET['id'])){
+    $id = $_GET['id'];
+    $sql ="SELECT * FROM costumer ";
+    //echo $psql;
+    $result = mysqli_query($db, $sql);
+    $row = mysqli_fetch_assoc($result);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -231,6 +239,7 @@ echo '</pre>';
                                         
                                     </div>
 -->
+
                                 </div>
                             
                                 
@@ -242,19 +251,20 @@ echo '</pre>';
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                    <?php
-                                    $sql = "SELECT * from costumer";
-                                    while ($fetch=mysqli_fetch_array($sql)){
-                                    ?>
-                                        <h5>Payment Address</h5>   
 
-                                   
-                                    
-                                        <p>123 Payment Street, Los Angeles, CA</p> 
-                                        <p><?php echo $fetch['street']; ?></p>
+                                    <?php
+                                    $sql = "SELECT  * FROM costumer"; // WHERE $_GET[costumerID] = '$costumerID' ";  
+                                    $result = mysqli_query($db, $sql);
+                                    $row = mysqli_fetch_assoc($result);
+?>
+                                        <h5>Payment Address</h5>   
+    
+                                        <!--<p>123 Payment Street, Los Angeles, CA</p> -->
+                                        
+                                        <p><?php echo $row['street']; ?> <?php echo $row['address']; ?> <?php echo $row['city']; ?> <?php echo $row['state']; ?></p>
                                        
-                                        <p>Mobile: 012-345-6789</p> 
-                                        <p><?php echo $cartr['phoneNum']; ?></p>
+                                        <!--<p>Mobile: 012-345-6789</p> -->
+                                        <p>Phone number: <?php echo $row['phoneNum']; ?></p>
                                         
   
                                         <button class="btn">Edit Address</button>
@@ -262,14 +272,18 @@ echo '</pre>';
                                     </div>
                                     <div class="col-md-6">
                                         <h5>Shipping Address</h5>
-                                        <p>123 Shipping Street, Los Angeles, CA</p>
+                                        <!--<p>123 Shipping Street, Los Angeles, CA</p> -->
+                                        <p><?php echo $row['street']; ?> <?php echo $row['address']; ?> <?php echo $row['city']; ?> <?php echo $row['state']; ?></p>
+                                        <!--<p> 787-11112-232323</p> -->
                                         <p><?php echo $row['phoneNum']; ?></p>
-                                        <?php } ?>
+
                                         <button class="btn">Edit Address</button>
                                         
                                     </div>
+                                    
                                 </div>
                             </div>
+                            
                             <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
                                 <h4>Account Details</h4>
                                 <div class="row">

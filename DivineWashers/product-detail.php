@@ -7,7 +7,7 @@ if(isset($_GET) & !empty($_GET)){
     //echo $id;
     //$psql = "SELECT * FROM Product WHERE productID = '$id'"; 
                 //$psql = "SELECT * FROM Product, orderdetails WHERE productID = '$id' OUTER JOIN Product.productID = orderdetails.productID"; \
-                $psql =" SELECT * FROM Product, orderdetails WHERE product.productID = '$id' and orderdetails.productID='$id' ";
+    $psql =" SELECT * FROM Product, orderdetails WHERE product.productID = '$id' and orderdetails.productID='$id' ";
     //echo $psql;
     $presult = mysqli_query($db, $psql);
     $prow = mysqli_fetch_assoc($presult);
