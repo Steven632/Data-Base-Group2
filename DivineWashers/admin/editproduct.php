@@ -28,7 +28,7 @@
 
 			if(isset($name) && !empty($name)){
 				if(($extension == "jpg" || $extension == "jpeg") && $type == "image/jpeg" && $size<=$max_size){
-					$location = "uploads/";
+					$location = "../img/";
 					$filepath = $location.$name;
 					if(move_uploaded_file($tmp_name, $filepath)){
 						$smsg = "Uploaded Successfully";
@@ -45,7 +45,7 @@
 			$filepath = $_POST['filepath'];
 		}	
 
-		$sql = "UPDATE product SET name='$prodname', description='$description', catid='$category', price='$price', thumb='$filepath' WHERE id = $id";
+		$sql = "UPDATE product SET prodName='$prodname', prodDesc='$description', prodImage='$filepath' WHERE id = $id";
 		$sql = "UPDATE orderdetails SET price='$price', WHERE id = $id";
 		$res = mysqli_query($db, $sql);
 		if($res){
@@ -64,7 +64,7 @@
 		<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
 			<?php 	
-				$sql = "SELECT * FROM product WHERE productID=$id";
+				$sql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
 				$res = mysqli_query($db, $sql); 
 				$r = mysqli_fetch_assoc($res); 
 			?>
@@ -83,7 +83,7 @@
 			    <label for="productcategory">Product Category</label>
 			    <select class="form-control" id="productcategory" name="productcategory">
 			    <?php 	
-					$catsql = "SELECT * FROM product";
+					$catsql = "SELECT dryerCombo, frontLoad, portable, smartWifi, topLoad FROM product";
 					$catres = mysqli_query($db, $catsql); 
 					while ($catr = mysqli_fetch_assoc($catres)) {
 				?>
@@ -95,7 +95,7 @@
 
 			  <div class="form-group">
 			    <label for="productprice">Product Price</label>
-			    <input type="text" class="form-control" name="productprice" id="productprice" placeholder="Product Price" value="<?php echo $r['price']; ?>">
+			    <input type="text" class="form-control" name="productprice" id="productprice" placeholder="Product Price" value="<?php echo $r['prodPrice']; ?>">
 			  </div>
 			  <div class="form-group">
 			    <label for="prodImage">Product Image</label>

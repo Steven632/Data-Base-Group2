@@ -88,10 +88,19 @@
 			    <select class="form-control" id="productcategory" name="productcategory">
 				  <option value="">---SELECT CATEGORY---</option>
 				  <?php 	
-					$sql = "SELECT dryerCombo, frontLoad, portable, smartWifi, topLoad FROM product";
+					$sql = "SELECT categories FROM product";
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?>
+					<option value="<?php echo $r['id']; ?>"><?php echo $r['name']; ?></option>
+				<?php } ?>
+
+
+					<!-- <?php 	
+					$sql = "SELECT dryerCombo, frontLoad, portable, smartWifi, topLoad FROM product";
+					$res = mysqli_query($db, $sql); 
+					while ($r = mysqli_fetch_assoc($res)) {
+				?> -->
 					<option value="<?php echo $r['id']; ?>"><?php echo $r['dryerCombo'];  ?>Dryer Combo</option>
 				<?php } ?>
 				</select>
