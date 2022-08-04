@@ -57,7 +57,7 @@ if(isset($_POST) & !empty($_POST)){
 
 						$pid = $ordr['id'];
 						$productprice = $ordr['prodPrice'];
-						$quantity = $value['prodQuantity'];
+						$quantity = $value['quantity'];
 
 
 						$orditmsql = "INSERT INTO orderdetails (productID, orderID, prodPrice, prodQuantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
@@ -79,15 +79,15 @@ if(isset($_POST) & !empty($_POST)){
 
             }
 
-				//$total = 0;
-				//foreach ($cart as $key => $value) {
-					//echo $key . " : " . $value['quantity'] ."<br>";
-			//		$ordsql = "SELECT * FROM product WHERE id=$key";
-			//		$ordres = mysqli_query($db, $ordsql);
-			//		$ordr = mysqli_fetch_assoc($ordres);
-//
-//					$total = $total + ($ordr['price']*$value['quantity']);
-//				}
+				$total = 0;
+				foreach ($cart as $key => $value) {
+					echo $key . " : " . $value['quantity'] ."<br>";
+					$ordsql = "SELECT * FROM product WHERE id=$key";
+					$ordres = mysqli_query($db, $ordsql);
+					$ordr = mysqli_fetch_assoc($ordres);
+
+					$total = $total + ($ordr['price']*$value['quantity']);
+				}
 
 			//	$iosql = "INSERT INTO order  costumerID, $orderStatus, paymentmode) VALUES (' costumerID',$ '$total', 'Order Placed', '$payment')";
 
@@ -392,6 +392,9 @@ $r = mysqli_fetch_assoc($res);
                                 <p class="ship-cost">Shipping Cost<span>$100</span></p>
                                 <h2>Grand Total<span>$1,299.98</span></h2>
                              </div> -->
+                             <?php 
+				    $total = $total + ($ordr['prodPrice']*$value['quantity']);
+			     ?>
                              
                                             <h1>Cart Summary</h1>
                                             <p>Sub Total<span> <?php echo $total; ?></span></p>
