@@ -44,7 +44,7 @@ if(isset($_POST) & !empty($_POST)){
 					$ordr = mysqli_fetch_assoc($ordres);
 				}
 
-				echo $iosql = "INSERT INTO order (costumerID, orderStatus) VALUES ('$costumerID', 'Order Placed')";
+				echo $iosql = "INSERT INTO order (costumerID, orderStatus) VALUES ('$costumerID', 'Order_Placed' )";
 				$iores = mysqli_query($db, $iosql) or die(mysqli_error($db));
 				if($iores){
 					echo "Order inserted, insert order items <br>";
@@ -409,7 +409,15 @@ $r = mysqli_fetch_assoc($res);
                                             <input type="radio" class="custom-control-input" id="payment-1" name="payment">
                                             <label class="custom-control-label" for="payment-1">Paypal</label>
                                         </div>
-                                    </div>
+                                    
+                                </div>
+                                <div class = "space30"></div>
+
+                                    <input name="agree" id="checkboxPP" class="css-checkbox" type="checkbox" value=""><span>Paypal <a href=#> &amp; </a><span>
+                                
+                                <div class="space30"></div>
+                               
+
 
                                     <!--<div class="payment-method">
                                         <div class="custom-control custom-radio">
