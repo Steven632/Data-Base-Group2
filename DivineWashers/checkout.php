@@ -24,7 +24,7 @@ if(isset($_POST) & !empty($_POST)){
 		$state = filter_var($_POST['state'], FILTER_SANITIZE_STRING);
 		//$phone = filter_var($_POST['phoneNum'], FILTER_SANITIZE_NUMBER_INT);
 	//	$payment = filter_var($_POST['Paypallogin'], FILTER_SANITIZE_STRING);
-		$zip = filter_var($_POST['zipCode'], FILTER_SANITIZE_NUMBER_INT);
+		$zip = filter_var($_POST['zip'], FILTER_SANITIZE_NUMBER_INT);
 
 		$sql = "SELECT * FROM costumer WHERE costumerID = $costumerID";
         $res = mysqli_query($db, $sql);
@@ -32,7 +32,7 @@ if(isset($_POST) & !empty($_POST)){
 		$count = mysqli_num_rows($res);
 		if($count == 1){
 			//update data in usersmeta table
-			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state', zip='$zip' WHERE costumerID= $costumerID";
+			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state', zipCode='$zip' WHERE costumerID= $costumerID";
 			$ures = mysqli_query($db, $usql) or die(mysqli_error($db));
 			if($ures){
 
@@ -42,11 +42,9 @@ if(isset($_POST) & !empty($_POST)){
 					$ordsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
 					$ordres = mysqli_query($db, $ordsql);
 					$ordr = mysqli_fetch_assoc($ordres);
-
-					$total = $total + ($ordr['prodPrice']*$value['prodQuantity']);
 				}
 
-				echo $iosql = "INSERT INTO order  costumerID, $totalprice, orderStatus, paymentmode) VALUES (' costumerID',$ '$total', 'Order Placed', '$payment')";
+				echo $iosql = "INSERT INTO order (costumerID, orderStatus) VALUES ('$costumerID', 'Order Placed')";
 				$iores = mysqli_query($db, $iosql) or die(mysqli_error($db));
 				if($iores){
 					echo "Order inserted, insert order items <br>";
@@ -377,7 +375,7 @@ $r = mysqli_fetch_assoc($res);
                                     </div>
                                     <div class="col-md-6">
                                         <label>ZIP Code</label>
-                                        <input class="form-control" type="text" placeholder="ZIP Code">
+                                        <input class="form-control" name="zip" type="text" placeholder="ZIP Code">
                                     </div>
                                 </div>
                             </div>
