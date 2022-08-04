@@ -1,4 +1,5 @@
 <?php
+//require_once 'connection.php';
 include 'connection.php';
 $cart = $_SESSION['cart'];
 echo '<pre>';

@@ -162,7 +162,7 @@ if(isset($_GET) & !empty($_GET)){
                                     </div>
 
                                   <!--  <div class="product-slider-single-nav normal-slider">
-                                        <div class="slider-nav-img"><img src="<?php //echo $prow['prodImage']; ?>" alt="Product Image"></div>                                                              
+                                        <div class="slider-nav-img"><img src="< ?php //echo $prow['prodImage']; ?>" alt="Product Image"></div>                                                              
                                     </div> -->
 
                                 </div>
@@ -183,28 +183,35 @@ if(isset($_GET) & !empty($_GET)){
                                             <!--<p>$199.99 <span>$1,299.99</span></p> -->
                                             <p>$<?php echo $prow['prodPrice']; ?></p>
                                         </div>
+
+                                        <form method="get" action="addtocart.php"> 
                                         <div class="quantity">
+                                       
                                             <h4>Quantity:</h4>
+                                           
                                             <div class="qty">
-                                                <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                <input type="text" value="1">
-                                                <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="p-color">
-                                            <h4>Color:</h4>
-                                            <div class="btn-group btn-group-sm">
-                                                <button type="button" class="btn">White</button>
-                                                <button type="button" class="btn">Graphite</button>
+                                           
+                                            
+                                                <!--<button class="btn-minus"><i class="fa fa-minus"></i></button>
+                                                <button class="btn-plus"><i class="fa fa-plus"></i></button> -->
                                                 
-                                            </div> 
-                                        </div>
-                                        <div class="action">
-                                            <a class="btn" href="cart.php"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                                
+                                                <!--<input type="text" value="1" name="quant"> -->
+                                                <input type="hidden" name="id" value="<?php echo $prow['productID'];?>">
+                                                <input type="text" name="quant" placeholder="1">
+         
+                                            </div>
+                                       
+                                         <div class="action">
+                        <!--<a class="btn" href="addtocart.php?id=< ?php echo $prow ['productID'];?>"><i class="fa fa-shopping-cart"></i>Add to Cart</a>-->
+                                             <input type="submit" class="button btn-small" value="Add To Cart" style="width :100px; width:100px"> 
+                                             
+                                            <!--<a href="addtocart.php?id=< ?php echo $row ['productID'];?>"> <i class="fa fa-cart-plus"></i></a> -->
 
                                             <a class="btn" href="checkout.php"><i class="fa fa-shopping-bag"></i>Buy Now</a>
-                                        </div>
+                                            
+                                        </div>   
+                                         </form>                              
                                     </div>
                                 </div>
                             </div>
@@ -316,11 +323,12 @@ if(isset($_GET) & !empty($_GET)){
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
+                                
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.php">
                                     <!--<img src="img/lgWifiCombo.png" alt="Product Image"> -->
-                                    <img src= "<?php echo $r['prodImage']; ?>"  alt="Product Image"> 
+                                    <img src= "<?php echo $r['prodImage']; ?>" alt="Product Image"> 
                                 </a>
                                 <div class="product-action">
                                     <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>                                 

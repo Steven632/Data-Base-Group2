@@ -133,9 +133,10 @@ if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
 </form>
 
 <?php
-if(isset($_GET) & !empty($_GET)){
-$sqlsearch = $sqlsearch("SELECT * as 'producto' FROM products WHERE prodName LIKE '%$search%'");
+if(isset($_GET['prodName']) & !empty($_GET['prodName'])){
+$sqlsearch = $sqlsearch("SELECT * FROM products WHERE prodName LIKE '%$search%'");
 confirm($sqlsearch);
+
 }
 ?>
 

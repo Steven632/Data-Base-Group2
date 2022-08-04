@@ -1,6 +1,10 @@
 <?php
-    include 'connection.php';
-    $uid = $_SESSION['costumerID'];                      
+include 'connection.php';
+$costumerID = $_SESSION['costumerID']; 
+
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';                     
 //    $cart = $_SESSION['cart'];
 
 //$uid = $_SESSION['costumer'];
@@ -233,19 +237,36 @@
                             </div>
                             <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
                                 <h4>Address</h4>
+                                
+                                
+
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h5>Payment Address</h5>                                       
-                                        <p>123 Payment Street, Los Angeles, CA</p>
-                                        <!--<p>Mobile: 012-345-6789</p> -->
-                                        <p><?php echo $uid['phoneNum']; ?></p>
+                                    <?php
+                                    $sql = "SELECT * from costumer";
+                                    while ($fetch=mysqli_fetch_array($sql)){
+                                    ?>
+                                        <h5>Payment Address</h5>   
+
+                                   
+                                    
+                                        <p>123 Payment Street, Los Angeles, CA</p> 
+                                        <p><?php echo $fetch['street']; ?></p>
+                                       
+                                        <p>Mobile: 012-345-6789</p> 
+                                        <p><?php echo $cartr['phoneNum']; ?></p>
+                                        
+  
                                         <button class="btn">Edit Address</button>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <h5>Shipping Address</h5>
                                         <p>123 Shipping Street, Los Angeles, CA</p>
-                                        <p>Mobile: 012-345-6789</p>
+                                        <p><?php echo $row['phoneNum']; ?></p>
+                                        <?php } ?>
                                         <button class="btn">Edit Address</button>
+                                        
                                     </div>
                                 </div>
                             </div>
