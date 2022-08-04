@@ -64,7 +64,8 @@
 		<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
 			<?php 	
-				$sql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
+			
+				$sql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID";
 				$res = mysqli_query($db, $sql); 
 				$r = mysqli_fetch_assoc($res); 
 			?>
