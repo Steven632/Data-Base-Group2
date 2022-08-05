@@ -160,8 +160,10 @@ if(isset($_GET['$search'])){
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="product-search">
-                                                <input type="email" value="Search">
-                                                <button><i class="fa fa-search"></i></button>
+                                            <form class="search-form2" method="post" action="indexsearchbar.php" > <!-- name="" -->
+                                                <input type="text" placeholder="Search" name="prodName">
+                                                <button><i class="fa fa-search "></i></button>
+                                                </form>
                                             </div>
                                         </div>
 

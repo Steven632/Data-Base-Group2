@@ -283,51 +283,30 @@ while($row = fetch_array($sqlsearch)){
                         <nav class="navbar bg-light">
                             <ul class="navbar-nav">
                                   <li class="nav-item">
+                                    
                                     <a class="nav-link" href="index.php"><i class="fa fa-home"></i>Home</a>
                                 </li>
 
-                               <!-- < ?php
-                                    $catsql ="SELECT * FROM product WHERE portable = 1";
-                                    $catres = mysqli_query($db, $catsql);
-                                    ($catr = mysqli_fetch_assoc($catres))
-                                ?>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php?id=< ?php echo $catr ['productID'];?>"><i class="fa fa-shopping-bag"></i>Portable</a>
-                                </li>
--->
-                
-                         
-                                                      <?php
-                                                       $brandsqls ="SELECT distinct prodBrand FROM product"; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
-                                                       $brandres = mysqli_query($db, $brandsqls);
-                                                       while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
-                                                           ?>                                        
-
-                                                           <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?id=<?php echo $brandrs ['prodBrand'];?>"><?php echo $brandrs ['prodBrand'];?> </li>
-                                                           <?php
-                                                           }                       
-                                                           ?>
-                                
-                                <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -- >
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">Portable </li>
-                            -->
-
-                              <!--  <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php"><i class="fa fa-plus-square"></i>Front Load</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php"><i class="fa fa-microchip"></i>Top Load</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php"><i class="fa fa-thermometer-quarter"></i>Dryer Combo</a>
-                                </li>
-                                -->
+                       
+                  <?php
+                    $brandsqls ="SELECT distinct prodBrand FROM product"; //Tengo una idea mas o menos de como hacer esto. asignar valor brand y compara para mostrar luego
+                    $brandres = mysqli_query($db, $brandsqls);
+                    while($brandrs = mysqli_fetch_assoc($brandres)){                                                       
+                   ?>                                       
+                     <li class="nav-item">
+                        <a href="product-list.php?id=<?php echo $brandrs ['prodBrand'];?>"><i class="fa fa-shopping-bag"></i><?php echo $brandrs ['prodBrand'];?> </a>
+                        <?php
+                   }                       
+                   ?>  
+                    </li>
+                     
+                                  
 
                                 </ul>
                         </nav>
                      </div>
-
+                    <!--Slider
+                 -->
                      <div class="col-md-6">
                         <div class="header-slider normal-slider">
                             <!-- slider-->
@@ -343,9 +322,9 @@ while($row = fetch_array($sqlsearch)){
 
                             <div class="header-slider-item">
                                 <!-------------------------ARREGLAR FOTOS------------------------>
-                                <img src="img/samsung_front_2.png" alt="Slider Image" />
-                                <!--<img src= "<?php echo $row['prodImage'];?>" style="width :100px; length:100px" >-->
-                                <!--img src= "< ?php echo $r['prodImage']; ?>" SIZE ESTAN MAL --> 
+                                <!--<img src="img/samsung_front_2.png" alt="Slider Image"/> -->
+                                <img src= "<?php echo $r['prodImage'];?>" > 
+                                <!-- img src= "< ?php echo $r['prodImage']; ?>" SIZE ESTAN MAL --> 
                                 <div class="header-slider-caption">
                                     <p><?php echo $r["prodName"]; ?></p>                                 
                                     <a class="btn" href="product-detail.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-shopping-cart"></i>Shop Now</a>      
