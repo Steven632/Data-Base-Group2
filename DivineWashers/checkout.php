@@ -393,7 +393,9 @@ $r = mysqli_fetch_assoc($res);
                                 <h2>Grand Total<span>$1,299.98</span></h2>
                              </div> -->
                              <?php 
+                             if(isset($_GET['$ordr']) & (isset($_GET['$value'])))
 				    $total = $total + ($ordr['prodPrice']*$value['quantity']);
+                   
 			     ?>
                              
                                             <h1>Cart Summary</h1>
@@ -407,13 +409,13 @@ $r = mysqli_fetch_assoc($res);
                                     <div class="payment-method">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="payment-1" name="payment">
-                                            <label class="custom-control-label" for="payment-1">Paypal</label>
+                                            <!--<label class="custom-control-label" for="payment-1">Paypal</label>-->
                                         </div>
                                     
                                 </div>
                                 <div class = "space30"></div>
 
-                                    <input name="agree" id="checkboxPP" class="css-checkbox" type="checkbox" value=""><span>Paypal <a href=#> &amp; </a><span>
+                                    <input name="agree" id="checkboxPP" class="css-checkbox" type="checkbox" value=""><span>Paypal  </a><span> <!--<a href=#> &amp; -->
                                 
                                 <div class="space30"></div>
                                

@@ -311,10 +311,6 @@ while($row = fetch_array($sqlsearch)){
                                 
                                 <!-- <li><a href="product-list.php?productID = < ? echo $brandr['productID']; ?>">< ? echo $brandr['divinewashersfinal']; ?> </a><span>(1)</span></li> -- >
                                 <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">Portable </li>
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">frontload </li>
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">topload </li>
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">smart </li>
-                                <li><i class="fa fa-shopping-bag"></i><a href="product-list.php?brand=< ?php echo $catr ['prodBrand'];?>">dryer combo </li>
                             -->
 
                               <!--  <li class="nav-item">
@@ -340,16 +336,15 @@ while($row = fetch_array($sqlsearch)){
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
                             $id= $_GET['productID'];
-                            //$sql .= "WHERE =  $id";
                             }
                             $result = mysqli_query($db, $sql);
-                            //$r = mysqli_fetch_assoc($result)
                             while($r = mysqli_fetch_assoc($result)){                             
                             ?>
 
                             <div class="header-slider-item">
                                 <!-------------------------ARREGLAR FOTOS------------------------>
-                                <img src="img/samsung_front_1.png" alt="Slider Image" />
+                                <img src="img/samsung_front_2.png" alt="Slider Image" />
+                                <!--<img src= "<?php echo $row['prodImage'];?>" style="width :100px; length:100px" >-->
                                 <!--img src= "< ?php echo $r['prodImage']; ?>" SIZE ESTAN MAL --> 
                                 <div class="header-slider-caption">
                                     <p><?php echo $r["prodName"]; ?></p>                                 
