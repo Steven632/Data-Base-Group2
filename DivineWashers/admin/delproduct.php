@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require_once '../config/connect.php';
+	require_once '../config/connection.php';
 	if(!isset($_SESSION['email']) & empty($_SESSION['email'])){
 		header('location: login.php');
 	}
