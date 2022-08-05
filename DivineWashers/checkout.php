@@ -392,11 +392,22 @@ $r = mysqli_fetch_assoc($res);
                                 <p class="ship-cost">Shipping Cost<span>$100</span></p>
                                 <h2>Grand Total<span>$1,299.98</span></h2>
                              </div> -->
-                             <?php 
-                             if(isset($_GET['$ordr']) & (isset($_GET['$value'])))
-				    $total = $total + ($ordr['prodPrice']*$value['quantity']);
-                   
-			     ?>
+                            <?php
+                             $total = 0;
+					foreach ($cart as $key => $value) {
+						//echo $key . " : " . $value['quantity'] ."<br>";
+                        $cartsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
+						// $cartsql = "SELECT * FROM product WHERE productID=$key";
+						$cartres = mysqli_query($db, $cartsql);
+						$cartr = mysqli_fetch_assoc($cartres);
+                        
+ 
+					
+				 ?>
+                            
+                            <?php 
+				    $total = $total + ($cartr['prodPrice']*$value['quantity']);
+			    } ?>
                              
                                             <h1>Cart Summary</h1>
                                             <p>Sub Total<span> <?php echo $total; ?></span></p>
