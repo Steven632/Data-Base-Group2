@@ -100,10 +100,6 @@ CREATE TABLE `order` (
   `orderStatus` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-
-INSER INTO 'order' ('orderID', 'orderDate', 'shipDate', 'orderStatus') VALUES 
-(1, 2022-08-01, 2022-08-03, 1);
 -- --------------------------------------------------------
 
 --
