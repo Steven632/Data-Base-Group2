@@ -100,6 +100,8 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="prodImage">Product Image</label>
+				<?php echo $r['prodImage']; ?>
+				<img src= "<?php echo $r['prodImage']; ?>">
 			    <?php if(isset($r['prodImage']) & !empty($r['prodImage'])){ ?>
 			    <br>
 			    	<img src="<?php echo $r['prodImage'] ?>" widht="100px" height="100px">

@@ -319,9 +319,9 @@ if(isset($_GET) & !empty($_GET)){
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                </div>
-                                
+                                </div>                              
                             </div>
+
                             <div class="product-image">
                                 <a href="product-detail.php">
                                     <!--<img src="img/lgWifiCombo.png" alt="Product Image"> -->
@@ -345,6 +345,7 @@ if(isset($_GET) & !empty($_GET)){
                             }
                             ?>
                         </div>
+                        
                                 </div>
                             </div>
                         </div>
@@ -364,7 +365,7 @@ if(isset($_GET) & !empty($_GET)){
                                ?>
                                   
                                 <li class="nav-item">
-                                <li><a href="product-list.php?cat=<?php echo $catr['portable']; ?>" ><i class="fa fa-microchip"></i>Portable</a></li>
+                                    <li><a href="product-list.php?cat=<?php echo $catr['portable']; ?>" ><i class="fa fa-microchip"></i>Portable</a></li>
                                     <a href="product-list.php?catq=<?php echo $catr['frontLoad']; ?>" ><i class="fa fa-microchip"></i>Frontload</a>
                                     <a href="product-list.php?catw=<?php echo $catr['topLoad']; ?>" ><i class="fa fa-microchip"></i>Topload</a>
                                     <a href="product-list.php?cate=<?php echo $catr['smartWifi']; ?>" ><i class="fa fa-microchip"></i>Smartwifi</a>

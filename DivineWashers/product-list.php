@@ -256,7 +256,7 @@ if(isset($_GET['$search'])){
                             $sql .= " WHERE prodPrice > '301' and prodPrice < '400'";                            
                             } 
 
-                            else if(isset($_GET['sp2']))
+                            else if(isset($_GET['sp2'])) 
                             {
                             $sp2 = $_GET['sp2'];                        
                             $sql .= " WHERE prodPrice > '401' and prodPrice < '500'";                            
@@ -292,6 +292,7 @@ if(isset($_GET['$search'])){
                             $sql .= " WHERE prodPrice > '901' and prodPrice < '99999'";                            
                             } 
 
+                            // else if get empty echo "no price criteria match";
 
                             $result = mysqli_query($db, $sql);
                             while($row = mysqli_fetch_assoc($result)){ 
@@ -370,14 +371,13 @@ if(isset($_GET['$search'])){
                             <h2 class="title">Category</h2>
                             <nav class="navbar bg-light">
                                 <ul class="navbar-nav">
-
                                 <!-- CATEGORY -->
-<?php
-
+                                <?php
                                 $sqlc = "SELECT * FROM Product";           //muestra brands escogifod pero no precios         
                                 $resultc = mysqli_query($db, $sqlc);
                                $catr = mysqli_fetch_assoc($resultc)
-?>                                     
+                                ?>               
+
                                <li class="nav-item">
                                     <li><a href="product-list.php?cat=<?php echo $catr['portable']; ?>" ><i class="fa fa-microchip"></i>Portable</a></li>
                                     <a href="product-list.php?catq=<?php echo $catr['frontLoad']; ?>" ><i class="fa fa-microchip"></i>Frontload</a>

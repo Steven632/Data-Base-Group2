@@ -1,17 +1,18 @@
 <?php
 	ob_start();
 	//session_start(); ya session esta comenzada, no hace falta otro session start
-	require_once 'connection.php';
+	require_once 'connection.php'; 
 	if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){ //ORIGINAL 
         // if(!isset($_SESSION['costumerID']) & empty($_SESSION['costumerID'])){ //TEST-------------
 		header('location: login.php');
 	}
  $costumerID = $_SESSION['costumer']; //ORIGINAL
+ if(isset($_GET['costumerID']))
  $costumerID = $_SESSION['costumerID']; //TEST -----------------------------------------------------------
  $cart = $_SESSION['cart'];
- echo '<pre>';
- print_r($_SESSION);
- echo '</pre>';
+ //echo '<pre>';
+ //print_r($_SESSION);
+ //echo '</pre>';
 if(isset($_POST) & !empty($_POST)){
 	if($_POST['agree'] == true){
 		$country = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
@@ -452,7 +453,7 @@ $r = mysqli_fetch_assoc($res);
                                     </div>
                                 </div>
 -->
-                                <div class="checkout-btn">
+                                <div class="checkout-btn"> <!-- action="checoutprocess.php" -->
                                     <button>Place Order</button>
                                 </div>
                             </div>

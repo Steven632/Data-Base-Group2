@@ -1,10 +1,11 @@
 <?php
 include 'connection.php';
+if(isset($_GET['costumerID']))
 $costumerID = $_SESSION['costumerID']; 
 
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';                     
+//echo '<pre>';
+//print_r($_SESSION);
+//echo '</pre>';                     
 //    $cart = $_SESSION['cart'];
 
 //$uid = $_SESSION['costumer'];
