@@ -4,14 +4,14 @@
 					<li>
 						<a href="index.php">Dashboard</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="#">Categories</a>
 						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
 						<ul>
 							<li><a href="categories.php">View Categories</a></li>
 							<li><a href="addcategory.php">Add Category</a></li>
 						</ul>
-					</li>
+					</li> -->
 					<li>
 						<a href="#">Products</a>
 						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
@@ -33,7 +33,7 @@
 						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
 						<ul>
 							<li><a href="customers.php">View Customers</a></li>
-							<li><a href="reviews.php">View Reviews</a></li>
+							<!-- <li><a href="reviews.php">View Reviews</a></li> -->
 						</ul>
 					</li>
 					<li>

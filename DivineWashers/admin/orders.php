@@ -25,7 +25,7 @@
 				</thead>
 				<tbody>
 				<?php 	
-					$sql = "SELECT o.orderID, o.orderStatus, o.orderDate, c.costumerfirstName, c.costumerlastName FROM order o JOIN costumer c WHERE o.orderID=c.costumerID ORDER BY o.orderID DESC";
+					$sql = "SELECT o.orderID, o.orderStatus, o.orderDate, c.costumerfirstName, c.costumerlastName FROM 'order' o JOIN costumer c WHERE o.orderID=c.costumerID ORDER BY o.orderID DESC";
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?>

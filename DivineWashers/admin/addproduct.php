@@ -9,7 +9,7 @@
 		$prodbrand = mysqli_real_escape_string($db, $_POST['productbrand']);
 		$prodname = mysqli_real_escape_string($db, $_POST['productname']);
 		$description = mysqli_real_escape_string($db, $_POST['productdescription']);
-		$category = mysqli_real_escape_string($db, $_POST['productcategory']);
+		// $category = mysqli_real_escape_string($db, $_POST['productcategory']);
 		$price = mysqli_real_escape_string($db, $_POST['productprice']);
 		// $quantity = mysqli_real_escape_string($db, $_POST['productquantity']);
 
@@ -28,7 +28,7 @@
 					$location = "../img/"; 
 					if(move_uploaded_file($tmp_name, $location.$name)){
 						//$smsg = "Uploaded Successfully";
-						$sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID, prodImage) VALUES ('$prodbrand', $prodname', '$description', '$category', '$location$name')";
+						$sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID, prodImage) VALUES ('$prodbrand', $prodname', '$description',  '$location$name')";
 						$sql = "INSERT INTO orderdetails (prodPrice) VALUES ('$price')";
 						$res = mysqli_query($db, $sql);
 						if($res){
@@ -48,7 +48,8 @@
 			}
 		}else{
 
-			$sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID) VALUES ('$prodbrand', $prodname', '$description', '$category') AND INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
+			// $sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID, dryerCombo, frontLoad, portable, smartWifi, topLoad) VALUES ('$prodbrand', $prodname', '$description','prodid') AND INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
+			$sql = "INSERT INTO product (prodBrand, prodName, prdDesc) VALUES ('$prodbrand', $prodname', '$description') AND INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
 			$res = mysqli_query($db, $sql);
 			if($res){
 				header('location: products.php');
@@ -87,8 +88,16 @@
 			    <label for="productcategory">Product Category</label>
 			    <select class="form-control" id="productcategory" name="productcategory">
 				  <option value="">---SELECT CATEGORY---</option>
-				  <?php 	
-					$sql = "SELECT categories FROM product";
+					<option value="1" >Dryer Combo</option>
+					<option value="1">Front Load</option>
+					<option value="1">Top Load</option>
+					<option value="1">Portable</option>
+					<option value="1">Smart Wifi</option>
+
+
+
+				  <!-- <?php 	
+					$sql = "SELECT * FROM product";
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?>
@@ -96,13 +105,13 @@
 				<?php } ?>
 
 
-					<!-- <?php 	
+					 <?php 	
 					$sql = "SELECT dryerCombo, frontLoad, portable, smartWifi, topLoad FROM product";
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
-				?> -->
+				?> 
 					<option value="<?php echo $r['id']; ?>"><?php echo $r['dryerCombo'];  ?>Dryer Combo</option>
-				<?php } ?>
+				<?php } ?> -->
 				</select>
 			  </div>
 			  
