@@ -133,7 +133,7 @@ if(isset($_POST) & !empty($_POST)){
 
 //}
 // verifica linea 137
-$sql = "SELECT * FROM costumer WHERE costumerID= $costumerID";
+$sql = "SELECT * FROM costumer WHERE costumerID= '$costumerID'";
 $res = mysqli_query($db, $sql);
 $r = mysqli_fetch_assoc($res);
 ?>
