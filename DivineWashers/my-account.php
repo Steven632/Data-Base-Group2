@@ -253,7 +253,7 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
                                     <div class="col-md-6">
 
                                     <?php
-                                    $sql = "SELECT  * FROM costumer"; // WHERE $_GET[costumerID] = '$costumerID' ";  
+                                    $sql = "SELECT  * FROM costumer"; //WHERE '$id' = '$costumerID' // WHERE $_GET[costumerID] = '$costumerID' ";  
                                     $result = mysqli_query($db, $sql);
                                     $row = mysqli_fetch_assoc($result);
 ?>
