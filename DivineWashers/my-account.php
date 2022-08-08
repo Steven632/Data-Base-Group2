@@ -1,23 +1,30 @@
 <?php
-include 'connection.php';
-if(isset($_GET['costumerID']))
-$costumerID = $_SESSION['costumerID']; 
+//include 'connection.php';
+//if(isset($_GET['costumerID']))
+//$costumerID = $_SESSION['costumerID']; 
 
-//echo '<pre>';
-//print_r($_SESSION);
-//echo '</pre>';                     
-//    $cart = $_SESSION['cart'];
+////echo '<pre>';
+////print_r($_SESSION);
+////echo '</pre>';                     
+////    $cart = $_SESSION['cart'];
 
-//$uid = $_SESSION['costumer'];
+////$uid = $_SESSION['costumer'];
 
-if(isset($_GET['id']) & !empty($_GET['id'])){
-    $id = $_GET['id'];
-    $sql ="SELECT * FROM costumer ";
-    //echo $psql;
-    $result = mysqli_query($db, $sql);
-    $row = mysqli_fetch_assoc($result);
-}
+//if(isset($_GET['id']) & !empty($_GET['id'])){
+  //  $id = $_GET['id'];
+    //$sql ="SELECT * FROM costumer ";
+    ////echo $psql;
+    //$result = mysqli_query($db, $sql);
+   // $row = mysqli_fetch_assoc($result);
+//}
+require_once 'connection.php'; 
+	if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){ //ORIGINAL 
+        // if(!isset($_SESSION['costumerID']) & empty($_SESSION['costumerID'])){ //TEST-------------
+		header('location: login.php');
+	}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -169,10 +176,24 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
                                     <table class="table table-bordered">
                                         <thead class="thead-dark">
                                             <tr>
+
+                <?php
+                             $total = 0;
+                             
+                    if(isset($_GET) & !empty($_GET))
+					foreach ($cart as $key => $value) {
+						//echo $key . " : " . $value['quantity'] ."<br>";
+                        $cartsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
+						// $cartsql = "SELECT * FROM product WHERE productID=$key";
+						$cartres = mysqli_query($db, $cartsql);
+						$cartr = mysqli_fetch_assoc($cartres);		
+                        
+				    $total = $total + ($cartr['prodPrice']*$value['quantity']);
+			    } ?>
                                                 <th>No</th>
                                                 <th>Product</th>
                                                 <th>Date</th>
-                                                <th>Price</th>
+                                                <th>Price</th>                                           
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -180,25 +201,11 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>Product Name</td>
+                                                <!--<td>Product Name</td>-->
+                                                <td><?php echo $cartr['prodName']; ?></td>
                                                 <td>01 Jan 2020</td>
-                                                <td>$99</td>
-                                                <td>Approved</td>
-                                                <td><button class="btn">View</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$99</td>
-                                                <td>Approved</td>
-                                                <td><button class="btn">View</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$99</td>
+                                                <!--<td>$99</td>-->
+                                                <td><span> <?php echo $total; ?></span></td>
                                                 <td>Approved</td>
                                                 <td><button class="btn">View</button></td>
                                             </tr>
@@ -257,7 +264,7 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
                                     $sql = "SELECT  * FROM costumer"; //WHERE '$id' = '$costumerID' // WHERE $_GET[costumerID] = '$costumerID' ";  
                                     $result = mysqli_query($db, $sql);
                                     $row = mysqli_fetch_assoc($result);
-?>
+                                    ?>
                                         <h5>Payment Address</h5>   
     
                                         <!--<p>123 Payment Street, Los Angeles, CA</p> -->
