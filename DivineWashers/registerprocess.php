@@ -3,7 +3,7 @@ require_once 'connection.php';
 if(isset($_POST) & !empty($_POST)){
 	//$email = mysqli_real_escape_string($connection, $_POST['email']);
 	$email = filter_var($_POST['costumerEmail'], FILTER_SANITIZE_EMAIL);
-	$password = password_hash($_POST['costumerPassword'], PASSWORD_DEFAULT);
+	$password = $_POST['costumerPassword'];
 	$costumerfirstName = $_POST['costumerfirstName'];
 	$costumerlastName = $_POST['costumerlastName'];
 	$phoneNum = $_POST['phoneNum'];

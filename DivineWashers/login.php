@@ -202,10 +202,10 @@ include 'connection.php';
                                     <label>Password</label>
                                     <input class="form-control" name="costumerPassword" input type="password" placeholder="Password">
                                 </div> 
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <label>Retype Password</label>
                                     <input class="form-control" name="costumerPassword" input type="password" placeholder="Password">
-                                </div>
+                                </div> -->
                                 <div class="col-md-12">
                                     <button class="btn" name="submit">Submit</button> <!-- submit de register -->
                                 </div>
