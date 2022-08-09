@@ -18,6 +18,8 @@
 						<th>Customer Name</th>
 						<th>Customer Mobile</th>
 						<th>Customer Email</th>
+						<th>Customer Status</th>
+
 						<!-- <th>Customer From</th> -->
 					</tr>
 				</thead>
@@ -33,9 +35,9 @@
 						<td><?php echo $r['costumerfirstName'] . " " . $r['costumerlastName']; ?></td>
 						<td><?php echo $r['phoneNum']; ?></td>
 						<td><?php echo $r['costumerEmail']; ?></td>
-						<!-- <td><?php echo $r['timestamp']; ?></td> -->
-						
+						<td><?php echo $r['status']; ?></td>	
 				<?php } ?>
+				
 				</tbody>
 			</table>
 			
