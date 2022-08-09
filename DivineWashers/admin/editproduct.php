@@ -44,9 +44,9 @@
 		}else{
 			$filepath = $_POST['filepath'];
 		}	
-
-		$sql = "UPDATE product SET prodName='$prodname', prodDesc='$description', prodImage='$filepath' WHERE id = $id";
-		$sql = "UPDATE orderdetails SET price='$price', WHERE id = $id";
+	
+		$sql = "UPDATE product SET prodName='$prodname', prodDesc='$description', prodImage='$filepath' WHERE 'id' = '$id'";
+		//$sql = "UPDATE orderdetails SET price='$price', WHERE 'id' = '$id'";
 		$res = mysqli_query($db, $sql);
 		if($res){
 			$smsg = "Product Updated";
@@ -69,7 +69,7 @@
 				$res = mysqli_query($db, $sql); 
 				$r = mysqli_fetch_assoc($res); 
 			?>
-			<form method="post" enctype="multipart/form-data">
+			<form method="post" enctype="multipart/form-data action="edit-productprocess.php"">
 			  <div class="form-group">
 			  <input type="hidden" name="filepath" value="<?php echo $r['prodImage']; ?>">
 			    <label for="Productname">Product Name</label>
@@ -104,8 +104,10 @@
 				<img src= "<?php echo $r['prodImage']; ?>">
 			    <?php if(isset($r['prodImage']) & !empty($r['prodImage'])){ ?>
 			    <br>
-			    	<img src="<?php echo $r['prodImage'] ?>" widht="100px" height="100px">
+			    	<img src= "<?php echo $r['prodImage'];?>" widht="100px" height="100px">
+				
 			    	<a href="delprodimg.php?id=<?php echo $r['id']; ?>">Delete Image</a>
+					
 			    <?php }else{ ?>
 			    <input type="file" name="productimage" id="productimage">
 			    <p class="help-block">Only jpg/png are allowed.</p>
