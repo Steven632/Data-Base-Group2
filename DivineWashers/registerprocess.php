@@ -8,7 +8,7 @@ if(isset($_POST) & !empty($_POST)){
 	$costumerlastName = $_POST['costumerlastName'];
 	$phoneNum = $_POST['phoneNum'];
 	//$sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-	echo $sql = "INSERT INTO costumer (costumerEmail, costumerPassword, costumerfirstName, costumerlastName, phoneNum) VALUES ('$email', '$password', '$costumerfirstName', '$costumerlastName', '$phoneNum')";
+	echo $sql = "INSERT INTO costumer (costumerEmail, costumerPassword, costumerfirstName, costumerlastName, phoneNum, status) VALUES ('$email', '$password', '$costumerfirstName', '$costumerlastName', '$phoneNum', 1)";
 	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
 	if($result){
 		//echo "User exits, create session";
