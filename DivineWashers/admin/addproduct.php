@@ -9,6 +9,12 @@
 		$prodbrand = mysqli_real_escape_string($db, $_POST['productbrand']);
 		$prodname = mysqli_real_escape_string($db, $_POST['productname']);
 		$description = mysqli_real_escape_string($db, $_POST['productdescription']);
+		$dryerCombo = mysqli_real_escape_string($db, $_POST['dryerCombo']);
+		$frontLoad = mysqli_real_escape_string($db, $_POST['frontLoad']);
+		$topLoad = mysqli_real_escape_string($db, $_POST['topLoad']);
+		$portable = mysqli_real_escape_string($db, $_POST['portable']);
+		$smartWifi = mysqli_real_escape_string($db, $_POST['smartWifi']);
+		$inventory = mysqli_real_escape_string($db, $_POST['inventory']);
 		// $category = mysqli_real_escape_string($db, $_POST['productcategory']);
 		$price = mysqli_real_escape_string($db, $_POST['productprice']);
 		// $quantity = mysqli_real_escape_string($db, $_POST['productquantity']);
@@ -27,10 +33,12 @@
 				if(($extension == "jpg" || $extension == "jpeg") && $type == "image/jpeg" && $size<=$max_size){
 					$location = "../img/"; 
 					if(move_uploaded_file($tmp_name, $location.$name)){
-						//$smsg = "Uploaded Successfully";
-						$sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID, prodImage) VALUES ('$prodbrand', $prodname', '$description',  '$location$name')";
-						$sql = "INSERT INTO orderdetails (prodPrice) VALUES ('$price')";
-						$res = mysqli_query($db, $sql);
+						// $smsg = "Uploaded Successfully";
+						// $sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID, prodImage) VALUES ('$prodbrand', $prodname', '$description',  '$location$name')";
+						// $sql = "INSERT INTO orderdetails (prodPrice) VALUES ('$price')";
+						$sql = "INSERT INTO product (prodBrand, prodName, prodDesc, prodImage, dryerCombo, frontLoad, topLoad, portable, smartWifi, prodInventory) VALUES ('$prodbrand', $prodname', '$description', '$location$name', '$dryerCombo', '$frontLoad', '$topLoad', '$portable', '$smartWifi', '$inventory')"; 
+						$sql .= "INSERT INTO orderdetails (prodPrice) VALUES ('$price')";
+						$res = mysqli_multi_query($db, $sql);
 						if($res){
 							//echo "Product Created";
 							header('location: products.php');
@@ -49,12 +57,14 @@
 		}else{
 
 			// $sql = "INSERT INTO product (prodBrand, prodName, prdDesc, productID, dryerCombo, frontLoad, portable, smartWifi, topLoad) VALUES ('$prodbrand', $prodname', '$description','prodid') AND INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
-			$sql = "INSERT INTO product (prodBrand, prodName, prdDesc) VALUES ('$prodbrand', $prodname', '$description') AND INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
-			$res = mysqli_query($db, $sql);
+			// $sql = "INSERT INTO product (prodBrand, prodName, prdDesc) VALUES ('$prodbrand', $prodname', '$description') AND INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price', '$quantity')";
+			$sql = "INSERT INTO product (prodBrand, prodName, prdDesc, prodImage) VALUES ('$prodbrand', $prodname', '$description', '$prodImage')";
+			$sql .= "INSERT INTO orderdetails (prodPrice, prodQuantity) VALUES ('$price')";
+			$res = mysqli_multi_query($db, $sql);
 			if($res){
 				header('location: products.php');
 			}else{
-				$fmsg =  "Failed to Create Product";
+				$fmsg =  "Failed to Create Products";
 			}
 		}
 	}
@@ -86,13 +96,13 @@
 
 			  <div class="form-group">
 			    <label for="productcategory">Product Category</label>
-			    <select class="form-control" id="productcategory" name="productcategory">
-				  <option value="">---SELECT CATEGORY---</option>
-					<option value="1" >Dryer Combo</option>
-					<option value="1">Front Load</option>
-					<option value="1">Top Load</option>
-					<option value="1">Portable</option>
-					<option value="1">Smart Wifi</option>
+			    <!-- <select class="form-control" id="productcategory"> -->
+				  <!-- <option value="">---SELECT CATEGORY---</option> -->
+					<input type= "option" name="dryerCombo" value="1">Dryer Combo</option>
+					<input type= "option" name="frontLoad" value="1">Front Load</option>
+					<input type= "option" name="topLoad" value="1">Top Load</option>
+					<input type= "option" name="portable" value="1">Portable</option>
+					<input type= "option" name="smartWifi" value="1">Smart Wifi</option>
 
 
 
@@ -114,7 +124,10 @@
 				<?php } ?> -->
 				</select>
 			  </div>
-			  
+			  <div class="form-group">
+			    <label for="inventory">inventory</label>
+			    <input type="number" class="form-control" name="inventory"></textarea>
+			  </div>
 
 			  <div class="form-group">
 			    <label for="productprice">Product Price</label>
