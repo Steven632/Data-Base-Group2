@@ -95,6 +95,7 @@ INSERT INTO `costumer` (`costumerID`, `costumerfirstName`, `costumerlastName`, `
 
 CREATE TABLE `order` (
   `orderID` int(11) NOT NULL,
+  `costumerID` int(11) NOT NULL,
   `orderDate` date NOT NULL,
   `shipDate` date NOT NULL,
   `orderStatus` float NOT NULL
