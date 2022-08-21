@@ -4,6 +4,7 @@ include 'connection.php';
 //if (isset($_GET['productID']) & !empty($_GET['productID'])) 
 if(isset($_GET) & !empty($_GET)){
     $id = $_GET['id'];
+    
     //echo $id;
     //$psql = "SELECT * FROM Product WHERE productID = '$id'"; 
                 //$psql = "SELECT * FROM Product, orderdetails WHERE productID = '$id' OUTER JOIN Product.productID = orderdetails.productID"; \
@@ -15,7 +16,7 @@ if(isset($_GET) & !empty($_GET)){
 //$result=$connection->query($sql);
 /////$resultcheck = mysqli_num_rows($result);
 ?>
-
+ <?php echo $prow['prodInventory']; //BORRAR LUEGO, ESTO ES PARA VER QUANTITY?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -201,11 +202,26 @@ if(isset($_GET) & !empty($_GET)){
                                        
                                          <div class="action">
                         <!--<a class="btn" href="addtocart.php?id=< ?php echo $prow ['productID'];?>"><i class="fa fa-shopping-cart"></i>Add to Cart</a>-->
+                       
+                                                <?php if ($prow['prodInventory'] >= 1){ ?>
+
                                              <input type="submit" class="button btn-small" value="Add To Cart" style="width :100px; width:100px"> 
+                                             <?php 
+                                             //UPDATE                          
+                                              ?>
+                                                <?php } else{
+                                                echo 'Out of Stock';
+                                                }
+                                                ?>
+
                                              
                                             <!--<a href="addtocart.php?id=< ?php echo $row ['productID'];?>"> <i class="fa fa-cart-plus"></i></a> -->
-
+                                            <?php if ($prow['prodInventory'] >= 1){ ?>
                                             <a class="btn" href="checkout.php"><i class="fa fa-shopping-bag"></i>Buy Now</a>
+                                            <?php } else{
+                                                echo ' ';
+                                                }
+                                                ?>
                                             
                                         </div>   
                                          </form>                              

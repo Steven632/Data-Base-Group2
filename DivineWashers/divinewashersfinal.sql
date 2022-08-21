@@ -98,7 +98,7 @@ CREATE TABLE `order` (
   `costumerID` int(11) NOT NULL,
   `orderDate` date NOT NULL,
   `shipDate` date NOT NULL,
-  `orderStatus` float NOT NULL
+  `orderStatus` float NOT NULL -- tinyint(1) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -124,7 +124,8 @@ INSERT INTO `orderdetails` (`orderID`, `productID`, `prodPrice`, `prodQuantity`)
 (0, 3, 999.99, 0),
 (0, 4, 699.99, 0),
 (0, 5, 829.99, 0),
-(0, 6, 999.99, 0);
+(0, 6, 999.99, 0),
+(0, 7, 150.99, 0);
 
 -- --------------------------------------------------------
 
@@ -156,7 +157,9 @@ INSERT INTO `product` (`productID`, `prodName`, `prodDesc`, `portable`, `frontLo
 (3, 'LG Wifi Combo Washer Dryer', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash® tec', 0, 1, 0, 1, 1, 'LG', 15, 'img/LgWifi_list.png'),
 (4, 'Samsung Platinum Front Load', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.', 0, 1, 0, 0, 0, 'Samsung', 15, 'img/samsungfront.png'),
 (5, 'Whirlpool Smart Top Load ', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 0, 0, 1, 0, 0, 'Whirlpool', 15, 'img/whirlpooltop.png'),
-(6, 'Haier Smart Frontload Wash', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 0, 1, 0, 1, 0, 'Haier', 15, 'img/haierFrontLoad_list.png');
+(6, 'Haier Smart Frontload Wash', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 0, 1, 0, 1, 0, 'Haier', 15, 'img/haierFrontLoad_list.png'),
+(7, 'washer test', 'super cool washer to test quantity when added to cart/bought and search + other things aswell', 1, 1 ,0 ,0 ,0, 'LG', 0, 'img/samsung_front_2.png');
+
 
 --
 -- Indexes for dumped tables
