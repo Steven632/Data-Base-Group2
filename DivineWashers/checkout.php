@@ -452,15 +452,21 @@ $r = mysqli_fetch_assoc($res);
                                         </div>
                                     </div>
                                 </div>
--->
-                                <div class="checkout-btn"> <!-- action="checoutprocess.php" -->
+-->           
 
-                                <!--form class="checkout-form" method="post" action="my-account.php" > <!-- action="checkout-process.php -->
-                        <!--<button  type="submit">Place Order</button>-->
-                        <!--<a href="my-account.php" class="checkout-form"><button> PlaceOrder </button></a>-->
-                                    <button>Place Order</button>
-                                    <!--</form>-->
+                                <div class="checkout-btn"> <!-- action="checoutprocess.php" -->
+                                <form class="checkout-form" method="get" action="index.php"> <!-- previously was method post -->   
+                        <!--<a href="my-account.php" class="checkout-form"><button> PlaceOrder </button></a>
+                        <a href="checkoutprocess.php" ><button> Place Order </button></a> -->
+                                     <button name="placeorder" class="btn">Place Order</button>
+                                    <!--
+                                        <button>Place Order</button>
+                                        <button  name="submit" class="btn">Submit</button> 
+                                    -->  
+                                    </form>
                                 </div>
+                                                              
+                                
                             </div>
                         </div>
                     </div>

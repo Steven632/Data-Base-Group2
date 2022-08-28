@@ -206,8 +206,12 @@ if(isset($_GET) & !empty($_GET)){
                                                 <?php if ($prow['prodInventory'] >= 1){ ?>
 
                                              <input type="submit" class="button btn-small" value="Add To Cart" style="width :100px; width:100px"> 
+                                            
                                              <?php 
-                                             //UPDATE                          
+                                              //$counter = "SELECT COUNT(prodInventory) as 'counter' FROM products ";
+                                              //$update ="INSERT 'counter' FROM products";
+                                             /// $sql = "SELECT  * FROM Product JOIN orderdetails ON Product.productID = orderdetails.productID"; 
+                                            // //UPDATE prodInventory FROM product SUM ;                     
                                               ?>
                                                 <?php } else{
                                                 echo 'Out of Stock';

@@ -101,6 +101,9 @@ CREATE TABLE `order` (
   `orderStatus` float NOT NULL -- tinyint(1) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `order` ('OrderID', 'costumerID', 'orderDate', 'shipDate', 'orderStatus') VALUES
+(0, 1, 2022-08-01, 2022-08-02, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -189,6 +192,7 @@ ALTER TABLE `costumer`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`orderID`);
+  ADD KEY (`costumerID`);
 
 --
 -- Indexes for table `orderdetails`
