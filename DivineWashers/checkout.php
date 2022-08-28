@@ -426,9 +426,9 @@ $r = mysqli_fetch_assoc($res);
                                     
                                 </div>
                                 <div class = "space30"></div>
-
+<form> <!-- SORT LUEGO -->
                                     <input name="agree" id="checkboxPP" class="css-checkbox" type="checkbox" value=""><span>Paypal  </a><span> <!--<a href=#> &amp; -->
-                                
+            </form> <!-- SORT LUEGO -->
                                 <div class="space30"></div>
                                
 
@@ -455,7 +455,7 @@ $r = mysqli_fetch_assoc($res);
 -->           
 
                                 <div class="checkout-btn"> <!-- action="checoutprocess.php" -->
-                                <form class="checkout-form" method="get" action="index.php"> <!-- previously was method post -->   
+                                <form class="checkout-form" method="get" action="checkoutprocess.php"> <!-- previously was method post -->   
                         <!--<a href="my-account.php" class="checkout-form"><button> PlaceOrder </button></a>
                         <a href="checkoutprocess.php" ><button> Place Order </button></a> -->
                                      <button name="placeorder" class="btn">Place Order</button>

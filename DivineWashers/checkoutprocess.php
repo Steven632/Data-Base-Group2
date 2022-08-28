@@ -3,7 +3,7 @@
 require_once 'connection.php'; 
 if(isset($_GET) & !empty($_GET)){
 
-	$sql = "INSERT * INTO order FROM Product JOIN orderdetails ON Product.productID = orderdetails.productID"; 	
+	$sql = "INSERT INTO order FROM Product"; 	
     $result = mysqli_query($db, $sql);
 	$count = mysqli_num_rows($result);
 		//echo "User exits, create session";
@@ -11,7 +11,7 @@ if(isset($_GET) & !empty($_GET)){
             //echo "User exits, create session";
 		header("location: my-account.php");
         }
-        else{}
+        else{
         header("location: index.php");
 		//echo $email;
     }
