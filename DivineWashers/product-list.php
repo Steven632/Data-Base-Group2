@@ -15,7 +15,7 @@ include 'connection.php';
 
 <?php //prueba de search bar
 if(isset($_GET['$search'])){
-    $query = query("SELECT * FROM products WHERE prodname = '$search'");
+    $query = query("SELECT * FROM product WHERE prodname = '$search'");
 }
 ?>
 
@@ -206,7 +206,7 @@ if(isset($_GET['$search'])){
 
                             <?php  
                             //$sql = "SELECT  *  FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID"; //product list muestra precio pero no brands escogidos
-                            $sql = "SELECT  * FROM Product JOIN orderdetails ON Product.productID = orderdetails.productID";           //muestra brands escogifod pero no precios     
+                            $sql = "SELECT  * FROM Product";           //muestra brands escogifod pero no precios     
 
                             if(isset($_GET['id']) & !empty($_GET['id']))
                             {
@@ -247,49 +247,49 @@ if(isset($_GET['$search'])){
                             else if(isset($_GET['sp']))
                             {
                             $sp = $_GET['sp'];                        
-                            $sql .= " WHERE prodPrice > '100' and prodPrice < '300'";                            
+                            $sql .= " WHERE price > '100' and price < '300'";                            
                             } 
 
                             else if(isset($_GET['sp1']))
                             {
                             $sp1 = $_GET['sp1'];                        
-                            $sql .= " WHERE prodPrice > '301' and prodPrice < '400'";                            
+                            $sql .= " WHERE price > '301' and price < '400'";                            
                             } 
 
                             else if(isset($_GET['sp2'])) 
                             {
                             $sp2 = $_GET['sp2'];                        
-                            $sql .= " WHERE prodPrice > '401' and prodPrice < '500'";                            
+                            $sql .= " WHERE price > '401' and price < '500'";                            
                             } 
 
                             else if(isset($_GET['sp3']))
                             {
                             $sp3 = $_GET['sp3'];                        
-                            $sql .= " WHERE prodPrice > '501' and prodPrice < '600'";                            
+                            $sql .= " WHERE price > '501' and price < '600'";                            
                             } 
 
                             else if(isset($_GET['sp4']))
                             {
                             $sp4 = $_GET['sp4'];                        
-                            $sql .= " WHERE prodPrice > '601' and prodPrice < '700'";                            
+                            $sql .= " WHERE price > '601' and price < '700'";                            
                             } 
 
                             else if(isset($_GET['sp5']))
                             {
                             $sp5 = $_GET['sp5'];                        
-                            $sql .= " WHERE prodPrice > '701' and prodPrice < '800'";                            
+                            $sql .= " WHERE price > '701' and price < '800'";                            
                             } 
 
                             else if(isset($_GET['sp6']))
                             {
                             $sp6 = $_GET['sp6'];                        
-                            $sql .= " WHERE prodPrice > '801' and prodPrice < '900'";                            
+                            $sql .= " WHERE price > '801' and price < '900'";                            
                             } 
 
                             else if(isset($_GET['sp7']))
                             {
                             $sp7 = $_GET['sp7'];                        
-                            $sql .= " WHERE prodPrice > '901' and prodPrice < '99999'";                            
+                            $sql .= " WHERE price > '901' and price < '99999'";                            
                             } 
 
                             // else if get empty echo "no price criteria match";
@@ -326,9 +326,9 @@ if(isset($_GET['$search'])){
                                         </div>
                                     </div>
                                     <div class="product-price">
-                                        <h3><span>$</span><?php echo $row['prodPrice']; ?> </h3>
+                                        <h3><span>$</span><?php echo $row['price']; ?> </h3>
                                         <!-- -->
-                                        <!--<h3><span>$</span> < ?php echo $row['prodPrice']; ?> </h3> -->
+                                        <!--<h3><span>$</span> < ?php echo $row['price']; ?> </h3> -->
                                         
                                         <a class="btn" href="checkout.php"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                         <!--<a href="cart.html" class="nav-item nav-link">Cart</a>-->

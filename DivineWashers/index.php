@@ -311,7 +311,8 @@ while($row = fetch_array($sqlsearch)){
                         <div class="header-slider normal-slider">
                             <!-- slider-->
                             <?php  
-                            $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            // $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            $sql = "SELECT * FROM Product";
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
                             $id= $_GET['productID'];
@@ -504,7 +505,8 @@ while($row = fetch_array($sqlsearch)){
                 <div class="row align-items-center product-slider product-slider-4">
 
                             <?php  
-                            $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            // $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            $sql = "SELECT * FROM Product";
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
                             $id= $_GET['productID'];
@@ -542,7 +544,7 @@ while($row = fetch_array($sqlsearch)){
                             </div>
                             <div class="product-price">
                                 <!-- <h3><span>$</span>999.99</h3> -->
-                                <h3><span>$</span><?php echo $r['prodPrice']; ?> </h3>
+                                <h3><span>$</span><?php echo $r['price']; ?> </h3>
                                 <a class="btn" href="checkout.php"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -551,7 +553,7 @@ while($row = fetch_array($sqlsearch)){
                             }
                             ?>
 <!--termina ventana de producto -->
-                        -->
+                    
                 </div>
             </div>
         </div>

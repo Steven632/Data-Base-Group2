@@ -10,12 +10,12 @@
  if(isset($_GET['costumerID']))
  $costumerID = $_SESSION['costumerID']; //TEST -----------------------------------------------------------
  $cart = $_SESSION['cart'];
- //echo '<pre>';
- //print_r($_SESSION);
- //echo '</pre>';
+ echo '<pre>';
+ print_r($_SESSION);
+ echo '</pre>';
 if(isset($_POST) & !empty($_POST)){
 	if($_POST['agree'] == true){
-		$country = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
+		// $country = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
 		// $fname = filter_var($_POST['costumerfirstName'], FILTER_SANITIZE_STRING);
 		// $lname = filter_var($_POST['costumerlastName'], FILTER_SANITIZE_STRING);
 		// $company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
@@ -27,62 +27,19 @@ if(isset($_POST) & !empty($_POST)){
 	//	$payment = filter_var($_POST['Paypallogin'], FILTER_SANITIZE_STRING);
 		$zip = filter_var($_POST['zip'], FILTER_SANITIZE_NUMBER_INT);
 
-		$sql = "SELECT * FROM costumer WHERE costumerID = $costumerID";
+		$sql = "SELECT * FROM costumer WHERE costumerID = '$costumer'";
         $res = mysqli_query($db, $sql);
 		$r = mysqli_fetch_assoc($res);
 		$count = mysqli_num_rows($res);
 		if($count == 1){
 			//update data in usersmeta table
-			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state', zipCode='$zip' WHERE costumerID= $costumerID";
+			$usql = "UPDATE costumer SET  costumerfirstName='$fname', costumerlastName='$lname', 'address'='$address1', city='$city', state='$state',  zipCode='$zip', phoneNum='$phone' WHERE uid=$uid";
 			$ures = mysqli_query($db, $usql) or die(mysqli_error($db));
 			if($ures){
 
 				$total = 0;
 				foreach ($cart as $key => $value) {
 					//echo $key . " : " . $value['quantity'] ."<br>";
-					$ordsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
-					$ordres = mysqli_query($db, $ordsql);
-					$ordr = mysqli_fetch_assoc($ordres);
-				}
-
-				echo $iosql = "INSERT INTO order (costumerID, orderStatus) VALUES ('$costumerID', 'Order_Placed' )";
-				$iores = mysqli_query($db, $iosql) or die(mysqli_error($db));
-				if($iores){
-					echo "Order inserted, insert order items <br>";
-					$orderid = mysqli_insert_id($db);
-					foreach ($cart as $key => $value) {
-						//echo $key . " : " . $value['quantity'] ."<br>";
-						$ordsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
-						$ordres = mysqli_query($db, $ordsql);
-						$ordr = mysqli_fetch_assoc($ordres);
-
-						$pid = $ordr['id'];
-						$productprice = $ordr['prodPrice'];
-						$quantity = $value['quantity'];
-
-
-						$orditmsql = "INSERT INTO orderdetails (productID, orderID, prodPrice, prodQuantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
-						$orditmres = mysqli_query($db, $orditmsql) or die (mysqli_error($db));
-						if($orditmres){
-							echo "Order Item inserted redirect to my account page <br>";
-						}
-					}
-				}
-				//unset($_SESSION['cart']);
-				header("location: my-account.php");
-			}
-		}else{
-			//insert data in usersmeta table
-			$isql = "INSERT INTO costumer (country, address, city, state, zipCode, costumerID) $VALUES ('$address', '$city', '$state', '$zip','$phone', ' costumerID')$";
-			$ires = mysqli_query($db, $isql) or die(mysqli_error($db));
-			if($ires){
-                echo "Insert Orders into Order table and Order details table - ires";
-
-            }
-
-				$total = 0;
-				foreach ($cart as $key => $value) {
-					echo $key . " : " . $value['quantity'] ."<br>";
 					$ordsql = "SELECT * FROM product WHERE id=$key";
 					$ordres = mysqli_query($db, $ordsql);
 					$ordr = mysqli_fetch_assoc($ordres);
@@ -90,26 +47,14 @@ if(isset($_POST) & !empty($_POST)){
 					$total = $total + ($ordr['price']*$value['quantity']);
 				}
 
-			//	$iosql = "INSERT INTO order  costumerID, $orderStatus, paymentmode) VALUES (' costumerID',$ '$total', 'Order Placed', '$payment')";
-
-             //   if() {
-            //     $total = 0;
-			//	foreach ($cart as $key => $value) {
-					//echo $key . " : " . $value['quantity'] ."<br>";
-			//		$ordsql = "SELECT * FROM product WHERE id=$key";
-			//		$ordres = mysqli_query($db, $ordsql);
-			//		$ordr = mysqli_fetch_assoc($ordres);
-
-					//$orditmsql = "INSERT INTO orderdetails (orderID, productID, prodPrice, prodQuantity) VALUES
-                   // ("
-               // }
+				echo $iosql = "INSERT INTO orders (uid, totalprice, orderstatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
 				$iores = mysqli_query($db, $iosql) or die(mysqli_error($db));
 				if($iores){
 					//echo "Order inserted, insert order items <br>";
 					$orderid = mysqli_insert_id($db);
 					foreach ($cart as $key => $value) {
 						//echo $key . " : " . $value['quantity'] ."<br>";
-						$ordsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
+						$ordsql = "SELECT * FROM product WHERE productID=$key";
 						$ordres = mysqli_query($db, $ordsql);
 						$ordr = mysqli_fetch_assoc($ordres);
 
@@ -118,21 +63,63 @@ if(isset($_POST) & !empty($_POST)){
 						$quantity = $value['quantity'];
 
 
-						$orditmsql = "INSERT INTO orderdetails (productID, orderID, prodPrice, prodQuantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
+						$orditmsql = "INSERT INTO orderitems (pid, orderid, productprice, pquantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
 						$orditmres = mysqli_query($db, $orditmsql) or die(mysqli_error($db));
 						//if($orditmres){
 							//echo "Order Item inserted redirect to my account page <br>";
 						//}
 					}
 				}
-				//unset($_SESSION['cart']);
+				unset($_SESSION['cart']);
+				header("location: my-account.php");
+			}
+		}else{
+			//insert data in usersmeta table
+			$isql = "INSERT INTO costumer (costumerfirstName, costumerlastName, 'address', city, 'state', zipCode, uid) VALUES ('$fname', '$lname', '$address1', '$city', '$state', '$zip','$uid')";
+			$ires = mysqli_query($db, $isql) or die(mysqli_error($db));
+			if($ires){
+
+				$total = 0;
+				foreach ($cart as $key => $value) {
+					//echo $key . " : " . $value['quantity'] ."<br>";
+					$ordsql = "SELECT * FROM product WHERE productID=$key";
+					$ordres = mysqli_query($db, $ordsql);
+					$ordr = mysqli_fetch_assoc($ordres);
+
+					$total = $total + ($ordr['price']*$value['quantity']);
+				}
+
+				echo $iosql = "INSERT INTO orders (uid, totalprice, orderstatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
+				$iores = mysqli_query($db, $iosql) or die(mysqli_error($db));
+				if($iores){
+					//echo "Order inserted, insert order items <br>";
+					$orderid = mysqli_insert_id($db);
+					foreach ($cart as $key => $value) {
+						//echo $key . " : " . $value['quantity'] ."<br>";
+						$ordsql = "SELECT * FROM product WHERE productID=$key";
+						$ordres = mysqli_query($db, $ordsql);
+						$ordr = mysqli_fetch_assoc($ordres);
+
+						$pid = $ordr['id'];
+						$productprice = $ordr['price'];
+						$quantity = $value['quantity'];
+
+
+						$orditmsql = "INSERT INTO orderitems (productID, orderid, productprice, pquantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
+						$orditmres = mysqli_query($db, $orditmsql) or die(mysqli_error($db));
+						//if($orditmres){
+							//echo "Order Item inserted redirect to my account page <br>";
+						//}
+					}
+				}
+				unset($_SESSION['cart']);
 				header("location: my-account.php");
 			}
 
 		}
 	}
 
-//}
+}
 // verifica linea 137
 $sql = "SELECT * FROM costumer WHERE costumerID= '$costumerID'";
 $res = mysqli_query($db, $sql);
@@ -271,14 +258,14 @@ $r = mysqli_fetch_assoc($res);
         <!-- Checkout Start -->
         <form method = "post">
         <div class="checkout">
-            <div class="container-f costumerID">
+            <!-- <div class="container-f costumerID">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="checkout-inner">
                             <div class="billing-address">
                                 <h2>Billing Address</h2>
                                 <div class="row">
-                                    <!-- <div class="col-md-6">
+                                     <div class="col-md-6">
                                         <label>First Name</label>
                                         <input class="form-control" name="fname" type="text" placeholder="First Name">
                                     </div>
@@ -293,7 +280,7 @@ $r = mysqli_fetch_assoc($res);
                                     <div class="col-md-6">
                                         <label>Mobile No</label>
                                         <input class="form-control" name="phone" type="text" placeholder="Mobile No">
-                                    </div> -->
+                                    </div>
                                     <div class="col-md-12">
                                         <label>Address</label>
                                         <input class="form-control" name="address" type="text" placeholder="Address">
@@ -321,7 +308,7 @@ $r = mysqli_fetch_assoc($res);
                                     </div>
                                     <div class="col-md-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="agree" class="custom-control-input" id="newaccount">
+                                            <input type="checkbox"  class="custom-control-input" id="newaccount">
                                             <label class="custom-control-label" for="newaccount">Create an account</label>
                                         </div>
                                     </div>
@@ -380,8 +367,10 @@ $r = mysqli_fetch_assoc($res);
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div> -->
+                    <!-- </div> -->
+                    
+
                     
                     <div class="col-lg-4">
                         <div class="checkout-inner">
@@ -397,7 +386,7 @@ $r = mysqli_fetch_assoc($res);
                              $total = 0;
 					foreach ($cart as $key => $value) {
 						//echo $key . " : " . $value['quantity'] ."<br>";
-                        $cartsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
+                        $cartsql = "SELECT  * FROM Product where productID=$key";
 						// $cartsql = "SELECT * FROM product WHERE productID=$key";
 						$cartres = mysqli_query($db, $cartsql);
 						$cartr = mysqli_fetch_assoc($cartres);
@@ -407,7 +396,7 @@ $r = mysqli_fetch_assoc($res);
 				 ?>
                             
                             <?php 
-				    $total = $total + ($cartr['prodPrice']*$value['quantity']);
+				    $total = $total + ($cartr['price']*$value['quantity']);
 			    } ?>
                              
                                             <h1>Cart Summary</h1>
@@ -427,7 +416,7 @@ $r = mysqli_fetch_assoc($res);
                                 </div>
                                 <div class = "space30"></div>
 
-                                    <input name="agree" id="checkboxPP" class="css-checkbox" type="checkbox" value=""><span>Paypal  </a><span> <!--<a href=#> &amp; -->
+                                    <input  id="checkboxPP" class="css-checkbox" type="checkbox" value=""><span>Paypal</a><span> <!--<a href=#> &amp; -->
                                 
                                 <div class="space30"></div>
                                
@@ -454,12 +443,7 @@ $r = mysqli_fetch_assoc($res);
                                 </div>
 -->
                                 <div class="checkout-btn"> <!-- action="checoutprocess.php" -->
-
-                                <!--form class="checkout-form" method="post" action="my-account.php" > <!-- action="checkout-process.php -->
-                        <!--<button  type="submit">Place Order</button>-->
-                        <!--<a href="my-account.php" class="checkout-form"><button> PlaceOrder </button></a>-->
-                                    <button>Place Order</button>
-                                    <!--</form>-->
+                                    <button name="agree">Place Order</button>
                                 </div>
                             </div>
                         </div>

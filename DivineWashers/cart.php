@@ -158,7 +158,7 @@ echo '</pre>';
 				    $total = 0;
 					foreach ($cart as $key => $value) {
 						//echo $key . " : " . $value['quantity'] ."<br>";
-                        $cartsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
+                        $cartsql = "SELECT  * FROM Product where productID=$key";
 						// $cartsql = "SELECT * FROM product WHERE productID=$key";
 						$cartres = mysqli_query($db, $cartsql);
 						$cartr = mysqli_fetch_assoc($cartres);
@@ -178,17 +178,17 @@ echo '</pre>';
 							<a href="product-detail.php?id=<?php echo $cartr['productID']; ?>"><?php echo substr($cartr['prodName'], 0 , 30); ?></a>					
 						</td>
 						<td>
-							<span class="amount"><?php echo $cartr['prodPrice']; ?></span>					
+							<span class="amount"><?php echo $cartr['price']; ?></span>					
 						</td>
 						<td> 
 							<div class="quantity"><?php echo $value['quantity']; ?></div>
 						</td>
 						<td>
-							<span class="amount"><?php echo ($cartr['prodPrice']*$value['quantity']); ?></span>					
+							<span class="amount"><?php echo ($cartr['price']*$value['quantity']); ?></span>					
 						</td>
 					</tr>
 				<?php 
-				    $total = $total + ($cartr['prodPrice']*$value['quantity']);
+				    $total = $total + ($cartr['price']*$value['quantity']);
 			    } ?>
                                         <!-- <tr>
                                             <td>
