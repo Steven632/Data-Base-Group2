@@ -27,13 +27,13 @@ if(isset($_POST) & !empty($_POST)){
 	//	$payment = filter_var($_POST['Paypallogin'], FILTER_SANITIZE_STRING);
 		$zip = filter_var($_POST['zip'], FILTER_SANITIZE_NUMBER_INT);
 
-		$sql = "SELECT * FROM costumer WHERE costumerID = $costumerID";
+		$sql = "SELECT * FROM costumer WHERE costumerID = '$costumerID'";
         $res = mysqli_query($db, $sql);
 		$r = mysqli_fetch_assoc($res);
 		$count = mysqli_num_rows($res);
 		if($count == 1){
 			//update data in usersmeta table
-			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state', zipCode='$zip' WHERE costumerID= $costumerID";
+			$usql = "UPDATE costumer SET address='$address', city='$city', state='$state', zipCode='$zip' WHERE costumerID= '$costumerID'";
 			$ures = mysqli_query($db, $usql) or die(mysqli_error($db));
 			if($ures){
 
@@ -138,7 +138,7 @@ $sql = "SELECT * FROM costumer WHERE costumerID= '$costumerID'";
 $res = mysqli_query($db, $sql);
 $r = mysqli_fetch_assoc($res);
 ?>
-
+<!--vvvvvvvvvvvvCHECKOUT PROCESS COMO TALvvvvvvvvvvvvvvvv -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -426,9 +426,9 @@ $r = mysqli_fetch_assoc($res);
                                     
                                 </div>
                                 <div class = "space30"></div>
-<form> <!-- SORT LUEGO -->
-                                    <input name="agree" id="checkboxPP" class="css-checkbox" type="checkbox" value=""><span>Paypal  </a><span> <!--<a href=#> &amp; -->
-            </form> <!-- SORT LUEGO -->
+<!--<form> < !-- SORT LUEGO -- >
+                                    <input name="agree" id="checkboxPP" class="css-checkbox" type="checkbox" value=""><span>Paypal  </a><span> < !--<a href=#> &amp; - ->
+            </form> < !-- SORT LUEGO -->
                                 <div class="space30"></div>
                                
 
@@ -455,10 +455,13 @@ $r = mysqli_fetch_assoc($res);
 -->           
 
                                 <div class="checkout-btn"> <!-- action="checoutprocess.php" -->
-                                <form class="checkout-form" method="get" action="checkoutprocess.php"> <!-- previously was method post -->   
+                                <!--<form method="post"> < !-- previously was method post -->   
                         <!--<a href="my-account.php" class="checkout-form"><button> PlaceOrder </button></a>
                         <a href="checkoutprocess.php" ><button> Place Order </button></a> -->
-                                     <button name="placeorder" class="btn">Place Order</button>
+                                     <!--<button name="placeorder" class="btn">Place Order</button> -->
+                                     
+                                     <input name="agree" id="checkboxPP" class="css-checkbox" type="checkbox" value=""><span>Paypal  </a><span> <!--<a href=#> &amp;-->
+                                     <input type="submit" class="button btn-lg" value="Checkout">
                                     <!--
                                         <button>Place Order</button>
                                         <button  name="submit" class="btn">Submit</button> 
