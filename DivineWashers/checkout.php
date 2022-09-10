@@ -125,7 +125,7 @@ $sql = "SELECT * FROM costumer WHERE costumerID= '$costumerID'";
 $res = mysqli_query($db, $sql);
 $r = mysqli_fetch_assoc($res);
 ?>
-
+<!--vvvvvvvvvvvvCHECKOUT PROCESS COMO TALvvvvvvvvvvvvvvvv -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -445,6 +445,8 @@ $r = mysqli_fetch_assoc($res);
                                 <div class="checkout-btn"> <!-- action="checoutprocess.php" -->
                                     <button name="agree">Place Order</button>
                                 </div>
+                                                              
+                                
                             </div>
                         </div>
                     </div>

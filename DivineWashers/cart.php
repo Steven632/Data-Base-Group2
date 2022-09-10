@@ -247,8 +247,10 @@ echo '</pre>';
                                             <h2>Grand Total<span> <?php echo $total; ?></span></h2>
                                         </div>
                                         <div class="cart-btn">
-                                            <button>Update Cart</button>
+                                            <!-- <button>Update Cart</button> -->
+                                            <a href="product-list.php" class="nav-item nav-link"><button> Update Cart </button></a>
                                               <a href="checkout.php" class="nav-item nav-link"><button> Checkout </button></a>
+                                            <!-- form para checkoutprocess para hacer insert aqui? -->
                                         </div>
                                     </div>
                                 </div>
