@@ -19,6 +19,7 @@ if(isset($_POST) & !empty($_POST)){
 	if($count == 1){ //para el login de costumer
 		//echo "User exits, create session";
 		$_SESSION['costumer'] = $email; // was costumerEmail
+		$_SESSION['costumerID'] = $id;
 		header("location: checkout.php");
 		//echo $email;
 

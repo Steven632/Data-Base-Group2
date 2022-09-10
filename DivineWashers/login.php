@@ -29,7 +29,9 @@ include 'connection.php';
 //     }
 // }
 
-
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
 
 // if (isset($_REQUEST['submit'])){
 //     session_start();
