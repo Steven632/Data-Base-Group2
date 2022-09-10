@@ -12,12 +12,12 @@ $cart = $_SESSION['cart'];
 
 if(isset($_POST) & !empty($_POST)){
 	if($_POST['agree'] == true){
-		$country = filter_var($_POST['country'], FILTER_SANITIZE_STRING);
+		// $country = filter_var($_POST['country'], FILTER_SANITIZE_STRING);
 		$fname = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
 		$lname = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
-		$company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
+		// $company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
 		$address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
-		$address2 = filter_var($_POST['address2'], FILTER_SANITIZE_STRING);
+		$address2 = filter_var($_POST['street'], FILTER_SANITIZE_STRING);
 		$city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
 		$state = filter_var($_POST['state'], FILTER_SANITIZE_STRING);
 		$phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
@@ -125,6 +125,19 @@ $r = mysqli_fetch_assoc($res);
 
 	
 	<!-- SHOP CONTENT -->
+    <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+        
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/slick/slick.css" rel="stylesheet">
+        <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
 	<section id="content">
 		<div class="content-blog">
 					<div class="page_header text-center">
@@ -138,7 +151,7 @@ $r = mysqli_fetch_assoc($res);
 					<div class="billing-details">
 						<h3 class="uppercase">Billing Details</h3>
 						<div class="space30"></div>
-							<label class="">Country </label>
+							<!-- <label class="">Country </label>
 							<select name="country" class="form-control">
 								<option value="">Select Country</option>
 								<option value="AX">Aland Islands</option>
@@ -160,7 +173,7 @@ $r = mysqli_fetch_assoc($res);
 								<option value="BH">Bahrain</option>
 								<option value="BD">Bangladesh</option>
 								<option value="BB">Barbados</option>
-							</select>
+							</select> -->
 							<div class="clearfix space20"></div>
 							<div class="row">
 								<div class="col-md-6">
@@ -173,13 +186,13 @@ $r = mysqli_fetch_assoc($res);
 								</div>
 							</div>
 							<div class="clearfix space20"></div>
-							<label>Company Name</label>
-							<input name="company" class="form-control" placeholder="" value="<?php if(!empty($r['company'])){ echo $r['company']; }elseif(isset($company)){ echo $company; } ?>" type="text">
+							<!-- <label>Company Name</label>
+							<input name="company" class="form-control" placeholder="" value="<?php if(!empty($r['company'])){ echo $r['company']; }elseif(isset($company)){ echo $company; } ?>" type="text"> -->
 							<div class="clearfix space20"></div>
 							<label>Address </label>
-							<input name="address" class="form-control" placeholder="Street address" value="<?php if(!empty($r['address'])){ echo $r['address']; } elseif(isset($address)){ echo $address; } ?>" type="text">
+							<input name="address" class="form-control" placeholder="Address" value="<?php if(!empty($r['address'])){ echo $r['address']; } elseif(isset($address)){ echo $address; } ?>" type="text">
 							<div class="clearfix space20"></div>
-							<input name="address2" class="form-control" placeholder="Apartment, suite, unit etc. (optional)" value="<?php if(!empty($r['address2'])){ echo $r['address2']; }elseif(isset($address2)){ echo $address2; } ?>" type="text">
+							<input name="street" class="form-control" placeholder="Street" value="<?php if(!empty($r['street'])){ echo $r['street']; }elseif(isset($street)){ echo $street; } ?>" type="text">
 							<div class="clearfix space20"></div>
 							<div class="row">
 								<div class="col-md-4">
@@ -192,12 +205,12 @@ $r = mysqli_fetch_assoc($res);
 								</div>
 								<div class="col-md-4">
 									<label>Postcode </label>
-									<input name="zipcode" class="form-control" placeholder="Postcode / Zip" value="<?php if(!empty($r['zip'])){ echo $r['zip']; }elseif(isset($zip)){ echo $zip; } ?>" type="text">
+									<input name="zip" class="form-control" placeholder="Postcode / Zip" value="<?php if(!empty($r['zipcode'])){ echo $r['zipcode']; }elseif(isset($zip)){ echo $zip; } ?>" type="text">
 								</div>
 							</div>
 							<div class="clearfix space20"></div>
 							<label>Phone </label>
-							<input name="phone" class="form-control" id="billing_phone" placeholder="" value="<?php if(!empty($r['mobile'])){ echo $r['mobile']; }elseif(isset($phone)){ echo $phone; } ?>" type="text">
+							<input name="phone" class="form-control" id="billing_phone" placeholder="" value="<?php if(!empty($r['phone'])){ echo $r['phone']; }elseif(isset($phone)){ echo $phone; } ?>" type="text">
 						
 					</div>
 				</div>

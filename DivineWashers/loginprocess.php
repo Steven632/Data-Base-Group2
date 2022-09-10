@@ -4,8 +4,11 @@ require_once 'connection.php';
 if(isset($_POST) & !empty($_POST)){
 	$email = mysqli_real_escape_string($db, $_POST['costumerEmail']);
 	$password = $_POST['costumerPassword'];
+	
 	$sql = "SELECT * FROM costumer WHERE costumerEmail='$email' AND costumerPassword='$password'";
-
+	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
+	$count = mysqli_num_rows($result);
+	$r = mysqli_fetch_assoc($result);
 	$adminemail = mysqli_real_escape_string($db, $_POST['costumerEmail']);
 	$adminpassword = $_POST['costumerPassword'];
 	$adminsql ="SELECT * FROM administrator WHERE admiEmail='$adminemail' AND admiPassword='$adminpassword'";
@@ -19,7 +22,7 @@ if(isset($_POST) & !empty($_POST)){
 	if($count == 1){ //para el login de costumer
 		//echo "User exits, create session";
 		$_SESSION['costumer'] = $email; // was costumerEmail
-		$_SESSION['costumerID'] = $id;
+		$_SESSION['costumerID'] = $r['costumerID'];
 		header("location: checkout.php");
 		//echo $email;
 

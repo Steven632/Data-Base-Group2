@@ -12,12 +12,12 @@
 if(isset($_POST) & !empty($_POST)){
 		$status = filter_var($_POST['status'], FILTER_SANITIZE_STRING);
 		// $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
-		$id = filter_var($_POST['orderID'], FILTER_SANITIZE_NUMBER_INT);
+		$id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
 
-			echo $ordprcsql = "INSERT INTO 'order' (orderID, orderStatus,) VALUES ('$id', '$status')";
+			echo $ordprcsql = "INSERT INTO orders (id, orderstatus,) VALUES ('$id', '$status')";
 			$ordprcres = mysqli_query($db, $ordprcsql) or die(mysqli_error($db));
 			if($ordprcres){
-				$ordupd = "UPDATE 'order' SET orderStatus='$status' WHERE orderID=$id";
+				$ordupd = "UPDATE orders SET orderstatus='$status' WHERE id=$id";
 				if(mysqli_query($db, $ordupd)){
 					header('location: orders.php');
 				}
@@ -53,24 +53,24 @@ if(isset($_POST) & !empty($_POST)){
 				<tbody>
 
 				<?php
-					if(isset($_GET['orderID']) & !empty($_GET['orderID'])){
-						$oid = $_GET['orderID'];
+					if(isset($_GET['id']) & !empty($_GET['id'])){
+						$oid = $_GET['id'];
 					}else{
 						header('location: orders.php');
 					}
-					$ordsql = "SELECT * FROM 'order' WHERE orderID='$oid'";
+					$ordsql = "SELECT * FROM orders WHERE id='$oid'";
 					$ordres = mysqli_query($db, $ordsql);
 					while($ordr = mysqli_fetch_assoc($ordres)){
 				?>
 					<tr>
 						<td>
-							<?php echo $ordr['orderID']; ?>
+							<?php echo $ordr['id']; ?>
 						</td>
 						<!-- <td>
 							<?php echo $ordr['timestamp']; ?>
 						</td> -->
 						<td>
-							<?php echo $ordr['orderStatus']; ?>			
+							<?php echo $ordr['orderstatus']; ?>			
 						</td>
 						<!-- <td>
 							<?php echo $ordr['paymentmode']; ?>
@@ -96,7 +96,7 @@ if(isset($_POST) & !empty($_POST)){
 							<label>Message :</label>
 							<textarea class="form-control" name="message" cols="10"> </textarea>
 
-					<input type="hidden" name="orderid" value="<?php echo $_GET['orderID']; ?>">		 
+					<input type="hidden" name="orderid" value="<?php echo $_GET['id']; ?>">		 
 						<div class="space30"></div>
 					<input type="submit" class="button btn-lg" value="Update Order Status">
 					</div>

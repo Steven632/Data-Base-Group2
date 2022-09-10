@@ -120,7 +120,7 @@
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?> 
-					<option value="<?php echo $r['id']; ?>"><?php echo $r['dryerCombo'];  ?>Dryer Combo</option>
+					<option value="<?php echo $r['id']; ?>"><?php echo $r['1'];  ?>Dryer Combo</option>
 				<?php } ?> -->
 				</select>
 			  </div>
