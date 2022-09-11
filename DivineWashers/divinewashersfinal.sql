@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2022 at 04:40 PM
+-- Generation Time: Sep 11, 2022 at 05:48 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -85,10 +85,11 @@ CREATE TABLE `costumer` (
 --
 
 INSERT INTO `costumer` (`costumerID`, `costumerfirstName`, `costumerlastName`, `costumerEmail`, `costumerPassword`, `address`, `street`, `city`, `state`, `zipCode`, `phoneNum`, `Paypallogin`, `status`) VALUES
-(1, 'Juan', 'Rios', 'jrios@upr.com', '1234', 'Urb. Lomas', 'carr. 467', 'Arecibo', 'Puerto Rico', '00628', 2147483647, NULL, 1),
+(1, 'Steven', 'Rodriguez', 'jrios@upr.com', '1234', 'Urb. Lomas', 'carr. 467', 'Arecibo', 'Puerto Rico', '', 123654, NULL, 1),
 (7, 'Steven', 'Rodriguez', 'steven.rodriguez18@upr.co', '1234', NULL, NULL, NULL, NULL, NULL, 12345674, NULL, 1),
 (21, 'Robert', 'Rodriguez', 'robrod@gmail.com', '1234', NULL, NULL, NULL, NULL, NULL, 12345674, NULL, 1),
-(22, 'Bob', 'Jobs', 'jobs@gmail.com', '1234', NULL, NULL, NULL, NULL, NULL, 123456, NULL, 1);
+(22, 'Steven', 'Rodriguez', 'jobs@gmail.com', '1234', 'Calle los ', NULL, 'Camuy', 'PR', '', 0, NULL, 1),
+(29, 'Hola', 'Lola', 'steven.rodriguez18@upr.ed', '1234', 'Los Pinos', NULL, 'Arecibo', 'PR', '', 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -104,6 +105,13 @@ CREATE TABLE `orderitems` (
   `pquantity` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orderitems`
+--
+
+INSERT INTO `orderitems` (`id`, `orderid`, `productID`, `productprice`, `pquantity`) VALUES
+(2, 9, 1, '199.99', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +126,15 @@ CREATE TABLE `orders` (
   `paymentmode` varchar(11) NOT NULL,
   `timestamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `uid`, `totalprice`, `orderstatus`, `paymentmode`, `timestamp`) VALUES
+(4, 22, '409.98', 'Order Place', 'cod', '2022-09-09 22:25:43'),
+(9, 29, '1199.98', 'Order Place', 'on', '2022-09-10 00:43:51'),
+(15, 1, '829.96', 'Order Place', 'cod', '2022-09-10 00:56:35');
 
 -- --------------------------------------------------------
 
@@ -204,19 +221,19 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `costumer`
 --
 ALTER TABLE `costumer`
-  MODIFY `costumerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `costumerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -239,14 +256,14 @@ ALTER TABLE `adds`
 -- Constraints for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  ADD CONSTRAINT `orderitems_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
+  ADD CONSTRAINT `orderitems_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
+  ADD CONSTRAINT `orderitems_ibfk_2` FOREIGN KEY (`orderid`) REFERENCES `orders` (`id`) ON DELETE NO ACTION;
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`id`) REFERENCES `orderitems` (`orderid`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `costumer` (`costumerID`);
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `costumer` (`costumerID`) ON DELETE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
