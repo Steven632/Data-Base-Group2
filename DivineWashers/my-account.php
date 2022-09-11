@@ -1,28 +1,9 @@
 <?php
-//include 'connection.php';
-//if(isset($_GET['costumerID']))
-//$costumerID = $_SESSION['costumerID']; 
 
-////echo '<pre>';
-////print_r($_SESSION);
-////echo '</pre>';                     
-////    $cart = $_SESSION['cart'];
-
-////$uid = $_SESSION['costumer'];
-
-//if(isset($_GET['id']) & !empty($_GET['id'])){
-  //  $id = $_GET['id'];
-    //$sql ="SELECT * FROM costumer ";
-    ////echo $psql;
-    //$result = mysqli_query($db, $sql);
-   // $row = mysqli_fetch_assoc($result);
-//}
-require_once 'connection.php'; 
-	if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){ //ORIGINAL 
-        // if(!isset($_SESSION['costumerID']) & empty($_SESSION['costumerID'])){ //TEST-------------
-		header('location: login.php');
-	}
+include 'connection.php';
+$cart = $_SESSION['cart'];
 ?>
+
 
 
 <!DOCTYPE html>
@@ -177,19 +158,7 @@ require_once 'connection.php';
                                         <thead class="thead-dark">
                                             <tr>
 
-                <?php
-                             $total = 0;
-                             
-                    if(isset($_GET) & !empty($_GET))
-					foreach ($cart as $key => $value) {
-						//echo $key . " : " . $value['quantity'] ."<br>";
-                        $cartsql = "SELECT  * FROM Product INNER JOIN orderdetails ON Product.productID = orderdetails.productID where Product.productID=$key";
-						// $cartsql = "SELECT * FROM product WHERE productID=$key";
-						$cartres = mysqli_query($db, $cartsql);
-						$cartr = mysqli_fetch_assoc($cartres);		
-                        
-				    $total = $total + ($cartr['prodPrice']*$value['quantity']);
-			    } ?>
+                           
                                                 <th>No</th>
                                                 <th>Product</th>
                                                 <th>Date</th>
@@ -197,22 +166,34 @@ require_once 'connection.php';
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
-                                        </thead>
+                                        </thead>                                      
                                         <tbody>
+                                        <?php                                                                    
+                                                               foreach ($cart as $key => $value) {
+                                                                //echo $key . " : " . $value['quantity'] ."<br>";
+                                                                $cartsql = "SELECT * FROM orders where uid='$key'";
+                                                                // $cartsql = "SELECT * FROM product WHERE productID=$key";
+                                                                $cartres = mysqli_query($db, $cartsql);
+                                                                $cartr = mysqli_fetch_assoc($cartres);           
+                                                         ?>
                                             <tr>
-                                                <td>1</td>
+                                                <td><?php echo $cartr ['id']; ?></td>
                                                 <!--<td>Product Name</td>-->
-                                                <td><?php echo $cartr['prodName']; ?></td>
-                                                <td>01 Jan 2020</td>
+                                                <td>nombre de product</td>
+                                                <td><?php echo $cartr ['timestamp']; ?></td>
                                                 <!--<td>$99</td>-->
-                                                <td><span> <?php echo $total; ?></span></td>
-                                                <td>Approved</td>
+                                                <td><span> <?php echo $cartr ['totalprice']; ?></span></td>
+                                                
+                                                <td><?php echo $cartr ['orderstatus']; ?></td>
                                                 <td><button class="btn">View</button></td>
                                             </tr>
+                                            <?php }?>
                                         </tbody>
+                                      
                                     </table>
                                 </div>
                             </div>
+                            
                             <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
                                 <h4>Payment Method</h4>
                                 <div class="payment-methods">

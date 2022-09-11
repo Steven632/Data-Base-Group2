@@ -199,8 +199,8 @@ $r = mysqli_fetch_assoc($res);
 	<section id="content">
 		<div class="content-blog">
 					<div class="page_header text-center">
-						<h2>Shop - Checkout</h2>
-						<p>Get the best kit for smooth shave</p>
+						<h2>Checkout</h2>
+						<p>A new beginning. A clean start</p>
 					</div>
 <form method="post">
 <div class="container">
