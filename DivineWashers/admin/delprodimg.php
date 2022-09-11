@@ -14,21 +14,21 @@
 			if(unlink($r['prodImage'])){
 				$delsql = "UPDATE product SET prodImage='' WHERE productID=$id";
 				if(mysqli_query($db, $delsql)){
-					header("location:editproduct.php?id={$id}");
+					header("location:editproduct.php?productID={$id}");
 				}
 			}else{
 				$delsql = "UPDATE product SET prodImage='' WHERE productID=$id";
 				if(mysqli_query($db, $delsql)){
-					header("location:editproduct.php?id={$id}");
+					header("location:editproduct.php?productID={$id}");
 				}
 			}
 
 	}else{
 		$delsql = "UPDATE product SET prodImage='' WHERE productID=$id";
 		if(mysqli_query($db, $delsql)){
-			header("location:editproduct.php?id={$id}");
+			header("location:editproduct.php?productID={$id}");
 		}
 	}
 }else{
-	header("location:editproduct.php?id={$id}");
+	header("location:editproduct.php?productID={$id}");
 }

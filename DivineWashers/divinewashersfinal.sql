@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2022 at 05:48 AM
+-- Generation Time: Sep 11, 2022 at 07:28 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -57,6 +57,30 @@ INSERT INTO `administrator` (`admiID`, `admiFirstName`, `admiLastName`, `admiEma
 (2, 'Steven', 'test', 'steven@upr.edu', '1234'),
 (3, 'Briana', 'test', 'briana@upr.edu', '1234'),
 (4, 'Celymar', 'test', 'celymar@upr.edu', '1234');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'Dryer Combo'),
+(2, 'Front Load'),
+(3, 'Dryer Combo'),
+(4, 'Front Load'),
+(5, 'Top Load'),
+(6, 'Smart Wifi'),
+(7, 'Portable');
 
 -- --------------------------------------------------------
 
@@ -132,9 +156,31 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `uid`, `totalprice`, `orderstatus`, `paymentmode`, `timestamp`) VALUES
-(4, 22, '409.98', 'Order Place', 'cod', '2022-09-09 22:25:43'),
+(4, 22, '409.98', 'Dispatched', 'cod', '2022-09-09 22:25:43'),
 (9, 29, '1199.98', 'Order Place', 'on', '2022-09-10 00:43:51'),
-(15, 1, '829.96', 'Order Place', 'cod', '2022-09-10 00:56:35');
+(15, 1, '829.96', 'Delivered', 'cod', '2022-09-10 00:56:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderstracking`
+--
+
+CREATE TABLE `orderstracking` (
+  `id` int(11) NOT NULL,
+  `orderid` int(11) DEFAULT NULL,
+  `status` varchar(15) NOT NULL,
+  `message` varchar(100) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orderstracking`
+--
+
+INSERT INTO `orderstracking` (`id`, `orderid`, `status`, `message`, `timestamp`) VALUES
+(1, 15, 'Delivered', ' ', '2022-09-11 04:38:16'),
+(2, 4, 'Dispatched', ' asdas', '2022-09-11 04:38:41');
 
 -- --------------------------------------------------------
 
@@ -144,6 +190,7 @@ INSERT INTO `orders` (`id`, `uid`, `totalprice`, `orderstatus`, `paymentmode`, `
 
 CREATE TABLE `product` (
   `productID` int(11) NOT NULL,
+  `catid` int(11) DEFAULT NULL,
   `prodName` varchar(25) NOT NULL,
   `prodDesc` varchar(200) NOT NULL,
   `portable` tinyint(1) NOT NULL,
@@ -161,13 +208,14 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`productID`, `prodName`, `prodDesc`, `portable`, `frontLoad`, `topLoad`, `smartWifi`, `dryerCombo`, `prodBrand`, `prodInventory`, `prodImage`, `price`) VALUES
-(1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 1, 0, 1, 0, 0, 'Costway', 15, 'img/costwayamazon_list.png', '199.99'),
-(2, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes', 1, 0, 1, 0, 0, 'Costway', 15, 'img/costwaytwin_list.png', '209.99'),
-(3, 'LG Wifi Combo Washer Drye', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash® tec', 0, 1, 0, 1, 1, 'LG', 15, 'img/LgWifi_list.png', '999.99'),
-(4, 'Samsung Platinum Front Lo', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.', 0, 1, 0, 0, 0, 'Samsung', 15, 'img/samsungfront.png', '699.99'),
-(5, 'Whirlpool Smart Top Load ', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 0, 0, 1, 0, 0, 'Whirlpool', 15, 'img/whirlpooltop.png', '829.99'),
-(6, 'Haier Smart Frontload Was', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 0, 1, 0, 1, 0, 'Haier', 15, 'img/haierFrontLoad_list.png', '999.99');
+INSERT INTO `product` (`productID`, `catid`, `prodName`, `prodDesc`, `portable`, `frontLoad`, `topLoad`, `smartWifi`, `dryerCombo`, `prodBrand`, `prodInventory`, `prodImage`, `price`) VALUES
+(1, NULL, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 1, 0, 1, 0, 0, 'Costway', 15, 'img/costwayamazon_list.png', '199.99'),
+(2, NULL, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes', 1, 0, 1, 0, 0, 'Costway', 15, 'img/costwaytwin_list.png', '209.99'),
+(3, NULL, 'LG Wifi Combo Washer Drye', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash® tec', 0, 1, 0, 1, 1, 'LG', 15, 'img/LgWifi_list.png', '999.99'),
+(4, NULL, 'Samsung Platinum Front Lo', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.', 0, 1, 0, 0, 0, 'Samsung', 15, 'img/samsungfront.png', '699.99'),
+(5, NULL, 'Whirlpool Smart Top Load ', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 0, 0, 1, 0, 0, 'Whirlpool', 15, 'img/whirlpooltop.png', '829.99'),
+(6, NULL, 'Haier Smart Frontload Was', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 0, 1, 0, 1, 0, 'Haier', 15, 'img/haierFrontLoad_list.png', '999.99'),
+(8, 5, 'Midea Top Load', 'asdfsadf', 0, 0, 0, 0, 0, '', 0, 'uploads/Sony Alpha a6000 Mirrorless Digital.jpg', '1999.00');
 
 --
 -- Indexes for dumped tables
@@ -185,6 +233,12 @@ ALTER TABLE `adds`
 --
 ALTER TABLE `administrator`
   ADD PRIMARY KEY (`admiID`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `costumer`
@@ -208,14 +262,28 @@ ALTER TABLE `orders`
   ADD UNIQUE KEY `uid` (`uid`);
 
 --
+-- Indexes for table `orderstracking`
+--
+ALTER TABLE `orderstracking`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `orderid` (`orderid`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`productID`);
+  ADD PRIMARY KEY (`productID`),
+  ADD UNIQUE KEY `catid` (`catid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `costumer`
@@ -236,10 +304,16 @@ ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT for table `orderstracking`
+--
+ALTER TABLE `orderstracking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -264,6 +338,12 @@ ALTER TABLE `orderitems`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `costumer` (`costumerID`) ON DELETE NO ACTION;
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`catid`) REFERENCES `category` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
