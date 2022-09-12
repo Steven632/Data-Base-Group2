@@ -171,7 +171,7 @@ $cart = $_SESSION['cart'];
                                         <?php                                                                    
                                                                foreach ($cart as $key => $value) {
                                                                 //echo $key . " : " . $value['quantity'] ."<br>";
-                                                                $cartsql = "SELECT * FROM orders where uid='$key'";
+                                                                $cartsql = "SELECT * FROM orders JOIN product where uid='$key'";
                                                                 // $cartsql = "SELECT * FROM product WHERE productID=$key";
                                                                 $cartres = mysqli_query($db, $cartsql);
                                                                 $cartr = mysqli_fetch_assoc($cartres);           
@@ -179,7 +179,7 @@ $cart = $_SESSION['cart'];
                                             <tr>
                                                 <td><?php echo $cartr ['id']; ?></td>
                                                 <!--<td>Product Name</td>-->
-                                                <td>nombre de product</td>
+                                                <td><?php echo $cartr ['prodName']; ?></td>
                                                 <td><?php echo $cartr ['timestamp']; ?></td>
                                                 <!--<td>$99</td>-->
                                                 <td><span> <?php echo $cartr ['totalprice']; ?></span></td>

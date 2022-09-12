@@ -8,7 +8,7 @@ if(isset($_GET) & !empty($_GET)){
     //echo $id;
     //$psql = "SELECT * FROM Product WHERE productID = '$id'"; 
                 //$psql = "SELECT * FROM Product, orderdetails WHERE productID = '$id' OUTER JOIN Product.productID = orderdetails.productID"; \
-    $psql =" SELECT * FROM Product, orderdetails WHERE product.productID = '$id' and orderdetails.productID='$id' ";
+    $psql =" SELECT * FROM Product WHERE product.productID = '$id'";
     //echo $psql;
     $presult = mysqli_query($db, $psql);
     $prow = mysqli_fetch_assoc($presult);
@@ -179,7 +179,7 @@ if(isset($_GET) & !empty($_GET)){
                                         <div class="price">
                                             <h4>Price:</h4>
                                             <!--<p>$199.99 <span>$1,299.99</span></p> -->
-                                            <p>$<?php echo $prow['prodPrice']; ?></p>
+                                            <p>$<?php echo $prow['price']; ?></p>
                                         </div>
 
                                         <form method="get" action="addtocart.php"> 
@@ -317,7 +317,7 @@ if(isset($_GET) & !empty($_GET)){
                             <div class="row align-items-center product-slider product-slider-3">
                                 
                             <?php  
-                            $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            $sql = "SELECT * FROM Product";
                             if(isset($_GET['productID']) & !empty($_GET['productID']))
                             {
                             $id= $_GET['productID'];
@@ -356,7 +356,7 @@ if(isset($_GET) & !empty($_GET)){
                             </div>
                             <div class="product-price">
                                 <!-- <h3><span>$</span>999.99</h3> -->
-                                <h3><span>$</span><?php echo $r['prodPrice']; ?> </h3>
+                                <h3><span>$</span><?php echo $r['price']; ?> </h3>
                                 <a class="btn" href="checkout.php"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
