@@ -5,7 +5,7 @@
 	if(!isset($_SESSION['costumer']) & empty($_SESSION['costumer'])){
 		header('location: login.php');
 	}
-include 'inc/header.php'; 
+// include 'inc/header.php'; 
 // include 'inc/nav.php'; 
 $uid = $_SESSION['costumerID'];
 $cart = $_SESSION['cart'];
