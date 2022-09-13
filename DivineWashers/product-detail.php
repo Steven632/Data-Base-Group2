@@ -164,6 +164,7 @@ if(isset($_GET) & !empty($_GET)){
                                     </div> -->
 
                                 </div>
+                                
                            
                                  
                                 <div class="col-md-7">
@@ -221,7 +222,9 @@ if(isset($_GET) & !empty($_GET)){
                                              
                                             <!--<a href="addtocart.php?id=< ?php echo $row ['productID'];?>"> <i class="fa fa-cart-plus"></i></a> -->
                                             <?php if ($prow['prodInventory'] >= 1){ ?>
-                                            <a class="btn" href="checkout.php"><i class="fa fa-shopping-bag"></i>Buy Now</a>
+                                                
+                                           <!--<a class="btn" href="addtocart.php"><i class="fa fa-shopping-bag"></i>Buy Now</a>-->
+                                            <input type="submit" class="button btn-small" value="Buy Now" style="width :100px; width:100px"> 
                                             <?php } else{
                                                 echo ' ';
                                                 }
@@ -354,10 +357,13 @@ if(isset($_GET) & !empty($_GET)){
                                     
                                 </div>
                             </div>
+
                             <div class="product-price">
                                 <!-- <h3><span>$</span>999.99</h3> -->
                                 <h3><span>$</span><?php echo $r['price']; ?> </h3>
-                                <a class="btn" href="checkout.php"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                <a class="btn" href="addtocart.php?id=<?php echo $r ['productID'];?>"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                
+                                <!--<a href="checkout.php" class="nav-item nav-link"><button> Checkout </button></a>-->
                             </div>
                         </div>
                     </div>
@@ -367,10 +373,9 @@ if(isset($_GET) & !empty($_GET)){
                         </div>
                         
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
+                                </div>
+                                </div>
+                                
                     
                     <!-- Side Bar Start -->
                     <div class="col-lg-4 sidebar">
@@ -411,13 +416,12 @@ if(isset($_GET) & !empty($_GET)){
                                 
                             </ul>
                         </div>
-                        
-                      
+                        </div>
+                        </div>
+                        </div>
                     </div>
                     <!-- Side Bar End -->
-                </div>
-            </div>
-        </div>
+      
         <!-- Product Detail End -->
         
         <!-- Brand Start -->
@@ -435,8 +439,8 @@ if(isset($_GET) & !empty($_GET)){
         </div>
         <!-- Brand End -->
         
-        <!-- Footer Start -->
-        <div class="footer">
+       <!-- Footer Start -->
+       <div class="footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -455,11 +459,11 @@ if(isset($_GET) & !empty($_GET)){
                             <h2>Follow Us</h2>
                             <div class="contact-info">
                                 <div class="social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                    <a href="https://twitter.com/?lang=es" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://es-la.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://pr.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://www.instagram.com/?hl=es-la" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -535,5 +539,7 @@ if(isset($_GET) & !empty($_GET)){
         
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        
+        
     </body>
 </html>

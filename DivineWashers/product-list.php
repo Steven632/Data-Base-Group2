@@ -330,7 +330,8 @@ if(isset($_GET['$search'])){
                                         <!-- -->
                                         <!--<h3><span>$</span> < ?php echo $row['price']; ?> </h3> -->
                                         
-                                        <a class="btn" href="checkout.php"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <a class="btn" href="addtocart.php?id=<?php echo $row ['productID'];?>"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                       
                                         <!--<a href="cart.html" class="nav-item nav-link">Cart</a>-->
                                     </div>
                                 </div>
@@ -338,10 +339,7 @@ if(isset($_GET['$search'])){
                             <!-- cierra ventana de producto-->
                             <?php
                             }
-                          ?>
-
-                        
-                           
+                          ?>             
                           </div>
                         
                          <!-- Pagination Start -->

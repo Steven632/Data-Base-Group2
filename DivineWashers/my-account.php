@@ -4,8 +4,6 @@ include 'connection.php';
 $cart = $_SESSION['cart'];
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -160,7 +158,7 @@ $cart = $_SESSION['cart'];
 
                            
                                                 <th>No</th>
-                                                <th>Product</th>
+                                                <!--<th>Product</th> -->
                                                 <th>Date</th>
                                                 <th>Price</th>                                           
                                                 <th>Status</th>
@@ -179,7 +177,7 @@ $cart = $_SESSION['cart'];
                                             <tr>
                                                 <td><?php echo $cartr ['id']; ?></td>
                                                 <!--<td>Product Name</td>-->
-                                                <td><?php echo $cartr ['prodName']; ?></td>
+                                                <!--<td>< ?php echo $cartr ['prodName']; ?></td>-->
                                                 <td><?php echo $cartr ['timestamp']; ?></td>
                                                 <!--<td>$99</td>-->
                                                 <td><span> <?php echo $cartr ['totalprice']; ?></span></td>
