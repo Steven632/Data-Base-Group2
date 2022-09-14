@@ -30,7 +30,7 @@ if(isset($_POST) & !empty($_POST)){
 		$count = mysqli_num_rows($res);
 		if($count == 1){
 			//update data in usersmeta table
-			$usql = "UPDATE costumer SET costumerfirstName='$fname', costumerlastName='$lname', address='$address', city='$city', state='$state',  zipCode='$zip', phoneNum='$phone' WHERE costumerID=$uid";
+			$usql = "UPDATE costumer SET costumerfirstName='$fname', costumerlastName='$lname', address='$address', street='$street', city='$city', state='$state',  zipCode='$zip', phoneNum='$phone' WHERE costumerID=$uid";
 			$ures = mysqli_query($db, $usql) or die(mysqli_error($db));
 			if($ures){
 
@@ -72,7 +72,7 @@ if(isset($_POST) & !empty($_POST)){
 			}
 		}else{
 			//insert data in usersmeta table
-			$isql = "INSERT INTO costumer (costumerfirstName, costumerlastName, address, city, state, ziCode, costumerID) VALUES ('$country', '$fname', '$lname', '$address1', '$address2', '$city', '$state', '$zip', '$company', '$phone', '$uid')";
+			$isql = "INSERT INTO costumer (costumerfirstName, costumerlastName, address, street, city, state, ziCode, costumerID) VALUES ('$country', '$fname', '$lname', '$address', '$street', '$city', '$state', '$zip', '$company', '$phone', '$uid')";
 			$ires = mysqli_query($db, $isql) or die(mysqli_error($db));
 			if($ires){
 
@@ -171,8 +171,8 @@ $r = mysqli_fetch_assoc($res);
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Products</a>
                             
-                            <a href="cart.php" class="nav-item nav-link active">Cart</a>
-                            <a href="checkout.php" class="nav-item nav-link">Checkout</a>
+                            <a href="cart.php" class="nav-item nav-link ">Cart</a>
+                            <a href="checkout.php" class="nav-item nav-link active">Checkout</a>
                             <a href="my-account.php" class="nav-item nav-link">My Account</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
@@ -236,11 +236,11 @@ $r = mysqli_fetch_assoc($res);
 							<div class="row">
 								<div class="col-md-6">
 									<label>First Name </label>
-									<input name="fname" class="form-control" placeholder="" value="<?php if(!empty($r['firstname'])){ echo $r['firstname']; } elseif(isset($fname)){ echo $fname; } ?>" type="text">
+									<input name="fname" class="form-control" placeholder="First Name" value="<?php if(!empty($r['firstname'])){ echo $r['firstname']; } elseif(isset($fname)){ echo $fname; } ?>" type="text">
 								</div>
 								<div class="col-md-6">
 									<label>Last Name </label>
-									<input name="lname" class="form-control" placeholder="" value="<?php if(!empty($r['lastname'])){ echo $r['lastname']; }elseif(isset($lname)){ echo $lname; } ?>" type="text">
+									<input name="lname" class="form-control" placeholder="Last Name" value="<?php if(!empty($r['lastname'])){ echo $r['lastname']; }elseif(isset($lname)){ echo $lname; } ?>" type="text">
 								</div>
 							</div>
 							<div class="clearfix space20"></div>
@@ -312,7 +312,7 @@ $r = mysqli_fetch_assoc($res);
 				    $total = $total + ($cartr['price']*$value['quantity']);
                      } ?>
                              
-                                            <h1>Cart Summary</h1>
+                                            <h2>Cart Summary</h2>
                                             <p>Sub Total<span> <?php echo $total; ?></span></p>
                                             <p>Shipping Cost<span>Free Shipping </span></p>
                                             <h2>Grand Total<span> <?php echo $total; ?></span></h2>
@@ -325,17 +325,17 @@ $r = mysqli_fetch_assoc($res);
 			<div class="payment-method">
 				<div class="row">
 					
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<input name="payment" id="radio1" class="css-checkbox" type="radio" value="cod"><span>Cash On Delivery</span>
 							<div class="space20"></div>
-							<p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won't be shipped until the funds have cleared in our account.</p>
+							<p>Make your payment directly into our bank account. Your order won't be shipped until the funds have cleared in our account.</p>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<input name="payment" id="radio2" class="css-checkbox" type="radio"><span value="cheque">Cheque Payment</span>
 							<div class="space20"></div>
-							<p>Please send your cheque to BLVCK Fashion House, Oatland Rood, UK, LS71JR</p>
+							<p>Please send your cheque to Divine Washers, Arecibo, PR, 00619</p>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<input name="payment" id="radio3" class="css-checkbox" type="radio"><span value="paypal">Paypal</span>
 							<div class="space20"></div>
 							<p>Pay via PayPal; you can pay with your credit card if you don't have a PayPal account</p>
@@ -354,10 +354,28 @@ $r = mysqli_fetch_assoc($res);
 		</div>
 	</section>
 	
-<!--< ?php include 'inc/footer.php' ?> -->
-
- <!-- Footer Start -->
- <div class="footer">
+  <!-- Newsletter Start -->
+	<div class="newsletter">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Subscribe Our Newsletter</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form">
+                            <input type="email" value="Your email here">
+                            <button>Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter End -->        
+        
+      
+     
+        <!-- Footer Start -->
+        <div class="footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -390,7 +408,7 @@ $r = mysqli_fetch_assoc($res);
                         <div class="footer-widget">
                             <h2>Company Info</h2>
                             <ul>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="contact.php">About Us</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
                                 <li><a href="#">Terms & Condition</a></li>
                             </ul>
@@ -434,7 +452,7 @@ $r = mysqli_fetch_assoc($res);
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 copyright">
-                        <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a> and Copyright 2015. CodingCyber. All Rights Reserved</p>
+                        <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
                     </div>
 
                     <div class="col-md-6 template-by">
@@ -456,8 +474,3 @@ $r = mysqli_fetch_assoc($res);
         
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
-        
-        
-    </body>
-</html>
-

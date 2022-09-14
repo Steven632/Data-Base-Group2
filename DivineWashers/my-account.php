@@ -1,8 +1,11 @@
 <?php
 
 include 'connection.php';
-$cart = $_SESSION['cart'];
+$uid = $_SESSION['costumerID'];
+// $cart = $_SESSION['cart'];
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -157,33 +160,39 @@ $cart = $_SESSION['cart'];
                                             <tr>
 
                            
-                                                <th>No</th>
-                                                <!--<th>Product</th> -->
+                                                <th>Order No</th>
+                                                <!-- <th>Product</th> -->
                                                 <th>Date</th>
                                                 <th>Price</th>                                           
                                                 <th>Status</th>
-                                                <th>Action</th>
+                                                <!-- <th>Action</th> --> 
                                             </tr>
                                         </thead>                                      
                                         <tbody>
                                         <?php                                                                    
-                                                               foreach ($cart as $key => $value) {
-                                                                //echo $key . " : " . $value['quantity'] ."<br>";
-                                                                $cartsql = "SELECT * FROM orders JOIN product where uid='$key'";
-                                                                // $cartsql = "SELECT * FROM product WHERE productID=$key";
-                                                                $cartres = mysqli_query($db, $cartsql);
-                                                                $cartr = mysqli_fetch_assoc($cartres);           
+                                                                // foreach ($uid as $key => $value) {
+                                                            //     //echo $key . " : " . $value['quantity'] ."<br>";
+                                                            //     // $cartsql = "SELECT * FROM orders JOIN product where uid='$key'";
+                                                            //     $ordsql = "SELECT * FROM orders JOIN product where uid='$key'";
+                                                            //     // $cartsql = "SELECT * FROM product WHERE productID=$key";
+                                                            //     // $cartres = mysqli_query($db, $cartsql);
+                                                            //     $ordres = mysqli_query($db, $ordsql);
+                                                            //     // $cartr = mysqli_fetch_assoc($cartres);           
+                                                            //     $ordr = mysqli_fetch_assoc($ordres);
+                                                            $ordsql = "SELECT * FROM orders JOIN orderitems WHERE orders.id=orderitems.orderid AND orders.uid=$uid";
+                                                            $ordres = mysqli_query($db, $ordsql);
+                                                            while($ordr = mysqli_fetch_assoc($ordres)){                                        
                                                          ?>
                                             <tr>
-                                                <td><?php echo $cartr ['id']; ?></td>
-                                                <!--<td>Product Name</td>-->
-                                                <!--<td>< ?php echo $cartr ['prodName']; ?></td>-->
-                                                <td><?php echo $cartr ['timestamp']; ?></td>
+                                                <td><?php echo $ordr ['orderid']; ?></td>
+                                                <!-- <td>Product Name</td> -->
+                                                <!-- <td><?php echo $ordr ['prodName']; ?></td> -->
+                                                <td><?php echo $ordr ['timestamp']; ?></td>
                                                 <!--<td>$99</td>-->
-                                                <td><span> <?php echo $cartr ['totalprice']; ?></span></td>
+                                                <td><span> <?php echo $ordr ['productprice']; ?></span></td>
                                                 
-                                                <td><?php echo $cartr ['orderstatus']; ?></td>
-                                                <td><button class="btn">View</button></td>
+                                                <td><?php echo $ordr ['orderstatus']; ?></td>
+                                                <!-- <td><button class="btn">View</button></td> -->
                                             </tr>
                                             <?php }?>
                                         </tbody>
@@ -240,7 +249,7 @@ $cart = $_SESSION['cart'];
                                     <div class="col-md-6">
 
                                     <?php
-                                    $sql = "SELECT  * FROM costumer"; //WHERE '$id' = '$costumerID' // WHERE $_GET[costumerID] = '$costumerID' ";  
+                                    $sql = "SELECT  * FROM costumer WHERE costumerID=$uid"; //WHERE '$id' = '$costumerID' // WHERE $_GET[costumerID] = '$costumerID' ";  
                                     $result = mysqli_query($db, $sql);
                                     $row = mysqli_fetch_assoc($result);
                                     ?>

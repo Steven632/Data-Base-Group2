@@ -7,7 +7,7 @@
 
 	if(isset($_GET['productID']) & !empty($_GET['productID'])){
 		$id = $_GET['productID'];
-		$sql = "SELECT prodImage FROM product WHERE productproductID=$id";
+		$sql = "SELECT prodImage FROM product WHERE productID=$id";
 		$res = mysqli_query($db, $sql);
 		$r = mysqli_fetch_assoc($res);
 		if(!empty($r['prodImage'])){

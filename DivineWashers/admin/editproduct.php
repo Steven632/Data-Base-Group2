@@ -45,7 +45,7 @@
 			$filepath = $_POST['filepath'];
 		}	
 	
-		$sql = "UPDATE product SET prodName='$prodname', prodDesc='$description', prodImage='$filepath' WHERE 'id' = '$id'";
+		$sql = "UPDATE product SET prodName='$prodname', prodDesc='$description', prodImage='$filepath' WHERE productID = '$id'";
 		//$sql = "UPDATE orderdetails SET price='$price', WHERE 'id' = '$id'";
 		$res = mysqli_query($db, $sql);
 		if($res){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2022 at 07:28 AM
+-- Generation Time: Sep 14, 2022 at 12:26 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -259,7 +259,8 @@ ALTER TABLE `orderitems`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uid` (`uid`);
+  ADD UNIQUE KEY `uid` (`uid`),
+  ADD KEY `uid_2` (`uid`);
 
 --
 -- Indexes for table `orderstracking`

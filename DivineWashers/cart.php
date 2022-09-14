@@ -2,9 +2,9 @@
 //require_once 'connection.php';
 include 'connection.php';
 $cart = $_SESSION['cart'];
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
+// echo '<pre>';
+// print_r($_SESSION);
+// echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="en">

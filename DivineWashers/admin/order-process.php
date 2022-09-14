@@ -76,7 +76,7 @@ if(isset($_POST) & !empty($_POST)){
 							<?php echo $ordr['paymentmode']; ?>
 						</td>
 						<td>
-							INR <?php echo $ordr['totalprice']; ?>/-
+						 <?php echo $ordr['totalprice']; ?>
 						</td>
 					</tr>
 				<?php } ?>

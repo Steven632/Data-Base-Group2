@@ -4,6 +4,7 @@
 	if(!isset($_SESSION['admiEmail']) & empty($_SESSION['admiEmail'])){
 		header('location: login.php');
 	}
+	
 ?>
 <?php include 'inc/header.php'; ?>
 <?php include 'inc/nav.php'; ?>

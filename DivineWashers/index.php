@@ -8,27 +8,10 @@ confirm($countquery);
 $Count_r = fetch_array($countquery);
 }
 ?>
-<!--
-< ?php
-if(isset($_POST['prodname']) & !empty($_POST['prodname'])){
-    $search =$_POST['prodname'];
-	$query = query ("SELECT COUNT * as 'counter' FROM product WHERE prodname = '$search'");
-    confirm($query);
-	//$result = mysqli_query($db, $sql) or die(mysqli_error($db));
-	//$count = mysqli_num_rows($result);
-	if(mysqli_num_rows($query) >=1 ){
-		redirect('product-detail.php?id=' . $search);
-	}else{
-		redirect('index.php?id=' . $search);
-	}
-}
-?>
--->
+
 <?php
 
-//echo $Count_r['counter'];
-//if($count_r['counter'] > '0'){
-//    echo hm;
+
 
 function getSearchData($search){
     $query = query("SELECT *  FROM product WHERE prodName LIKE '%$search%'");
@@ -160,113 +143,17 @@ while($row = fetch_array($info)){
 
 
 
-<!--
-< ?php
-if(isset($_POST) & !empty($_POST)){
-	$search = $_GET['prodName'];
-	$sqlsearch = "SELECT *  FROM product WHERE prodName LIKE '%$search%'";
-    echo $search;
-    while($row = mysqli_fetch_assoc($sqlsearch)){ 
-        echo $search;
-    }
-}
-
-}
-? >
--->
-
-<!--< ?php
-if(isset($_GET['prodName']) & !empty($_GET['prodName'])){
-$sqlsearch = $sqlsearch("SELECT * FROM products WHERE prodName LIKE '%$search_r%'");
-confirm($sqlsearch);
-while($row = fetch_array($sqlsearch)){
-    $prodName = $row[prodName];
-}
-
-}
-? > -->
-
-
-
-
-
-
-<!--< ?php
-                    if(isset($_GET['keyword']) & !empty($_POST['keyword'])){ //test
-
-                        if(isset($_POST['keyword']) & !empty($_POST['keyword'])){
-                          $search = $_POST['keyword'];
-
-                          $query = query("SELECT * FROM product WHERE prodname = '$search'"); //cambiar a LIKE % luego
-                          confirm($query);
-                          
-                        redirect('product-list.php?id=' . $search);                         
-                        }
-
-                    }
-
-?> -->
-
-<!--
-< ?php
-        $query = query("SELECT * FROM product WHERE prodname = '$search'");
-        while($row = mysqli_fetch_assoc($query)){
-            $prodName = $row[prodName];
-
-        }
-?>
--->
-                            
-
-                            <!-- <button><i class="fa fa-search"></i></button> -->
-                            <!--<a href="product-details.php?id=< ?php echo $fetch['productID']; ?>"> <i class="fa fa-search"></i></a>-->
-                            <!--<a href="product-detail.php?id=< ?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a> -->
-
-                        <!--   < ?php
-                           if(isset($_GET['k']) && $_GET['k'] != ''){ 
-                            $k =trim($_GET['k']);
-                            $query_string = "SELECT * from product WHERE ";
-                            $display_words =" ";
-
-                            $keywords = explode(' ', $k);
-                            foreach($keywords as $prodName){
-                                $query_string .= " keywords = 'prodName' ";
-                                $display_words .= $prodName." ";
-                            }
-                            $query_string = substr($query_string,0,strlen($query_string)-3);
-
-                            $query = mysqli_query($db, $query_string);
-                            $result_count = mysqli_num_rows($query);
-                           
-
-                            if ($result_count > 0){
-                                echo '<div class="right"><b><u>' .$result_count. '</u></b> results found </div>';                    
-                                while($row = mysqli_fetch_assoc(query)){
-                                    ?>
-                                    <a href="product-detail.php?id=< ?php echo $row['productID']; ?>"> <i class="fa fa-search"></i></a>
-                                    < ?php
-                                }
-                            }
-                            else
-                            echo 'No results found';
-                           }
-                           else echo '';    
-                           ?>
-                        -->
 
                            
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="user">
-                             <!--<a href="wishlist.html" class="btn wishlist">
-                                <i class="fa fa-heart"></i>
-                                <span>(0)</span> 
-                            </a> -->
+                             
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
-                                <!--<span>(0)</span> -->
+                                
                             </a>
                         </div>
                     </div>
@@ -334,23 +221,7 @@ while($row = fetch_array($sqlsearch)){
                             <?php
                             }
                             ?>
-                            <!--
-                            <div class="header-slider-item">
-                                <img src="img/whrilpool_top1.png" alt="Slider Image" />
-                                <div class="header-slider-caption">
-                                    <p>Whirlpool - 4.7 Cu. Ft. Top Load Washer with Pretreat Station - Chrome shadow</p>
-                                    <a class="btn" href="product-detail.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                                </div>
-                            </div>
-
-                            <div class="header-slider-item">
-                                <img src="img/ge_portable1.png" alt="Slider Image" />
-                                <div class="header-slider-caption">
-                                    <p>GE - 2.8 Cu. Ft. Top Load Washer Portable - White/black</p>
-                                    <a class="btn" href="product-detail.php"><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                                </div>
-                            </div>
--->
+                
                         </div>
                       </div>
                      <div class="col-md-3">
