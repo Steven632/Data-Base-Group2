@@ -6,7 +6,7 @@
 	}
 
 	if(isset($_GET) & !empty($_GET)){
-		$id = $_GET['productID'];
+		$id = $_GET['id'];
 	}else{
 		header('location: products.php');
 	}

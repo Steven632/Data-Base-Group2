@@ -23,11 +23,19 @@
 					</tr>
 				</thead>
 				<tbody>
-				<?php 	
-					$sql = "SELECT * FROM product";
-					$res = mysqli_query($db, $sql); 
-					while ($r = mysqli_fetch_assoc($res)) {
-				?>
+				<?php  
+                            // $sql = "SELECT * FROM Product, orderdetails WHERE Product.productID = Orderdetails.productID ";
+                            $sql = "SELECT * FROM Product";
+                            if(isset($_GET['productID']) & !empty($_GET['productID']))
+                            {
+                            $id= $_GET['productID'];
+                            //$sql .= "WHERE =  $id";
+                            }
+                            $result = mysqli_query($db, $sql);
+                            //$r = mysqli_fetch_assoc($result)
+                            while($r = mysqli_fetch_assoc($result)){ 
+                            
+                            ?>
 					<tr>
 						<th scope="row"><?php echo $r['productID']; ?></th>
 						<td><?php echo $r['prodName']; ?></td>
