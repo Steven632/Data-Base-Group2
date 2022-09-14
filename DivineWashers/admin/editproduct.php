@@ -63,13 +63,13 @@
 		<div class="container">
 		<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
-			<?php 	
+			<!-- <?php 	
 			
-				$sql = "SELECT  * FROM Product";
+				$sql = "SELECT  * FROM Product where productID='$id'";
 				$res = mysqli_query($db, $sql); 
 				$r = mysqli_fetch_assoc($res); 
-			?>
-			<form method="post" enctype="multipart/form-data action="edit-productprocess.php"">
+			?> -->
+			<form method="post" enctype="multipart/form-data action="edit-productprocess.php>
 			  <div class="form-group">
 			  <input type="hidden" name="filepath" value="<?php echo $r['prodImage']; ?>">
 			    <label for="Productname">Product Name</label>
