@@ -9,6 +9,7 @@ if(isset($_POST) & !empty($_POST)){
     //$price = mysqli_real_escape_string($db, $_POST['productprice']);
 	//$sqlsearch = "SELECT *  FROM product WHERE prodName LIKE '%$search%'";
     $sql = "UPDATE product SET prodName='$prodname', prodDesc='$description', prodImage='$filepath' WHERE 'id' = '$id'";
+    
     //echo $search;
 	//confirm($sqlsearch);
 	//$result = mysqli_result($db, $sql);

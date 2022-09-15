@@ -27,7 +27,7 @@
 			$extension = substr($name, strpos($name, '.') + 1);
 
 			if(isset($name) && !empty($name)){
-				if(($extension == "jpg" || $extension == "jpeg") && $type == "image/jpeg" && $size<=$max_size){
+				if(($extension == "jpg" || $extension == "png") && $type == "image/png" && $size<=$max_size){
 					$location = "../img/";
 					$filepath = $location.$name;
 					if(move_uploaded_file($tmp_name, $filepath)){
