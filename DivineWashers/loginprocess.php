@@ -6,13 +6,18 @@ if(isset($_POST) & !empty($_POST)){
 	$password = $_POST['costumerPassword'];
 	
 	$sql = "SELECT * FROM costumer WHERE costumerEmail='$email' AND costumerPassword='$password'";
+	
+	
 	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
 	$count = mysqli_num_rows($result);
 	$r = mysqli_fetch_assoc($result);
 	$adminemail = mysqli_real_escape_string($db, $_POST['costumerEmail']);
 	$adminpassword = $_POST['costumerPassword'];
 	$adminsql ="SELECT * FROM administrator WHERE admiEmail='$adminemail' AND admiPassword='$adminpassword'";
-
+	if($r['status']=='0'){
+		echo "Cuenta Inactiva";
+	}
+	else{
 	$result = mysqli_query($db, $sql);
 	$count = mysqli_num_rows($result);
 
@@ -35,5 +40,6 @@ if(isset($_POST) & !empty($_POST)){
 		header("location: login.php?message=Invalid_Credentials");
 		
 	}
+}
 }
 ?>

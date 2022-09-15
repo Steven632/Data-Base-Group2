@@ -22,25 +22,10 @@ $cart = $_SESSION['cart'];
 // }
 if(isset($_POST) & !empty($_POST)){
 	if($_POST['agree'] == true){
-		// foreach ($cart as $key => $value) {
-		// 	//echo $key . " : " . $value['quantity'] ."<br>";
-		// 	$ordsql = "SELECT * FROM product WHERE productID=$key";
-		// 	$ordres = mysqli_query($db, $ordsql);
-		// 	$ordr = mysqli_fetch_assoc($ordres);
-
-			
-
-		// 	$quantity = $value['quantity'];
-		// 	echo $quantity;
-		// 	echo $ordr;
-		// if ($quantity>$ordr){
-		// 	echo "La cantidad del pedido es mayor a la que tenemos en el inventario.";
-		// }
-		// else{
-		// $country = filter_var($_POST['country'], FILTER_SANITIZE_STRING);
+		
 		$fname = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
 		$lname = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
-		// $company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
+		
 		$address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
 		$address2 = filter_var($_POST['street'], FILTER_SANITIZE_STRING);
 		$street = filter_var($_POST['street'], FILTER_SANITIZE_STRING);
