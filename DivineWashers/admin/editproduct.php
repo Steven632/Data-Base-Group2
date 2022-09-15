@@ -16,6 +16,8 @@
 		$description = mysqli_real_escape_string($db, $_POST['productdescription']);
 		$category = mysqli_real_escape_string($db, $_POST['productcategory']);
 		$price = mysqli_real_escape_string($db, $_POST['productprice']);
+		$catid = mysqli_real_escape_string($db, $_POST['productcategory']);
+
 
 		if(isset($_FILES) & !empty($_FILES)){
 			$name = $_FILES['prodImage']['name'];
@@ -45,7 +47,7 @@
 			$filepath = $_POST['filepath'];
 		}	
 	
-		$sql = "UPDATE product SET prodName='$prodname', prodDesc='$description', prodImage='$filepath' WHERE productID = '$id'";
+		$sql = "UPDATE product SET prodName='$prodname', prodDesc='$description', prodImage='$filepath', catid='$catid', price='$price' WHERE productID = '$id'";
 		//$sql = "UPDATE orderdetails SET price='$price', WHERE 'id' = '$id'";
 		$res = mysqli_query($db, $sql);
 		if($res){

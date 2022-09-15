@@ -217,31 +217,31 @@ if(isset($_GET['$search'])){
                             if(isset($_GET['cat']) & !empty($_GET['cat']))
                             {
                             $cat = $_GET['cat'];                        
-                            $sql .= " WHERE portable='1'";               
+                            $sql .= " WHERE catid='1'";               
                             } 
 
                             if(isset($_GET['catq']))
                             {
                             $catq = $_GET['catq'];                        
-                            $sql .= " WHERE frontLoad='1'";                            
+                            $sql .= " WHERE catid='2'";                            
                             } 
 
                             else if(isset($_GET['catw']))
                             {
                             $catw = $_GET['catw'];                        
-                            $sql .= " WHERE topLoad='1'";                            
+                            $sql .= " WHERE catid='5'";                            
                             } 
 
                             else if(isset($_GET['cate']))
                             {
                             $cate = $_GET['cate'];                        
-                            $sql .= " WHERE smartWifi='1'";                            
+                            $sql .= " WHERE catid='6'";                            
                             } 
 
                             else if(isset($_GET['catr']))
                             {
                             $catr = $_GET['catr'];                        
-                            $sql .= " WHERE dryerCombo='1'";                            
+                            $sql .= " WHERE catid='7'";                            
                             } 
                             //SORT DE PRECIOS-----------------------------------
                             else if(isset($_GET['sp']))
@@ -377,11 +377,11 @@ if(isset($_GET['$search'])){
                                 ?>               
 
                                <li class="nav-item">
-                                    <li><a href="product-list.php?cat=<?php echo $catr['portable']; ?>" ><i class="fa fa-microchip"></i>Portable</a></li>
-                                    <a href="product-list.php?catq=<?php echo $catr['frontLoad']; ?>" ><i class="fa fa-microchip"></i>Frontload</a>
-                                    <a href="product-list.php?catw=<?php echo $catr['topLoad']; ?>" ><i class="fa fa-microchip"></i>Topload</a>
-                                    <a href="product-list.php?cate=<?php echo $catr['smartWifi']; ?>" ><i class="fa fa-microchip"></i>Smartwifi</a>
-                                    <a href="product-list.php?catr=<?php echo $catr['dryerCombo']; ?>" ><i class="fa fa-microchip"></i>Dryercombo</a>
+                                    <li><a href="product-list.php?cat=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Portable</a></li>
+                                    <a href="product-list.php?catq=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Frontload</a>
+                                    <a href="product-list.php?catw=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Topload</a>
+                                    <a href="product-list.php?cate=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Smartwifi</a>
+                                    <a href="product-list.php?catr=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Dryercombo</a>
                                 </li>
                                 </ul>
                             </nav>
