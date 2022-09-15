@@ -185,7 +185,6 @@ CREATE TABLE `product` (
    `topLoad` tinyint(1) NOT NULL,
    `smartWifi`tinyint(1) NOT NULL,
    `dryerCombo`tinyint(1) NOT NULL,
-    `prodBrand`tinyint(1) NOT NULL,
   `prodBrand` varchar(15) NOT NULL,
   `prodInventory` int(100) NOT NULL,
   `prodImage` varchar(50) DEFAULT NULL,
