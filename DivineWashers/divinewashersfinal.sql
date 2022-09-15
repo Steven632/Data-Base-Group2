@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2022 at 04:49 AM
+-- Generation Time: Sep 15, 2022 at 03:51 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -20,19 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `divinewashersfinal`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `adds`
---
-
-CREATE TABLE `adds` (
-  `admiID` int(11) NOT NULL,
-  `productID` int(11) NOT NULL,
-  `changeDate` date NOT NULL,
-  `comment` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -121,7 +108,6 @@ INSERT INTO `costumer` (`costumerID`, `costumerfirstName`, `costumerlastName`, `
 CREATE TABLE `orderitems` (
   `id` int(11) NOT NULL,
   `orderid` int(11) NOT NULL,
-  `prodName` varchar(20) NOT NULL,
   `productID` int(11) NOT NULL,
   `productprice` varchar(255) NOT NULL,
   `pquantity` int(50) NOT NULL
@@ -131,20 +117,10 @@ CREATE TABLE `orderitems` (
 -- Dumping data for table `orderitems`
 --
 
-INSERT INTO `orderitems` (`id`, `orderid`, `prodName`, `productID`, `productprice`, `pquantity`) VALUES
-(10, 32, '', 2, '209.99', 1),
-(11, 33, '', 1, '199.99', 1),
-(12, 34, '', 1, '199.99', 1),
-(13, 34, '', 2, '209.99', 1),
-(14, 34, '', 3, '999.99', 1),
-(15, 35, '', 1, '199.99', 3),
-(16, 36, '', 1, '199.99', 1),
-(17, 37, '', 1, '199.99', 1),
-(18, 37, '', 3, '999.99', 1),
-(19, 38, '', 2, '209.99', 1),
-(20, 40, '', 3, '999.99', 1),
-(21, 41, '', 2, '209.99', 1),
-(22, 43, '', 1, '199.99', 1);
+INSERT INTO `orderitems` (`id`, `orderid`, `productID`, `productprice`, `pquantity`) VALUES
+(45, 71, 1, '199.99', 1),
+(46, 77, 21, '999.00', 21),
+(47, 78, 4, '699.99', 1);
 
 -- --------------------------------------------------------
 
@@ -166,18 +142,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `uid`, `totalprice`, `orderstatus`, `paymentmode`, `timestamp`) VALUES
-(32, 1, '209.99', 'Order Place', 'cod', '2022-09-13 20:06:59'),
-(33, 1, '199.99', 'Order Place', 'cod', '2022-09-13 20:07:55'),
-(34, 1, '1409.97', 'Order Place', 'on', '2022-09-13 20:08:57'),
-(35, 1, '599.97', 'Delivered', 'cod', '2022-09-13 20:51:52'),
-(36, 1, '199.99', 'Order Place', 'on', '2022-09-13 21:03:22'),
-(37, 1, '1199.98', 'Dispatched', 'cod', '2022-09-13 21:06:04'),
-(38, 7, '209.99', 'Order Place', '', '2022-09-13 21:25:19'),
-(39, 7, '0', 'Order Place', 'cod', '2022-09-13 21:31:34'),
-(40, 7, '999.99', 'Order Place', 'cod', '2022-09-13 21:33:27'),
-(41, 7, '209.99', 'Order Place', 'on', '2022-09-13 21:35:09'),
-(42, 7, '0', 'Order Place', 'cod', '2022-09-13 22:03:26'),
-(43, 7, '199.99', 'Order Place', 'cod', '2022-09-13 22:23:53');
+(71, 1, '199.99', 'Order Place', 'cod', '2022-09-15 00:00:00'),
+(77, 1, '20979', 'Order Place', 'cod', '2022-09-15 09:29:05'),
+(78, 1, '699.99', 'Order Place', 'cod', '2022-09-15 09:50:08');
 
 -- --------------------------------------------------------
 
@@ -213,11 +180,6 @@ CREATE TABLE `product` (
   `catid` int(11) NOT NULL,
   `prodName` varchar(25) NOT NULL,
   `prodDesc` varchar(200) NOT NULL,
-  `portable` tinyint(1) NOT NULL,
-  `frontLoad` tinyint(1) NOT NULL,
-  `topLoad` tinyint(1) NOT NULL,
-  `smartWifi` tinyint(1) NOT NULL,
-  `dryerCombo` tinyint(1) NOT NULL,
   `prodBrand` varchar(15) NOT NULL,
   `prodInventory` int(100) NOT NULL,
   `prodImage` varchar(50) DEFAULT NULL,
@@ -228,24 +190,18 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`productID`, `catid`, `prodName`, `prodDesc`, `portable`, `frontLoad`, `topLoad`, `smartWifi`, `dryerCombo`, `prodBrand`, `prodInventory`, `prodImage`, `price`) VALUES
-(1, 7, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 1, 0, 1, 0, 0, 'Costway', 15, 'img/costwayamazon_list.png', '199.99'),
-(2, 7, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes', 1, 0, 1, 0, 0, 'Costway', 15, 'img/costwaytwin_list.png', '209.99'),
-(3, 1, 'LG Wifi Combo Washer Drye', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash® tec', 0, 1, 0, 1, 1, 'LG', 15, 'img/LgWifi_list.png', '999.99'),
-(4, 2, 'Samsung Platinum Front Lo', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.', 0, 1, 0, 0, 0, 'Samsung', 15, 'img/samsungfront.png', '699.99'),
-(5, 6, 'Whirlpool Smart Top Load ', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 0, 0, 1, 0, 0, 'Whirlpool', 15, 'img/whirlpooltop.png', '829.99'),
-(6, 2, 'Haier Smart Frontload Was', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 0, 1, 0, 1, 0, 'Haier', 15, 'img/haierFrontLoad_list.png', '999.99');
+INSERT INTO `product` (`productID`, `catid`, `prodName`, `prodDesc`, `prodBrand`, `prodInventory`, `prodImage`, `price`) VALUES
+(1, 7, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 'Costway', 20, 'img/costwayamazon_list.png', '199.99'),
+(2, 7, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes', 'Costway', 20, 'img/costwaytwin_list.png', '209.99'),
+(3, 1, 'LG Wifi Combo Washer Drye', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash®', 'LG', 20, 'img/LgWifi_list.png', '999.99'),
+(4, 2, 'Samsung Platinum Front Lo', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.', 'Samsung', 19, 'img/samsungfront.png', '699.99'),
+(5, 6, 'Whirlpool Smart Top Load ', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 'Whirlpool', 20, 'img/whirlpooltop.png', '829.99'),
+(6, 2, 'Haier Smart Frontload Was', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 'Haier', 20, 'img/haierFrontLoad_list.png', '999.99'),
+(21, 2, 'Midea Top Load 2', 'dsfgsdf', '', 20, 'img/lgloads.jpg', '999.00');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `adds`
---
-ALTER TABLE `adds`
-  ADD KEY `admiID` (`admiID`),
-  ADD KEY `productID` (`productID`);
 
 --
 -- Indexes for table `administrator`
@@ -272,18 +228,16 @@ ALTER TABLE `orderitems`
   ADD PRIMARY KEY (`id`),
   ADD KEY `productID_2` (`productID`),
   ADD KEY `orderid` (`orderid`) USING BTREE,
-  ADD KEY `productID` (`productID`) USING BTREE,
-  ADD KEY `prodName` (`prodName`),
-  ADD KEY `prodName_2` (`prodName`);
+  ADD KEY `productID` (`productID`) USING BTREE;
 
 --
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);--,
-  --ADD KEY `uid_2` (`uid`),
-  --ADD KEY `uid_3` (`uid`),
-  --ADD KEY `uid` (`uid`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid_2` (`uid`),
+  ADD KEY `uid_3` (`uid`),
+  ADD KEY `uid` (`uid`) USING BTREE;
 
 --
 -- Indexes for table `orderstracking`
@@ -322,13 +276,13 @@ ALTER TABLE `costumer`
 -- AUTO_INCREMENT for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `orderstracking`
@@ -340,18 +294,11 @@ ALTER TABLE `orderstracking`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `adds`
---
-ALTER TABLE `adds`
-  ADD CONSTRAINT `adds_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
-  ADD CONSTRAINT `adds_ibfk_3` FOREIGN KEY (`admiID`) REFERENCES `administrator` (`admiID`);
 
 --
 -- Constraints for table `orderitems`

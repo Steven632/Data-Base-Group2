@@ -9,9 +9,34 @@
 // include 'inc/nav.php'; 
 $uid = $_SESSION['costumerID'];
 $cart = $_SESSION['cart'];
+// foreach($cart as $key => $value){
+// $ordsql = "SELECT prodInventory FROM product  WHERE productID=$key";
+// 			$ordres = mysqli_query($db, $ordsql);
+// 			$ordr = mysqli_fetch_assoc($ordres);
 
+			
+
+// 			$quantity =$value['quantity'];
+// 			echo $quantity;
+// 			echo $ordr['prodInventory'];
+// }
 if(isset($_POST) & !empty($_POST)){
 	if($_POST['agree'] == true){
+		// foreach ($cart as $key => $value) {
+		// 	//echo $key . " : " . $value['quantity'] ."<br>";
+		// 	$ordsql = "SELECT * FROM product WHERE productID=$key";
+		// 	$ordres = mysqli_query($db, $ordsql);
+		// 	$ordr = mysqli_fetch_assoc($ordres);
+
+			
+
+		// 	$quantity = $value['quantity'];
+		// 	echo $quantity;
+		// 	echo $ordr;
+		// if ($quantity>$ordr){
+		// 	echo "La cantidad del pedido es mayor a la que tenemos en el inventario.";
+		// }
+		// else{
 		// $country = filter_var($_POST['country'], FILTER_SANITIZE_STRING);
 		$fname = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
 		$lname = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
@@ -29,6 +54,9 @@ if(isset($_POST) & !empty($_POST)){
 		$res = mysqli_query($db, $sql);
 		$r = mysqli_fetch_assoc($res);
 		$count = mysqli_num_rows($res);
+		
+		
+		
 		if($count == 1){
 			//update data in usersmeta table
 			$usql = "UPDATE costumer SET costumerfirstName='$fname', costumerlastName='$lname', address='$address', street='$street', city='$city', state='$state',  zipCode='$zip', phoneNum='$phone' WHERE costumerID=$uid";
@@ -124,8 +152,8 @@ if(isset($_POST) & !empty($_POST)){
 
 		}
 	}
-
 }
+
 
 $sql = "SELECT * FROM costumer WHERE costumerID='$uid'";
 $res = mysqli_query($db, $sql);

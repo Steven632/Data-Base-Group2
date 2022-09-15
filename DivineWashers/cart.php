@@ -150,6 +150,7 @@ $cart = $_SESSION['cart'];
                                             <th>Price</th>
                                             <th>Quantity</th>
                                             <th>Total</th>
+                                            <th>Avaible</th>
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
@@ -157,12 +158,17 @@ $cart = $_SESSION['cart'];
 					//print_r($cart);
 				    $total = 0;
 					foreach ($cart as $key => $value) {
+
 						//echo $key . " : " . $value['quantity'] ."<br>";
-                        $cartsql = "SELECT  * FROM Product where productID=$key";
+                        $cartsql = "SELECT  * FROM Product where productID=$key"; 
+                        
 						// $cartsql = "SELECT * FROM product WHERE productID=$key";
 						$cartres = mysqli_query($db, $cartsql);
 						$cartr = mysqli_fetch_assoc($cartres);
-                        
+                        if ($value['quantity']>$cartr['prodInventory']){
+                            echo "La cantidad del pedido es mayor a la que tenemos en el inventario.";
+                        }
+                        else{
  
 					
 				 ?>
@@ -172,7 +178,7 @@ $cart = $_SESSION['cart'];
 							<a class="remove" href="delcart.php?id=<?php echo $key; ?>"><i class="fa fa-times"></i></a>
 						</td>
 						<td>
-							<a href="#"><img src="<?php echo $cartr['prodImage']; ?>" alt="" height="90" width="90"></a>					
+							<a href="#"><img src="admin/<?php echo $cartr['prodImage']; ?>" alt="" height="90" width="90"></a>					
 						</td>
 						<td>
 							<a href="product-detail.php?id=<?php echo $cartr['productID']; ?>"><?php echo substr($cartr['prodName'], 0 , 30); ?></a>					
@@ -186,10 +192,12 @@ $cart = $_SESSION['cart'];
 						<td>
 							<span class="amount"><?php echo ($cartr['price']*$value['quantity']); ?></span>					
 						</td>
+                        <td>
+                            <div class="inventory"><?php echo $cartr['prodInventory'];?></div>
 					</tr>
 				<?php 
 				    $total = $total + ($cartr['price']*$value['quantity']);
-			    } ?>
+			    } }?>
                                         <!-- <tr>
                                             <td>
                                                 <div class="img">
@@ -248,7 +256,7 @@ $cart = $_SESSION['cart'];
                                         </div>
                                         <div class="cart-btn">
                                             <!-- <button>Update Cart</button> -->
-                                            <a href="product-list.php" class="nav-item nav-link"><button> Update Cart </button></a>
+                                            <a href="delcart.php?id=<?php echo $key; ?>" class="nav-item nav-link"><button> Update Cart </button></a>
                                               <a href="checkout.php" class="nav-item nav-link"><button> Checkout </button></a>
                                             <!-- form para checkoutprocess para hacer insert aqui? -->
                                         </div>
