@@ -36,13 +36,17 @@
 					$res = mysqli_query($db, $sql); 
 					while ($r = mysqli_fetch_assoc($res)) {
 				?>
+				<form class="register-form" method="post" enctype="multipart/form-data action="editstatus.php> > <!--action="editstatus.php">-->
 					<tr>
+						
 						<th scope="row"><?php echo $r['costumerID']; ?></th>
 						<td><?php echo $r['costumerfirstName'] . " " . $r['costumerlastName']; ?></td>
 						<td><?php echo $r['phoneNum']; ?></td>
 						<td><?php echo $r['costumerEmail']; ?></td>
-						<td><?php echo $r['status']; ?></td>
-						<td><a href="editstatus.php?id=<?php echo $r['costumerID']; ?>">Inactivate</a></td>	
+						<td><?php echo $r['status']; ?></td>				
+						<!--<td><a href="editstatus.php?id=< ?php echo $r['costumerID']; ?>">Deactivate</a></td>	-->
+						<td><input type="submit" class="button btn-lg" value="Deactivate"></td>
+					</form>
 				<?php } ?>
 					</tr>
 				</tbody>

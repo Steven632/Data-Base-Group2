@@ -5,12 +5,13 @@ require_once 'connection.php';
 if(isset($_POST) & !empty($_POST)){
     $costumerfirstName = mysqli_real_escape_string($db, $_POST['costumerfirstName']);
     $costumerlastName = mysqli_real_escape_string($db, $_POST['costumerlastName']);
-    $phoneNum = mysqli_real_escape_string($db, $_POST['phoneNum']);
     $costumerEmail = mysqli_real_escape_string($db, $_POST['costumerEmail']);
+    $phoneNum = mysqli_real_escape_string($db, $_POST['phoneNum']);
+    
     //$address = mysqli_real_escape_string($db, $_POST['address']);
     //$price = mysqli_real_escape_string($db, $_POST['productprice']);
 	//$sqlsearch = "SELECT *  FROM product WHERE prodName LIKE '%$search%'";
-    $sqlx = "UPDATE costumer SET costumerfirstName='$costumerfirstname', costumerlastName='$costumerlastname', phoneNum='$phoneNum',costumerEmail='$costumerEmail' WHERE uid = '$uid'";//address = '$address'
+    $sql= "UPDATE costumer SET costumerfirstName='$costumerfirstname', costumerlastName='$costumerlastname', ,costumerEmail='$costumerEmail', phoneNum='$phoneNum' WHERE uid = '$uid'";//address = '$address'
     //echo $search;
 	//confirm($sqlsearch);
 	//$result = mysqli_result($db, $sql);
