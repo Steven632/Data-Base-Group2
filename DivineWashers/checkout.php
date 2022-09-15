@@ -18,6 +18,7 @@ if(isset($_POST) & !empty($_POST)){
 		// $company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
 		$address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
 		$address2 = filter_var($_POST['street'], FILTER_SANITIZE_STRING);
+		$street = filter_var($_POST['street'], FILTER_SANITIZE_STRING);
 		$city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
 		$state = filter_var($_POST['state'], FILTER_SANITIZE_STRING);
 		$phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
@@ -122,6 +123,18 @@ $sql = "SELECT * FROM costumer WHERE costumerID='$uid'";
 $res = mysqli_query($db, $sql);
 $r = mysqli_fetch_assoc($res);
 ?>
+
+<?php
+if(isset($_GET['id']) & !empty($_GET['id'])){
+
+							$sqlresta = "UPDATE Product SET productInventory WHERE productID='$id'"; //productInvetory - quantity
+							$resta = mysqli_query($db, $sqlresta);
+							$restal = mysqli_fetch_assoc($resta);
+							//while($restal= mysqli_fetch_assoc($resta)){ 
+							($restal['productInventory'] - $restal['quantity']);	
+}
+
+						?>
 
 	
 	<!-- SHOP CONTENT -->
@@ -300,7 +313,7 @@ $r = mysqli_fetch_assoc($res);
                              $total = 0;
 					foreach ($cart as $key => $value) {
 						//echo $key . " : " . $value['quantity'] ."<br>";
-                        $cartsql = "SELECT  * FROM Product where productID=$key";
+                        $cartsql = "SELECT * FROM Product where productID=$key";
 						// $cartsql = "SELECT * FROM product WHERE productID=$key";
 						$cartres = mysqli_query($db, $cartsql);
 						$cartr = mysqli_fetch_assoc($cartres);
@@ -309,7 +322,7 @@ $r = mysqli_fetch_assoc($res);
 					
 				 ?>
             <?php 
-				    $total = $total + ($cartr['price']*$value['quantity']);
+				    $total = $total + ($cartr['price']*$value['quantity']);				 
                      } ?>
                              
                                             <h2>Cart Summary</h2>
@@ -317,6 +330,8 @@ $r = mysqli_fetch_assoc($res);
                                             <p>Shipping Cost<span>Free Shipping </span></p>
                                             <h2>Grand Total<span> <?php echo $total; ?></span></h2>
                                         </div>
+									
+					
 			
 			<div class="clearfix space30"></div>
 			<h4 class="heading">Payment Method</h4>
@@ -351,6 +366,8 @@ $r = mysqli_fetch_assoc($res);
 			</div>
 		</div>		
 </form>		
+
+
 		</div>
 	</section>
 	

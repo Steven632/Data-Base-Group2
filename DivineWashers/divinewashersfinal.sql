@@ -280,10 +280,10 @@ ALTER TABLE `orderitems`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `uid_2` (`uid`),
-  ADD KEY `uid_3` (`uid`),
-  ADD KEY `uid` (`uid`) USING BTREE;
+  ADD PRIMARY KEY (`id`);--,
+  --ADD KEY `uid_2` (`uid`),
+  --ADD KEY `uid_3` (`uid`),
+  --ADD KEY `uid` (`uid`) USING BTREE;
 
 --
 -- Indexes for table `orderstracking`
