@@ -217,31 +217,36 @@ if(isset($_GET['$search'])){
                             if(isset($_GET['cat']) & !empty($_GET['cat']))
                             {
                             $cat = $_GET['cat'];                        
-                            $sql .= " WHERE catid='1'";               
+                            $sql .= " WHERE portable='1' "; 
+                            // $sql .= " WHERE portable='1'";                
                             } 
 
                             if(isset($_GET['catq']))
                             {
                             $catq = $_GET['catq'];                        
-                            $sql .= " WHERE catid='2'";                            
+                            $sql .= " WHERE  frontLoad='1'";   
+                            //   $sql .= " WHERE frontLoad='1'";                           
                             } 
 
                             else if(isset($_GET['catw']))
                             {
                             $catw = $_GET['catw'];                        
-                            $sql .= " WHERE catid='5'";                            
+                            $sql .= " WHERE topLoad='1'"; 
+                            //     $sql .= " WHERE topLoad='1'";                           
                             } 
 
                             else if(isset($_GET['cate']))
                             {
                             $cate = $_GET['cate'];                        
-                            $sql .= " WHERE catid='6'";                            
+                            $sql .= " WHERE smartWifi='1'"; 
+                            // $sql .= " WHERE smartWifi='1'";                             
                             } 
 
                             else if(isset($_GET['catr']))
                             {
                             $catr = $_GET['catr'];                        
-                            $sql .= " WHERE catid='7'";                            
+                            $sql .= " WHERE dryerCombo='1'";    
+                            //  $sql .= " WHERE dryerCombo='1'";                         
                             } 
                             //SORT DE PRECIOS-----------------------------------
                             else if(isset($_GET['sp']))

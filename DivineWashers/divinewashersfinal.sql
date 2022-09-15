@@ -61,11 +61,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Dryer Combo'),
+(5, 'Dryer Combo'),
 (2, 'Front Load'),
-(5, 'Top Load'),
-(6, 'Smart Wifi'),
-(7, 'Portable');
+(3, 'Top Load'),
+(4, 'Smart Wifi'),
+(1, 'Portable');
 
 -- --------------------------------------------------------
 
@@ -180,7 +180,7 @@ CREATE TABLE `product` (
   `catid` int(11) NOT NULL,
   `prodName` varchar(25) NOT NULL,
   `prodDesc` varchar(200) NOT NULL,
-  `portable`tinyint(1) NOT NULL,
+    `portable`tinyint(1) NOT NULL,
    `frontLoad`tinyint(1) NOT NULL,
    `topLoad` tinyint(1) NOT NULL,
    `smartWifi`tinyint(1) NOT NULL,
@@ -195,14 +195,14 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`productID`, `catid`, `prodName`, `prodDesc`, `portable`, `frontLoad`, `topLoad`, `smartWifi`, `dryerCombo`, `prodBrand`, `prodInventory`, `prodImage`, `price`) VALUES
-(1, 7, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 1, 0, 1, 0, 0, 'Costway', 20, 'img/costwayamazon_list.png', '199.99'),
-(2, 7, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes', 1, 0, 1, 0, 0, 'Costway', 20, 'img/costwaytwin_list.png', '209.99'),
-(3, 1, 'LG Wifi Combo Washer Drye', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash®', 0, 1, 0, 0, 0, 'LG', 20, 'img/LgWifi_list.png', '999.99'),
-(4, 2, 'Samsung Platinum Front Lo', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.', 0, 0, 1, 0, 0 'Samsung', 19, 'img/samsungfront.png', '699.99'),
-(5, 6, 'Whirlpool Smart Top Load ', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 0, 1, 0, 1, 0, 'Whirlpool', 20, 'img/whirlpooltop.png', '829.99'),
-(6, 2, 'Haier Smart Frontload Was', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ',0, 0, 0, 0, 0, 'Haier', 20, 'img/haierFrontLoad_list.png', '999.99'),
-(21, 2, 'Midea Top Load 2', 'dsfgsdf', '', 20, 'img/samsung_front_2.png', '999.00');
+INSERT INTO `product` (`productID`, `catid`, `prodName`, `prodDesc`,`portable`, `frontLoad`, `topLoad`, `smartWifi`, `dryerCombo`, `prodBrand`, `prodInventory`, `prodImage`, `price`) VALUES
+(1, 1, 'Costway Portable Mini', 'This washing machine is portable and compact. It is perfect for your limited space such as dorms, apartments, condos, motor homes, RVs, camping and more.', 1, 0, 1, 0, 0,'Costway', 20, 'img/costwayamazon_list.png', '199.99'),
+(2, 1, 'Costway Twin Portable ', 'Featuring a twin tub washing design, this compact washing machine combines spinning function and washing function as one which offers great convenience so that you can directly move the washed clothes', 1, 0, 1, 0, 0, 'Costway', 20, 'img/costwaytwin_list.png', '209.99'),
+(3, 4, 'LG Wifi Combo Washer Drye', 'Enjoy the convenience of an all-in-one washer/dryer without giving up on capacity. Give big loads the same great clean while cutting your wash time by up to 30 minutes with LGs enhanced TurboWash®', 0, 1, 0, 1, 1, 'LG', 20, 'img/LgWifi_list.png', '999.99'),
+(4, 2, 'Samsung Platinum Front Lo', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.', 0, 1, 0, 0, 0, 'Samsung', 19, 'img/samsungfront.png', '699.99'),
+(5, 4, 'Whirlpool Smart Top Load ', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 0, 0, 1, 0, 0, 'Whirlpool', 20, 'img/whirlpooltop.png', '829.99'),
+(6, 4, 'Haier Smart Frontload Was', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 0, 1, 0, 1, 0, 'Haier', 20, 'img/haierFrontLoad_list.png', '999.99');
+
 
 --
 -- Indexes for dumped tables
