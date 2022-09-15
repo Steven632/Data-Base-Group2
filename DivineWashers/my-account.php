@@ -2,10 +2,23 @@
 
 include 'connection.php';
 $uid = $_SESSION['costumerID'];
+
+
 // $cart = $_SESSION['cart'];
+if(isset($_POST) & !empty($_POST)){
+    $costumerfirstName = mysqli_real_escape_string($db, $_POST['costumerfirstName']);
+    $costumerlastName = mysqli_real_escape_string($db, $_POST['costumerlastName']);
+    $phoneNum = mysqli_real_escape_string($db, $_POST['phoneNum']);
+    $costumerEmail = mysqli_real_escape_string($db, $_POST['costumerEmail']);
+    $address = mysqli_real_escape_string($db, $_POST['address']);
+    //$costumerPassword = mysqli_real_escape_string($db, $_POST['costumerPassword']);
+    
+    $sqlx = "UPDATE costumer SET costumerfirstName='$costumerfirstName', costumerlastName='$costumerlastName', phoneNum='$phoneNum',costumerEmail='$costumerEmail', address = '$address' WHERE costumerID = '$uid'";
+	$resx = mysqli_query($db, $sqlx);
+     //$rx = mysqli_fetch_assoc($res);
+    
+}     
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -249,7 +262,7 @@ $uid = $_SESSION['costumerID'];
                                     <div class="col-md-6">
 
                                     <?php
-                                    $sql = "SELECT  * FROM costumer WHERE costumerID=$uid"; //WHERE '$id' = '$costumerID' // WHERE $_GET[costumerID] = '$costumerID' ";  
+                                    $sql = "SELECT * FROM costumer WHERE costumerID='$uid'"; //WHERE '$id' = '$costumerID' // WHERE $_GET[costumerID] = '$costumerID' ";  
                                     $result = mysqli_query($db, $sql);
                                     $row = mysqli_fetch_assoc($result);
                                     ?>
@@ -279,30 +292,42 @@ $uid = $_SESSION['costumerID'];
                                     
                                 </div>
                             </div>
-                            
+
+
                             <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
+                        
+
                                 <h4>Account Details</h4>
+                                <form method="post" enctype="multipart/form-data action="editaccountprocess.php>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="First Name">
+                                    <!--<input class="form-control" type="text" placeholder="First">-->
+                                        <input class="form-control" type="text" name="costumerfirstName" id="costumerfirstName" placeholder="<?php echo $row['costumerfirstName']; ?>">                                                                                                          
+                                       <!-- <input type="text" class="form-control" name="productname" id="Productname" placeholder="Product Name" value="< ?php echo $r['prodName']; ?>">-->
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="Last Name">
+                                        <input class="form-control" type="text" name="costumerlastName" id="costumerlastName" placeholder="<?php echo $row['costumerlastName']; ?>">
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="Mobile">
+                                        <input class="form-control" type="text"name="costumerEmail" id="costumerEmail" placeholder="<?php echo $row['costumerEmail']; ?>">
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="Email">
+                                        <input class="form-control" type="text" placeholder="<?php echo $row['phoneNum']; ?>">
                                     </div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" placeholder="Address">
+                                        <input class="form-control" type="text" placeholder=""<?php echo $row['address']; ?>">
                                     </div>
+                                    
                                     <div class="col-md-12">
                                         <button class="btn">Update Account</button>
+                                        </form>
                                         <br><br>
+                                       
                                     </div>
+                                  
                                 </div>
+                                
+
                                 <h4>Password change</h4>
                                 <div class="row">
                                     <div class="col-md-12">
