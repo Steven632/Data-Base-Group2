@@ -77,7 +77,7 @@ CREATE TABLE `costumer` (
   `costumerID` int(11) NOT NULL,
   `costumerfirstName` varchar(11) DEFAULT NULL,
   `costumerlastName` varchar(11) DEFAULT NULL,
-  `costumerEmail` varchar(25) DEFAULT NULL,
+  `costumerEmail` varchar(50) DEFAULT NULL,
   `costumerPassword` varchar(10) DEFAULT NULL,
   `address` varchar(10) DEFAULT NULL,
   `street` varchar(10) DEFAULT NULL,
@@ -197,7 +197,7 @@ INSERT INTO `product` (`productID`, `catid`, `prodName`, `prodDesc`, `prodBrand`
 (4, 2, 'Samsung Platinum Front Lo', 'The Samsung 4.5 cu. ft. capacity front load washer with steam eliminates stains without the need to pretreat.', 'Samsung', 19, 'img/samsungfront.png', '699.99'),
 (5, 6, 'Whirlpool Smart Top Load ', 'Skip adding detergent to every load with the Load & Go™ Dispenser in this top load washing machine.', 'Whirlpool', 20, 'img/whirlpooltop.png', '829.99'),
 (6, 2, 'Haier Smart Frontload Was', 'Clean 5 of the most common stains with preprogrammed settings that modify any cycle to help remove mud, grass, tomato, wine, blood ', 'Haier', 20, 'img/haierFrontLoad_list.png', '999.99'),
-(21, 2, 'Midea Top Load 2', 'dsfgsdf', '', 20, 'img/lgloads.jpg', '999.00');
+(21, 2, 'Midea Top Load 2', 'dsfgsdf', '', 20, 'img/samsung_front_2.png', '999.00');
 
 --
 -- Indexes for dumped tables

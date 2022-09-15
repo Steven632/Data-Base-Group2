@@ -196,7 +196,7 @@ include 'connection.php';
                                 </div>
                                 <div class="col-md-6">
                                     <label>Mobile No</label>
-                                    <input class="form-control" type="int" name="phoneNum" placeholder="Mobile No">
+                                    <input class="form-control" name="phoneNum" type="test"  placeholder="Mobile No">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>

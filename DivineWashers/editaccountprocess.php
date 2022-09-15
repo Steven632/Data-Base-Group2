@@ -7,10 +7,10 @@ if(isset($_POST) & !empty($_POST)){
     $costumerlastName = mysqli_real_escape_string($db, $_POST['costumerlastName']);
     $phoneNum = mysqli_real_escape_string($db, $_POST['phoneNum']);
     $costumerEmail = mysqli_real_escape_string($db, $_POST['costumerEmail']);
-    $address = mysqli_real_escape_string($db, $_POST['address']);
+    //$address = mysqli_real_escape_string($db, $_POST['address']);
     //$price = mysqli_real_escape_string($db, $_POST['productprice']);
 	//$sqlsearch = "SELECT *  FROM product WHERE prodName LIKE '%$search%'";
-    $sqlx = "UPDATE costumer SET costumerfirstName='$costumerfirstname', costumerlastName='$costumerlastname', phoneNum='$phoneNum',costumerEmail='$costumerEmail', address = '$address' WHERE uid = '$uid'";
+    $sqlx = "UPDATE costumer SET costumerfirstName='$costumerfirstname', costumerlastName='$costumerlastname', phoneNum='$phoneNum',costumerEmail='$costumerEmail' WHERE uid = '$uid'";//address = '$address'
     //echo $search;
 	//confirm($sqlsearch);
 	//$result = mysqli_result($db, $sql);

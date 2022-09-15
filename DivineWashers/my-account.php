@@ -8,12 +8,14 @@ $uid = $_SESSION['costumerID'];
 if(isset($_POST) & !empty($_POST)){
     $costumerfirstName = mysqli_real_escape_string($db, $_POST['costumerfirstName']);
     $costumerlastName = mysqli_real_escape_string($db, $_POST['costumerlastName']);
-    $phoneNum = mysqli_real_escape_string($db, $_POST['phoneNum']);
     $costumerEmail = mysqli_real_escape_string($db, $_POST['costumerEmail']);
-    $address = mysqli_real_escape_string($db, $_POST['address']);
+    $phoneNum = mysqli_real_escape_string($db, $_POST['phoneNum']);
+    
+
+    //$address = mysqli_real_escape_string($db, $_POST['address']);
     //$costumerPassword = mysqli_real_escape_string($db, $_POST['costumerPassword']);
     
-    $sqlx = "UPDATE costumer SET costumerfirstName='$costumerfirstName', costumerlastName='$costumerlastName', phoneNum='$phoneNum',costumerEmail='$costumerEmail', address = '$address' WHERE costumerID = '$uid'";
+    $sqlx = "UPDATE costumer SET costumerfirstName='$costumerfirstName', costumerlastName='$costumerlastName', costumerEmail='$costumerEmail', phoneNum='$phoneNum' WHERE costumerID = '$uid'"; //, address = '$address'
 	$resx = mysqli_query($db, $sqlx);
      //$rx = mysqli_fetch_assoc($res);
     
@@ -157,7 +159,7 @@ if(isset($_POST) & !empty($_POST)){
                         <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                            
                             <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Orders</a>
-                            <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Payment Method</a>
+                            <!--<a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Payment Method</a> -->
                             <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>address</a>
                             <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
                             <a class="nav-link" href="logout.php"><i class="fa fa-sign-out-alt"></i>Logout</a>
@@ -214,7 +216,7 @@ if(isset($_POST) & !empty($_POST)){
                                 </div>
                             </div>
                             
-                            <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
+                          <!--  <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
                                 <h4>Payment Method</h4>
                                 <div class="payment-methods">
                                     <div class="payment-method">
@@ -226,7 +228,7 @@ if(isset($_POST) & !empty($_POST)){
                                             
                                         </div>
                                     </div>
-                                   <!--   <div class="payment-method">
+                                   <! --   <div class="payment-method">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="payment-2" name="payment">
                                             <label class="custom-control-label" for="payment-2">Check Payment</label>
@@ -247,12 +249,10 @@ if(isset($_POST) & !empty($_POST)){
                                         </div>
                                         
                                     </div>
--->
 
-                                </div>
-                            
-                                
+                                </div>                    
                             </div>
+                                                            -->
                             <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
                                 <h4>Address</h4>
                                 
@@ -302,21 +302,21 @@ if(isset($_POST) & !empty($_POST)){
                                 <div class="row">
                                     <div class="col-md-6">
                                     <!--<input class="form-control" type="text" placeholder="First">-->
-                                        <input class="form-control" type="text" name="costumerfirstName" id="costumerfirstName" placeholder="<?php echo $row['costumerfirstName']; ?>">                                                                                                          
+                                        <input class="form-control" type="text" name="costumerfirstName" id="costumerfirstName" placeholder="Name: <?php echo $row['costumerfirstName']; ?>">                                                                                                          
                                        <!-- <input type="text" class="form-control" name="productname" id="Productname" placeholder="Product Name" value="< ?php echo $r['prodName']; ?>">-->
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="form-control" type="text" name="costumerlastName" id="costumerlastName" placeholder="<?php echo $row['costumerlastName']; ?>">
+                                        <input class="form-control" type="text" name="costumerlastName" id="costumerlastName" placeholder="Last Name: <?php echo $row['costumerlastName']; ?>">
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="form-control" type="text"name="costumerEmail" id="costumerEmail" placeholder="<?php echo $row['costumerEmail']; ?>">
+                                        <input class="form-control" type="text"name="costumerEmail" id="costumerEmail" placeholder="Email: <?php echo $row['costumerEmail']; ?>">
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="<?php echo $row['phoneNum']; ?>">
+                                        <input class="form-control" type="text" placeholder="Phone: <?php echo $row['phoneNum']; ?>">
                                     </div>
-                                    <div class="col-md-12">
-                                        <input class="form-control" type="text" placeholder=""<?php echo $row['address']; ?>">
-                                    </div>
+                                    <!--<div class="col-md-12">
+                                        <input class="form-control" type="text" placeholder="Address: < ?php echo $row['address']; ?>">
+                                    </div>-->
                                     
                                     <div class="col-md-12">
                                         <button class="btn">Update Account</button>
