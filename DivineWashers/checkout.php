@@ -60,7 +60,10 @@ if(isset($_POST) & !empty($_POST)){
 						$productprice = $ordr['price'];
 						$quantity = $value['quantity'];
 
-
+						$prodinvsql = "UPDATE product SET prodInventory= prodInventory - '$quantity' WHERE productID='$pid'";
+						$prodinvres = mysqli_query($db, $prodinvsql) or die(mysqli_error($db));
+						
+						
 						$orditmsql = "INSERT INTO orderitems (productID, orderid, productprice, pquantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
 						$orditmres = mysqli_query($db, $orditmsql) or die(mysqli_error($db));
 						//if($orditmres){
@@ -101,8 +104,13 @@ if(isset($_POST) & !empty($_POST)){
 						$pid = $ordr['id'];
 						$productprice = $ordr['price'];
 						$quantity = $value['quantity'];
+						
+						$prodinvsql = "UPDATE product SET prodInventory= prodInventory - '$quantity' WHERE productID='$pid'";
+						$prodinvres = mysqli_query($db, $prodinvsql) or die(mysqli_error($db));
+						if($prodinvres)
+						{
 
-
+						}
 						$orditmsql = "INSERT INTO orderitems (productID, orderid, productprice, pquantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
 						$orditmres = mysqli_query($db, $orditmsql) or die(mysqli_error($db));
 						//if($orditmres){

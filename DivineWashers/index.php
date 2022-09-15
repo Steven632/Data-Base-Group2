@@ -211,7 +211,7 @@ while($row = fetch_array($info)){
                             <div class="header-slider-item">
                                 <!-------------------------ARREGLAR FOTOS------------------------>
                                 <!--<img src="img/samsung_front_2.png" alt="Slider Image"/> -->
-                                <img src= "<?php echo $r['prodImage'];?>" > 
+                                <img src="admin/<?php echo $r['prodImage'];?>" > 
                                 <!-- img src= "< ?php echo $r['prodImage']; ?>" SIZE ESTAN MAL --> 
                                 <div class="header-slider-caption">
                                     <p><?php echo $r["prodName"]; ?></p>                                 

@@ -348,7 +348,7 @@ if(isset($_GET) & !empty($_GET)){
                             <div class="product-image">
                                 <a href="product-detail.php">
                                     <!--<img src="img/lgWifiCombo.png" alt="Product Image"> -->
-                                    <img src= "<?php echo $r['prodImage']; ?>" alt="Product Image"> 
+                                    <img src="admin/<?php echo $r['prodImage']; ?>" alt="Product Image"> 
                                 </a>
                                 <div class="product-action">
                                     <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>                                 
@@ -390,11 +390,11 @@ if(isset($_GET) & !empty($_GET)){
                                ?>
                                   
                                 <li class="nav-item">
-                                    <li><a href="product-list.php?cat=<?php echo $catr['portable']; ?>" ><i class="fa fa-microchip"></i>Portable</a></li>
-                                    <a href="product-list.php?catq=<?php echo $catr['frontLoad']; ?>" ><i class="fa fa-microchip"></i>Frontload</a>
-                                    <a href="product-list.php?catw=<?php echo $catr['topLoad']; ?>" ><i class="fa fa-microchip"></i>Topload</a>
-                                    <a href="product-list.php?cate=<?php echo $catr['smartWifi']; ?>" ><i class="fa fa-microchip"></i>Smartwifi</a>
-                                    <a href="product-list.php?catr=<?php echo $catr['dryerCombo']; ?>" ><i class="fa fa-microchip"></i>Dryercombo</a>
+                                    <li><a href="product-list.php?cat=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Portable</a></li>
+                                    <a href="product-list.php?catq=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Frontload</a>
+                                    <a href="product-list.php?catw=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Topload</a>
+                                    <a href="product-list.php?cate=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Smartwifi</a>
+                                    <a href="product-list.php?catr=<?php echo $catr['catid']; ?>" ><i class="fa fa-microchip"></i>Dryercombo</a>
                                 </li>
                                 </ul>
                             </nav>

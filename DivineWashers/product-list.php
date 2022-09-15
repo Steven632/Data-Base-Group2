@@ -315,7 +315,7 @@ if(isset($_GET['$search'])){
                                     </div>
                                     <div class="product-image">
                                      <!--  <img src="img/costwayamazon450.png" alt="Product Image"> -->
-                                    <img src= "<?php echo $row['prodImage']; ?>" >
+                                    <img src="admin/<?php echo $row['prodImage']; ?>" >
 
                                         </a>
                                         <div class="product-action">
