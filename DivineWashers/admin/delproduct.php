@@ -5,8 +5,8 @@
 		header('location: login.php');
 	}
 
-	if(isset($_GET['productID']) & !empty($_GET['productID'])){
-		$id = $_GET['productID'];
+	if(isset($_GET['id']) & !empty($_GET['id'])){
+		$id = $_GET['id'];
 		$sql = "SELECT prodImage FROM product WHERE productID=$id";
 		$res = mysqli_query($db, $sql);
 		$r = mysqli_fetch_assoc($res);
