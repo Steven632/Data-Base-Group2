@@ -302,7 +302,7 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
 							</div>
 							<div class="clearfix space20"></div>
 							<label>Phone </label>
-							<input name="phone" class="form-control" id="billing_phone" placeholder="" value="<?php if(!empty($r['phone'])){ echo $r['phone']; }elseif(isset($phone)){ echo $phone; } ?>" type="text">
+							<input name="phone" class="form-control" id="billing_phone" placeholder="Phone" value="<?php if(!empty($r['phone'])){ echo $r['phone']; }elseif(isset($phone)){ echo $phone; } ?>" type="text">
 						
 					</div>
 				</div>

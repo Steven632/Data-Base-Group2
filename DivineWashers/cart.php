@@ -256,7 +256,7 @@ $cart = $_SESSION['cart'];
                                         </div>
                                         <div class="cart-btn">
                                             <!-- <button>Update Cart</button> -->
-                                            <a href="delcart.php?id=<?php echo $key; ?>" class="nav-item nav-link"><button> Update Cart </button></a>
+                                            <a href="delcart.php?id=<?php echo $key; ?>" class="nav-item nav-link"><button> Reset Cart </button></a>
                                               <a href="checkout.php" class="nav-item nav-link"><button> Checkout </button></a>
                                             <!-- form para checkoutprocess para hacer insert aqui? -->
                                         </div>

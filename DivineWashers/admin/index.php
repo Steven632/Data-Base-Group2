@@ -119,7 +119,7 @@ $y2=date("Y",$month2);
 <?php
 $ret=mysqli_query($db,"select month(timestamp) as lmonth,year(timestamp) as lyear,
     orderitems.productprice,orderitems.pquantity from orders 
-    join orderitems on (orders.id=orderitems.orderid)");
+    join orderitems on (orders.id=orderitems.orderid) WHERE orders.timestamp BETWEEN '$fdate' AND '$tdate'");
 $num=mysqli_num_rows($ret);
 $ftotal=0;
 if($num>0){
@@ -165,7 +165,7 @@ $y2=date("Y",$year2);
 // $reqsql = "SELECT month(timestamp) as lmonth,year(timestamp) as lyear, product.price, orderitems.pquantity, FROM orders JOIN product JOIN orderitems ON product.productID=orderitems.productID WHERE date(orders.timestamp) between '$fdate' AND '$tdate' GROUP by lyear";
 $ret=mysqli_query($db,"select month(timestamp) as lmonth,year(timestamp) as lyear,
 orderitems.productprice,orderitems.pquantity from orders 
-join orderitems on (orders.id=orderitems.orderid)
+join orderitems on (orders.id=orderitems.orderid) WHERE orders.timestamp BETWEEN '$fdate' AND '$tdate'
  ");
 
 $num=mysqli_num_rows($ret);

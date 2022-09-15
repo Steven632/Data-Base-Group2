@@ -404,7 +404,7 @@ while($row = fetch_array($info)){
                             <div class="product-image">
                                 <a href="product-detail.php">
                                     <!--<img src="img/lgWifiCombo.png" alt="Product Image"> -->
-                                    <img src= "<?php echo $r['prodImage']; ?>"  alt="Product Image"> 
+                                    <img src= "admin/<?php echo $r['prodImage']; ?>"  alt="Product Image"> 
                                 </a>
                                 <div class="product-action">
                                     <a href="addtocart.php?id=<?php echo $r['productID']; ?>"><i class="fa fa-cart-plus"></i></a>                                 

@@ -9,13 +9,13 @@ if(isset($_POST) & !empty($_POST)){
     $costumerfirstName = mysqli_real_escape_string($db, $_POST['costumerfirstName']);
     $costumerlastName = mysqli_real_escape_string($db, $_POST['costumerlastName']);
     $costumerEmail = mysqli_real_escape_string($db, $_POST['costumerEmail']);
-    $phoneNum = mysqli_real_escape_string($db, $_POST['phoneNum']);
+    $phone = mysqli_real_escape_string($db, $_POST['phone']);
     
 
     //$address = mysqli_real_escape_string($db, $_POST['address']);
     //$costumerPassword = mysqli_real_escape_string($db, $_POST['costumerPassword']);
     
-    $sqlx = "UPDATE costumer SET costumerfirstName='$costumerfirstName', costumerlastName='$costumerlastName', costumerEmail='$costumerEmail', phoneNum='$phoneNum' WHERE costumerID = '$uid'"; //, address = '$address'
+    $sqlx = "UPDATE costumer SET costumerfirstName='$costumerfirstName', costumerlastName='$costumerlastName', costumerEmail='$costumerEmail', phoneNum='$phone' WHERE costumerID = $uid"; //, address = '$address'
 	$resx = mysqli_query($db, $sqlx);
      //$rx = mysqli_fetch_assoc($res);
     
@@ -312,7 +312,7 @@ if(isset($_POST) & !empty($_POST)){
                                         <input class="form-control" type="text"name="costumerEmail" id="costumerEmail" placeholder="Email: <?php echo $row['costumerEmail']; ?>">
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="Phone: <?php echo $row['phoneNum']; ?>">
+                                        <input class="form-control" name="phoneNum" type="text" placeholder="Phone: <?php echo $row['phoneNum']; ?>">
                                     </div>
                                     <!--<div class="col-md-12">
                                         <input class="form-control" type="text" placeholder="Address: < ?php echo $row['address']; ?>">
