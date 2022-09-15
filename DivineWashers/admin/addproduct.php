@@ -10,13 +10,13 @@
 		$description = mysqli_real_escape_string($db, $_POST['productdescription']);
 		$category = mysqli_real_escape_string($db, $_POST['productcategory']);
 		$price = mysqli_real_escape_string($db, $_POST['productprice']);
-
-		if(isset($_GET['$search'])){
-		//if(isset($_FILES['prodImage']) & !empty($_FILES['prodImage'])){
-			$name = $_FILES['prodImage']['name'];
-			$size = $_FILES['prodImage']['size'];
-			$type = $_FILES['prodImage']['type'];
-			$tmp_name = $_FILES['prodImage']['tmp_name'];
+    $inventory = mysqli_real_escape_string($db, $_POST['inventory']);
+   
+		if(isset($_FILES) & !empty($_FILES)){
+			$name = $_FILES['productimage']['name'];
+			$size = $_FILES['productimage']['size'];
+			$type = $_FILES['productimage']['type'];
+			$tmp_name = $_FILES['productimage']['tmp_name'];
 
 			$max_size = 10000000;
 			$extension = substr($name, strpos($name, '.') + 1);
@@ -26,8 +26,8 @@
 					$location = "img/";
 					if(move_uploaded_file($tmp_name, $location.$name)){
 						//$smsg = "Uploaded Successfully";
-						$sql = "INSERT INTO product (prodName, prodDesc, catid, price, prodImage) VALUES ('$prodname', '$description', '$category', '$price', '$location.$name')";
-						$res = mysqli_query($db, $sql);
+						$sql = "INSERT INTO product (prodName, prodDesc, catid, price, prodInventory, prodImage) VALUES ('$prodname', '$description', '$category', '$price', '$inventory', '$location$name')";
+            $res = mysqli_query($db, $sql);
 						if($res){
 							//echo "Product Created";
 							header('location: products.php');
@@ -45,7 +45,7 @@
 			}
 		}else{
 
-			$sql = "INSERT INTO product (prodName, prodDesc, catid, price) VALUES ('$prodname', '$description', '$category', '$price')";
+			$sql = "INSERT INTO product (prodName, prodDesc, catid, price, prodInventory) VALUES ('$prodname', '$description', '$category', '$price', '$inventory')";
 			$res = mysqli_query($db, $sql);
 			if($res){
 				header('location: products.php');
@@ -91,6 +91,10 @@
 			  <div class="form-group">
 			    <label for="productprice">Product Price</label>
 			    <input type="text" class="form-control" name="productprice" id="productprice" placeholder="Product Price">
+			  </div>
+        <div class="form-group">
+			    <label for="inventory">Product Inventory</label>
+			    <input type="text" class="form-control" name="inventory" id="inventory" placeholder="Product Inventory">
 			  </div>
 			  <div class="form-group">
 			    <label for="productimage">Product Image</label>
